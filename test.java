@@ -3,6 +3,6 @@ public class test {
 		
 		ThucDon.setDonGiatuFile("trasua.txt");
 		ThucDon.setDonGiatuFile("caphe.txt");
-		ThucDon.xuatMenu(0);
+		ThucDon.xuatMenu(3);
 	}
 }

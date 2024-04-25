@@ -1,5 +1,5 @@
 public class CaPhe extends SanPham {
-	private boolean isIced;
+	private boolean coDa;
 
 	public CaPhe() {
 		super();
@@ -9,17 +9,17 @@ public class CaPhe extends SanPham {
 		super(id, ten);
 	}
 
-	public CaPhe(boolean isIced) {
+	public CaPhe(boolean coDa) {
 		super();
-		this.isIced = isIced;
+		this.coDa = coDa;
 	}
 
 	public boolean isIced() {
-		return isIced;
+		return coDa;
 	}
 
 	public void setIced(boolean isIced) {
-		this.isIced = isIced;
+		this.coDa = isIced;
 	}
 
 }

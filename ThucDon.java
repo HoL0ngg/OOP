@@ -49,7 +49,7 @@ public class ThucDon {
 	}
 
 	public static void xuatMenu(int loai) {
-		if (loai == 0) {
+		if (loai == 1) {
 			System.out.println("--------------------- Tra sua ---------------------");
 			int cntTab = SanPham.maxLength / 8;
 			for (int i = 0; i <= cntTab; ++i) {
@@ -81,7 +81,7 @@ public class ThucDon {
 				}
 			}
 			System.out.println();
-		} else if (loai == 1){
+		} else if (loai == 2){
 			System.out.println("--------------------- Ca phe ---------------------");
 			int cntTab = SanPham.maxLength / 8;
 			for (int i = 0; i <= cntTab; ++i) {
@@ -112,8 +112,8 @@ public class ThucDon {
 			}
 			System.out.println();
 		} else {
-			xuatMenu(0);
 			xuatMenu(1);
+			xuatMenu(2);
 		}
 	}
 

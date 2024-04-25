@@ -76,6 +76,7 @@ public abstract class NhanVien {
 		this.setDc(dc);
 		System.out.print("Nhap so dien thoai: ");
 		this.setSdt(scan.nextLine());
+		scan.close();
 	}
 
 }

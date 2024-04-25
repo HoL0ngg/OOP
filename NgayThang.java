@@ -46,6 +46,7 @@ public class NgayThang {
 		this.setThang(Integer.parseInt(scan.nextLine()));
 		System.out.print("Nhap nam: ");
 		this.setNam(Integer.parseInt(scan.nextLine()));
+		scan.close();
 	}
 
 }
