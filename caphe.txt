@@ -1,0 +1,14 @@
+cpd#Ca phe den			#7000#10000#12000
+cps#Ca phe sua			#12000#15000#17000
+cppm#Ca phe pha may		#18000#22000#26000
+cpcd#Ca phe cot dua		#18000#23000#27000
+cpm#Ca phe muoi			#15000#17000#20000
+bx#Bac xiu			#12000#15000#17000
+ddkd#Den da khong duong		#7000#10000#12000
+cpcn#Cappuccino			#22000#27000#32000
+ccn#Cacao nong			#12000#15000#17000
+ccd#Cacao da			#12000#15000#17000
+
+
+
+
