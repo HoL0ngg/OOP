@@ -15,6 +15,7 @@ public class nvDatHang extends NhanVien{
 		System.out.println("2. Ca phe");
 		System.out.println("3. Chua biet");
 		System.out.print("Moi nhap lua chon: ");
+
 		int LuaChon = Integer.parseInt(scan.nextLine());
 		while (LuaChon < 1 || LuaChon > 3) {
 			System.out.println("Vui long nhap lai!");
@@ -31,8 +32,33 @@ public class nvDatHang extends NhanVien{
 			System.out.print("Moi nhap lua chon: ");
 			LuaChon = Integer.parseInt(scan.nextLine());
 		}
+		
+		System.out.println();
 
-		int indexTraSua = 0, indexCaPhe = 0;
+		System.out.println("Chon '0' de thoat");
+
+		int index = 0;
+		System.out.print("Moi chon mon: ");
+		int vitriMon = Integer.parseInt(scan.nextLine());
+		do {
+			
+
+
+			System.out.print("Moi chon mon tiep theo: ");
+			vitriMon = Integer.parseInt(scan.nextLine());
+		} while (vitriMon != 0);
+		
+		//chua lam xong
+		for (SanPham sp : ThucDon.thucdon){
+			if (index == vitriMon){
+				this.DSSanPham.add(sp);
+				break;
+			}
+			if ((sp instanceof TraSua && LuaChon == 1) 
+			|| (sp instanceof CaPhe && LuaChon == 2)){
+				++index;
+			}
+		}
 		
 	}
 }
