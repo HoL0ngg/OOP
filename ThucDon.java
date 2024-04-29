@@ -3,7 +3,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ThucDon {
+
 	public static ArrayList<SanPham> thucdon = new ArrayList<SanPham>();
+	public static int indexOfCaPhe = 0;
 
 	public ThucDon() {
 	}
@@ -25,6 +27,7 @@ public class ThucDon {
 
 				if (path == "trasua.txt") {
 					sp = new TraSua(id, ten);
+					ThucDon.indexOfCaPhe++;
 				} else if (path == "caphe.txt") {
 					sp = new CaPhe(id, ten);
 				} else {
@@ -98,7 +101,7 @@ public class ThucDon {
 	
 					CaPhe cf = (CaPhe) sp;
 					// tab ra cho dep
-					int lengthTS = (sp.getTen().length() + 3) / 8;
+					int lengthTS = (sp.getTen().length() + 2 + (String.valueOf(index-1).length())) / 8;
 					for (int j = lengthTS; j <= cntTab; ++j) {
 						System.out.print("\t");
 					}
