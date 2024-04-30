@@ -11,5 +11,7 @@ public class DSNhanVien {
         this.dsnv = dsnv;
     }
 
-    
+    public ArrayList<NhanVien> getDSNV(){
+        return this.dsnv;
+    }
 }

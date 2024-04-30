@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class CaPhe extends SanPham {
 	private boolean coDa;
 
@@ -20,6 +22,13 @@ public class CaPhe extends SanPham {
 
 	public void setIced(boolean isIced) {
 		this.coDa = isIced;
+	}
+
+	@Override
+	public void nhapThongTin(){
+		super.nhapThongTin();
+		Scanner scan = new Scanner(System.in);
+		
 	}
 
 }
