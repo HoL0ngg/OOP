@@ -15,6 +15,8 @@ public class TraSua extends SanPham {
 		super.nhapThongTin();
 		Scanner scan = new Scanner(System.in);
 		System.out.print("");
+
+		scan.close();
 	}
 
 }

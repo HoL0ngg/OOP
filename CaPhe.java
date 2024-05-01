@@ -29,6 +29,8 @@ public class CaPhe extends SanPham {
 		super.nhapThongTin();
 		Scanner scan = new Scanner(System.in);
 		
+
+		scan.close();
 	}
 
 }

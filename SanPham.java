@@ -47,6 +47,10 @@ public abstract class SanPham {
 		this.giaTien = giaTien;
 	}
 
+	public int getGiaTienAtIndex(int index){
+		return giaTien[index];
+	}
+
 
 	//dung de cho nvQuanLi them SanPham vao List
 	public void nhapThongTin(){

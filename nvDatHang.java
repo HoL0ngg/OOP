@@ -5,20 +5,43 @@ public class nvDatHang extends NhanVien{
 	// private ArrayList<SanPham> DSSanPham;
 
 	// 1 mang luu vi tri voi moi vi tri la 3 size
-	private	int[] DSSanPham = new int[ThucDon.thucdon.size() * SanPham.validSize];
+	private	int[] DSSanPham;
 
 	public nvDatHang(){
 		// this.DSSanPham = new ArrayList<SanPham>();
 	}
 
 	public void xuatDonHang(){
+		int tongtien = 0;
+		int cntTab = (SanPham.maxLength / 8) + 1;
+		String navList[] = {"Ten mon hang", "Size", "So luong"};
+		//						   size soluong
+		int lenOfHoaDon = cntTab + 1 + 1 + 1;
+
 		System.out.println("\tDon hang hien tai: ");
-		for (int i = 0 ; i <= 6 * 8; ++i){
+		for (int i = 0 ; i <= lenOfHoaDon * 8; ++i){
 			System.out.print('-');
 		}
 		System.out.println();
-		System.out.println("|Ten mon hang\t\t\tSize\tSo luong|");
-		for (int i = 0 ; i <= 6 * 8; ++i){
+		for (int i = 0 ; i < navList.length; ++i){
+			//Truong hop dau
+			if (i == 0){
+				System.out.print("|\t" + navList[i]);
+				int lenOfItem = (navList[i].length() + 1 + 8) / 8;
+				for (int j = lenOfItem ; j <= cntTab; ++j){
+					System.out.print("\t");
+				}
+			} else
+
+			//Truong hop cuoi
+			if (i == navList.length - 1){
+				System.out.println(navList[i]+"|");
+			} else{
+				System.out.print(navList[i] + "\t");
+			}
+		}
+		
+		for (int i = 0 ; i <= lenOfHoaDon * 8; ++i){
 			System.out.print('-');
 		}
 		System.out.println();
@@ -28,26 +51,51 @@ public class nvDatHang extends NhanVien{
 				int ten = i / SanPham.validSize;
 				int size = i % SanPham.validSize;
 
-				int tmplength = (ThucDon.thucdon.get(ten).getTen().length() + 2 +  (String.valueOf(index).length()))/ 8;
+				int tmplength = (ThucDon.thucdon.get(ten).getTen().length() + 3 +  (String.valueOf(index).length())) / 8;
 				// System.out.println(tmplength);
+
 				System.out.print("|" + index++ + ". " + ThucDon.thucdon.get(ten).getTen());
-				for (int j = tmplength ; j <= SanPham.maxLength/8; ++j){
+				for (int j = tmplength ; j <= cntTab; ++j){
 					System.out.print("\t");
 				}
 
 				System.out.println(SanPham.size[size] + "\t" + this.DSSanPham[i] + "\t|");
+
+				tongtien += this.DSSanPham[i] * ThucDon.thucdon.get(ten).getGiaTienAtIndex(size);
 			}
 		}
-		for (int i = 0 ; i <= 6 * 8; ++i){
+		for (int i = 0 ; i <= lenOfHoaDon * 8; ++i){
+			System.out.print('-');
+		}
+		System.out.println();
+		System.out.print("|");
+		for (int i = cntTab; i <= lenOfHoaDon; ++i){
+			System.out.print("\t");
+		}
+		System.out.print("Thanh tien: " + tongtien + "d\t|");
+		System.out.println();
+		for (int i = 0 ; i <= lenOfHoaDon * 8; ++i){
 			System.out.print('-');
 		}
 		System.out.println();
 		System.out.println();
 	}
 
+	public void thaydoiSanPham(int index, int anoIndex){
+	}
+
+	public void thaydoiKichThuoc(int index){
+
+	}
+
+	public void xoaSanPham(int index){
+
+	}
+
 	public void nhanDonHang(){
+		this.DSSanPham = new int[ThucDon.thucdon.size() * SanPham.validSize];
 		//Hoi nguoi ta muon uong gi
-		ThucDon.xuatMenu(3);
+		ThucDon.xuatMenu();
 
 		Scanner scan = new Scanner(System.in);
 		
@@ -97,6 +145,7 @@ public class nvDatHang extends NhanVien{
 			System.out.println("Ban co muon chon nua khong ?");
 			System.out.println("1. Co");
 			System.out.println("2. Khong");
+			System.out.print("Moi nhap lua chon: ");
 			int chonTiep = Integer.parseInt(scan.nextLine());
 
 			//Chuan hoa du lieu
@@ -123,12 +172,40 @@ public class nvDatHang extends NhanVien{
 			System.out.println("Ban muon thay doi gi? ");
 			System.out.println("1. Thay doi san pham");
 			System.out.println("2. Thay doi kich thuoc");
+			System.out.println("3. Xoa san pham");
+			System.out.print("Moi nhap lua chon: ");
+			int hehe = Integer.parseInt(scan.nextLine());
+			while (hehe < 1 || hehe > 3) {
+				System.out.println("Lua chon khong hop le, vui long nhap lai");
+				System.out.print("Moi nhap lua chon: ");
+				hehe = Integer.parseInt(scan.nextLine());
+			}
+			switch (hehe) {
+				case 1:
+					System.out.print("Nhap stt san pham can thay doi: ");
+					int spBiThayDoi = Integer.parseInt(scan.nextLine());
+					System.out.print("Nhap stt san pham thay doi thanh: ");
+					int spThayDoi = Integer.parseInt(scan.nextLine());
+					this.thaydoiSanPham(spBiThayDoi, spThayDoi);
+					break;
+				case 2:
+					System.out.print("Nhap stt san pham can thay doi kich thuoc: ");
+					int spThayDoiSize = Integer.parseInt(scan.nextLine());
+					this.thaydoiKichThuoc(Integer.parseInt(scan.nextLine()));
+					break;
+				case 3:
+					System.out.print("Nhap stt san pham can xoa: ");
+					this.xoaSanPham(Integer.parseInt(scan.nextLine()));
+					break;
+			}
 
-
-			System.out.println("Ban co muon thay doi gi khong ?");
+			System.out.println("Ban co muon thay doi gi nua khong ?");
 			System.out.println("1. Co");
 			System.out.println("2. Khong");
+			System.out.print("Moi nhap lua chon: ");
+			chonlai = Integer.parseInt(scan.nextLine());
 		}
 		scan.close();
 	}
+
 }

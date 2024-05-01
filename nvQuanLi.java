@@ -8,7 +8,6 @@ public class nvQuanLi extends NhanVien{
 	public void themNhanVien(){
 		Scanner scan = new Scanner(System.in);
 		NhanVien nv = null;
-		nv.nhapThongTin();
 		System.out.println("Nhap kieu nhan vien can them: ");
 		System.out.println("1. Nhan vien quan li");
 		System.out.println("2. Nhan vien pha che");
@@ -31,7 +30,71 @@ public class nvQuanLi extends NhanVien{
 				nv = new nvPhaChe();
 				break;
 		}
+		nv.nhapThongTin();
 		this.dsNhanVien.getDSNV().add(nv);
+		scan.close();
+	}
+
+	public NhanVien timkiemID(String id){
+		for (NhanVien nv : this.dsNhanVien.getDSNV()){
+			if (nv.getId() == id){
+				return nv;
+			}
+		}
+		return null;
+	}
+
+	public void chinhsuaThongTinNV(){
+		Scanner scan = new Scanner(System.in);
+		System.out.print("Nhap ID cua nhan vien muon chinh sua thong tin: ");
+		String idNVtimkiem = scan.nextLine();
+
+		//chuan hoa du lieu
+		NhanVien nvThayDoiTT = timkiemID(idNVtimkiem);
+		while (nvThayDoiTT != null){
+			System.out.println("ID khong ton tai, vui long nhap lai");
+			System.out.print("Nhap ID cua nhan vien muon chinh sua thong tin: ");
+			idNVtimkiem = scan.nextLine();
+			nvThayDoiTT = timkiemID(idNVtimkiem);
+		}
+
+		//Hoi chon can chinh sua gi
+		System.out.println("Chon thong tin can chinh sua");
+		System.out.println("1. Chinh sua id");
+		System.out.println("2. Chinh sua ten");
+		System.out.println("3. Chinh sua dia chi");
+		System.out.println("4. Chinh sua so dien thoai");
+		System.out.print("Moi nhap lua chon: ");
+
+		scan.close();
+	}
+
+	public void themSanPham(){
+		Scanner scan = new Scanner(System.in);
+		SanPham sp = null;
+		System.out.println("Nhap loai do uong can them: ");
+		System.out.println("1. Tra sua");
+		System.out.println("2. Ca phe");
+		System.out.print("Moi nhap lua chon: ");
+		int LuaChon = Integer.parseInt(scan.nextLine());
+		while (LuaChon < 1 || LuaChon > 2) {
+			System.out.println("Vui long nhap lai!");
+			System.out.println("Nhap loai do uong can them: ");
+			System.out.println("1. Tra sua");
+			System.out.println("2. Ca phe");
+			System.out.print("Moi nhap lua chon: ");
+			LuaChon = Integer.parseInt(scan.nextLine());
+		}
+		switch (LuaChon) {
+			case 1:
+				sp = new TraSua();
+				break;
+			case 2:
+				sp = new CaPhe();
+				break;
+		}
+		sp.nhapThongTin();
+
 		scan.close();
 	}
 }
