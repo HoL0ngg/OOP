@@ -5,8 +5,8 @@ public abstract class NhanVien {
 	private String ten;
 	private DiaChi dc;
 	private String sdt;
-//	private String email;
-//	private NgayThang birthDay;
+	private String email;
+	private NgayThang ngaysinh;
 
 	public NhanVien() {
 	}
@@ -48,21 +48,21 @@ public abstract class NhanVien {
 		this.sdt = std;
 	}
 
-//	public String getEmail() {
-//		return email;
-//	}
-//
-//	public void setEmail(String email) {
-//		this.email = email;
-//	}
+	public String getEmail() {
+		return email;
+	}
 
-//	public NgayThang getBirthDay() {
-//		return birthDay;
-//	}
-//
-//	public void setBirthDay(NgayThang birthDay) {
-//		this.birthDay = birthDay;
-//	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public NgayThang getNgaysinh() {
+		return ngaysinh;
+	}
+
+	public void setNgaysinh(NgayThang ngaysinh) {
+		this.ngaysinh = ngaysinh;
+	}
 
 	public void nhapThongTin() {
 		Scanner scan = new Scanner(System.in);
@@ -70,12 +70,18 @@ public abstract class NhanVien {
 		this.setId(scan.nextLine());
 		System.out.print("Nhap ten: ");
 		this.setTen(scan.nextLine());
-		System.out.print("Nhap dia chi: ");
+		System.out.println("Nhap dia chi: ");
 		DiaChi dc = new DiaChi();
 		dc.nhapThongTin();
 		this.setDc(dc);
 		System.out.print("Nhap so dien thoai: ");
 		this.setSdt(scan.nextLine());
+		System.out.print("Nhap dia chi email: ");
+		this.setEmail(scan.nextLine());
+		System.out.println("Nhap ngay sinh: ");
+		NgayThang ngaysinh = new NgayThang();
+		ngaysinh.nhapThongTin();
+		this.setNgaysinh(ngaysinh);
 		scan.close();
 	}
 

@@ -15,7 +15,7 @@ public class nvQuanLi extends NhanVien{
 		System.out.print("Moi nhap lua chon: ");
 		int LuaChon = Integer.parseInt(scan.nextLine());
 		while (LuaChon < 1 || LuaChon > 3){
-			System.out.println("Lua chon khong hop li, vui long nhap lai:");
+			System.out.println("Lua chon khong hop li, vui long nhap lai.");
 			System.out.print("Moi nhap lua chon: ");
 			LuaChon = Integer.parseInt(scan.nextLine());
 		}
@@ -31,8 +31,24 @@ public class nvQuanLi extends NhanVien{
 				break;
 		}
 		nv.nhapThongTin();
-		this.dsNhanVien.getDSNV().add(nv);
-		scan.close();
+		System.out.println("Xac nhan them nhan vien: ");
+		System.out.println("0. Khong xac nhan");
+		System.out.println("1. Xac nhan");
+		int xacnhan = Integer.parseInt(scan.nextLine());
+		switch (xacnhan) {
+			case 0:
+				nv = null;
+				scan.close();
+				return;
+			case 1:
+				this.dsNhanVien.getDSNV().add(nv);
+				scan.close();
+				break;
+			default:
+				nv = null;
+				scan.close();
+				return;
+		}
 	}
 
 	public NhanVien timkiemID(String id){
