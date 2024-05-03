@@ -81,25 +81,11 @@ public class nvDatHang extends NhanVien{
 		System.out.println();
 	}
 
-	public void thaydoiSanPham(int index, int anoIndex){
-	}
 
-	public void thaydoiKichThuoc(int index){
-
-	}
-
-	public void xoaSanPham(int index){
-
-	}
-
-	public void nhanDonHang(){
-		this.DSSanPham = new int[ThucDon.thucdon.size() * SanPham.validSize];
-		//Hoi nguoi ta muon uong gi
-		ThucDon.xuatMenu();
-
+	public void xuliDonHang(){
 		Scanner scan = new Scanner(System.in);
-		
-		System.out.println("Chon '0' de thoat");
+
+		// System.out.println("Chon '0' de thoat");
 		while (true) {
 			// System.out.println("Ban muon dung mon gi ?");
 			// System.out.println("1. Tra sua");
@@ -166,15 +152,27 @@ public class nvDatHang extends NhanVien{
 			}
 			if (chonTiep == 2) break;
 		}
+		// scan.close();
+	}
 
-		
-		//xuat ra don hang hien tai de kiem tra
-		this.xuatDonHang();
+	public void thaydoiSanPham(int index, int anoIndex){
+	}
 
+	public void thaydoiKichThuoc(int index){
+
+	}
+
+	public void xoaSanPham(int index){
+
+	}
+
+	public void kiemTralai(){
 		//Phan nay chua lam xong !!!
+		Scanner scan = new Scanner(System.in);
 		System.out.println("Ban co muon thay doi gi khong ?");
 		System.out.println("1. Co");
 		System.out.println("2. Khong");
+		System.out.print("Moi nhap lua chon: ");
 		int chonlai = Integer.parseInt(scan.nextLine());
 		while (chonlai == 1){
 			System.out.println("Ban muon thay doi gi? ");
@@ -214,6 +212,23 @@ public class nvDatHang extends NhanVien{
 			chonlai = Integer.parseInt(scan.nextLine());
 		}
 		scan.close();
+	}
+
+	public void nhanDonHang(){
+		this.DSSanPham = new int[ThucDon.thucdon.size() * SanPham.validSize];
+
+		//Hoi nguoi ta muon uong gi
+		ThucDon.xuatMenu();
+	
+		//xu li thao tac nguoi dung
+		this.xuliDonHang();
+
+		//xuat ra don hang hien tai de kiem tra
+		this.xuatDonHang();
+
+		//nguoi dung chinh sua don hang neu co
+		this.kiemTralai();
+
 	}
 
 }
