@@ -51,10 +51,10 @@ public class nvDatHang extends NhanVien{
 				int ten = i / SanPham.validSize;
 				int size = i % SanPham.validSize;
 
-				int tmplength = (ThucDon.thucdon.get(ten).getTen().length() + 3 +  (String.valueOf(index).length())) / 8;
+				int tmplength = (ThucDon.thucdon.get(ten).getTen().length() + 4 +  (String.valueOf(index).length())) / 8;
 				// System.out.println(tmplength);
 
-				System.out.print("|" + index++ + ". " + ThucDon.thucdon.get(ten).getTen());
+				System.out.print("| " + index++ + ". " + ThucDon.thucdon.get(ten).getTen());
 				for (int j = tmplength ; j <= cntTab; ++j){
 					System.out.print("\t");
 				}
@@ -81,6 +81,16 @@ public class nvDatHang extends NhanVien{
 		System.out.println();
 	}
 
+	public void thaydoiSanPham(int index, int anoIndex){
+	}
+
+	public void thaydoiKichThuoc(int index, int size){
+
+	}
+
+	public void xoaSanPham(int index){
+
+	}
 
 	public void xuliDonHang(){
 		Scanner scan = new Scanner(System.in);
@@ -154,18 +164,7 @@ public class nvDatHang extends NhanVien{
 		}
 		// scan.close();
 	}
-
-	public void thaydoiSanPham(int index, int anoIndex){
-	}
-
-	public void thaydoiKichThuoc(int index){
-
-	}
-
-	public void xoaSanPham(int index){
-
-	}
-
+	
 	public void kiemTralai(){
 		//Phan nay chua lam xong !!!
 		Scanner scan = new Scanner(System.in);
@@ -197,7 +196,9 @@ public class nvDatHang extends NhanVien{
 				case 2:
 					System.out.print("Nhap stt san pham can thay doi kich thuoc: ");
 					int spThayDoiSize = Integer.parseInt(scan.nextLine());
-					this.thaydoiKichThuoc(Integer.parseInt(scan.nextLine()));
+					System.out.print("Nhap size muon thay doi: ");
+					int size = Integer.parseInt(scan.nextLine());
+					this.thaydoiKichThuoc(spThayDoiSize, size);
 					break;
 				case 3:
 					System.out.print("Nhap stt san pham can xoa: ");
