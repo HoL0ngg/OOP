@@ -38,23 +38,30 @@ public class nvQuanLi extends NhanVien{
 		switch (xacnhan) {
 			case 0:
 				nv = null;
-				scan.close();
-				return;
+				break;
 			case 1:
 				this.dsNhanVien.getDSNV().add(nv);
-				scan.close();
 				break;
 			default:
 				nv = null;
-				scan.close();
-				return;
+				break;
 		}
+		scan.close();
 	}
 
-	public NhanVien timkiemID(String id){
+	private NhanVien timkiemID(String id){
 		for (NhanVien nv : this.dsNhanVien.getDSNV()){
 			if (nv.getId() == id){
 				return nv;
+			}
+		}
+		return null;
+	}
+
+	private SanPham timkiemTenSP(String ten){
+		for (SanPham sp : ThucDon.thucdon){
+			if (sp.getTen().equalsIgnoreCase(ten)){
+				return sp;
 			}
 		}
 		return null;
@@ -110,7 +117,23 @@ public class nvQuanLi extends NhanVien{
 				break;
 		}
 		sp.nhapThongTin();
+		ThucDon.thucdon.add(sp);
 
+		scan.close();
+	}
+
+	public void chinhsuaSanPham(){
+		Scanner scan = new Scanner(System.in);
+		ThucDon.xuatMenu();
+		System.out.print("Nhap ten san pham can chinh sua: ");
+		String tenSP = scan.nextLine();
+		SanPham spThayDoi = timkiemTenSP(tenSP);
+		while (spThayDoi == null) {
+			System.out.println("Ten nhap khong hop le, vui long nhap lai");
+			System.out.print("Nhap ten san pham can chinh sua: ");
+			tenSP = scan.nextLine();
+			spThayDoi = timkiemTenSP(tenSP);
+		}
 		scan.close();
 	}
 }

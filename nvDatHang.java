@@ -11,7 +11,7 @@ public class nvDatHang extends NhanVien{
 		// this.DSSanPham = new ArrayList<SanPham>();
 	}
 
-	public void xuatDonHang(){
+	private void xuatDonHang(){
 		int tongtien = 0;
 		int cntTab = (SanPham.maxLength / 8) + 1;
 		String navList[] = {"Ten mon hang", "Size", "So luong"};
@@ -81,18 +81,18 @@ public class nvDatHang extends NhanVien{
 		System.out.println();
 	}
 
-	public void thaydoiSanPham(int index, int anoIndex){
+	private void thaydoiSanPham(int index, int anoIndex){
 	}
 
-	public void thaydoiKichThuoc(int index, int size){
-
-	}
-
-	public void xoaSanPham(int index){
+	private void thaydoiKichThuoc(int index, int size){
 
 	}
 
-	public void xuliDonHang(){
+	private void xoaSanPham(int index){
+
+	}
+
+	private void xuliDonHang(){
 		Scanner scan = new Scanner(System.in);
 
 		// System.out.println("Chon '0' de thoat");
@@ -165,7 +165,7 @@ public class nvDatHang extends NhanVien{
 		// scan.close();
 	}
 	
-	public void kiemTralai(){
+	private void kiemTralai(){
 		//Phan nay chua lam xong !!!
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Ban co muon thay doi gi khong ?");

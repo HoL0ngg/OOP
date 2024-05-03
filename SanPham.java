@@ -66,5 +66,6 @@ public abstract class SanPham {
 			System.out.println();
 		}
 		this.setGiaTien(gia);
+		scan.close();
 	}
 }
