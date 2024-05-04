@@ -69,17 +69,17 @@ public class nvQuanLi extends NhanVien{
 
 	public void chinhsuaThongTinNV(){
 		Scanner scan = new Scanner(System.in);
-		System.out.print("Nhap ID cua nhan vien muon chinh sua thong tin: ");
-		String idNVtimkiem = scan.nextLine();
-
+		NhanVien nvThayDoiTT = null;
 		//chuan hoa du lieu
-		NhanVien nvThayDoiTT = timkiemID(idNVtimkiem);
-		while (nvThayDoiTT != null){
-			System.out.println("ID khong ton tai, vui long nhap lai");
+		do {
 			System.out.print("Nhap ID cua nhan vien muon chinh sua thong tin: ");
-			idNVtimkiem = scan.nextLine();
+			String idNVtimkiem = scan.nextLine();
 			nvThayDoiTT = timkiemID(idNVtimkiem);
-		}
+			if(nvThayDoiTT == null) {
+				System.out.println("ID khong ton tai, vui long nhap lai");
+				System.out.print("Nhap ID cua nhan vien muon chinh sua thong tin: ");
+			}
+		} while (nvThayDoiTT == null);
 
 		//Hoi chon can chinh sua gi
 		System.out.println("Chon thong tin can chinh sua");
@@ -87,8 +87,37 @@ public class nvQuanLi extends NhanVien{
 		System.out.println("2. Chinh sua ten");
 		System.out.println("3. Chinh sua dia chi");
 		System.out.println("4. Chinh sua so dien thoai");
+		System.out.println("5. Chinh sua email");
+		System.out.println("6. Chinh sua ngay sinh");
 		System.out.print("Moi nhap lua chon: ");
-
+		int luachon = Integer.parseInt(scan.nextLine());
+		System.out.print("Nhap thong tin chinh sua: ");
+		switch (luachon) {
+			case 1:
+				nvThayDoiTT.setId(scan.nextLine());
+				break;
+			case 2:
+				nvThayDoiTT.setTen(scan.nextLine());
+				break;
+			case 3:
+				DiaChi diachimoi = new DiaChi();
+				diachimoi.nhapThongTin();
+				nvThayDoiTT.setDc(diachimoi);
+				break;
+			case 4:
+				nvThayDoiTT.setSdt(scan.nextLine());
+				break;
+			case 5:
+				nvThayDoiTT.setEmail(scan.nextLine());
+				break;
+			case 6:
+				NgayThang ngaysinhmoi = new NgayThang();
+				ngaysinhmoi.nhapThongTin();
+				nvThayDoiTT.setNgaysinh(ngaysinhmoi);
+				break;
+			default:
+				break;
+		}
 		scan.close();
 	}
 

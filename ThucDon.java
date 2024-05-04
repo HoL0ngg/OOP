@@ -53,7 +53,7 @@ public class ThucDon {
 
 	public static void xuatMenu() {
 		int cntTab = (SanPham.maxLength / 8) + 1;
-		System.out.println("---------------------Tra sua ---------------------");
+		System.out.println("--------------------- Tra sua ---------------------");
 		for (int i = 0; i <= cntTab; ++i) {
 			System.out.print("\t");
 		}
@@ -118,5 +118,13 @@ public class ThucDon {
 
 	}
 
+	public SanPham timKiemSPTheoID(String id){
+		for(SanPham sp : thucdon){
+			if(sp.getId().equals(id)){
+				return sp;
+			}
+		}
+		return null;
+	}
 
 }
