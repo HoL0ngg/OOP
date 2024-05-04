@@ -152,7 +152,7 @@ public class nvDatHang extends NhanVien{
 			}
 			if (chonTiep == 2) break;
 		}
-		// scan.close();
+		scan.close();
 	}
 
 	public void thaydoiSanPham(int index, int anoIndex){
@@ -229,6 +229,14 @@ public class nvDatHang extends NhanVien{
 		//nguoi dung chinh sua don hang neu co
 		this.kiemTralai();
 
+	}
+	//Menu cho nhan vien dat hang
+	public void menu( ) {
+		int luachon;
+		while(true){
+			System.out.println("---------------------NHAN VIEN DAT HANG---------------------");
+			System.out.println();
+		}
 	}
 
 }

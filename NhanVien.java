@@ -16,6 +16,15 @@ public abstract class NhanVien {
 		this.ten = ten;
 	}
 
+	public NhanVien(String id, String ten, DiaChi dc, String sdt, String email, NgayThang ngaysinh) {
+		this.id = id;
+		this.ten = ten;
+		this.dc = dc;
+		this.sdt = sdt;
+		this.email = email;
+		this.ngaysinh = ngaysinh;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -83,6 +92,25 @@ public abstract class NhanVien {
 		ngaysinh.nhapThongTin();
 		this.setNgaysinh(ngaysinh);
 		scan.close();
+	}
+
+	public void xuatThongTin(){
+		System.out.println("ID: " + this.getId());
+		System.out.println("Ho va ten: " + this.getTen());
+		System.out.println("Chuc vu: ");
+		if(this instanceof nvDatHang){
+			System.out.print("Nhan vien dat hang");
+		} else {
+			if(this instanceof nvQuanLi){
+				System.out.print("Nhan vien quan li");
+			} else {
+				System.out.print("Nhan vien pha che");
+			}
+		}
+		System.out.println("Ngay sinh: " + this.getNgaysinh().xuatThongTin());
+		System.out.println("Dia chi: " + this.getDc().xuatThongTin());
+		System.out.println("So dien thoai: " + this.getSdt());
+		System.out.println("Email: " + this.getEmail());
 	}
 
 }

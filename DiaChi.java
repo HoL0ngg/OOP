@@ -70,7 +70,9 @@ public class DiaChi {
 		this.setSoNha(scan.nextLine());
 		System.out.print("Nhap ten duong: ");
 		this.setTenDuong(scan.nextLine());
-		scan.close();
+		//scan.close(); xay ra loi neu su dung
 	}
-	
+	public String xuatThongTin(){
+		return this.getSoNha() + " " + this.getTenDuong() + ", " + this.getQuanHuyen() + ", " + this.getPhuongXa() + ", " + this.getTinhThanh();
+	}
 }
