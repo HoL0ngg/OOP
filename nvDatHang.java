@@ -230,7 +230,11 @@ public class nvDatHang extends NhanVien{
 		//nguoi dung chinh sua don hang neu co
 		this.kiemTralai();
 
+		//Se co 1 static function cua HoaDon de xuatHoaDon
+		//HoaDon.xuatHoaDon(this.DSSanPham);
+
 	}
+	
 	//Menu cho nhan vien dat hang
 	public void menu( ) {
 		int luachon;

@@ -58,13 +58,13 @@ public class nvQuanLi extends NhanVien{
 		return null;
 	}
 
-	private SanPham timkiemTenSP(String ten){
-		for (SanPham sp : ThucDon.thucdon){
-			if (sp.getTen().equalsIgnoreCase(ten)){
-				return sp;
+	private int timkiemTenSP(String ten){
+		for (int i = 0 ; i < ThucDon.thucdon.size(); ++i){
+			if (ThucDon.thucdon.get(i).getTen().equalsIgnoreCase(ten)){
+				return i;
 			}
 		}
-		return null;
+		return -1;
 	}
 
 	public void chinhsuaThongTinNV(){
@@ -156,12 +156,52 @@ public class nvQuanLi extends NhanVien{
 		ThucDon.xuatMenu();
 		System.out.print("Nhap ten san pham can chinh sua: ");
 		String tenSP = scan.nextLine();
-		SanPham spThayDoi = timkiemTenSP(tenSP);
-		while (spThayDoi == null) {
+		int indexSpThayDoi = timkiemTenSP(tenSP);
+		while (indexSpThayDoi == -1) {
 			System.out.println("Ten nhap khong hop le, vui long nhap lai");
 			System.out.print("Nhap ten san pham can chinh sua: ");
 			tenSP = scan.nextLine();
-			spThayDoi = timkiemTenSP(tenSP);
+			indexSpThayDoi = timkiemTenSP(tenSP);
+		}
+		while (true) {
+			int luachon;
+			do {
+				System.out.println("Chon thong tin can chinh sua");
+				System.out.println("1. Ten");
+				System.out.println("2. Don gia");
+				System.out.println("3. So luong hang");
+				luachon = Integer.parseInt(scan.nextLine());
+			} while (luachon < 1 || luachon > 3);
+
+			//xu li o day
+			switch (luachon) {
+				case 1:
+					this.chinhsuaTen(indexSpThayDoi);
+					break;
+				case 2:
+					this.chinhsuaDonGia(indexSpThayDoi);
+					break;
+				case 3:
+					this.chinhsuaSoLuongHang(indexSpThayDoi);
+					break;
+			}
+
+			System.out.println("Ban co muon chinh sua nua khong ?");
+			System.out.println("1. Co");
+			System.out.println("2. Khong");
+			System.out.print("Nhap lua chon: ");
+			int chonTiep = Integer.parseInt(scan.nextLine());
+			//copy tu ben nvDatHang qua
+			//Chuan hoa du lieu
+			while (chonTiep < 1 || chonTiep > 2){
+				System.out.println("Vui long nhap lai!");
+				System.out.println("Ban co muon chon nua khong ?");
+				System.out.println("1. Co");
+				System.out.println("2. Khong");
+				chonTiep = Integer.parseInt(scan.nextLine());
+			}
+			if (chonTiep == 2) break;
+
 		}
 		scan.close();
 	}
