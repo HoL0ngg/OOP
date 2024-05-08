@@ -1,9 +1,7 @@
 public class test {
 	public static void main(String[] args) {
+		nvQuanLi nvql = new nvQuanLi();
 		
-		NhanVien nv = new nvDatHang();
-		nvDatHang nvdh = (nvDatHang) nv;
-		nvdh.nhanDonHang();
-
+		nvql.chinhsuaThongTinNV();
 	}
 }

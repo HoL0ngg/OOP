@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class nvQuanLi extends NhanVien{
@@ -5,21 +6,27 @@ public class nvQuanLi extends NhanVien{
 
 	//getter/setters
 
+	public nvQuanLi(){
+		this.dsNhanVien = new DSNhanVien();
+	}
+
 	public void themNhanVien(){
 		Scanner scan = new Scanner(System.in);
 		NhanVien nv = null;
-		System.out.println("Nhap kieu nhan vien can them: ");
-		System.out.println("1. Nhan vien quan li");
-		System.out.println("2. Nhan vien pha che");
-		System.out.println("3. Nhan vien dat hang");
-		System.out.print("Moi nhap lua chon: ");
-		int LuaChon = Integer.parseInt(scan.nextLine());
-		while (LuaChon < 1 || LuaChon > 3){
-			System.out.println("Lua chon khong hop li, vui long nhap lai.");
+		int luachon;
+		do {
+			System.out.println("Nhap kieu nhan vien can them: ");
+			System.out.println("1. Nhan vien quan li");
+			System.out.println("2. Nhan vien pha che");
+			System.out.println("3. Nhan vien dat hang");
 			System.out.print("Moi nhap lua chon: ");
-			LuaChon = Integer.parseInt(scan.nextLine());
-		}
-		switch (LuaChon) {
+			luachon = (Integer.parseInt(scan.nextLine()));
+			if(luachon < 1 || luachon > 3){
+				System.out.println("Loai nhan vien khong hop le. Vui long nhap lai.");
+			}
+		} while (luachon < 1 || luachon > 3);
+
+		switch (luachon) {
 			case 1:
 				nv = new nvQuanLi();
 				break;
@@ -28,6 +35,8 @@ public class nvQuanLi extends NhanVien{
 				break;
 			case 3:
 				nv = new nvPhaChe();
+				break;
+			default:
 				break;
 		}
 		nv.nhapThongTin();
@@ -41,6 +50,7 @@ public class nvQuanLi extends NhanVien{
 				break;
 			case 1:
 				this.dsNhanVien.getDSNV().add(nv);
+				System.out.println("Them nhan vien thanh cong");
 				break;
 			default:
 				nv = null;
@@ -51,7 +61,7 @@ public class nvQuanLi extends NhanVien{
 
 	private NhanVien timkiemID(String id){
 		for (NhanVien nv : this.dsNhanVien.getDSNV()){
-			if (nv.getId() == id){
+			if (nv.getId().equalsIgnoreCase(id)){
 				return nv;
 			}
 		}
@@ -66,8 +76,14 @@ public class nvQuanLi extends NhanVien{
 		}
 		return -1;
 	}
+	
+	private void docDSNVTuFile(String filepath){
+		this.dsNhanVien.nhapNVtuFile(filepath);
+	} 
 
 	public void chinhsuaThongTinNV(){
+		docDSNVTuFile("NHAN_VIEN.txt");
+		this.dsNhanVien.xuatDSNV();
 		Scanner scan = new Scanner(System.in);
 		NhanVien nvThayDoiTT = null;
 		//chuan hoa du lieu
@@ -77,48 +93,53 @@ public class nvQuanLi extends NhanVien{
 			nvThayDoiTT = timkiemID(idNVtimkiem);
 			if(nvThayDoiTT == null) {
 				System.out.println("ID khong ton tai, vui long nhap lai");
-				System.out.print("Nhap ID cua nhan vien muon chinh sua thong tin: ");
 			}
 		} while (nvThayDoiTT == null);
 
 		//Hoi chon can chinh sua gi
-		System.out.println("Chon thong tin can chinh sua");
-		System.out.println("1. Chinh sua id");
-		System.out.println("2. Chinh sua ten");
-		System.out.println("3. Chinh sua dia chi");
-		System.out.println("4. Chinh sua so dien thoai");
-		System.out.println("5. Chinh sua email");
-		System.out.println("6. Chinh sua ngay sinh");
-		System.out.print("Moi nhap lua chon: ");
-		int luachon = Integer.parseInt(scan.nextLine());
-		System.out.print("Nhap thong tin chinh sua: ");
-		switch (luachon) {
-			case 1:
-				nvThayDoiTT.setId(scan.nextLine());
-				break;
-			case 2:
-				nvThayDoiTT.setTen(scan.nextLine());
-				break;
-			case 3:
-				DiaChi diachimoi = new DiaChi();
-				diachimoi.nhapThongTin();
-				nvThayDoiTT.setDc(diachimoi);
-				break;
-			case 4:
-				nvThayDoiTT.setSdt(scan.nextLine());
-				break;
-			case 5:
-				nvThayDoiTT.setEmail(scan.nextLine());
-				break;
-			case 6:
-				NgayThang ngaysinhmoi = new NgayThang();
-				ngaysinhmoi.nhapThongTin();
-				nvThayDoiTT.setNgaysinh(ngaysinhmoi);
-				break;
-			default:
-				break;
+		while (true) {
+			nvThayDoiTT.xuatThongTin();
+			System.out.println("\nChon thong tin can chinh sua");
+			System.out.println("1. Chinh sua ID");
+			System.out.println("2. Chinh sua ten");
+			System.out.println("3. Chinh sua dia chi");
+			System.out.println("4. Chinh sua so dien thoai");
+			System.out.println("5. Chinh sua email");
+			System.out.println("6. Chinh sua ngay sinh");
+			System.out.println("0. Thoat");
+			System.out.print("Moi nhap lua chon: ");
+			int luachon = Integer.parseInt(scan.nextLine());
+			System.out.print("Nhap thong tin chinh sua: ");
+			switch (luachon) {
+				case 0:
+					return;
+				case 1:
+					nvThayDoiTT.setId(scan.nextLine());
+					break;
+				case 2:
+					nvThayDoiTT.setTen(scan.nextLine());
+					break;
+				case 3:
+					DiaChi diachimoi = new DiaChi();
+					diachimoi.nhapThongTin();
+					nvThayDoiTT.setDc(diachimoi);
+					break;
+				case 4:
+					nvThayDoiTT.setSdt(scan.nextLine());
+					break;
+				case 5:
+					nvThayDoiTT.setEmail(scan.nextLine());
+					break;
+				case 6:
+					NgayThang ngaysinhmoi = new NgayThang();
+					ngaysinhmoi.nhapThongTin();
+					nvThayDoiTT.setNgaysinh(ngaysinhmoi);
+					break;
+				default:
+					break;
+			}
 		}
-		scan.close();
+		//Them phan ghi vao file
 	}
 
 	public void themSanPham(){
@@ -174,17 +195,17 @@ public class nvQuanLi extends NhanVien{
 			} while (luachon < 1 || luachon > 3);
 
 			//xu li o day
-			switch (luachon) {
-				case 1:
-					this.chinhsuaTen(indexSpThayDoi);
-					break;
-				case 2:
-					this.chinhsuaDonGia(indexSpThayDoi);
-					break;
-				case 3:
-					this.chinhsuaSoLuongHang(indexSpThayDoi);
-					break;
-			}
+			// switch (luachon) {
+			// 	case 1:
+			// 		this.chinhsuaTen(indexSpThayDoi);
+			// 		break;
+			// 	case 2:
+			// 		this.chinhsuaDonGia(indexSpThayDoi);
+			// 		break;
+			// 	case 3:
+			// 		this.chinhsuaSoLuongHang(indexSpThayDoi);
+			// 		break;
+			// }
 
 			System.out.println("Ban co muon chinh sua nua khong ?");
 			System.out.println("1. Co");

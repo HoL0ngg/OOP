@@ -97,21 +97,6 @@ public class nvDatHang extends NhanVien{
 
 		// System.out.println("Chon '0' de thoat");
 		while (true) {
-			// System.out.println("Ban muon dung mon gi ?");
-			// System.out.println("1. Tra sua");
-			// System.out.println("2. Ca phe");
-			// System.out.print("Moi nhap lua chon: ");
-			// int loai = Integer.parseInt(scan.nextLine());
-
-			// //chuan hoa du lieu
-			// while (loai < 1 || loai > 2) {
-			// 	System.out.println("Vui long nhap lai!");
-			// 	System.out.println("Ban muon dung mon gi ?");
-			// 	System.out.println("1. Tra sua");
-			// 	System.out.println("2. Ca phe");
-			// 	System.out.print("Moi nhap lua chon: ");
-			// 	loai = Integer.parseInt(scan.nextLine());
-			// }
 			int loai;
 			do {
 				System.out.println("Ban muon dung mon gi ?");
@@ -162,7 +147,6 @@ public class nvDatHang extends NhanVien{
 			}
 			if (chonTiep == 2) break;
 		}
-		scan.close();
 	}
 	
 	private void kiemTralai(){
