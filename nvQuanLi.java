@@ -40,7 +40,7 @@ public class nvQuanLi extends NhanVien{
 				break;
 		}
 		nv.nhapThongTin();
-		System.out.println("Xac nhan them nhan vien: ");
+		System.out.println("Xac nhan them nhan vien?");
 		System.out.println("0. Khong xac nhan");
 		System.out.println("1. Xac nhan");
 		int xacnhan = Integer.parseInt(scan.nextLine());
@@ -144,7 +144,7 @@ public class nvQuanLi extends NhanVien{
 
 	public void themSanPham(){
 		SanPham sp = null;
-		System.out.println("Nhap loai do uong can them: ");
+		System.out.println("\nNhap loai do uong can them: ");
 		System.out.println("1. Tra sua");
 		System.out.println("2. Ca phe");
 		int LuaChon = ChucNang.chuanHoa(1, 2);
@@ -156,16 +156,51 @@ public class nvQuanLi extends NhanVien{
 				sp = new CaPhe();
 				break;
 		}
-
 		sp.nhapThongTin();
-
 		//them vao file cua tung loai
-		if (sp instanceof TraSua) ThucDon.setSanPhamVaoFile("trasua.txt", sp);
-		if (sp instanceof CaPhe) ThucDon.setSanPhamVaoFile("caphe.txt", sp);
-		
-		ThucDon.thucdon.add(ThucDon.indexOfCaPhe * ((sp instanceof CaPhe) ? 1 : 0), sp);
-		if (sp instanceof TraSua) ThucDon.indexOfCaPhe++;
-		System.out.println(ThucDon.indexOfCaPhe);
+		System.out.println("\nXac nhan them san pham?");
+		System.out.println("0. Khong xac nhan");
+		System.out.println("1. Xac nhan");
+		int xacnhan = ChucNang.chuanHoa(0, 1);
+		switch (xacnhan) {
+			case 0:
+				sp = null;
+				return;
+			case 1:
+				if (sp instanceof TraSua) ThucDon.setSanPhamVaoFile("trasua.txt", sp);
+				if (sp instanceof CaPhe) ThucDon.setSanPhamVaoFile("caphe.txt", sp);
+				ThucDon.thucdon.add(ThucDon.indexOfCaPhe * ((sp instanceof CaPhe) ? 1 : 0), sp);
+				if (sp instanceof TraSua) ThucDon.indexOfCaPhe++;
+				System.out.println("Da them san pham");
+				break;
+		}
+	}
+
+	public void xoaSanPham(){
+		SanPham spxoa = null;
+		do {
+			System.out.print("\nNhap ma san pham muon xoa: ");
+			String idxoa = ChucNang.chuanHoaChuoi();
+			spxoa = ThucDon.timKiemSPTheoID(idxoa);
+			if(spxoa == null){
+				System.out.println("Khong ton tai san pham. Vui long nhap lai");
+			}
+		} while (spxoa == null);
+		ThucDon.xuatThongTinSP(spxoa);
+		System.out.println("\nXac nhan xoa san pham?");
+		System.out.println("0. Khong xac nhan");
+		System.out.println("1. Xac nhan");
+		int luachon = ChucNang.chuanHoa(0, 1);
+		switch (luachon) {
+			case 0:
+				spxoa = null;
+				return;
+			case 1:
+				ThucDon.thucdon.remove(spxoa);
+				ThucDon.ghiDSVaoFile();
+				System.out.println("Da xoa san pham");
+				break;
+		}
 	}
 
 	public void chinhsuaSanPham(){

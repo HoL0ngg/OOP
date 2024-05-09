@@ -55,8 +55,13 @@ public abstract class SanPham {
 	//dung de cho nvQuanLi them SanPham vao List
 	public void nhapThongTin(){
 		Scanner scan = new Scanner(System.in);
-		System.out.print("Nhap id san pham: ");
-		this.setId(ChucNang.chuanHoaChuoi());
+		do {
+			System.out.print("Nhap id san pham: ");
+			this.setId(ChucNang.chuanHoaChuoi());
+			if(!ThucDon.kiemTraID(this.getId())){
+				System.out.println("Ma san pham da ton tai. Vui long nhap lai.");
+			}
+		} while (!ThucDon.kiemTraID(this.getId())); //Kiem tra ID da ton tai trong ds chua
 		System.out.print("Nhap ten san pham: ");
 		this.setTen(ChucNang.chuanHoaChuoi());
 		int gia[] = new int[SanPham.validSize]; 

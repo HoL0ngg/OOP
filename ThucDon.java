@@ -48,7 +48,7 @@ public class ThucDon {
 			}
 
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("Khong the mo file de doc san pham");
 		}
 	}
 
@@ -79,7 +79,7 @@ public class ThucDon {
 					
 					int banggia[] = ts.getGiaTien();
 					for (int j = 0; j < SanPham.validSize; ++j) {
-						System.out.print(banggia[j] + "\t");
+						System.out.print(ThucDon.chuanHoaGia(banggia[j]) + "\t");
 					}
 					System.out.println();
 				}
@@ -108,7 +108,7 @@ public class ThucDon {
 		
 					int banggia[] = cf.getGiaTien();
 					for (int j = 0; j < SanPham.validSize; ++j) {
-						System.out.print(banggia[j] + "\t");
+						System.out.print(ThucDon.chuanHoaGia(banggia[j]) + "\t");
 					}
 					System.out.println();
 				}
@@ -120,35 +120,101 @@ public class ThucDon {
 		}
 	}
 
+	private static String chuanHoaGia(int gia){
+		String temp = Integer.toString(gia);
+		if(temp.length() <= 3)
+        	return temp;
+		int n = temp.length() / 3;
+		int i = temp.length() - 1;
+		int count = 0;
+		StringBuilder sb = new StringBuilder(temp);
+		while(n > 0){
+			i = i - 2 - count;
+			sb.insert(i, ",");
+			--n;
+			++count;
+		}
+		return sb.toString();
+	}
+
+	public static void xuatThongTinSP(SanPham sp){
+		System.out.println("Ma san pham: " + sp.getId());
+		System.out.println("Ten san pham: " + sp.getTen());
+		int temp[] = sp.getGiaTien();
+		System.out.print("Gia: ");
+		for (int i = 0; i < SanPham.validSize; ++i) {
+			System.out.print(ThucDon.chuanHoaGia(temp[i]) + "\t");
+		}
+		System.out.println();
+	}
 	//sap xep theo gia tien
 	public static void sxTheoGia(){
 
 	}
 
-	public SanPham timKiemSPTheoID(String id){
+	public static SanPham timKiemSPTheoID(String id){
 		for(SanPham sp : thucdon){
-			if(sp.getId().equals(id)){
+			if(sp.getId().equalsIgnoreCase(id)){
 				return sp;
 			}
 		}
 		return null;
 	}
 
+	public static boolean kiemTraID(String id){
+		for(SanPham sp : ThucDon.thucdon){
+			if(sp.getId().equalsIgnoreCase(id)){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public static void ghiDSVaoFile(){
+		File file1 = new File("trasua.txt");
+		File file2 = new File("caphe.txt");
+		try (FileWriter fw1 = new FileWriter(file1, false); FileWriter fw2 = new FileWriter(file2, false)){
+			for(SanPham sp : ThucDon.thucdon){
+				StringBuilder sb = new StringBuilder();
+				sb.append(sp.getId()).append("\t\t").append("#");
+				sb.append(sp.getTen()).append("\t\t").append("#");
+				int tmp[] = sp.getGiaTien();
+				for (int i = 0; i < SanPham.validSize; ++i){
+					sb.append(tmp[i]).append("#");
+				}
+				sb.deleteCharAt(sb.lastIndexOf("#"));
+				sb.append(System.lineSeparator());
+				if(sp instanceof TraSua){
+					fw1.write(sb.toString());
+				} else {
+					fw2.write(sb.toString());
+				}
+			}
+			fw1.flush();
+			fw2.flush();
+			fw1.close();
+			fw2.close();
+		} catch (Exception e) {
+			System.out.println("Khong the mo file de ghi san pham");
+		}
+	}
 
 	public static void setSanPhamVaoFile(String path, SanPham sp){
 		try (FileWriter fw = new FileWriter(path, true)){
 			StringBuilder sb = new StringBuilder();
-			sb.append(sp.getId()).append("#");
-			sb.append(sp.getTen()).append("#");
+			sb.append(sp.getId()).append("\t\t").append("#");
+			sb.append(sp.getTen()).append("\t\t").append("#");
 			int tmp[] = sp.getGiaTien();
 			for (int i = 0; i < SanPham.validSize; ++i){
 				sb.append(tmp[i]).append("#");
 			}
+			sb.deleteCharAt(sb.lastIndexOf("#"));
 			sb.append(System.lineSeparator());
 			fw.write(sb.toString());
 			fw.flush();
-		} catch (Exception e) {
-			// TODO: handle exception
+			fw.close();
+		} catch (Exception err) {
+			System.out.println("Khong the mo file de ghi san pham");
 		}
 	}
 }
