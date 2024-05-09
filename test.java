@@ -1,7 +1,8 @@
 public class test {
 	public static void main(String[] args) {
-		nvQuanLi nvql = new nvQuanLi();
-		
-		nvql.chinhsuaThongTinNV();
+		ThucDon.setDonGiatuFile("trasua.txt");
+		ThucDon.setDonGiatuFile("caphe.txt");
+		nvDatHang nvdh = new nvDatHang();
+		nvdh.nhanDonHang();
 	}
 }

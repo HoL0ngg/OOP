@@ -51,66 +51,72 @@ public class ThucDon {
 		}
 	}
 
-	public static void xuatMenu() {
+	public static void xuatMenu(int loai) {
 		int cntTab = (SanPham.maxLength / 8) + 1;
-		System.out.println("--------------------- Tra sua ---------------------");
-		for (int i = 0; i <= cntTab; ++i) {
-			System.out.print("\t");
-		}
-		for (int i = 0; i < SanPham.validSize; ++i) {
-				System.out.print(SanPham.size[i] + "\t");
-		}
-		System.out.println();
-		int index = 1;
-		for (SanPham sp : thucdon) {
-			if (sp instanceof TraSua) {
-			System.out.print((index++) + ". " + sp.getTen());
-				
-			int lengthTS = (sp.getTen().length() + 2 + (String.valueOf(index-1).length())) / 8;
-
-				TraSua ts = (TraSua) sp;
-				// tab ra cho dep
-			for (int j = lengthTS; j <= cntTab;++j) {
+		if (loai == 1){
+			System.out.println("--------------------- Tra sua ---------------------");
+			for (int i = 0; i <= cntTab; ++i) {
 				System.out.print("\t");
 			}
-			
-				
-				int banggia[] = ts.getGiaTien();
-				for (int j = 0; j < SanPham.validSize; ++j) {
-					System.out.print(banggia[j] + "\t");
-				}
-				System.out.println();
+			for (int i = 0; i < SanPham.validSize; ++i) {
+					System.out.print(SanPham.size[i] + "\t");
 			}
-		}
-		System.out.println();
-		System.out.println("--------------------- Ca phe ---------------------");
-		for (int i = 0; i <= cntTab; ++i) {
-			System.out.print("\t");
-		}
-		for (int i = 0; i < SanPham.validSize; ++i) {
-			System.out.print(SanPham.size[i] + "\t");
-		}
-		System.out.println();
-		index = 1;
-		for (SanPham sp : thucdon) {
-			if (sp instanceof CaPhe) {
+			System.out.println();
+			int index = 1;
+			for (SanPham sp : thucdon) {
+				if (sp instanceof TraSua) {
 				System.out.print((index++) + ". " + sp.getTen());
-	
-				CaPhe cf = (CaPhe) sp;
-					// tab ra cho dep
+					
 				int lengthTS = (sp.getTen().length() + 2 + (String.valueOf(index-1).length())) / 8;
-				for (int j = lengthTS; j <= cntTab; ++j) {
+	
+					TraSua ts = (TraSua) sp;
+					// tab ra cho dep
+				for (int j = lengthTS; j <= cntTab;++j) {
 					System.out.print("\t");
 				}
-	
-				int banggia[] = cf.getGiaTien();
-				for (int j = 0; j < SanPham.validSize; ++j) {
-					System.out.print(banggia[j] + "\t");
+				
+					
+					int banggia[] = ts.getGiaTien();
+					for (int j = 0; j < SanPham.validSize; ++j) {
+						System.out.print(banggia[j] + "\t");
+					}
+					System.out.println();
 				}
-				System.out.println();
 			}
+			System.out.println();
+		} else if (loai == 2){
+			System.out.println("--------------------- Ca phe ---------------------");
+			for (int i = 0; i <= cntTab; ++i) {
+				System.out.print("\t");
+			}
+			for (int i = 0; i < SanPham.validSize; ++i) {
+				System.out.print(SanPham.size[i] + "\t");
+			}
+			System.out.println();
+			int index = 1;
+			for (SanPham sp : thucdon) {
+				if (sp instanceof CaPhe) {
+					System.out.print((index++) + ". " + sp.getTen());
+		
+					CaPhe cf = (CaPhe) sp;
+						// tab ra cho dep
+					int lengthTS = (sp.getTen().length() + 2 + (String.valueOf(index-1).length())) / 8;
+					for (int j = lengthTS; j <= cntTab; ++j) {
+						System.out.print("\t");
+					}
+		
+					int banggia[] = cf.getGiaTien();
+					for (int j = 0; j < SanPham.validSize; ++j) {
+						System.out.print(banggia[j] + "\t");
+					}
+					System.out.println();
+				}
+			}
+			System.out.println();
+		} else {
+			ThucDon.xuatMenu(1);
+			ThucDon.xuatMenu(2);
 		}
-		System.out.println();
 	}
 
 	//sap xep theo gia tien
@@ -127,4 +133,13 @@ public class ThucDon {
 		return null;
 	}
 
+
+	public static void setSanPhamVaoFile(String path){
+		if (path == "trasua.txt"){
+
+		}
+		if (path == "caphe.txt"){
+			
+		}
+	}
 }

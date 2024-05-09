@@ -161,20 +161,24 @@ public class nvQuanLi extends NhanVien{
 		switch (LuaChon) {
 			case 1:
 				sp = new TraSua();
+				ThucDon.setSanPhamVaoFile("trasua.txt");
 				break;
 			case 2:
 				sp = new CaPhe();
+				ThucDon.setSanPhamVaoFile("caphe.txt");
 				break;
 		}
 		sp.nhapThongTin();
-		ThucDon.thucdon.add(sp);
+		//them vao file cua tung loai nua !!
+		ThucDon.thucdon.add(ThucDon.indexOfCaPhe * ((sp instanceof CaPhe) ? 0 : 1), sp);
+		if (sp instanceof CaPhe) ThucDon.indexOfCaPhe++;
 
 		scan.close();
 	}
 
 	public void chinhsuaSanPham(){
 		Scanner scan = new Scanner(System.in);
-		ThucDon.xuatMenu();
+		ThucDon.xuatMenu(3);
 		System.out.print("Nhap ten san pham can chinh sua: ");
 		String tenSP = scan.nextLine();
 		int indexSpThayDoi = timkiemTenSP(tenSP);
