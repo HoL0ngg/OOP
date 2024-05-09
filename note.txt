@@ -1,3 +1,7 @@
 Format file "NHAN_VIEN.txt"
     <LoạiNV>#<ID>#<Tên>#<Tỉnh>#<Quận>#<Phường>#<SốNhà>#<TênĐường>#<SĐT>#<Email>#<NgàySinh>#<ThángSinh>#<NămSinh>
-Format file 
+
+
+TODO list:
+- Chỉnh lại format xuất thông tin nv
+- Chỉnh chức năng cập nhật thông tin sp
