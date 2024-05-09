@@ -27,10 +27,6 @@ public class CaPhe extends SanPham {
 	@Override
 	public void nhapThongTin(){
 		super.nhapThongTin();
-		Scanner scan = new Scanner(System.in);
-		
-
-		scan.close();
 	}
 
 }

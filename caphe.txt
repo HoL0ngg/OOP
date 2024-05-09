@@ -8,7 +8,4 @@ ddkd#Den da khong duong		#7000#10000#12000
 cpcn#Cappuccino			#22000#27000#32000
 ccn#Cacao nong			#12000#15000#17000
 ccd#Cacao da			#12000#15000#17000
-
-
-
-
+cpsd#Ca phe sua dua#14000#20000#25000#

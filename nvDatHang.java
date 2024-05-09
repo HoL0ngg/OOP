@@ -9,7 +9,6 @@ public class nvDatHang extends NhanVien{
 	private int demSanPham;
 
 	public nvDatHang(){
-		// this.DSSanPham = new ArrayList<SanPham>();
 	}
 
 	private void xuatDonHang(){
@@ -125,9 +124,6 @@ public class nvDatHang extends NhanVien{
 	}
 
 	private void xuliDonHang(){
-		Scanner scan = new Scanner(System.in);
-
-		// System.out.println("Chon '0' de thoat");
 		while (true) {
 			System.out.println("Ban muon dung mon gi ?");
 			System.out.println("1. Tra sua");
@@ -219,7 +215,7 @@ public class nvDatHang extends NhanVien{
 			System.out.print("Moi nhap lua chon: ");
 			chonlai = ChucNang.chuanHoa(1, 2);
 		}
-		scan.close();
+		// scan.close();
 	}
 
 	public void nhanDonHang(){

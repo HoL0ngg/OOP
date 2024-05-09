@@ -17,11 +17,4 @@ tdt#Tra dau tay				#10000#15000#17000
 tvq#Tra viet quoc			#10000#15000#17000
 txs#Tra xanh sua			#18000#23000#25000
 tol#Tra olong				#10000#15000#17000
-
-
-
-
-
-
-
-
+tda#Tra da#4000#10000#15000#

@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -134,12 +135,20 @@ public class ThucDon {
 	}
 
 
-	public static void setSanPhamVaoFile(String path){
-		if (path == "trasua.txt"){
-
-		}
-		if (path == "caphe.txt"){
-			
+	public static void setSanPhamVaoFile(String path, SanPham sp){
+		try (FileWriter fw = new FileWriter(path, true)){
+			StringBuilder sb = new StringBuilder();
+			sb.append(sp.getId()).append("#");
+			sb.append(sp.getTen()).append("#");
+			int tmp[] = sp.getGiaTien();
+			for (int i = 0; i < SanPham.validSize; ++i){
+				sb.append(tmp[i]).append("#");
+			}
+			sb.append(System.lineSeparator());
+			fw.write(sb.toString());
+			fw.flush();
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 	}
 }

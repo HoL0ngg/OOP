@@ -13,10 +13,6 @@ public class TraSua extends SanPham {
 	@Override
 	public void nhapThongTin(){
 		super.nhapThongTin();
-		Scanner scan = new Scanner(System.in);
-		System.out.print("");
-
-		scan.close();
 	}
 
 }

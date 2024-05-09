@@ -56,7 +56,7 @@ public class nvQuanLi extends NhanVien{
 				nv = null;
 				break;
 		}
-		scan.close();
+		// scan.close();
 	}
 
 	private NhanVien timkiemID(String id){
@@ -143,37 +143,29 @@ public class nvQuanLi extends NhanVien{
 	}
 
 	public void themSanPham(){
-		Scanner scan = new Scanner(System.in);
 		SanPham sp = null;
 		System.out.println("Nhap loai do uong can them: ");
 		System.out.println("1. Tra sua");
 		System.out.println("2. Ca phe");
-		System.out.print("Moi nhap lua chon: ");
-		int LuaChon = Integer.parseInt(scan.nextLine());
-		while (LuaChon < 1 || LuaChon > 2) {
-			System.out.println("Vui long nhap lai!");
-			System.out.println("Nhap loai do uong can them: ");
-			System.out.println("1. Tra sua");
-			System.out.println("2. Ca phe");
-			System.out.print("Moi nhap lua chon: ");
-			LuaChon = Integer.parseInt(scan.nextLine());
-		}
+		int LuaChon = ChucNang.chuanHoa(1, 2);
 		switch (LuaChon) {
 			case 1:
 				sp = new TraSua();
-				ThucDon.setSanPhamVaoFile("trasua.txt");
 				break;
 			case 2:
 				sp = new CaPhe();
-				ThucDon.setSanPhamVaoFile("caphe.txt");
 				break;
 		}
-		sp.nhapThongTin();
-		//them vao file cua tung loai nua !!
-		ThucDon.thucdon.add(ThucDon.indexOfCaPhe * ((sp instanceof CaPhe) ? 0 : 1), sp);
-		if (sp instanceof CaPhe) ThucDon.indexOfCaPhe++;
 
-		scan.close();
+		sp.nhapThongTin();
+
+		//them vao file cua tung loai
+		if (sp instanceof TraSua) ThucDon.setSanPhamVaoFile("trasua.txt", sp);
+		if (sp instanceof CaPhe) ThucDon.setSanPhamVaoFile("caphe.txt", sp);
+		
+		ThucDon.thucdon.add(ThucDon.indexOfCaPhe * ((sp instanceof CaPhe) ? 1 : 0), sp);
+		if (sp instanceof TraSua) ThucDon.indexOfCaPhe++;
+		System.out.println(ThucDon.indexOfCaPhe);
 	}
 
 	public void chinhsuaSanPham(){
@@ -228,6 +220,6 @@ public class nvQuanLi extends NhanVien{
 			if (chonTiep == 2) break;
 
 		}
-		scan.close();
+		// scan.close();
 	}
 }

@@ -56,16 +56,15 @@ public abstract class SanPham {
 	public void nhapThongTin(){
 		Scanner scan = new Scanner(System.in);
 		System.out.print("Nhap id san pham: ");
-		this.setId(scan.nextLine());
+		this.setId(ChucNang.chuanHoaChuoi());
 		System.out.print("Nhap ten san pham: ");
-		this.setTen(scan.nextLine());
+		this.setTen(ChucNang.chuanHoaChuoi());
 		int gia[] = new int[SanPham.validSize]; 
 		for (int i = 0 ; i < SanPham.validSize; ++i){
 			System.out.print("Nhap vao gia size " + SanPham.size[i] + ": ");
 			gia[i] = Integer.parseInt(scan.nextLine());
-			System.out.println();
+			// System.out.println();
 		}
 		this.setGiaTien(gia);
-		scan.close();
 	}
 }
