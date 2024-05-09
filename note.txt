@@ -1,0 +1,3 @@
+Format file "NHAN_VIEN.txt"
+    <LoạiNV>#<ID>#<Tên>#<Tỉnh>#<Quận>#<Phường>#<SốNhà>#<TênĐường>#<SĐT>#<Email>#<NgàySinh>#<ThángSinh>#<NămSinh>
+Format file 
