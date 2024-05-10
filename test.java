@@ -1,10 +1,8 @@
 public class test {
 	public static void main(String[] args) {
-		ThucDon.setDonGiatuFile("trasua.txt");
-		ThucDon.setDonGiatuFile("caphe.txt");
-		ThucDon.xuatMenu(0);
-
-		nvQuanLi nv = new nvQuanLi();
-		nv.xoaSanPham();
+		nvDatHang nvdh = new nvDatHang();
+		nvdh.menu();
+		nvQuanLi nvql = new nvQuanLi();
+		nvql.menu();
 	}
 }

@@ -113,4 +113,5 @@ public abstract class NhanVien {
 		System.out.println("Email: " + this.getEmail());
 	}
 
+	public abstract void menu();
 }

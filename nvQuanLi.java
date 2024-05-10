@@ -81,7 +81,7 @@ public class nvQuanLi extends NhanVien{
 		this.dsNhanVien.nhapNVtuFile(filepath);
 	} 
 
-	public void chinhsuaThongTinNV(){
+	private void chinhsuaThongTinNV(){
 		docDSNVTuFile("NHAN_VIEN.txt");
 		this.dsNhanVien.xuatDSNV();
 		Scanner scan = new Scanner(System.in);
@@ -142,7 +142,7 @@ public class nvQuanLi extends NhanVien{
 		//Them phan ghi vao file
 	}
 
-	public void themSanPham(){
+	private void themSanPham(){
 		SanPham sp = null;
 		System.out.println("\nNhap loai do uong can them: ");
 		System.out.println("1. Tra sua");
@@ -176,7 +176,7 @@ public class nvQuanLi extends NhanVien{
 		}
 	}
 
-	public void xoaSanPham(){
+	private void xoaSanPham(){
 		SanPham spxoa = null;
 		do {
 			System.out.print("\nNhap ma san pham muon xoa: ");
@@ -203,7 +203,7 @@ public class nvQuanLi extends NhanVien{
 		}
 	}
 
-	public void chinhsuaSanPham(){
+	private void chinhsuaSanPham(){
 		Scanner scan = new Scanner(System.in);
 		ThucDon.xuatMenu(3);
 		System.out.print("Nhap ten san pham can chinh sua: ");
@@ -257,4 +257,39 @@ public class nvQuanLi extends NhanVien{
 		}
 		// scan.close();
 	}
+
+	@Override
+	public void menu() {
+		while (true) {
+			System.out.println("----------------------- NHAN VIEN QUAN LI -----------------------");
+			System.out.println("1. Them san pham moi");
+			System.out.println("2. Cap nhat va chinh sua thong tin san pham");
+			System.out.println("3. Xoa san pham");
+			System.out.println("4. Them nhan vien moi");
+			System.out.println("5. Chinh sua thong tin nhan vien");
+			System.out.println("6. Dang xuat");
+			int luachon = ChucNang.chuanHoa(1, 6);
+			switch (luachon) {
+				case 1:
+					this.themSanPham();
+					break;
+				case 2:
+					this.chinhsuaSanPham();
+					break;
+				case 3:
+					this.xoaSanPham();
+					break;
+				case 4:
+					this.themNhanVien();
+					break;
+				case 5:
+					this.chinhsuaThongTinNV();
+					break;
+				case 6:
+					return;		
+			}
+		}
+	}
+
+	
 }
