@@ -218,6 +218,15 @@ public class nvDatHang extends NhanVien{
 		// scan.close();
 	}
 
+	private void thanhtoan(){
+		System.out.println("Ban co muon dang ky thanh vien: ");
+		System.out.println("1. Co");
+		System.out.println("2. Khong");
+		int luachon = ChucNang.chuanHoa(1, 2);
+		if (luachon == 2) return;
+		ThanhVien.dkThanhVien();
+	}
+
 	public void nhanDonHang(){
 		this.DSSanPham = new int[ThucDon.thucdon.size() * SanPham.validSize];
 		this.demSanPham = 0;
@@ -230,6 +239,9 @@ public class nvDatHang extends NhanVien{
 
 		//nguoi dung chinh sua don hang neu co
 		this.kiemTralai();
+
+		//Thanh toan don hang
+		this.thanhtoan();
 
 		//Se co 1 static function cua HoaDon de xuatHoaDon
 		//HoaDon.xuatHoaDon(this.DSSanPham);
