@@ -11,7 +11,7 @@ public class nvDatHang extends NhanVien{
 	public nvDatHang(){
 	}
 
-	private void xuatDonHang(){
+	private int xuatDonHang(){
 		int tongtien = 0;
 		int cntTab = (SanPham.maxLength / 8) + 1;
 		String navList[] = {"Ten mon hang", "Size", "So luong"};
@@ -45,6 +45,7 @@ public class nvDatHang extends NhanVien{
 			System.out.print('-');
 		}
 		System.out.println();
+		
 		int index = 1;
 		for (int i = 0; i < ThucDon.thucdon.size() * SanPham.validSize; ++i){
 			if (this.DSSanPham[i] != 0){
@@ -80,6 +81,8 @@ public class nvDatHang extends NhanVien{
 		}
 		System.out.println();
 		System.out.println();
+
+		return tongtien;
 	}
 	
 	private void xoaSanPham(int index){
@@ -168,7 +171,7 @@ public class nvDatHang extends NhanVien{
 		System.out.println("2. Khong");
 		int chonlai = ChucNang.chuanHoa(1, 2);
 		while (chonlai == 1){
-			System.out.println("Ban muon thay doi gi? ");
+			System.out.println("Ban muon thay doi gi ? ");
 			System.out.println("1. Thay doi san pham");
 			System.out.println("2. Thay doi kich thuoc");
 			System.out.println("3. Xoa san pham");
@@ -218,13 +221,16 @@ public class nvDatHang extends NhanVien{
 		// scan.close();
 	}
 
-	private void thanhtoan(){
+	private boolean DKThanhVien(int tong){
 		System.out.println("Ban co muon dang ky thanh vien: ");
 		System.out.println("1. Co");
 		System.out.println("2. Khong");
 		int luachon = ChucNang.chuanHoa(1, 2);
-		if (luachon == 2) return;
-		ThanhVien.dkThanhVien();
+		if (luachon == 2) return false;
+
+		DSThanhVien.themThanhVien(tong);
+		
+		return true;
 	}
 
 	private void nhanDonHang(){
@@ -236,14 +242,14 @@ public class nvDatHang extends NhanVien{
 		//xu li thao tac nguoi dung
 		this.xuliDonHang();
 
-		//xuat ra don hang hien tai de kiem tra
-		this.xuatDonHang();
-
 		//nguoi dung chinh sua don hang neu co
 		this.kiemTralai();
 
-		//Thanh toan don hang
-		this.thanhtoan();
+		//tong tien cua hoa don
+		int tong = this.xuatDonHang();
+
+		//Tao the thanh vien
+		boolean check = this.DKThanhVien(tong);
 
 		//Se co 1 static function cua HoaDon de xuatHoaDon
 		//HoaDon.xuatHoaDon(this.DSSanPham);
