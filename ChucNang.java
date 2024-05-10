@@ -24,4 +24,12 @@ public class ChucNang {
         }
         return luachon;
     }
+
+    public static int xacNhanThaoTac(){
+        System.out.println("\nXac nhan thuc hien thao tac?");
+		System.out.println("0. Khong xac nhan");
+		System.out.println("1. Xac nhan");
+        int xacnhan = ChucNang.chuanHoa(0, 1);
+        return xacnhan;
+    }
 }

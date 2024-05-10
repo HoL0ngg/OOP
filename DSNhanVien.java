@@ -1,6 +1,6 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class DSNhanVien {
@@ -53,30 +53,73 @@ public class DSNhanVien {
     }
 
     public void ghiVaoFile(String filepath){
-        
-    }
-    public void xuatDSNV(){
-        sapXepTheoChucVu();
-        System.out.format("%-5s %-18s %-12s %-45s %-13s %-25s",
-		"ID",
-		"Ten",
-		"Ngay sinh",
-		"Dia chi",
-		"SDT",
-		"Email");
-        System.out.println();
-        for(NhanVien nv : this.dsnv){
-            nv.xuatThongTin();
+        File file = new File(filepath);
+        try(FileWriter fw = new FileWriter(file, false)) {
+            for(NhanVien nv : this.getDSNV()){
+                StringBuilder sb = new StringBuilder();
+                if(nv instanceof nvQuanLi){
+                    sb.append(1 + "#");
+                    //2#nv03#Bao#TP.HCM#Binh Tan#An Lac A#28/2#Phung Ta Chu#0938383333#baohoo10205@gmail.com#30#3#2005
+                } else {
+                    if(nv instanceof nvPhaChe){
+                        sb.append(2 + "#");
+                    } else {
+                        sb.append(3 + "#");
+                    }
+                }
+                sb.append(nv.getId() + "#");
+                sb.append(nv.getTen() + "#");
+                sb.append(nv.getDc().getTinhThanh() + "#")
+                .append(nv.getDc().getQuanHuyen() + "#")
+                .append(nv.getDc().getPhuongXa() + "#")
+                .append(nv.getDc().getSoNha() + "#")
+                .append(nv.getDc().getTenDuong() + "#");
+                sb.append(nv.getSdt() + "#");
+                sb.append(nv.getEmail() + "#");
+                sb.append(nv.getNgaysinh().getNgay() + "#")
+                .append(nv.getNgaysinh().getThang() + "#")
+                .append(nv.getNgaysinh().getNam());
+                sb.append(System.lineSeparator());
+                fw.write(sb.toString());
+            }
+            fw.flush();
+            fw.close();
+        } catch (Exception e) {
+            System.out.println("Khong the mo file de ghi danh sach nhan vien");
         }
     }
 
-    private void sapXepTheoChucVu(){
-        Collections.sort(this.dsnv, new SoSanhTheoChucVu());
-    }
-
-    public static void main(String[] args) {
-        DSNhanVien danhsachNV = new DSNhanVien();
-        danhsachNV.nhapNVtuFile("NHAN_VIEN.txt");
-        danhsachNV.xuatDSNV();
+    public void ghiVaoFile(String filepath, NhanVien nvmoi){
+        File file = new File(filepath);
+        try(FileWriter fw = new FileWriter(file, true)) {
+            StringBuilder sb = new StringBuilder();
+            if(nvmoi instanceof nvQuanLi){
+                sb.append(1 + "#");
+            } else {
+                if(nvmoi instanceof nvPhaChe){
+                    sb.append(2 + "#");
+                } else {
+                    sb.append(3 + "#");
+                }
+            }
+            sb.append(nvmoi.getId() + "#");
+            sb.append(nvmoi.getTen() + "#");
+            sb.append(nvmoi.getDc().getTinhThanh() + "#")
+            .append(nvmoi.getDc().getQuanHuyen() + "#")
+            .append(nvmoi.getDc().getPhuongXa() + "#")
+            .append(nvmoi.getDc().getSoNha() + "#")
+            .append(nvmoi.getDc().getTenDuong() + "#");
+            sb.append(nvmoi.getSdt() + "#");
+            sb.append(nvmoi.getEmail() + "#");
+            sb.append(nvmoi.getNgaysinh().getNgay() + "#")
+            .append(nvmoi.getNgaysinh().getThang() + "#")
+            .append(nvmoi.getNgaysinh().getNam());
+            sb.append(System.lineSeparator());
+            fw.write(sb.toString());
+            fw.flush();
+            fw.close();
+        } catch (Exception e) {
+            System.out.println("Khong the mo file de ghi nhan vien");
+        }
     }
 }

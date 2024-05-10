@@ -26,10 +26,10 @@ public class ThucDon {
 				
 				SanPham sp = null;
 
-				if (path == "trasua.txt") {
+				if (path.equals("trasua.txt")) {
 					sp = new TraSua(id, ten);
 					ThucDon.indexOfCaPhe++;
-				} else if (path == "caphe.txt") {
+				} else if (path.equals("caphe.txt")) {
 					sp = new CaPhe(id, ten);
 				} else {
 					System.out.println("Duong dan ko hop le!");
@@ -143,7 +143,7 @@ public class ThucDon {
 		int temp[] = sp.getGiaTien();
 		System.out.print("Gia: ");
 		for (int i = 0; i < SanPham.validSize; ++i) {
-			System.out.print(ThucDon.chuanHoaGia(temp[i]) + "\t");
+			System.out.print(ThucDon.chuanHoaGia(temp[i]) + "%-5s");
 		}
 		System.out.println();
 	}

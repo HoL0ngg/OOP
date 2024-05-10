@@ -91,18 +91,18 @@ public abstract class NhanVien {
 		NgayThang ngaysinh = new NgayThang();
 		ngaysinh.nhapThongTin();
 		this.setNgaysinh(ngaysinh);
-		scan.close();
 	}
 
 	public void xuatThongTin(){
-		System.out.format("%-5s %-18s %-12s %-45s %-13s %-25s", 
+		System.out.format("%-5s %-18s %-12s %-50s %-13s %-25s", 
 		this.getId(),
-		this.getTen(),
-		this.getNgaysinh().xuatThongTin(),
-		this.getDc().xuatThongTin(),
-		this.getSdt(),
-		this.getEmail());
+		"|  " + this.getTen(),
+		"|  " + this.getNgaysinh().xuatThongTin(),
+		"|  " + this.getDc().xuatThongTin(),
+		"|  " + this.getSdt(),
+		"|  " + this.getEmail());
 		System.out.println();
 	}
 
+	public abstract void menu();
 }

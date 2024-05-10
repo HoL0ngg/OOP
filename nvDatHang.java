@@ -218,7 +218,18 @@ public class nvDatHang extends NhanVien{
 		// scan.close();
 	}
 
-	public void nhanDonHang(){
+	private void thanhtoan(){
+		System.out.println("Ban co muon dang ky thanh vien: ");
+		System.out.println("1. Co");
+		System.out.println("2. Khong");
+		int luachon = ChucNang.chuanHoa(1, 2);
+		if (luachon == 2) return;
+		ThanhVien.dkThanhVien();
+	}
+
+	private void nhanDonHang(){
+		ThucDon.setDonGiatuFile("trasua.txt");
+		ThucDon.setDonGiatuFile("caphe.txt");
 		this.DSSanPham = new int[ThucDon.thucdon.size() * SanPham.validSize];
 		this.demSanPham = 0;
 	
@@ -231,6 +242,9 @@ public class nvDatHang extends NhanVien{
 		//nguoi dung chinh sua don hang neu co
 		this.kiemTralai();
 
+		//Thanh toan don hang
+		this.thanhtoan();
+
 		//Se co 1 static function cua HoaDon de xuatHoaDon
 		//HoaDon.xuatHoaDon(this.DSSanPham);
 
@@ -238,10 +252,25 @@ public class nvDatHang extends NhanVien{
 	
 	//Menu cho nhan vien dat hang
 	public void menu( ) {
-		int luachon;
 		while(true){
-			System.out.println("---------------------NHAN VIEN DAT HANG---------------------");
+			System.out.println("--------------------- NHAN VIEN DAT HANG ---------------------");
 			System.out.println();
+			System.out.println("1. Nhan don hang");
+			System.out.println("2. Lam gi do");
+			System.out.println("3. Dang xuat");
+			int luachon = ChucNang.chuanHoa(1, 3);
+			switch (luachon) {
+				case 1:
+					this.nhanDonHang();
+					break;
+			
+				case 2:
+
+					break;
+
+				case 3:
+					return;
+			}
 		}
 	}
 
