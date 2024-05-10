@@ -51,6 +51,14 @@ public class DSNhanVien {
             System.out.println("Khong the mo file");
         }
     }
+    public boolean kiemTraIDNV(String id){
+        for(NhanVien nv : this.getDSNV()){
+            if(nv.getId().equalsIgnoreCase(id)){
+                return false;
+            }
+        }
+        return true;
+    }
 
     public void ghiVaoFile(String filepath){
         File file = new File(filepath);
@@ -59,7 +67,6 @@ public class DSNhanVien {
                 StringBuilder sb = new StringBuilder();
                 if(nv instanceof nvQuanLi){
                     sb.append(1 + "#");
-                    //2#nv03#Bao#TP.HCM#Binh Tan#An Lac A#28/2#Phung Ta Chu#0938383333#baohoo10205@gmail.com#30#3#2005
                 } else {
                     if(nv instanceof nvPhaChe){
                         sb.append(2 + "#");

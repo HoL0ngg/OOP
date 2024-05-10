@@ -13,7 +13,7 @@ public class nvQuanLi extends NhanVien{
 	private void xuatDSNV(){
         sapXepTheoChucVu();
         System.out.println("------------------------------------------------------ NHAN VIEN QUAN LY ------------------------------------------------------");
-        System.out.format("%-5s %-18s %-12s %-50s %-13s %-25s",
+        System.out.format("%-8s %-18s %-12s %-50s %-13s %-25s",
 		"ID",
 		"|  Ten",
 		"|  Ngay sinh",
@@ -32,7 +32,7 @@ public class nvQuanLi extends NhanVien{
         System.out.println();
 
         System.out.println("------------------------------------------------------ NHAN VIEN PHA CHE ------------------------------------------------------");
-        System.out.format("%-5s %-18s %-12s %-50s %-13s %-25s",
+        System.out.format("%-8s %-18s %-12s %-50s %-13s %-25s",
 		"ID",
 		"|  Ten",
 		"|  Ngay sinh",
@@ -50,7 +50,7 @@ public class nvQuanLi extends NhanVien{
         System.out.println();
 
         System.out.println("------------------------------------------------------ NHAN VIEN DAT HANG ------------------------------------------------------");
-        System.out.format("%-5s %-18s %-12s %-50s %-13s %-25s",
+        System.out.format("%-8s %-18s %-12s %-50s %-13s %-25s",
 		"ID",
 		"|  Ten",
 		"|  Ngay sinh",
@@ -72,6 +72,7 @@ public class nvQuanLi extends NhanVien{
         Collections.sort(this.dsNhanVien.getDSNV(), new SoSanhTheoChucVu());
     }
 
+	
 	private void themNhanVien(){
 		NhanVien nv = null;
 		int luachon;
@@ -93,7 +94,12 @@ public class nvQuanLi extends NhanVien{
 			default:
 				break;
 		}
-		nv.nhapThongTin();
+		do {
+			nv.nhapThongTin();
+			if(!this.dsNhanVien.kiemTraIDNV(nv.getId())){
+				System.out.println("Ma nhan vien da ton tai. Vui long nhap lai.");
+			}
+		} while (!this.dsNhanVien.kiemTraIDNV(nv.getId()));
 		int xacnhan = ChucNang.xacNhanThaoTac();
 		switch (xacnhan) {
 			case 0:
@@ -146,7 +152,7 @@ public class nvQuanLi extends NhanVien{
 
 		//Hoi chon can chinh sua gi
 		while (true) {
-			System.out.format("%-5s %-18s %-12s %-50s %-13s %-25s",
+			System.out.format("%-8s %-18s %-12s %-50s %-13s %-25s",
 			"ID",
 			"|  Ten",
 			"|  Ngay sinh",
@@ -254,6 +260,25 @@ public class nvQuanLi extends NhanVien{
 		}
 	}
 
+	private void xuatDSNVTheoTen(){
+		System.out.print("Tim kiem: ");
+		String timkiem = ChucNang.chuanHoaChuoi();
+		System.out.format("%-8s %-18s %-12s %-50s %-13s %-25s",
+		"ID",
+		"|  Ten",
+		"|  Ngay sinh",
+		"|  Dia chi",
+		"|  SDT",
+		"|  Email");
+        System.out.println();
+        System.out.println("-------------------------------------------------------------------------------------------------------------------------------");
+		for(NhanVien nv : this.dsNhanVien.getDSNV()){
+			if(nv.getTen().contains(timkiem)){
+				nv.xuatThongTin();
+			}
+		}
+	}
+
 	private void chinhsuaSanPham(){
 		Scanner scan = new Scanner(System.in);
 		ThucDon.xuatMenu(3);
@@ -309,6 +334,8 @@ public class nvQuanLi extends NhanVien{
 	@Override
 	public void menu() {
 		while (true) {
+			ThucDon.thucdon.clear();
+			this.dsNhanVien.getDSNV().clear();
 			this.docDSNVTuFile("NHAN_VIEN.txt");
 			ThucDon.setDonGiatuFile("trasua.txt");
 			ThucDon.setDonGiatuFile("caphe.txt");
@@ -318,8 +345,9 @@ public class nvQuanLi extends NhanVien{
 			System.out.println("3. Xoa san pham");
 			System.out.println("4. Them nhan vien moi");
 			System.out.println("5. Chinh sua thong tin nhan vien");
-			System.out.println("6. Dang xuat");
-			int luachon = ChucNang.chuanHoa(1, 6);
+			System.out.println("6. Tim kiem thong tin nhan vien");
+			System.out.println("7. Dang xuat");
+			int luachon = ChucNang.chuanHoa(1, 7);
 			switch (luachon) {
 				case 1:
 					this.themSanPham();
@@ -337,6 +365,9 @@ public class nvQuanLi extends NhanVien{
 					this.chinhsuaThongTinNV();
 					break;
 				case 6:
+					this.xuatDSNVTheoTen();
+					break;
+				case 7:
 					return;		
 			}
 		}
