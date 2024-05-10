@@ -57,9 +57,16 @@ public class DSNhanVien {
     }
     public void xuatDSNV(){
         sapXepTheoChucVu();
+        System.out.format("%-5s %-18s %-12s %-45s %-13s %-25s",
+		"ID",
+		"Ten",
+		"Ngay sinh",
+		"Dia chi",
+		"SDT",
+		"Email");
+        System.out.println();
         for(NhanVien nv : this.dsnv){
             nv.xuatThongTin();
-            System.out.println();
         }
     }
 

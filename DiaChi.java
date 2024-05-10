@@ -73,6 +73,6 @@ public class DiaChi {
 		//scan.close(); xay ra loi neu su dung
 	}
 	public String xuatThongTin(){
-		return this.getSoNha() + " " + this.getTenDuong() + ", " + this.getQuanHuyen() + ", " + this.getPhuongXa() + ", " + this.getTinhThanh();
+		return this.getSoNha() + " " + this.getTenDuong() + "," + this.getQuanHuyen() + "," + this.getPhuongXa() + ", " + this.getTinhThanh();
 	}
 }

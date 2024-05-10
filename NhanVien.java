@@ -95,22 +95,14 @@ public abstract class NhanVien {
 	}
 
 	public void xuatThongTin(){
-		System.out.println("ID: " + this.getId());
-		System.out.println("Ho va ten: " + this.getTen());
-		System.out.print("Chuc vu: ");
-		if(this instanceof nvDatHang){
-			System.out.println("Nhan vien dat hang");
-		} else {
-			if(this instanceof nvQuanLi){
-				System.out.println("Nhan vien quan li");
-			} else {
-				System.out.println("Nhan vien pha che");
-			}
-		}
-		System.out.println("Ngay sinh: " + this.getNgaysinh().xuatThongTin());
-		System.out.println("Dia chi: " + this.getDc().xuatThongTin());
-		System.out.println("So dien thoai: " + this.getSdt());
-		System.out.println("Email: " + this.getEmail());
+		System.out.format("%-5s %-18s %-12s %-45s %-13s %-25s", 
+		this.getId(),
+		this.getTen(),
+		this.getNgaysinh().xuatThongTin(),
+		this.getDc().xuatThongTin(),
+		this.getSdt(),
+		this.getEmail());
+		System.out.println();
 	}
 
 }
