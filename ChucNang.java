@@ -32,4 +32,30 @@ public class ChucNang {
         int xacnhan = ChucNang.chuanHoa(0, 1);
         return xacnhan;
     }
+
+    public static String chuanHoaGia(int gia){
+		String temp = Integer.toString(gia);
+		if(temp.length() <= 3)
+        	return temp;
+		int n = temp.length() / 3;
+		int i = temp.length() - 1;
+		int count = 0;
+		StringBuilder sb = new StringBuilder(temp);
+		while(n > 0){
+			i = i - 2 - count;
+			sb.insert(i, ".");
+			--n;
+			++count;
+		}
+		return sb.toString();
+	}
+
+    public static void keThanhNgang(int length){
+        System.out.print("+");
+		for (int i = 0 ; i <= length * 8 - 2; ++i){
+			System.out.print('-');
+		}
+		System.out.print("+");
+        System.out.println();
+    }
 }

@@ -19,10 +19,9 @@ public class nvDatHang extends NhanVien{
 		int lenOfHoaDon = cntTab + 1 + 1 + 1;
 
 		System.out.println("\tDon hang hien tai: ");
-		for (int i = 0 ; i <= lenOfHoaDon * 8; ++i){
-			System.out.print('-');
-		}
-		System.out.println();
+
+		ChucNang.keThanhNgang(lenOfHoaDon);
+
 		for (int i = 0 ; i < navList.length; ++i){
 			//Truong hop dau
 			if (i == 0){
@@ -41,10 +40,7 @@ public class nvDatHang extends NhanVien{
 			}
 		}
 		
-		for (int i = 0 ; i <= lenOfHoaDon * 8; ++i){
-			System.out.print('-');
-		}
-		System.out.println();
+		ChucNang.keThanhNgang(lenOfHoaDon);
 		
 		int index = 1;
 		for (int i = 0; i < ThucDon.thucdon.size() * SanPham.validSize; ++i){
@@ -66,18 +62,15 @@ public class nvDatHang extends NhanVien{
 				tongtien += this.DSSanPham[i] * ThucDon.thucdon.get(ten).getGiaTienAtIndex(size);
 			}
 		}
-		for (int i = 0 ; i <= lenOfHoaDon * 8; ++i){
-			System.out.print('-');
-		}
-		System.out.println();
+		ChucNang.keThanhNgang(lenOfHoaDon);
 		System.out.print("|");
 		for (int i = cntTab; i <= lenOfHoaDon; ++i){
 			System.out.print("\t");
 		}
-		System.out.print("Thanh tien: " + tongtien + "d\t|");
+		System.out.print("Thanh tien: " + ChucNang.chuanHoaGia(tongtien) + "d\t|");
 		System.out.println();
 		for (int i = 0 ; i <= lenOfHoaDon * 8; ++i){
-			System.out.print('-');
+			System.out.print('=');
 		}
 		System.out.println();
 		System.out.println();
@@ -93,6 +86,7 @@ public class nvDatHang extends NhanVien{
 			}
 			if (cnt == index){
 				this.DSSanPham[i] = 0;
+				return;
 			}
 		}
 	}
@@ -115,24 +109,44 @@ public class nvDatHang extends NhanVien{
 		for (int i = 0 ; i < SanPham.validSize; ++i){
 			System.out.println((i + 1) + ". " + SanPham.size[i]);
 		}
-		//chuan hoa du lieu
+		
 		int kichThuoc = ChucNang.chuanHoa(1, SanPham.validSize);
 
+		if (this.DSSanPham[(vitriMon - 1)*SanPham.validSize + (kichThuoc - 1) + (loai == 2 ? 1 : 0)*ThucDon.indexOfCaPhe*SanPham.validSize] != 0) this.demSanPham--;
 
 		this.DSSanPham[(vitriMon - 1)*SanPham.validSize + (kichThuoc - 1) + (loai == 2 ? 1 : 0)*ThucDon.indexOfCaPhe*SanPham.validSize]++;
 	}
 
 	private void thaydoiKichThuoc(int index, int size){
-
+		int cnt = 0;
+		size--;
+		for (int i = 0; i < ThucDon.thucdon.size() * SanPham.validSize; ++i){
+			if (this.DSSanPham[i] != 0){
+				++cnt;
+			}
+			if (cnt == index){
+				this.DSSanPham[i] = 0;
+				this.DSSanPham[i + (size - (i % SanPham.validSize))]++;
+				return;
+			}
+		}
 	}
 
 	private void xuliDonHang(){
 		while (true) {
-			System.out.println("Ban muon dung mon gi ?");
-			System.out.println("1. Tra sua");
-			System.out.println("2. Ca phe");
-			int loai = ChucNang.chuanHoa(1, 2);
-		
+			System.out.println("+=============================+");
+			System.out.println("|           DAT HANG          |");
+			System.out.println("+-----------------------------+");
+			System.out.println("| 1. Ca phe                   |");
+			System.out.println("| 2. Tra sua                  |");
+			// System.out.println("| 0. Thoat                    |");
+			System.out.println("+-----------------------------+");
+			System.out.println("|       VUI LONG LUA CHON     |");
+			System.out.println("+=============================+");
+			int loai = ChucNang.chuanHoa(0, 2);
+
+			// if (loai == 0) return;
+
 			ThucDon.xuatMenu(loai);
 
 			//chuan hoa du lieu
@@ -146,9 +160,10 @@ public class nvDatHang extends NhanVien{
 			//chuan hoa du lieu
 			int kichThuoc = ChucNang.chuanHoa(1, SanPham.validSize);
 
-
+			
+			if (this.DSSanPham[(vitriMon - 1)*SanPham.validSize + (kichThuoc - 1) + (loai == 2 ? 1 : 0)*ThucDon.indexOfCaPhe*SanPham.validSize] == 0) this.demSanPham++;
+			
 			this.DSSanPham[(vitriMon - 1)*SanPham.validSize + (kichThuoc - 1) + (loai == 2 ? 1 : 0)*ThucDon.indexOfCaPhe*SanPham.validSize]++;
-			this.demSanPham++;
 			
 			this.xuatDonHang();
 
@@ -187,19 +202,15 @@ public class nvDatHang extends NhanVien{
 					break;
 
 				case 2:
-					System.out.print("Nhap stt san pham can thay doi kich thuoc: ");
-					int spThayDoiSize = Integer.parseInt(scan.nextLine());
-					while (this.DSSanPham[spThayDoiSize] == 0){
-						System.out.println("STT khong hop le!");
-						System.out.print("Nhap stt san pham can thay doi kich thuoc: ");
-						spThayDoiSize = Integer.parseInt(scan.nextLine());
-					}
-					System.out.print("Nhap size muon thay doi: ");
+					System.out.println("Nhap stt san pham can thay doi kich thuoc: ");
+					int spThayDoiSize = ChucNang.chuanHoa(1, this.demSanPham);
+
+					System.out.println("Nhap size muon thay doi: ");
 					for (int i = 0 ; i < SanPham.validSize; ++i){
 						System.out.println((i + 1) + ". " + SanPham.size[i]);
 					}
-					System.out.print("Moi nhap lua chon: ");
-					int size = Integer.parseInt(scan.nextLine());
+					int size = ChucNang.chuanHoa(1, SanPham.validSize);
+
 					this.thaydoiKichThuoc(spThayDoiSize, size);
 					break;
 
@@ -221,16 +232,30 @@ public class nvDatHang extends NhanVien{
 		// scan.close();
 	}
 
-	private boolean DKThanhVien(int tong){
+	private ThanhVien DKThanhVien(){
 		System.out.println("Ban co muon dang ky thanh vien: ");
 		System.out.println("1. Co");
 		System.out.println("2. Khong");
 		int luachon = ChucNang.chuanHoa(1, 2);
-		if (luachon == 2) return false;
+		if (luachon == 2) return null;
 
-		DSThanhVien.themThanhVien(tong);
+		ThanhVien tv = DSThanhVien.themThanhVien();
 		
-		return true;
+		return tv;
+	}
+
+	private void thanhtoan(int tongtien, ThanhVien tv){
+			//DTL == diem tich luy
+		int sudungDTL = 0;
+		if (tv != null) {
+			System.out.println("Ban co " + tv.getDiemtichluy() + " diem tich luy");
+			System.out.println("Ban co muon su dung ?");
+			System.out.println("1. Co");
+			System.out.println("2. Khong");
+			sudungDTL = ChucNang.chuanHoa(1, 2);
+		}
+		System.out.println("Tong tien ban can thanh toan la: " + ChucNang.chuanHoaGia(tongtien - (sudungDTL == 1 ? tv.getDiemtichluy() : 0)) + 'd');
+		if (tv != null) tv.setDiemtichluy(tv.getDiemtichluy() + (tongtien / 1000));
 	}
 
 	private void nhanDonHang(){
@@ -249,7 +274,9 @@ public class nvDatHang extends NhanVien{
 		int tong = this.xuatDonHang();
 
 		//Tao the thanh vien
-		boolean check = this.DKThanhVien(tong);
+		ThanhVien tv = this.DKThanhVien();
+
+		this.thanhtoan(tong, tv);
 
 		//Se co 1 static function cua HoaDon de xuatHoaDon
 		//HoaDon.xuatHoaDon(this.DSSanPham);

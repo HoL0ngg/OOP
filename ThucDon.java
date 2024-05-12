@@ -12,9 +12,8 @@ public class ThucDon {
 	}
 
 	public static void setDonGiatuFile(String path) {
-		File file = new File(path);
-		try (Scanner scan = new Scanner(file)) {
-//			System.out.println("hehe");
+		// File file = new File(path);
+		try (Scanner scan = new Scanner(new File(path))) {
 			while (scan.hasNextLine()) {
 				String line = scan.nextLine();
 				String[] parts = line.split("#");
@@ -55,7 +54,7 @@ public class ThucDon {
 	public static void xuatMenu(int loai) {
 		int cntTab = (SanPham.maxLength / 8) + 1;
 		if (loai == 1){
-			System.out.println("--------------------- Tra sua ---------------------");
+			System.out.println("---------------------------- Tra sua ----------------------------");
 			for (int i = 0; i <= cntTab; ++i) {
 				System.out.print("\t");
 			}
@@ -79,14 +78,14 @@ public class ThucDon {
 					
 					int banggia[] = ts.getGiaTien();
 					for (int j = 0; j < SanPham.validSize; ++j) {
-						System.out.print(ThucDon.chuanHoaGia(banggia[j]) + "\t");
+						System.out.print(ChucNang.chuanHoaGia(banggia[j]) + "\t");
 					}
 					System.out.println();
 				}
 			}
 			System.out.println();
 		} else if (loai == 2){
-			System.out.println("--------------------- Ca phe ---------------------");
+			System.out.println("---------------------------- Ca phe ----------------------------");
 			for (int i = 0; i <= cntTab; ++i) {
 				System.out.print("\t");
 			}
@@ -108,7 +107,7 @@ public class ThucDon {
 		
 					int banggia[] = cf.getGiaTien();
 					for (int j = 0; j < SanPham.validSize; ++j) {
-						System.out.print(ThucDon.chuanHoaGia(banggia[j]) + "\t");
+						System.out.print(ChucNang.chuanHoaGia(banggia[j]) + "\t");
 					}
 					System.out.println();
 				}
@@ -120,30 +119,13 @@ public class ThucDon {
 		}
 	}
 
-	private static String chuanHoaGia(int gia){
-		String temp = Integer.toString(gia);
-		if(temp.length() <= 3)
-        	return temp;
-		int n = temp.length() / 3;
-		int i = temp.length() - 1;
-		int count = 0;
-		StringBuilder sb = new StringBuilder(temp);
-		while(n > 0){
-			i = i - 2 - count;
-			sb.insert(i, ",");
-			--n;
-			++count;
-		}
-		return sb.toString();
-	}
-
 	public static void xuatThongTinSP(SanPham sp){
 		System.out.println("Ma san pham: " + sp.getId());
 		System.out.println("Ten san pham: " + sp.getTen());
 		int temp[] = sp.getGiaTien();
 		System.out.print("Gia: ");
 		for (int i = 0; i < SanPham.validSize; ++i) {
-			System.out.print(ThucDon.chuanHoaGia(temp[i]) + "%-5s");
+			System.out.print(ChucNang.chuanHoaGia(temp[i]) + "%-5s");
 		}
 		System.out.println();
 	}

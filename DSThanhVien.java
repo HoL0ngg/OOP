@@ -14,7 +14,7 @@ public class DSThanhVien {
         DSTV = dSTV;
     }
 
-    public static void themThanhVien(int tong){
+    public static ThanhVien themThanhVien(){
         ThanhVien tv = new ThanhVien();
         System.out.println("Xin moi nhap thong tin");
         System.out.print("Nhap ten cua ban: ");
@@ -23,11 +23,11 @@ public class DSThanhVien {
         //tim kiem trong danh sach coi co ten chua
         for (ThanhVien Thanhvien : DSThanhVien.DSTV){
             if (Thanhvien.getTen().equalsIgnoreCase(ten)){
-                Thanhvien.setDiemtichluy(Thanhvien.getDiemtichluy() + tong);
-                return;
+                return Thanhvien;
             }
         }
 
-        tv.nhapThongTin(tong);
+        tv.nhapThongTin();
+        return tv;
     }
 }

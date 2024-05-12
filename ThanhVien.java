@@ -1,3 +1,6 @@
+import java.io.File;
+import java.util.Scanner;
+
 public class ThanhVien {
     private String id;
     private String ten;
@@ -39,11 +42,27 @@ public class ThanhVien {
         this.diemtichluy = diemtichluy;
     }
 
-    public void nhapThongTin(int tong){
+    public void nhapThongTin(){
         System.out.println("Nhap ngay thang nam sinh");
         NgayThang tmp = new NgayThang();
         tmp.nhapThongTin();
         this.setNgaysinh(tmp);
-        this.setDiemtichluy(tong);
+        this.setDiemtichluy(0);
+    }
+
+    public static void docDSThanhVienTuFile(String path){
+        // File file = new File(path);
+        try (Scanner scan = new Scanner(new File(path))){
+            while (scan.hasNextLine()) {
+                String line = scan.nextLine();
+            }
+
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
+
+    public static void ghiDSThanhVienTuFile(String path){
+        
     }
 }
