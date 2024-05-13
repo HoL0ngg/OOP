@@ -268,9 +268,22 @@ public class nvDatHang extends NhanVien{
 
 		//tong tien cua hoa don
 		int tong = this.xuatDonHang();
-
+		System.out.println("Ban co tai khoan tich diem hay khong?");
+		System.out.println("1. Co");
+		System.out.println("2. Khong");
+		int luachon = ChucNang.chuanHoa(1, 2);
+		ThanhVien tv = new ThanhVien();
+		switch (luachon) {
+			case 1:
+				System.out.print("Nhap so dien thoai thanh vien:");
+				String sdt = ChucNang.chuanHoaChuoi();
+				tv = DSThanhVien.timkiemTVTheoSDT(sdt);
+				break;
+			case 2:
+				tv = this.DKThanhVien();
+				break;
+		}
 		//Tao the thanh vien
-		ThanhVien tv = this.DKThanhVien();
 
 		this.thanhtoan(tong, tv);
 
@@ -306,5 +319,4 @@ public class nvDatHang extends NhanVien{
 			}
 		}
 	}
-
 }

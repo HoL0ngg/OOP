@@ -12,16 +12,15 @@ public class nvQuanLi extends NhanVien{
 
 	private void xuatDSNV(){
         sapXepTheoChucVu();
-        System.out.println("------------------------------------------------------ NHAN VIEN QUAN LY ------------------------------------------------------");
-        System.out.format("%-8s %-18s %-12s %-50s %-13s %-25s",
+        System.out.println("-------------------------------------------------------------- NHAN VIEN QUAN LY --------------------------------------------------------------");
+        System.out.format("%-8s %-18s %-15s %-55s %-13s %-33s",
 		"ID",
 		"|  Ten",
 		"|  Ngay sinh",
 		"|  Dia chi",
 		"|  SDT",
 		"|  Email");
-        System.out.println();
-        System.out.println("-------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------");
         int i = 0;
         while(this.dsNhanVien.getDSNV().get(i) instanceof nvQuanLi){
             this.dsNhanVien.getDSNV().get(i).xuatThongTin();
@@ -31,16 +30,15 @@ public class nvQuanLi extends NhanVien{
         }
         System.out.println();
 
-        System.out.println("------------------------------------------------------ NHAN VIEN PHA CHE ------------------------------------------------------");
-        System.out.format("%-8s %-18s %-12s %-50s %-13s %-25s",
+        System.out.println("-------------------------------------------------------------- NHAN VIEN PHA CHE --------------------------------------------------------------");
+        System.out.format("%-8s %-18s %-15s %-55s %-13s %-33s",
 		"ID",
 		"|  Ten",
 		"|  Ngay sinh",
 		"|  Dia chi",
 		"|  SDT",
 		"|  Email");
-        System.out.println();
-        System.out.println("-------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------");
         while (this.dsNhanVien.getDSNV().get(i) instanceof nvPhaChe) {
             this.dsNhanVien.getDSNV().get(i).xuatThongTin();
             ++i;
@@ -49,16 +47,15 @@ public class nvQuanLi extends NhanVien{
         }
         System.out.println();
 
-        System.out.println("------------------------------------------------------ NHAN VIEN DAT HANG ------------------------------------------------------");
-        System.out.format("%-8s %-18s %-12s %-50s %-13s %-25s",
+        System.out.println("-------------------------------------------------------------- NHAN VIEN DAT HANG --------------------------------------------------------------");
+        System.out.format("%-8s %-18s %-15s %-55s %-13s %-33s",
 		"ID",
 		"|  Ten",
 		"|  Ngay sinh",
 		"|  Dia chi",
 		"|  SDT",
 		"|  Email");
-        System.out.println();
-        System.out.println("-------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------");
         while (this.dsNhanVien.getDSNV().get(i) instanceof nvDatHang) {
             this.dsNhanVien.getDSNV().get(i).xuatThongTin();
             ++i;
@@ -150,7 +147,7 @@ public class nvQuanLi extends NhanVien{
 
 		//Hoi chon can chinh sua gi
 		while (true) {
-			System.out.format("%-8s %-18s %-12s %-50s %-13s %-25s",
+			System.out.format("%-8s %-18s %-15s %-55s %-13s %-33s",
 			"ID",
 			"|  Ten",
 			"|  Ngay sinh",
@@ -258,7 +255,7 @@ public class nvQuanLi extends NhanVien{
 	private void xuatDSNVTheoTen(){
 		System.out.print("Tim kiem: ");
 		String timkiem = ChucNang.chuanHoaChuoi();
-		System.out.format("%-8s %-18s %-12s %-50s %-13s %-25s",
+		System.out.format("%-8s %-18s %-15s %-55s %-13s %-33s",
 		"ID",
 		"|  Ten",
 		"|  Ngay sinh",
@@ -266,7 +263,7 @@ public class nvQuanLi extends NhanVien{
 		"|  SDT",
 		"|  Email");
         System.out.println();
-        System.out.println("-------------------------------------------------------------------------------------------------------------------------------");
+        System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------");
 		for(NhanVien nv : this.dsNhanVien.getDSNV()){
 			if(nv.getTen().contains(timkiem)){
 				nv.xuatThongTin();

@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class DSThanhVien {
@@ -19,16 +20,17 @@ public class DSThanhVien {
 
     public static void docDSTVTuFile(String filepath){
         try(Scanner scan = new Scanner(new File(filepath))) {
-            while(scan.hasNext()){
+            while(scan.hasNextLine()){
                 ThanhVien tv = new ThanhVien();
                 String line = scan.nextLine();
-                String[] parts = line.split(line);
+                String[] parts = line.split("#");
                 tv.setId(parts[0]);
                 tv.setTen(parts[1]);
-                NgayThang tmp = new NgayThang(Integer.parseInt(parts[2]), Integer.parseInt(parts[3]), Integer.parseInt(parts[4]));
+                tv.setSđt(parts[2]);
+                NgayThang tmp = new NgayThang(Integer.parseInt(parts[3]), Integer.parseInt(parts[4]), Integer.parseInt(parts[5]));
                 tv.setNgaysinh(tmp);
-                tv.setDiemtichluy(Integer.parseInt(parts[5]));
-                DSTV.add(tv);
+                tv.setDiemtichluy(Integer.parseInt(parts[6]));
+                DSThanhVien.DSTV.add(tv);
             }
         } catch (Exception e) {
             System.out.println("Khong the doc file " + filepath);
@@ -41,6 +43,7 @@ public class DSThanhVien {
                 StringBuilder sb = new StringBuilder();
                 sb.append(tv.getId() + "#");
                 sb.append(tv.getTen() + "#");
+                sb.append(tv.getSđt() + "#");
                 sb.append(tv.getNgaysinh().getNgay() + "#")
                 .append(tv.getNgaysinh().getThang() + "#")
                 .append(tv.getNgaysinh().getNam() + "#");
@@ -60,6 +63,7 @@ public class DSThanhVien {
             StringBuilder sb = new StringBuilder();
             sb.append(tv.getId() + "#");
             sb.append(tv.getTen() + "#");
+            sb.append(tv.getSđt() + "#");
             sb.append(tv.getNgaysinh().getNgay() + "#")
             .append(tv.getNgaysinh().getThang() + "#")
             .append(tv.getNgaysinh().getNam() + "#");
@@ -74,33 +78,68 @@ public class DSThanhVien {
     }
 
     public static void xuatDSTV(){
-        System.out.println("\n------------------------------------------------------ NHAN VIEN DAT HANG ------------------------------------------------------");
-        System.out.format("%-8s %-18s %-12s %-5",
+        System.out.println("\n------------------------- THANH VIEN -------------------------");
+        System.out.format("%-8s %-18s %-15s %-5s",
 		"ID",
 		"|  Ten",
 		"|  Ngay sinh",
-		"|  ",
-		"|  SDT",
-		"|  Email");
+		"|  Diem tich luy");
+        System.out.println();
+        System.out.println("--------------------------------------------------------------");
         for(ThanhVien tv : DSTV){
-            
+            tv.xuatThongTin();   
         }
+        System.out.println();
     }
+    
+    public static void xuatDSTVTheoNgaySinh(){
+        Collections.sort(DSTV, new SoSanhNgaySinh());
+        DSThanhVien.xuatDSTV();
+    }
+    
+    private static String sinhMaTuDong(){
+        int temp = DSTV.size() + 1; 
+        String stt = Integer.toString(temp);
+        int count = 5 - stt.length();
+        StringBuilder result = new StringBuilder();
+        result.append("TV");
+        while(count > 0){
+            result.append("0");
+            --count;
+        }
+        result.append(stt);
+        return result.toString();
+    }
+
     public static ThanhVien themThanhVien(){
         ThanhVien tv = new ThanhVien();
-        System.out.println("Xin moi nhap thong tin");
-        System.out.print("Nhap ten cua ban: ");
-        String ten = ChucNang.chuanHoaChuoi();
-        
+        tv.setId(DSThanhVien.sinhMaTuDong());
+        tv.nhapThongTin();
         //tim kiem trong danh sach coi co ten chua
         for (ThanhVien Thanhvien : DSThanhVien.DSTV){
-            if (Thanhvien.getTen().equalsIgnoreCase(ten)){
-                System.out.println("Ban do co tai khoan");
+            if (Thanhvien.getSđt().equalsIgnoreCase(tv.getSđt())){
+                System.out.println("Ban da co tai khoan");
+                tv = null;
                 return Thanhvien;
             }
         }
-
-        tv.nhapThongTin();
+        DSThanhVien.DSTV.add(tv);
+        DSThanhVien.ghiDSTVVaoFile("THANH_VIEN.txt", tv);
         return tv;
+    }
+
+    public static ThanhVien timkiemTVTheoSDT(String sdt){
+        for(ThanhVien tv : DSThanhVien.DSTV){
+            if(tv.getSđt().equalsIgnoreCase(sdt)){
+                return tv;
+            }
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        DSThanhVien.docDSTVTuFile("THANH_VIEN.txt");
+        ThanhVien tvmoi = DSThanhVien.themThanhVien();
+        DSThanhVien.xuatDSTV();
     }
 }
