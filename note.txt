@@ -1,7 +1,7 @@
 Format file "NHAN_VIEN.txt"
     <LoạiNV>#<ID>#<Tên>#<Tỉnh>#<Quận>#<Phường>#<SốNhà>#<TênĐường>#<SĐT>#<Email>#<NgàySinh>#<ThángSinh>#<NămSinh>
 Format file "THANH_VIEN.txt"
-    <ID>#<Tên>#<NgàySinh>#<ThángSinh>#<NămSinh>#<ĐiểmTíchLũy>
+    <ID>#<Tên>#<SĐT>#<NgàySinh>#<ThángSinh>#<NămSinh>#<ĐiểmTíchLũy>
 Format file "HOA_DON.txt"
     <IDHĐ>#<IDNV>#<Ngày>#<Tháng>#<Năm>#<TiềnHĐ>
 Format file "CHI_TIET_HOA_DON.txt

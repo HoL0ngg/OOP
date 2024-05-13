@@ -94,7 +94,7 @@ public abstract class NhanVien {
 	}
 
 	public void xuatThongTin(){
-		System.out.format("%-8s %-18s %-12s %-50s %-13s %-25s", 
+		System.out.format("%-8s %-18s %-15s %-55s %-13s %-33s", 
 		this.getId(),
 		"|  " + this.getTen(),
 		"|  " + this.getNgaysinh(),
