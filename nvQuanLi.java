@@ -106,11 +106,11 @@ public class nvQuanLi extends NhanVien{
 				nv = null;
 				break;
 			case 1:
-				this.dsNhanVien.getDSNV().add(nv);
+				this.dsNhanVien.ghiVaoFile("NHAN_VIEN.txt", nv);
+				this.docDSNVTuFile("NHAN_VIEN");
 				System.out.println("Them nhan vien thanh cong");
 				break;
 		}
-		this.dsNhanVien.ghiVaoFile("NHAN_VIEN.txt", nv);
 	}
 
 	private NhanVien timkiemID(String id){
@@ -136,7 +136,6 @@ public class nvQuanLi extends NhanVien{
 	} 
 
 	private void chinhsuaThongTinNV(){
-		docDSNVTuFile("NHAN_VIEN.txt");
 		this.xuatDSNV();
 		NhanVien nvThayDoiTT = null;
 		//chuan hoa du lieu
@@ -227,7 +226,7 @@ public class nvQuanLi extends NhanVien{
 				if (sp instanceof CaPhe) ThucDon.setSanPhamVaoFile("caphe.txt", sp);
 				ThucDon.thucdon.add(ThucDon.indexOfCaPhe * ((sp instanceof CaPhe) ? 1 : 0), sp);
 				if (sp instanceof TraSua) ThucDon.indexOfCaPhe++;
-				System.out.println("Da them san pham");
+				System.out.println("Da them san pham\n");
 				break;
 		}
 	}
@@ -275,6 +274,8 @@ public class nvQuanLi extends NhanVien{
 		}
 	}
 
+	private void chinhsuaTen(int indexSpThayDoi){}
+
 	private void chinhsuaSanPham(){
 		ThucDon.xuatMenu(3);
 		System.out.print("Nhap ten san pham can chinh sua: ");
@@ -321,12 +322,12 @@ public class nvQuanLi extends NhanVien{
 
 	@Override
 	public void menu() {
+		ThucDon.thucdon.clear();
+		this.dsNhanVien.getDSNV().clear();
+		this.docDSNVTuFile("NHAN_VIEN.txt");
+		ThucDon.setDonGiatuFile("trasua.txt");
+		ThucDon.setDonGiatuFile("caphe.txt");
 		while (true) {
-			ThucDon.thucdon.clear();
-			this.dsNhanVien.getDSNV().clear();
-			this.docDSNVTuFile("NHAN_VIEN.txt");
-			ThucDon.setDonGiatuFile("trasua.txt");
-			ThucDon.setDonGiatuFile("caphe.txt");
 			System.out.println("+=======================================================+");
             System.out.println("|			NHAN VIEN QUAN LI		|");
             System.out.println("+-------------------------------------------------------+");
@@ -378,6 +379,4 @@ public class nvQuanLi extends NhanVien{
 			}
 		}
 	}
-
-	
 }
