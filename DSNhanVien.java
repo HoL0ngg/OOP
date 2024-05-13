@@ -19,9 +19,8 @@ public class DSNhanVien {
     }
 
     public void nhapNVtuFile(String path){
-        File file = new File(path);
-        NhanVien nv = null;
-        try (Scanner scan = new Scanner(file)){
+        try (Scanner scan = new Scanner(new File(path))){
+            NhanVien nv = null;
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
                 String[] parts = line.split("#");
@@ -51,6 +50,7 @@ public class DSNhanVien {
             System.out.println("Khong the mo file");
         }
     }
+    
     public boolean kiemTraIDNV(String id){
         for(NhanVien nv : this.getDSNV()){
             if(nv.getId().equalsIgnoreCase(id)){
