@@ -23,6 +23,7 @@ public class DSThanhVien {
         //tim kiem trong danh sach coi co ten chua
         for (ThanhVien Thanhvien : DSThanhVien.DSTV){
             if (Thanhvien.getTen().equalsIgnoreCase(ten)){
+                System.out.println("Ban do co tai khoan");
                 return Thanhvien;
             }
         }

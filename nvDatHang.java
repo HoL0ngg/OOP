@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class nvDatHang extends NhanVien{
 	// private ArrayList<SanPham> DSSanPham;
 
@@ -180,7 +177,6 @@ public class nvDatHang extends NhanVien{
 	
 	private void kiemTralai(){
 		//Phan nay chua lam xong !!!
-		Scanner scan = new Scanner(System.in);
 		System.out.println("Ban co muon thay doi gi khong ?");
 		System.out.println("1. Co");
 		System.out.println("2. Khong");

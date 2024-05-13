@@ -107,7 +107,7 @@ public class nvQuanLi extends NhanVien{
 				break;
 			case 1:
 				this.dsNhanVien.ghiVaoFile("NHAN_VIEN.txt", nv);
-				this.docDSNVTuFile("NHAN_VIEN");
+				// this.docDSNVTuFile("NHAN_VIEN");
 				System.out.println("Them nhan vien thanh cong");
 				break;
 		}
