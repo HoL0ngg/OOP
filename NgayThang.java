@@ -39,12 +39,13 @@ public class NgayThang {
 	}
 	
 	public void nhapThongTin() {
-		System.out.println("Nhap ngay");
-		this.setNgay(ChucNang.chuanHoa(1, 31));
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Nhap ngay: ");
+		this.setNgay(Integer.parseInt(scan.nextLine()));
 		System.out.println("Nhap thang");
-		this.setThang(ChucNang.chuanHoa(1, 12));
+		this.setThang(Integer.parseInt(scan.nextLine()));
 		System.out.println("Nhap nam");
-		this.setNam(ChucNang.chuanHoa(1, 2024));
+		this.setNam(Integer.parseInt(scan.nextLine()));
 	}
 	public String xuatThongTin(){
 		return this.getNgay() + "/" + this.getThang() + "/" + this.getNam();
