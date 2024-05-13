@@ -129,6 +129,7 @@ public class ThucDon {
 		}
 		System.out.println();
 	}
+	
 	//sap xep theo gia tien
 	public static void sxTheoGia(){
 
