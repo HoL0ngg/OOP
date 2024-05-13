@@ -7,6 +7,7 @@ public class nvQuanLi extends NhanVien{
 	//getter/setters
 
 	public nvQuanLi(){
+		super();
 		this.dsNhanVien = new DSNhanVien();
 	}
 

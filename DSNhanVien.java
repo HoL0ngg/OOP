@@ -33,7 +33,6 @@ public class DSNhanVien {
                         break;
                     case 3:
                         nv  = new nvDatHang();
-                    default:
                         break;
                 }
                 nv.setId(parts[1]);

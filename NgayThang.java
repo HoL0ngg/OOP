@@ -47,7 +47,9 @@ public class NgayThang {
 		System.out.println("Nhap nam");
 		this.setNam(Integer.parseInt(scan.nextLine()));
 	}
-	public String xuatThongTin(){
+
+	@Override
+	public String toString(){
 		return this.getNgay() + "/" + this.getThang() + "/" + this.getNam();
 	}
 }

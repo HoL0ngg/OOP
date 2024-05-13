@@ -5,6 +5,7 @@ public class nvDatHang extends NhanVien{
 	private DSHoaDon dshd = new DSHoaDon();
 
 	public nvDatHang(){
+		super();
 	}
 
 	private int xuatDonHang(){
@@ -133,8 +134,8 @@ public class nvDatHang extends NhanVien{
 			System.out.println("+=============================+");
 			System.out.println("|           DAT HANG          |");
 			System.out.println("+-----------------------------+");
-			System.out.println("| 1. Ca phe                   |");
-			System.out.println("| 2. Tra sua                  |");
+			System.out.println("| 1. Tra sua                  |");
+			System.out.println("| 2. Ca phe                   |");
 			// System.out.println("| 0. Thoat                    |");
 			System.out.println("+-----------------------------+");
 			System.out.println("|       VUI LONG LUA CHON     |");
@@ -276,6 +277,8 @@ public class nvDatHang extends NhanVien{
 
 		dshd.them(this.DSSanPham, this);
 
+		dshd.xuatToanboHoadon();
+
 		//Se co 1 static function cua HoaDon de xuatHoaDon
 		//HoaDon.xuatHoaDon(this.DSSanPham);
 
@@ -298,7 +301,7 @@ public class nvDatHang extends NhanVien{
 				case 1:
 					this.nhanDonHang();
 					break;
-				case 3:
+				case 0:
 					return;
 			}
 		}

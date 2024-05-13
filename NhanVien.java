@@ -97,7 +97,7 @@ public abstract class NhanVien {
 		System.out.format("%-8s %-18s %-12s %-50s %-13s %-25s", 
 		this.getId(),
 		"|  " + this.getTen(),
-		"|  " + this.getNgaysinh().xuatThongTin(),
+		"|  " + this.getNgaysinh(),
 		"|  " + this.getDc().xuatThongTin(),
 		"|  " + this.getSdt(),
 		"|  " + this.getEmail());

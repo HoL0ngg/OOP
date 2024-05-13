@@ -19,15 +19,12 @@ public class test {
 				for (NhanVien nv : dsnv.getDSNV()){
 					// ten dang nhap voi mat khau chua biet xai cai nao
 					if (nv.getTen().equals(name) && nv.getSdt().equals(pass)){
-						if (nv instanceof nvDatHang)
-							nhanvien = new nvDatHang();
-						if (nv instanceof nvQuanLi) 
-							nhanvien = new nvQuanLi();
-						if (nv instanceof nvPhaChe) 
-							nhanvien = new nvPhaChe();
+						nhanvien = nv;
+						break;
 					}
 				}
 			}
+			System.out.println(nhanvien.getNgaysinh());
 			nhanvien.menu();
 		}
 	}

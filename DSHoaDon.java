@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class DSHoaDon {
-    private ArrayList<Hoadon> DSHD;
-    private ArrayList<CTHD> CTHDList;
+    private List<Hoadon> DSHD = new ArrayList<>();
+    private List<CTHD> CTHDList = new ArrayList<>();
     // public static List<Object[]> nhanvienList = new ArrayList<>();
     //so luong hoa don
     public static int SLHD = 1;
@@ -71,54 +71,56 @@ public class DSHoaDon {
 
     }
     
-//     public void xuat() {
-//         System.out.println("+=============================+");
-//         System.out.println("|        XUAT HOA DON         |");
-//         System.out.println("+-----------------------------+");
-//         System.out.printf("| Nhap ma hoa don: ");
-//         String ma = Rangbuoc.rangbuocMaHoadon();
-//         int found = 0;
-//         for (Hoadon hd : DSHD) {
-//             if (hd.getMaHoadon().equals(ma)) {
-//                 Rangbuoc.clrscr();
-//                 System.out.println("+===============================================================+");
-//                 System.out.println("|                           HOA DON                             |");
-//                 System.out.println("+---------------------------------------------------------------+");
-//                 System.out.printf("| Ma hoa don: %-49s |\n", hd.getMaHoadon());
-//                 System.out.printf("| Ma nhan vien: %-47s |\n", hd.getMaNhanvien());
-//                 System.out.printf("| Ngay: %-55s |\n", Rangbuoc.traDate(hd.getNgayHoadon()));
-//                 System.out.println("+_______________________________________________________________+");
-//                 System.out.println("| STT   Ten      Loai    Size    SL      Don gia      Tien      |");
-//                 System.out.println("+---------------------------------------------------------------+");
-//                 int stt = 1;
-//                 for (CTHD cthd : CTHDList) {
-//                     if (cthd.getMaChitetHoadon().equals(ma)) {
-//                         System.out.printf("| %-5s%-9s%-10s%-8s%-6d%-13.2f%-10.2f |\n",
-//                                 stt++, getTenSP(cthd.getId()), getLoaiSP(cthd.getId()),
-//                                 cthd.getSize(), cthd.getSoluongSanpham(),
-//                                 cthd.getDonGia(), cthd.getDonGia() * cthd.getSoluongSanpham());
-//                     }
-//                 }
-//                 System.out.println("+---------------------------------------------------------------+");
-//                 System.out.printf("| Tong tien: %-50.2f |\n", hd.getTienHoadon());
-//                 System.out.println("+===============================================================+");
-//                 found ++;
-//             }
-//         }
-//         if (found == 0) {
-//             System.out.println("Khong co thong tin hoa don!");
-//             System.out.println("Vui long thu lai!");
-//             return;
-//         }
-//     }
-//     public void xuatToanboHoadon() {
-//         System.out.println("+===================================+");
-//         System.out.println("|         DANH SÁCH HÓA ĐƠN         |");
-//         System.out.println("+-----------------------------------+");
-//         for (Hoadon hoadon : DSHD) {
-//         }
-//         System.out.println("+-----------------------------------+");
-//     }
+    // public void xuat() {
+    //     System.out.println("+=============================+");
+    //     System.out.println("|        XUAT HOA DON         |");
+    //     System.out.println("+-----------------------------+");
+    //     System.out.printf("| Nhap ma hoa don: ");
+    //     String ma = Rangbuoc.rangbuocMaHoadon();
+    //     int found = 0;
+    //     for (Hoadon hd : DSHD) {
+    //         if (hd.getMaHoadon().equals(ma)) {
+    //             Rangbuoc.clrscr();
+    //             System.out.println("+===============================================================+");
+    //             System.out.println("|                           HOA DON                             |");
+    //             System.out.println("+---------------------------------------------------------------+");
+    //             System.out.printf("| Ma hoa don: %-49s |\n", hd.getMaHoadon());
+    //             System.out.printf("| Ma nhan vien: %-47s |\n", hd.getMaNhanvien());
+    //             System.out.printf("| Ngay: %-55s |\n", Rangbuoc.traDate(hd.getNgayHoadon()));
+    //             System.out.println("+_______________________________________________________________+");
+    //             System.out.println("| STT   Ten      Loai    Size    SL      Don gia      Tien      |");
+    //             System.out.println("+---------------------------------------------------------------+");
+    //             int stt = 1;
+    //             for (CTHD cthd : CTHDList) {
+    //                 if (cthd.getMaChitetHoadon().equals(ma)) {
+    //                     System.out.printf("| %-5s%-9s%-10s%-8s%-6d%-13.2f%-10.2f |\n",
+    //                             stt++, getTenSP(cthd.getId()), getLoaiSP(cthd.getId()),
+    //                             cthd.getSize(), cthd.getSoluongSanpham(),
+    //                             cthd.getDonGia(), cthd.getDonGia() * cthd.getSoluongSanpham());
+    //                 }
+    //             }
+    //             System.out.println("+---------------------------------------------------------------+");
+    //             System.out.printf("| Tong tien: %-50.2f |\n", hd.getTienHoadon());
+    //             System.out.println("+===============================================================+");
+    //             found ++;
+    //         }
+    //     }
+    //     if (found == 0) {
+    //         System.out.println("Khong co thong tin hoa don!");
+    //         System.out.println("Vui long thu lai!");
+    //         return;
+    //     }
+    // }
+
+    public void xuatToanboHoadon() {
+        System.out.println("+===================================+");
+        System.out.println("|         DANH SÁCH HÓA ĐƠN         |");
+        System.out.println("+-----------------------------------+");
+        for (Hoadon hoadon : DSHD) {
+            hoadon.xuatHoadon();
+        }
+        System.out.println("+-----------------------------------+");
+    }
 //     public void quanlyDanhsachHoadon() {
 //         setData();
 //         int choose;
