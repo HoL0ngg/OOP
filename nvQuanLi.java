@@ -107,7 +107,7 @@ public class nvQuanLi extends NhanVien{
 				break;
 			case 1:
 				this.dsNhanVien.ghiVaoFile("NHAN_VIEN.txt", nv);
-				this.docDSNVTuFile("NHAN_VIEN");
+				// this.docDSNVTuFile("NHAN_VIEN");
 				System.out.println("Them nhan vien thanh cong");
 				break;
 		}
@@ -274,7 +274,21 @@ public class nvQuanLi extends NhanVien{
 		}
 	}
 
-	private void chinhsuaTen(int indexSpThayDoi){}
+	private void chinhsuaTen(int indexSpThayDoi){
+		System.out.println("Nhap vao ten san pham muon chinh sua: ");
+		String ten = ChucNang.chuanHoaChuoi();
+		ThucDon.thucdon.get(indexSpThayDoi).setTen(ten);
+	}
+
+	private void chinhsuaDonGia(int indexSpThayDoi){
+		Scanner scan = new Scanner(System.in);
+		int tmp[] = new int[SanPham.validSize];
+		for (int i = 0; i < SanPham.validSize; ++i){
+			System.out.print("Nhap gia size " + SanPham.size[i] + ": ");
+			tmp[i] = Integer.parseInt(scan.nextLine());
+		}
+		ThucDon.thucdon.get(indexSpThayDoi).setGiaTien(tmp);
+	}
 
 	private void chinhsuaSanPham(){
 		ThucDon.xuatMenu(3);
@@ -292,23 +306,23 @@ public class nvQuanLi extends NhanVien{
 			System.out.println("Chon thong tin can chinh sua");
 			System.out.println("1. Ten");
 			System.out.println("2. Don gia");
-			System.out.println("3. So luong hang");
-			luachon = ChucNang.chuanHoa(1, 3);
+			// System.out.println("3. So luong hang");
+			luachon = ChucNang.chuanHoa(1, 2);
 
 
 			//Phan nay chua lam !!!
 
-			// switch (luachon) {
-			// 	case 1:
-			// 		this.chinhsuaTen(indexSpThayDoi);
-			// 		break;
-			// 	case 2:
-			// 		this.chinhsuaDonGia(indexSpThayDoi);
-			// 		break;
-			// 	case 3:
-			// 		this.chinhsuaSoLuongHang(indexSpThayDoi);
-			// 		break;
-			// }
+			switch (luachon) {
+				case 1:
+					this.chinhsuaTen(indexSpThayDoi);
+					break;
+				case 2:
+					this.chinhsuaDonGia(indexSpThayDoi);
+					break;
+				// case 3:
+				// 	this.chinhsuaSoLuongHang(indexSpThayDoi);
+				// 	break;
+			}
 
 			System.out.println("Ban co muon chinh sua nua khong ?");
 			System.out.println("1. Co");
