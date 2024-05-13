@@ -327,16 +327,30 @@ public class nvQuanLi extends NhanVien{
 			this.docDSNVTuFile("NHAN_VIEN.txt");
 			ThucDon.setDonGiatuFile("trasua.txt");
 			ThucDon.setDonGiatuFile("caphe.txt");
-			System.out.println("----------------------- NHAN VIEN QUAN LI -----------------------");
-			System.out.println("1. Them san pham moi");
-			System.out.println("2. Cap nhat va chinh sua thong tin san pham");
-			System.out.println("3. Xoa san pham");
-			System.out.println("4. Them nhan vien moi");
-			System.out.println("5. Chinh sua thong tin nhan vien");
-			System.out.println("6. Tim kiem thong tin nhan vien");
-			System.out.println("7. Xuat danh sach nhan vien");
-			System.out.println("8. Dang xuat");
-			int luachon = ChucNang.chuanHoa(1, 8);
+			System.out.println("+=======================================================+");
+            System.out.println("|			NHAN VIEN QUAN LI		|");
+            System.out.println("+-------------------------------------------------------+");
+            System.out.println("| 0. Dang xuat						|");
+            System.out.println("| 1. Them san pham moi					|");
+            System.out.println("| 2. Cap nhat va chinh sua thong tin san pham		|");
+            System.out.println("| 3. Xoa san pham					|");
+            System.out.println("| 4. Them nhan vien moi					|");
+            System.out.println("| 5. Chinh sua thong tin nhan vien			|");
+            System.out.println("| 6. Tim kiem thong tin nhan vien			|");
+            System.out.println("| 7. Xuat danh sach nhan vien				|");
+            System.out.println("+=======================================================+");
+
+			// System.out.println("----------------------- NHAN VIEN QUAN LI -----------------------");
+			// System.out.println("1. Them san pham moi");
+			// System.out.println("2. Cap nhat va chinh sua thong tin san pham");
+			// System.out.println("3. Xoa san pham");
+			// System.out.println("4. Them nhan vien moi");
+			// System.out.println("5. Chinh sua thong tin nhan vien");
+			// System.out.println("6. Tim kiem thong tin nhan vien");
+			// System.out.println("7. Xuat danh sach nhan vien");
+			// System.out.println("8. Dang xuat");
+
+			int luachon = ChucNang.chuanHoa(0, 7);
 			switch (luachon) {
 				case 1:
 					this.themSanPham();
@@ -359,7 +373,7 @@ public class nvQuanLi extends NhanVien{
 				case 7:
 					this.xuatDSNV();
 					break;
-				case 8:
+				case 0:
 					return;		
 			}
 		}

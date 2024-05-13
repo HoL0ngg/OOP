@@ -286,12 +286,16 @@ public class nvDatHang extends NhanVien{
 	//Menu cho nhan vien dat hang
 	public void menu( ) {
 		while(true){
-			System.out.println("--------------------- NHAN VIEN DAT HANG ---------------------");
-			System.out.println();
-			System.out.println("1. Nhan don hang");
-			System.out.println("2. Lam gi do");
-			System.out.println("3. Dang xuat");
-			int luachon = ChucNang.chuanHoa(1, 3);
+			System.out.println("+===================================+");
+            System.out.println("|         NHAN VIEN DAT HANG        |");
+            System.out.println("+-----------------------------------+");
+            System.out.println("| 0. Dang xuat                      |");
+            System.out.println("| 1. Nhan don hang                  |");
+            System.out.println("+===================================+");
+			int luachon = ChucNang.chuanHoa(0, 1);
+
+			if (luachon == 0) break;
+			
 			switch (luachon) {
 				case 1:
 					this.nhanDonHang();
