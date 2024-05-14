@@ -249,7 +249,8 @@ public class nvDatHang extends NhanVien{
 			System.out.println("2. Khong");
 			sudungDTL = ChucNang.chuanHoa(1, 2);
 		}
-		System.out.println("Tong tien ban can thanh toan la: " + ChucNang.chuanHoaGia(tongtien - (sudungDTL == 1 ? tv.getDiemtichluy() : 0)) + 'd');
+		tongtien = tongtien - (sudungDTL == 1 ? tv.getDiemtichluy() : 0);
+		System.out.println("Tong tien ban can thanh toan la: " + ChucNang.chuanHoaGia(tongtien + 'd'));
 		if (tv != null) tv.setDiemtichluy(tv.getDiemtichluy() + (tongtien / 1000));
 	}
 
@@ -289,8 +290,6 @@ public class nvDatHang extends NhanVien{
 
 		DSHoaDon.them(this.DSSanPham, this);
 
-		//Se co 1 static function cua HoaDon de xuatHoaDon
-		//HoaDon.xuatHoaDon(this.DSSanPham);
 
 	}
 	
