@@ -12,9 +12,9 @@ public class test {
 		ThucDon.setDonGiatuFile("trasua.txt");
 		ThucDon.setDonGiatuFile("caphe.txt");
 		
-		NhanVien nhanvien = null;
 		
 		while (true) {
+			NhanVien nhanvien = null;
 			while (nhanvien == null) {
 				System.out.println("+========================================+");
 				System.out.println("|         EINHORN COFFE - TEA SHOP       |");

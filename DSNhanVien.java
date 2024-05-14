@@ -4,18 +4,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DSNhanVien {
-    private ArrayList<NhanVien> dsnv;
+    private static ArrayList<NhanVien> dsnv = new ArrayList<NhanVien>();
 
     public DSNhanVien(){
-        this.dsnv = new ArrayList<NhanVien>();
     }
 
     public DSNhanVien(ArrayList<NhanVien> dsnv){
-        this.dsnv = dsnv;
+        DSNhanVien.dsnv = dsnv;
     }
 
     public ArrayList<NhanVien> getDSNV(){
-        return this.dsnv;
+        return DSNhanVien.dsnv;
     }
 
     public void nhapNVtuFile(String path){
@@ -43,7 +42,7 @@ public class DSNhanVien {
                 nv.setEmail(parts[9]);
                 NgayThang ngaysinh = new NgayThang(Integer.parseInt(parts[10]), Integer.parseInt(parts[11]), Integer.parseInt(parts[12]));
                 nv.setNgaysinh(ngaysinh);
-                this.dsnv.add(nv);
+                DSNhanVien.dsnv.add(nv);
             }
         } catch (Exception e) {
             System.out.println("Khong the mo file");
@@ -122,6 +121,7 @@ public class DSNhanVien {
             .append(nvmoi.getNgaysinh().getNam());
             sb.append(System.lineSeparator());
             fw.write(sb.toString());
+            DSNhanVien.dsnv.add(nvmoi);
             fw.flush();
             fw.close();
         } catch (Exception e) {

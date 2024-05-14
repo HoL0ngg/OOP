@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class nvQuanLi extends NhanVien{
 	private DSNhanVien dsNhanVien;
-	private DSHoaDon dsHoaDon;
+	// private DSHoaDon dsHoaDon;
 
 	//getter/setters
 
@@ -106,7 +106,6 @@ public class nvQuanLi extends NhanVien{
 				break;
 			case 1:
 				this.dsNhanVien.ghiVaoFile("NHAN_VIEN.txt", nv);
-				// this.docDSNVTuFile("NHAN_VIEN");
 				System.out.println("Them nhan vien thanh cong!");
 				break;
 		}
@@ -223,8 +222,12 @@ public class nvQuanLi extends NhanVien{
 			case 1:
 				if (sp instanceof TraSua) ThucDon.setSanPhamVaoFile("trasua.txt", sp);
 				if (sp instanceof CaPhe) ThucDon.setSanPhamVaoFile("caphe.txt", sp);
-				ThucDon.thucdon.add(ThucDon.indexOfCaPhe * ((sp instanceof CaPhe) ? 1 : 0), sp);
-				if (sp instanceof TraSua) ThucDon.indexOfCaPhe++;
+				if (sp instanceof TraSua) {
+					ThucDon.thucdon.add(ThucDon.indexOfCaPhe, sp);
+					ThucDon.indexOfCaPhe++;
+				} else {
+					ThucDon.thucdon.add(sp);
+				}
 				System.out.println("Da them san pham\n");
 				break;
 		}
@@ -335,11 +338,6 @@ public class nvQuanLi extends NhanVien{
 
 	@Override
 	public void menu() {
-		ThucDon.thucdon.clear();
-		this.dsNhanVien.getDSNV().clear();
-		this.docDSNVTuFile("NHAN_VIEN.txt");
-		ThucDon.setDonGiatuFile("trasua.txt");
-		ThucDon.setDonGiatuFile("caphe.txt");
 		while (true) {
 			System.out.println("+=======================================================+");
             System.out.println("|			NHAN VIEN QUAN LI		|");
@@ -388,7 +386,7 @@ public class nvQuanLi extends NhanVien{
 					this.xuatDSNV();
 					break;
 				case 0:
-					return;		
+					return;
 			}
 		}
 	}

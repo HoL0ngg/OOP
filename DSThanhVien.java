@@ -137,10 +137,4 @@ public class DSThanhVien {
         }
         return null;
     }
-
-    public static void main(String[] args) {
-        DSThanhVien.docDSTVTuFile("THANH_VIEN.txt");
-        ThanhVien tvmoi = DSThanhVien.themThanhVien();
-        DSThanhVien.xuatDSTV();
-    }
 }

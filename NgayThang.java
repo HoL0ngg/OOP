@@ -40,11 +40,11 @@ public class NgayThang {
 	
 	public void nhapThongTin() {
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Nhap ngay: ");
+		System.out.print("Nhap ngay: ");
 		this.setNgay(Integer.parseInt(scan.nextLine()));
-		System.out.println("Nhap thang");
+		System.out.print("Nhap thang: ");
 		this.setThang(Integer.parseInt(scan.nextLine()));
-		System.out.println("Nhap nam");
+		System.out.print("Nhap nam: ");
 		this.setNam(Integer.parseInt(scan.nextLine()));
 	}
 

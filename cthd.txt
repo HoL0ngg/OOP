@@ -4,3 +4,4 @@ HD2#Ca phe muoi#L#1#20000#
 HD3#Tra sua viet quoc#M#1#20000#
 HD3#Tra dao#L#1#17000#
 HD3#Ca phe muoi#L#1#20000#
+HD4#Ca phe trung#M#1#20000#
