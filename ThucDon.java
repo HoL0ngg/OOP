@@ -3,7 +3,7 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ThucDon{
+public class ThucDon {
 
 	public static ArrayList<SanPham> thucdon = new ArrayList<SanPham>();
 	public static int indexOfCaPhe = 0;
@@ -20,9 +20,9 @@ public class ThucDon{
 
 				String id = parts[0].trim();
 				String ten = parts[1].trim();
-				
+
 				SanPham.maxLength = ten.length() > SanPham.maxLength ? ten.length() : SanPham.maxLength;
-				
+
 				SanPham sp = null;
 
 				if (path.equals("trasua.txt")) {
@@ -53,29 +53,28 @@ public class ThucDon{
 
 	public static void xuatMenu(int loai) {
 		int cntTab = (SanPham.maxLength / 8) + 1;
-		if (loai == 1){
+		if (loai == 1) {
 			System.out.println("---------------------------- Tra sua ----------------------------");
 			for (int i = 0; i <= cntTab; ++i) {
 				System.out.print("\t");
 			}
 			for (int i = 0; i < SanPham.validSize; ++i) {
-					System.out.print(SanPham.size[i] + "\t");
+				System.out.print(SanPham.size[i] + "\t");
 			}
 			System.out.println();
 			int index = 1;
 			for (SanPham sp : thucdon) {
 				if (sp instanceof TraSua) {
-				System.out.print((index++) + ". " + sp.getTen());
-					
-				int lengthTS = (sp.getTen().length() + 2 + (String.valueOf(index-1).length())) / 8;
-	
+					System.out.print((index++) + ". " + sp.getTen());
+
+					int lengthTS = (sp.getTen().length() + 2 + (String.valueOf(index - 1).length())) / 8;
+
 					TraSua ts = (TraSua) sp;
 					// tab ra cho dep
-				for (int j = lengthTS; j <= cntTab;++j) {
-					System.out.print("\t");
-				}
-				
-					
+					for (int j = lengthTS; j <= cntTab; ++j) {
+						System.out.print("\t");
+					}
+
 					int banggia[] = ts.getGiaTien();
 					for (int j = 0; j < SanPham.validSize; ++j) {
 						System.out.print(ChucNang.chuanHoaGia(banggia[j]) + "\t");
@@ -84,7 +83,7 @@ public class ThucDon{
 				}
 			}
 			System.out.println();
-		} else if (loai == 2){
+		} else if (loai == 2) {
 			System.out.println("---------------------------- Ca phe ----------------------------");
 			for (int i = 0; i <= cntTab; ++i) {
 				System.out.print("\t");
@@ -97,14 +96,14 @@ public class ThucDon{
 			for (SanPham sp : thucdon) {
 				if (sp instanceof CaPhe) {
 					System.out.print((index++) + ". " + sp.getTen());
-		
+
 					CaPhe cf = (CaPhe) sp;
-						// tab ra cho dep
-					int lengthTS = (sp.getTen().length() + 2 + (String.valueOf(index-1).length())) / 8;
+					// tab ra cho dep
+					int lengthTS = (sp.getTen().length() + 2 + (String.valueOf(index - 1).length())) / 8;
 					for (int j = lengthTS; j <= cntTab; ++j) {
 						System.out.print("\t");
 					}
-		
+
 					int banggia[] = cf.getGiaTien();
 					for (int j = 0; j < SanPham.validSize; ++j) {
 						System.out.print(ChucNang.chuanHoaGia(banggia[j]) + "\t");
@@ -119,7 +118,7 @@ public class ThucDon{
 		}
 	}
 
-	public static void xuatThongTinSP(SanPham sp){
+	public static void xuatThongTinSP(SanPham sp) {
 		System.out.println("Ma san pham: " + sp.getId());
 		System.out.println("Ten san pham: " + sp.getTen());
 		int temp[] = sp.getGiaTien();
@@ -129,45 +128,45 @@ public class ThucDon{
 		}
 		System.out.println();
 	}
-	
-	//sap xep theo gia tien
-	public static void sxTheoGia(){
+
+	// sap xep theo gia tien
+	public static void sxTheoGia() {
 
 	}
 
-	public static SanPham timKiemSPTheoID(String id){
-		for(SanPham sp : thucdon){
-			if(sp.getId().equalsIgnoreCase(id)){
+	public static SanPham timKiemSPTheoID(String id) {
+		for (SanPham sp : thucdon) {
+			if (sp.getId().equalsIgnoreCase(id)) {
 				return sp;
 			}
 		}
 		return null;
 	}
 
-	public static boolean kiemTraID(String id){
-		for(SanPham sp : ThucDon.thucdon){
-			if(sp.getId().equalsIgnoreCase(id)){
+	public static boolean kiemTraID(String id) {
+		for (SanPham sp : ThucDon.thucdon) {
+			if (sp.getId().equalsIgnoreCase(id)) {
 				return false;
 			}
 		}
 		return true;
 	}
 
-	public static void ghiDSVaoFile(){
+	public static void ghiDSVaoFile() {
 		File file1 = new File("trasua.txt");
 		File file2 = new File("caphe.txt");
-		try (FileWriter fw1 = new FileWriter(file1, false); FileWriter fw2 = new FileWriter(file2, false)){
-			for(SanPham sp : ThucDon.thucdon){
+		try (FileWriter fw1 = new FileWriter(file1, false); FileWriter fw2 = new FileWriter(file2, false)) {
+			for (SanPham sp : ThucDon.thucdon) {
 				StringBuilder sb = new StringBuilder();
 				sb.append(sp.getId()).append("\t\t").append("#");
 				sb.append(sp.getTen()).append("\t\t").append("#");
 				int tmp[] = sp.getGiaTien();
-				for (int i = 0; i < SanPham.validSize; ++i){
+				for (int i = 0; i < SanPham.validSize; ++i) {
 					sb.append(tmp[i]).append("#");
 				}
 				sb.deleteCharAt(sb.lastIndexOf("#"));
 				sb.append(System.lineSeparator());
-				if(sp instanceof TraSua){
+				if (sp instanceof TraSua) {
 					fw1.write(sb.toString());
 				} else {
 					fw2.write(sb.toString());
@@ -182,13 +181,13 @@ public class ThucDon{
 		}
 	}
 
-	public static void setSanPhamVaoFile(String path, SanPham sp){
-		try (FileWriter fw = new FileWriter(path, true)){
+	public static void setSanPhamVaoFile(String path, SanPham sp) {
+		try (FileWriter fw = new FileWriter(path, true)) {
 			StringBuilder sb = new StringBuilder();
 			sb.append(sp.getId()).append("\t\t").append("#");
 			sb.append(sp.getTen()).append("\t\t").append("#");
 			int tmp[] = sp.getGiaTien();
-			for (int i = 0; i < SanPham.validSize; ++i){
+			for (int i = 0; i < SanPham.validSize; ++i) {
 				sb.append(tmp[i]).append("#");
 			}
 			sb.deleteCharAt(sb.lastIndexOf("#"));

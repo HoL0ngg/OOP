@@ -289,8 +289,6 @@ public class nvDatHang extends NhanVien{
 
 		DSHoaDon.them(this.DSSanPham, this);
 
-		DSHoaDon.xuatToanboHoadon();
-
 		//Se co 1 static function cua HoaDon de xuatHoaDon
 		//HoaDon.xuatHoaDon(this.DSSanPham);
 
@@ -307,8 +305,6 @@ public class nvDatHang extends NhanVien{
             System.out.println("+===================================+");
 			int luachon = ChucNang.chuanHoa(0, 1);
 
-			if (luachon == 0) break;
-			
 			switch (luachon) {
 				case 1:
 					this.nhanDonHang();

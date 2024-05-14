@@ -5,12 +5,15 @@ public class test {
 
 		DSHoaDon.docHDtuFile("hoadon.txt");
 		DSHoaDon.docCTHDtuFile("cthd.txt");
+		DSHoaDon.SLHD = DSHoaDon.getDSHD().size() + 1;
+
 		dsnv.nhapNVtuFile("NHAN_VIEN.txt");
 
-		DSHoaDon.xuatToanboHoadon();
+		ThucDon.setDonGiatuFile("trasua.txt");
+		ThucDon.setDonGiatuFile("caphe.txt");
 		
 		NhanVien nhanvien = null;
-
+		
 		while (true) {
 			while (nhanvien == null) {
 				System.out.println("+========================================+");
@@ -30,8 +33,8 @@ public class test {
 					}
 				}
 			}
-			System.out.println(nhanvien.getNgaysinh());
 			nhanvien.menu();
+			DSHoaDon.xuatToanboHoadon();
 		}
 	}
 }

@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -39,60 +40,73 @@ public class DSHoaDon {
     }
 
     public static void docHDtuFile(String path) {
-		// File file = new File(path);
-		try (Scanner scan = new Scanner(new File(path))) {
-			while (scan.hasNextLine()) {
-				String line = scan.nextLine();
-				String[] parts = line.split("#");
+        // File file = new File(path);
+        try (Scanner scan = new Scanner(new File(path))) {
+            while (scan.hasNextLine()) {
+                String line = scan.nextLine();
+                String[] parts = line.split("#");
 
-				String id = parts[0].trim();
-				String maNV = parts[1].trim();
+                String id = parts[0].trim();
+                String maNV = parts[1].trim();
 
                 Hoadon hd = new Hoadon();
 
                 hd.setMaHoadon(id);
                 hd.setMaNhanvien(maNV);
 
-                NgayThang date = new NgayThang(Integer.parseInt(parts[2]), Integer.parseInt(parts[3]), Integer.parseInt(parts[4]));
+                NgayThang date = new NgayThang(Integer.parseInt(parts[2]), Integer.parseInt(parts[3]),
+                        Integer.parseInt(parts[4]));
 
                 hd.setNgayHoadon(date);
 
                 hd.setTienHoadon(Integer.parseInt(parts[5]));
 
                 DSHoaDon.DSHD.add(hd);
-			}
+            }
 
-		} catch (Exception e) {
-			System.out.println("Khong the mo file de doc san pham");
-		}
-	}
+        } catch (Exception e) {
+            System.out.println("Khong the mo file de doc san pham");
+        }
+    }
 
     public static void docCTHDtuFile(String path) {
-		// File file = new File(path);
-		try (Scanner scan = new Scanner(new File(path))) {
-			while (scan.hasNextLine()) {
-				String line = scan.nextLine();
-				String[] parts = line.split("#");
+        // File file = new File(path);
+        try (Scanner scan = new Scanner(new File(path))) {
+            while (scan.hasNextLine()) {
+                String line = scan.nextLine();
+                String[] parts = line.split("#");
 
-				String idHD = parts[0].trim();
-				String tenSP = parts[1].trim();
-				
-				CTHD cthd = new CTHD();
+                String idHD = parts[0].trim();
+                String tenSP = parts[1].trim();
+
+                CTHD cthd = new CTHD();
 
                 cthd.setMaChitetHoadon(idHD);
                 cthd.setTen(tenSP);
-
-				cthd.setSize(Integer.parseInt(parts[2]));
+                String size = parts[2];
+                int intsize = 0;
+                switch (size) {
+                    case "S":
+                        intsize = 0;
+                        break;
+                    case "M":
+                        intsize = 1;
+                        break;
+                    case "L":
+                        intsize = 2;
+                        break;
+                }
+                cthd.setSize(intsize);
                 cthd.setSoluongSanpham(Integer.parseInt(parts[3]));
                 cthd.setDonGia(Integer.parseInt(parts[4]));
 
                 DSHoaDon.CTHDList.add(cthd);
-			}
+            }
 
-		} catch (Exception e) {
-			System.out.println("Khong the mo file de doc san pham");
-		}
-	}
+        } catch (Exception e) {
+            System.out.println("Khong the mo file de doc san pham");
+        }
+    }
 
     public static void them(int[] dssp, NhanVien nv) {
         Hoadon hoadon = new Hoadon();
@@ -110,36 +124,28 @@ public class DSHoaDon {
 
         int tongTien = 0;
 
+        
         CTHD cthd = new CTHD();
         cthd.setMaChitetHoadon(maHoaDon);
         for (int i = 0; i < dssp.length; ++i) {
             int ten = i / SanPham.validSize;
             int size = i % SanPham.validSize;
-
+            
             if (dssp[i] != 0) {
                 cthd.setTen(ThucDon.thucdon.get(ten).getTen());
-                cthd.setSize(size);
                 cthd.setSize(size);
                 cthd.setSoluongSanpham(dssp[i]);
                 cthd.setDonGia(ThucDon.thucdon.get(ten).getGiaTienAtIndex(size));
                 temp.add(cthd);
                 double tien = cthd.getDonGia() * cthd.getSoluongSanpham();
                 tongTien += tien;
+                CTHDList.add(cthd);
+                DSHoaDon.ghiCTHDVaoFile("cthd.txt", cthd);
             }
-        }
-        for (CTHD ctHD : temp) {
-            CTHDList.add(ctHD);
         }
         hoadon.setTienHoadon(tongTien);
         DSHD.add(hoadon);
-    }
-
-    public void xoa() {
-
-    }
-
-    public void timkiem() {
-
+        DSHoaDon.ghiHDVaoFile("hoadon.txt", hoadon);
     }
 
     public static void xuatToanboHoadon() {
@@ -150,6 +156,39 @@ public class DSHoaDon {
             hoadon.xuatHoadon();
         }
         System.out.println("+-----------------------------------+");
+    }
+
+    public static void ghiHDVaoFile(String path, Hoadon hd) {
+        try (FileWriter fw = new FileWriter(path, true)){
+            StringBuilder sb = new StringBuilder();
+            sb.append(hd.getMaHoadon()).append("#");
+            sb.append(hd.getMaNhanvien()).append("#");
+            sb.append(hd.getNgayHoadon().getNgay()).append("#");
+            sb.append(hd.getNgayHoadon().getThang()).append("#");
+            sb.append(hd.getNgayHoadon().getNam()).append("#");
+            sb.append(hd.getTienHoadon()).append("#");
+            sb.append(System.lineSeparator());
+            fw.write(sb.toString());
+            fw.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
+
+    public static void ghiCTHDVaoFile(String path, CTHD cthd) {
+        try (FileWriter fw = new FileWriter(path, true)){
+            StringBuilder sb = new StringBuilder();
+            sb.append(cthd.getMaChitetHoadon()).append("#");
+            sb.append(cthd.getTen()).append("#");
+            sb.append(SanPham.size[cthd.getSize()]).append("#");
+            sb.append(cthd.getSoluongSanpham()).append("#");
+            sb.append(cthd.getDonGia()).append("#");
+            sb.append(System.lineSeparator());
+            fw.write(sb.toString());
+            fw.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
 
 }
