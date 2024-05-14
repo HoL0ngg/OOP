@@ -61,7 +61,7 @@ public class ThanhVien {
         System.out.format("%-8s %-18s %-15s %-5s",
         this.getId(),
         "|  " + this.getTen(),
-        "|  " + this.getNgaysinh().xuatThongTin(),
+        "|  " + this.getNgaysinh(),
         "|  " + this.getDiemtichluy());
         System.out.println();
     }

@@ -2,7 +2,6 @@ public class nvDatHang extends NhanVien{
 	// 1 mang luu vi tri voi moi vi tri la 3 size
 	private	int[] DSSanPham;
 	private int demSanPham;
-	private DSHoaDon dshd = new DSHoaDon();
 
 	public nvDatHang(){
 		super();
@@ -255,8 +254,8 @@ public class nvDatHang extends NhanVien{
 	}
 
 	private void nhanDonHang(){
-		ThucDon.setDonGiatuFile("trasua.txt");
-		ThucDon.setDonGiatuFile("caphe.txt");
+		// ThucDon.setDonGiatuFile("trasua.txt");
+		// ThucDon.setDonGiatuFile("caphe.txt");
 
 		this.DSSanPham = new int[ThucDon.thucdon.size() * SanPham.validSize];
 		this.demSanPham = 0;
@@ -288,9 +287,9 @@ public class nvDatHang extends NhanVien{
 
 		this.thanhtoan(tong, tv);
 
-		dshd.them(this.DSSanPham, this);
+		DSHoaDon.them(this.DSSanPham, this);
 
-		dshd.xuatToanboHoadon();
+		DSHoaDon.xuatToanboHoadon();
 
 		//Se co 1 static function cua HoaDon de xuatHoaDon
 		//HoaDon.xuatHoaDon(this.DSSanPham);

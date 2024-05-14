@@ -1,17 +1,15 @@
-import java.util.Scanner;
-
 public class CTHD {
     public String maChitetHoadon;
-    public String id;
+    public String ten;
     public int size;
     public int soluongSanpham;
-    public double donGia;
+    public int donGia;
     public CTHD() {
     }
-    public CTHD (String  maHoadon, String id, int soluongSanpham, int size, double tienSanpham)  {
+    public CTHD (String  maHoadon, String ten, int soluongSanpham, int size, int tienSanpham)  {
         this.maChitetHoadon = maHoadon;
         this.soluongSanpham = soluongSanpham;
-        this.id = id;
+        this.ten = ten;
         this.size = size;
         this.donGia = tienSanpham;
     }
@@ -28,12 +26,12 @@ public class CTHD {
         return maChitetHoadon;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setTen(String ten) {
+        this.ten = ten;
     }
 
-    public String getId() {
-        return id;
+    public String getTen() {
+        return ten;
     }
 
     public void setMaChitetHoadon(String maChitetHoadon) {
@@ -48,11 +46,11 @@ public class CTHD {
         this.soluongSanpham = soluongSanpham;
     }
 
-    public double getDonGia() {
+    public int getDonGia() {
         return donGia;
     }
 
-    public void setDonGia(double donGia) {
+    public void setDonGia(int donGia) {
         this.donGia = donGia;
     }
 

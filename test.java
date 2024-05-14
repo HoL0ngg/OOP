@@ -1,7 +1,13 @@
 public class test {
 	public static void main(String[] args) {
 		DSNhanVien dsnv = new DSNhanVien();
+		// DSHoaDon dshd = new DSHoaDon();
+
+		DSHoaDon.docHDtuFile("hoadon.txt");
+		DSHoaDon.docCTHDtuFile("cthd.txt");
 		dsnv.nhapNVtuFile("NHAN_VIEN.txt");
+
+		DSHoaDon.xuatToanboHoadon();
 		
 		NhanVien nhanvien = null;
 

@@ -3,7 +3,7 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ThucDon {
+public class ThucDon{
 
 	public static ArrayList<SanPham> thucdon = new ArrayList<SanPham>();
 	public static int indexOfCaPhe = 0;

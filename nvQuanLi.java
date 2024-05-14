@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class nvQuanLi extends NhanVien{
 	private DSNhanVien dsNhanVien;
+	private DSHoaDon dsHoaDon;
 
 	//getter/setters
 
