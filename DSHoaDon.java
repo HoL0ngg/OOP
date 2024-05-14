@@ -115,6 +115,7 @@ public class DSHoaDon {
         hoadon.setMaHoadon(maHoaDon);
 
         NgayThang ngayHoaDon = new NgayThang();
+        System.out.println("Nhap ngay hom nay");
         ngayHoaDon.nhapThongTin();
 
         hoadon.setNgayHoadon(ngayHoaDon);
