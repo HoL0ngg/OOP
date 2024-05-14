@@ -153,9 +153,21 @@ public class DSHoaDon {
             System.out.println("+===============================================================================+");
             System.out.println("|                                 HOA DON                                       |");
             System.out.println("+-------------------------------------------------------------------------------+");
-            System.out.printf("| Ma hoa don: %-65s |\n", hd.getMaHoadon());
-            System.out.printf("| Ma nhan vien: %-63s |\n", hd.getMaNhanvien());
-            System.out.printf("| Ngay: %-71s |\n", hd.getNgayHoadon());
+            // System.out.printf("| Ma hoa don: %-65s |\n", hd.getMaHoadon());
+            // System.out.printf("| Ma nhan vien: %-65s |\n", hd.getMaNhanvien());
+            // System.out.printf("| Ngay: %-71s |\n", hd.getNgayHoadon());
+            System.out.format("%-79s %1s", 
+                            "|  Ma hoa don: " + hd.getMaHoadon(),
+                            "|");
+            System.out.println();
+            System.out.format("%-79s %1s", 
+                            "|  Ma nhan vien: " + hd.getMaNhanvien(),
+                            "|");
+            System.out.println();
+            System.out.format("%-79s %1s", 
+                            "|  Ngay: " + hd.getNgayHoadon(),
+                            "|");
+            System.out.println();
             System.out.println("+_______________________________________________________________________________+");
             System.out.println("| STT     Ten                       Size     SL      Don gia        Tien        |");
             System.out.println("+-------------------------------------------------------------------------------+");
@@ -164,14 +176,18 @@ public class DSHoaDon {
             for (CTHD cthd : CTHDList) {
                 if (cthd.getMaChitetHoadon().equals(mahoadon)){
                     String size = SanPham.size[cthd.getSize()];
-                    System.out.printf("| %-5s%-30s%-8s%-9d%-12d %-12d |\n",
+                    System.out.printf("| %-5s%-30s%-8s%-9d%-12d%-12d |\n",
                             stt++, cthd.getTen(),
                             size, cthd.getSoluongSanpham(),
                             cthd.getDonGia(), cthd.getDonGia() * cthd.getSoluongSanpham());
                 }
             }
             System.out.println("+-------------------------------------------------------------------------------+");
-            System.out.printf("|  Tong tien: %-65s |\n", ChucNang.chuanHoaGia(hd.getTienHoadon()) + "d");
+            System.out.format("%-55s %-23s %-1s",
+                            "|",
+                            "Tong tien: " + ChucNang.chuanHoaGia(hd.getTienHoadon()),
+                            "|");
+            System.out.println();
             System.out.println("+===============================================================================+");
         }
         System.out.println();
