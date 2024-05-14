@@ -7,6 +7,10 @@ public class test {
 		dsnv.nhapNVtuFile("NHAN_VIEN.txt");
 		ThucDon.setDonGiatuFile("trasua.txt");
 		ThucDon.setDonGiatuFile("caphe.txt");
+		DSThanhVien.docDSTVTuFile("THANH_VIEN.txt");
+		
+		// DSHoaDon.xuatToanboHoadon();
+
 		while (true) {
 			NhanVien nhanvien = null;
 			while (nhanvien == null) {

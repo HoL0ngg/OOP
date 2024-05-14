@@ -226,18 +226,6 @@ public class nvDatHang extends NhanVien{
 		// scan.close();
 	}
 
-	private ThanhVien DKThanhVien(){
-		System.out.println("Ban co muon dang ky thanh vien: ");
-		System.out.println("1. Co");
-		System.out.println("2. Khong");
-		int luachon = ChucNang.chuanHoa(1, 2);
-		if (luachon == 2) return null;
-
-		ThanhVien tv = DSThanhVien.themThanhVien();
-		
-		return tv;
-	}
-
 	private void thanhtoan(int tongtien, ThanhVien tv){
 			//DTL == diem tich luy
 		int sudungDTL = 0;
@@ -248,9 +236,20 @@ public class nvDatHang extends NhanVien{
 			System.out.println("2. Khong");
 			sudungDTL = ChucNang.chuanHoa(1, 2);
 		}
-		tongtien = tongtien - (sudungDTL == 1 ? tv.getDiemtichluy() : 0);
-		System.out.println("Tong tien ban can thanh toan la: " + ChucNang.chuanHoaGia(tongtien + 'd'));
-		if (tv != null) tv.setDiemtichluy(tv.getDiemtichluy() + (tongtien / 1000));
+		if (tv != null){
+			if (tongtien <= tv.getDiemtichluy()*1000 && sudungDTL == 1) {
+				tv.setDiemtichluy(tv.getDiemtichluy()*1000 - tongtien);
+				tongtien = 0;
+			} else {
+				tongtien = tongtien - (sudungDTL == 1 ? tv.getDiemtichluy() : 0);
+			}
+		}
+		System.out.println("Tong tien ban can thanh toan la: " + ChucNang.chuanHoaGia(tongtien)+'d');
+		if (tv != null && sudungDTL == 2) tv.setDiemtichluy(tv.getDiemtichluy() + (tongtien / 1000));
+		if (tv != null) {
+			System.out.println("Diem tich luy con lai cua ban: " + tv.getDiemtichluy());
+			DSThanhVien.ghiDSTVVaoFile("THANH_VIEN.txt");
+		}
 	}
 
 	private void nhanDonHang(){
@@ -272,18 +271,24 @@ public class nvDatHang extends NhanVien{
 		System.out.println("1. Co");
 		System.out.println("2. Khong");
 		int luachon = ChucNang.chuanHoa(1, 2);
-		ThanhVien tv = new ThanhVien();
-		switch (luachon) {
-			case 1:
-				System.out.print("Nhap so dien thoai thanh vien:");
-				String sdt = ChucNang.chuanHoaChuoi();
-				tv = DSThanhVien.timkiemTVTheoSDT(sdt);
-				break;
-			case 2:
-				tv = this.DKThanhVien();
-				break;
+		
+		ThanhVien tv = null;
+		if (luachon == 1){
+			System.out.print("Nhap so dien thoai thanh vien: ");
+			String sdt = ChucNang.chuanHoaChuoi();
+			tv = DSThanhVien.timkiemTVTheoSDT(sdt);
 		}
-		//Tao the thanh vien
+				
+		if (tv == null){
+			System.out.println("Ban co muon tao tai khoan ?");
+			System.out.println("1. Co");
+			System.out.println("2. Khong");
+			luachon = ChucNang.chuanHoa(1, 2);
+		}
+
+		if (luachon == 1) {
+			tv = DSThanhVien.themThanhVien();
+		}
 
 		this.thanhtoan(tong, tv);
 
