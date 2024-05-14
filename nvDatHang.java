@@ -221,7 +221,6 @@ public class nvDatHang extends NhanVien{
 			System.out.println("Ban co muon thay doi gi nua khong ?");
 			System.out.println("1. Co");
 			System.out.println("2. Khong");
-			System.out.print("Moi nhap lua chon: ");
 			chonlai = ChucNang.chuanHoa(1, 2);
 		}
 		// scan.close();

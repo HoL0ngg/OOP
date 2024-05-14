@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -115,8 +116,13 @@ public class DSHoaDon {
         hoadon.setMaHoadon(maHoaDon);
 
         NgayThang ngayHoaDon = new NgayThang();
-        ngayHoaDon.nhapThongTin();
-
+        // ngayHoaDon.nhapThongTin();
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        ngayHoaDon.setNgay(calendar.get(Calendar.DAY_OF_MONTH));
+        ngayHoaDon.setThang(calendar.get(Calendar.MONTH) + 1);
+        ngayHoaDon.setNam(calendar.get(Calendar.YEAR));
         hoadon.setNgayHoadon(ngayHoaDon);
 
         // chi tiet hoa don

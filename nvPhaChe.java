@@ -14,7 +14,6 @@ public class nvPhaChe extends NhanVien{
             if (luachon == 0) break;
         }
 
-        throw new UnsupportedOperationException("Unimplemented method 'menu'");
     }
 	
 }
