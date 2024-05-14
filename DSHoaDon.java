@@ -149,13 +149,32 @@ public class DSHoaDon {
     }
 
     public static void xuatToanboHoadon() {
-        System.out.println("+===================================+");
-        System.out.println("|         DANH SACH HOA DON         |");
-        System.out.println("+-----------------------------------+");
-        for (Hoadon hoadon : DSHD) {
-            hoadon.xuatHoadon();
+        for (Hoadon hd : DSHD) {
+            System.out.println("+===============================================================================+");
+            System.out.println("|                                 HOA DON                                       |");
+            System.out.println("+-------------------------------------------------------------------------------+");
+            System.out.printf("| Ma hoa don: %-65s |\n", hd.getMaHoadon());
+            System.out.printf("| Ma nhan vien: %-63s |\n", hd.getMaNhanvien());
+            System.out.printf("| Ngay: %-71s |\n", hd.getNgayHoadon());
+            System.out.println("+_______________________________________________________________________________+");
+            System.out.println("| STT     Ten                       Size     SL      Don gia        Tien        |");
+            System.out.println("+-------------------------------------------------------------------------------+");
+            String mahoadon = hd.getMaHoadon();
+            int stt = 1;
+            for (CTHD cthd : CTHDList) {
+                if (cthd.getMaChitetHoadon().equals(mahoadon)){
+                    String size = SanPham.size[cthd.getSize()];
+                    System.out.printf("| %-5s%-30s%-8s%-9d%-12d %-12d |\n",
+                            stt++, cthd.getTen(),
+                            size, cthd.getSoluongSanpham(),
+                            cthd.getDonGia(), cthd.getDonGia() * cthd.getSoluongSanpham());
+                }
+            }
+            System.out.println("+-------------------------------------------------------------------------------+");
+            System.out.printf("|  Tong tien: %-65s |\n", ChucNang.chuanHoaGia(hd.getTienHoadon()) + "d");
+            System.out.println("+===============================================================================+");
         }
-        System.out.println("+-----------------------------------+");
+        System.out.println();
     }
 
     public static void ghiHDVaoFile(String path, Hoadon hd) {
