@@ -8,7 +8,7 @@ public class test {
 		ThucDon.setDonGiatuFile("trasua.txt");
 		ThucDon.setDonGiatuFile("caphe.txt");
 		DSThanhVien.docDSTVTuFile("THANH_VIEN.txt");
-		
+
 		// DSHoaDon.xuatToanboHoadon();
 
 		while (true) {
@@ -23,9 +23,9 @@ public class test {
 				String name = ChucNang.chuanHoaChuoi().trim();
 				System.out.print(" Password: ");
 				String pass = ChucNang.chuanHoaChuoi().trim();
-				for (NhanVien nv : dsnv.getDSNV()){
+				for (NhanVien nv : dsnv.getDSNV()) {
 					// ten dang nhap voi mat khau chua biet xai cai nao
-					if (nv.getTen().equals(name) && nv.getSdt().equals(pass)){
+					if (nv.getTen().equals(name) && nv.getSdt().equals(pass)) {
 						nhanvien = nv;
 						break;
 					}

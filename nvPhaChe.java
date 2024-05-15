@@ -1,6 +1,6 @@
-public class nvPhaChe extends NhanVien{
+public class nvPhaChe extends NhanVien {
 
-    public nvPhaChe(){
+    public nvPhaChe() {
         super();
     }
 
@@ -12,29 +12,30 @@ public class nvPhaChe extends NhanVien{
         super(id, ten, dc, sdt, email, ngaysinh);
     }
 
-    public void docDonHangTuFile(String filepath){
+    public void docDonHangTuFile(String filepath) {
         DSHoaDon.docCTHDtuFile(filepath);
     }
 
-    private void xuatDonHang(){
+    private void xuatDonHang() {
         System.out.println("+---------------------------------------------------------------+");
         System.out.format("%-1s %5s %-30s %-7s %-5s %-10s %-1s",
-        "|",
-        "ID",
-        "|  Ten san pham",
-        "|  Size",
-        "|  SL",
-        "|  Don gia",
-        "|");
+                "|",
+                "ID",
+                "|  Ten san pham",
+                "|  Size",
+                "|  SL",
+                "|  Don gia",
+                "|");
         System.out.println();
         System.out.println("+---------------------------------------------------------------+");
         // for(CTHD cthd : DSHoaDon.getCTHDList()){
-        //     cthd.xuatThongTin();
+        // cthd.xuatThongTin();
         // }
         int i = 0;
-        for(; i < DSHoaDon.getCTHDList().size() - 1; i++){
+        for (; i < DSHoaDon.getCTHDList().size() - 1; i++) {
             DSHoaDon.getCTHDList().get(i).xuatThongTin();
-            if(!DSHoaDon.getCTHDList().get(i + 1).getMaChitetHoadon().equalsIgnoreCase(DSHoaDon.getCTHDList().get(i).getMaChitetHoadon())){
+            if (!DSHoaDon.getCTHDList().get(i + 1).getMaChitetHoadon()
+                    .equalsIgnoreCase(DSHoaDon.getCTHDList().get(i).getMaChitetHoadon())) {
                 System.out.println("+---------------------------------------------------------------+");
             }
         }
@@ -42,8 +43,8 @@ public class nvPhaChe extends NhanVien{
         System.out.println("+---------------------------------------------------------------+");
     }
 
-    private void xulyDonHang(){
-        while(true){
+    private void xulyDonHang() {
+        while (true) {
             this.xuatDonHang();
             System.out.println("0. Thoat");
             System.out.println("1. Hoan thanh don hang");
@@ -54,7 +55,8 @@ public class nvPhaChe extends NhanVien{
                 case 1:
                     CTHD cthd = new CTHD();
                     cthd = DSHoaDon.getCTHDList().get(0);
-                    while(DSHoaDon.getCTHDList().get(0).getMaChitetHoadon().equalsIgnoreCase(cthd.getMaChitetHoadon())){
+                    while (DSHoaDon.getCTHDList().get(0).getMaChitetHoadon()
+                            .equalsIgnoreCase(cthd.getMaChitetHoadon())) {
                         DSHoaDon.getCTHDList().removeFirst();
                     }
                     DSHoaDon.ghiDSCTHDVaoFile("cthd.txt");
@@ -66,6 +68,7 @@ public class nvPhaChe extends NhanVien{
             }
         }
     }
+
     @Override
     public void menu() {
         while (true) {
@@ -73,8 +76,8 @@ public class nvPhaChe extends NhanVien{
             System.out.println("+===================================+");
             System.out.println("|         NHAN VIEN PHA CHE         |");
             System.out.println("+-----------------------------------+");
-            System.out.println("| 1. Xem don hang                   |");
             System.out.println("| 0. Dang xuat                      |");
+            System.out.println("| 1. Xem don hang                   |");
             System.out.println("+===================================+");
             int luachon = ChucNang.chuanHoa(0, 1);
             switch (luachon) {
@@ -89,7 +92,8 @@ public class nvPhaChe extends NhanVien{
         }
 
     }
-	public static void main(String[] args) {
+
+    public static void main(String[] args) {
         nvPhaChe nvpc = new nvPhaChe();
         nvpc.menu();
     }
