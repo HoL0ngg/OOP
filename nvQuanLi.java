@@ -336,6 +336,10 @@ public class nvQuanLi extends NhanVien{
 		}
 	}
 
+	private void xuatDSHD(){
+		DSHoaDon.xuatToanboHoadon();
+	}
+
 	@Override
 	public void menu() {
 		while (true) {
@@ -350,6 +354,7 @@ public class nvQuanLi extends NhanVien{
             System.out.println("| 5. Chinh sua thong tin nhan vien			|");
             System.out.println("| 6. Tim kiem thong tin nhan vien			|");
             System.out.println("| 7. Xuat danh sach nhan vien				|");
+			System.out.println("| 8. Xuat danh sach hoa don				|");
             System.out.println("+=======================================================+");
 
 			// System.out.println("----------------------- NHAN VIEN QUAN LI -----------------------");
@@ -362,7 +367,7 @@ public class nvQuanLi extends NhanVien{
 			// System.out.println("7. Xuat danh sach nhan vien");
 			// System.out.println("8. Dang xuat");
 
-			int luachon = ChucNang.chuanHoa(0, 7);
+			int luachon = ChucNang.chuanHoa(0, 8);
 			switch (luachon) {
 				case 1:
 					this.themSanPham();
@@ -384,6 +389,9 @@ public class nvQuanLi extends NhanVien{
 					break;
 				case 7:
 					this.xuatDSNV();
+					break;
+				case 8:
+					this.xuatDSHD();
 					break;
 				case 0:
 					return;

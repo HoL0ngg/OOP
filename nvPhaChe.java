@@ -16,7 +16,7 @@ public class nvPhaChe extends NhanVien{
         DSHoaDon.docCTHDtuFile(filepath);
     }
 
-    public void xuatDonHang(){
+    private void xuatDonHang(){
         System.out.println("+---------------------------------------------------------------+");
         System.out.format("%-1s %5s %-30s %-7s %-5s %-10s %-1s",
         "|",
@@ -42,7 +42,7 @@ public class nvPhaChe extends NhanVien{
         System.out.println("+---------------------------------------------------------------+");
     }
 
-    public void xulyDonHang(){
+    private void xulyDonHang(){
         while(true){
             this.xuatDonHang();
             System.out.println("0. Thoat");
