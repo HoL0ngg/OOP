@@ -207,7 +207,7 @@ public class DSHoaDon {
             sb.append(hd.getNgayHoadon().getNgay()).append("#");
             sb.append(hd.getNgayHoadon().getThang()).append("#");
             sb.append(hd.getNgayHoadon().getNam()).append("#");
-            sb.append(hd.getTienHoadon()).append("#");
+            sb.append(hd.getTienHoadon());
             sb.append(System.lineSeparator());
             fw.write(sb.toString());
             fw.close();
@@ -216,6 +216,24 @@ public class DSHoaDon {
         }
     }
 
+    public static void ghiDSCTHDVaoFile(String path) {
+        try (FileWriter fw = new FileWriter(path, false)){
+            for(CTHD cthd : DSHoaDon.getCTHDList()){
+                StringBuilder sb = new StringBuilder();
+                sb.append(cthd.getMaChitetHoadon()).append("#");
+                sb.append(cthd.getTen()).append("#");
+                sb.append(SanPham.size[cthd.getSize()]).append("#");
+                sb.append(cthd.getSoluongSanpham()).append("#");
+                sb.append(cthd.getDonGia());
+                sb.append(System.lineSeparator());
+                fw.write(sb.toString());
+            }
+            fw.flush();
+            fw.close();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+    }
     public static void ghiCTHDVaoFile(String path, CTHD cthd) {
         try (FileWriter fw = new FileWriter(path, true)){
             StringBuilder sb = new StringBuilder();
@@ -223,7 +241,7 @@ public class DSHoaDon {
             sb.append(cthd.getTen()).append("#");
             sb.append(SanPham.size[cthd.getSize()]).append("#");
             sb.append(cthd.getSoluongSanpham()).append("#");
-            sb.append(cthd.getDonGia()).append("#");
+            sb.append(cthd.getDonGia());
             sb.append(System.lineSeparator());
             fw.write(sb.toString());
             fw.close();

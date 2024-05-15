@@ -58,4 +58,28 @@ public class CTHD {
 
     }
 
+    public void xuatThongTin(){
+        String stringsize = null;
+        switch (this.getSize()) {
+            case 0:
+                stringsize = "S";
+                break;
+            case 1:
+                stringsize = "M";
+                break;
+            case 2:
+                stringsize = "L";
+                break;
+        }
+        System.out.format("%-1s %5s %-30s %-7s %-5s %-10s %-1s",
+        "|",
+        this.getMaChitetHoadon(),
+        "|  " + this.getTen(),
+        "|  " + stringsize,
+        "|  " + this.getSoluongSanpham(),
+        "|  " + this.getDonGia(),
+        "|");
+        System.out.println();
+        
+    }
 }

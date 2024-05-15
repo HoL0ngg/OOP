@@ -54,10 +54,26 @@ public class Hoadon {
         System.out.println("+=========================================+");
         System.out.println("|                  HOA DON                |");
         System.out.println("+-----------------------------------------+");
-        System.out.println("| Ma hoa don: " + getMaHoadon() + "                       |");
-        System.out.println("| Ma nhan vien: " + getMaNhanvien() + "                     |");
-        System.out.println("| Ngay: " + getNgayHoadon() + "                          |");
-        System.out.println("| Tong tien: " + getTienHoadon() + "                       |");
+        // System.out.println("| Ma hoa don: " + getMaHoadon() + "                       |");
+        // System.out.println("| Ma nhan vien: " + getMaNhanvien() + "                     |");
+        // System.out.println("| Ngay: " + getNgayHoadon() + "                          |");
+        // System.out.println("| Tong tien: " + getTienHoadon() + "                       |");
+        System.out.format("%-41s %-1s", 
+        "|  Ma hoa don: " + this.getMaHoadon(),
+        "|");
+        System.out.println();
+        System.out.format("%-41s %-1s", 
+        "|  Ma nhan vien: " + this.getMaNhanvien(),
+        "|");
+        System.out.println();
+        System.out.format("%-41s %-1s", 
+        "|  Ngay: " + this.getNgayHoadon(),
+        "|");
+        System.out.println();
+        System.out.format("%-41s %-1s", 
+        "|  Tong tien: " + this.getTienHoadon(),
+        "|");
+        System.out.println();
         System.out.println("+-----------------------------------------+");
     }
 }
