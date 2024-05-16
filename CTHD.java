@@ -4,9 +4,11 @@ public class CTHD {
     public int size;
     public int soluongSanpham;
     public int donGia;
+
     public CTHD() {
     }
-    public CTHD (String  maHoadon, String ten, int soluongSanpham, int size, int tienSanpham)  {
+
+    public CTHD(String maHoadon, String ten, int soluongSanpham, int size, int tienSanpham) {
         this.maChitetHoadon = maHoadon;
         this.soluongSanpham = soluongSanpham;
         this.ten = ten;
@@ -58,7 +60,7 @@ public class CTHD {
 
     }
 
-    public void xuatThongTin(){
+    public void xuatThongTin() {
         String stringsize = null;
         switch (this.getSize()) {
             case 0:
@@ -72,14 +74,14 @@ public class CTHD {
                 break;
         }
         System.out.format("%-1s %5s %-30s %-7s %-5s %-10s %-1s",
-        "|",
-        this.getMaChitetHoadon(),
-        "|  " + this.getTen(),
-        "|  " + stringsize,
-        "|  " + this.getSoluongSanpham(),
-        "|  " + this.getDonGia(),
-        "|");
+                "|",
+                this.getMaChitetHoadon(),
+                "|  " + this.getTen(),
+                "|  " + stringsize,
+                "|  " + this.getSoluongSanpham(),
+                "|  " + this.getDonGia(),
+                "|");
         System.out.println();
-        
+
     }
 }

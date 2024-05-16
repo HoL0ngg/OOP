@@ -19,6 +19,5 @@ HD10#Sua tuoi duong den#L#1#30000
 HD10#Bac xiu#S#1#12000
 HD11#Tra sua thai xanh#M#1#20000
 HD11#Tra sua dai loan#L#1#22000
-HD14#Tra sua tran chau duong den#L#2#27000
-HD14#Sua tuoi duong den#L#1#30000
-HD14#Cappuccino#S#1#22000
+HD12#Tra sua tran chau duong den#L#3#27000
+HD12#Cappuccino#L#1#32000

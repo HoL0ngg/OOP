@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
 public class ChucNang {
-    public static int chuanHoa(int low, int high){
-        Scanner scan = new Scanner(System.in); 
+    public static int chuanHoa(int low, int high) {
+        Scanner scan = new Scanner(System.in);
         System.out.print("Moi nhap lua chon: ");
-		int luachon = Integer.parseInt(scan.nextLine()); 
-        while (luachon < low || luachon > high){
+        int luachon = Integer.parseInt(scan.nextLine());
+        while (luachon < low || luachon > high) {
             System.out.println("Gia tri khong hop le!");
             System.out.print("Vui long nhap lai: ");
             luachon = Integer.parseInt(scan.nextLine());
@@ -13,11 +13,11 @@ public class ChucNang {
         return luachon;
     }
 
-    public static String chuanHoaChuoi(){
+    public static String chuanHoaChuoi() {
         Scanner scan = new Scanner(System.in);
         // System.out.print("Moi nhap lua chon: ");
-		String luachon = scan.nextLine(); 
-        while (luachon.trim().equals("")){
+        String luachon = scan.nextLine();
+        while (luachon.trim().equals("")) {
             System.out.println("Gia tri khong hop le!");
             System.out.print("Vui long nhap lai: ");
             luachon = scan.nextLine();
@@ -25,37 +25,27 @@ public class ChucNang {
         return luachon;
     }
 
-    public static int xacNhanThaoTac(){
+    public static int xacNhanThaoTac() {
         System.out.println("\nXac nhan thuc hien thao tac?");
-		System.out.println("0. Khong xac nhan");
-		System.out.println("1. Xac nhan");
+        System.out.println("0. Khong xac nhan");
+        System.out.println("1. Xac nhan");
         int xacnhan = ChucNang.chuanHoa(0, 1);
         return xacnhan;
     }
 
-    public static String chuanHoaGia(int gia){
-		String temp = Integer.toString(gia);
-		if(temp.length() <= 3)
-        	return temp;
-		int n = temp.length() / 3;
-		int i = temp.length() - 1;
-		int count = 0;
-		StringBuilder sb = new StringBuilder(temp);
-		while(n > 0){
-			i = i - 2 - count;
-			sb.insert(i, ".");
-			--n;
-			++count;
-		}
-		return sb.toString();
-	}
+    public static String chuanHoaGia(int gia) {
+        String tmp = Integer.toString(gia);
+        String hehe = "";
+        while (tmp.length() % 3 != 0)
+            tmp = " " + tmp;
+        for (int i = 0; i < tmp.length(); ++i) {
+            if (tmp.charAt(i) == ' ')
+                continue;
+            hehe = hehe + tmp.charAt(i);
+            if (((i + 1) % 3 == 0) & (i + 1 != tmp.length()))
+                hehe = hehe + ".";
+        }
 
-    public static void keThanhNgang(int length){
-        System.out.print("+");
-		for (int i = 0 ; i <= length * 8 - 2; ++i){
-			System.out.print('-');
-		}
-		System.out.print("+");
-        System.out.println();
+        return hehe;
     }
 }

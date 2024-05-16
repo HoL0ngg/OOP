@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Hoadon {
     public String maHoadon;
     public String maNhanvien;
