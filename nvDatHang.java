@@ -1,7 +1,7 @@
 import java.util.Calendar;
 import java.util.Date;
 
-public class nvDatHang extends NhanVien{
+public class nvDatHang extends NhanVien {
 	// 1 mang luu vi tri voi moi vi tri la 3 size
 	private int[] DSSanPham;
 	private int demSanPham;
@@ -246,27 +246,33 @@ public class nvDatHang extends NhanVien{
 			sudungDTL = ChucNang.chuanHoa(1, 2);
 		}
 		if (tv != null) {
-			if (tongtien <= tv.getDiemtichluy() * 1000 && sudungDTL == 1) {
-				tv.setDiemtichluy(tv.getDiemtichluy() * 1000 - tongtien);
-				tongtien = 0;
-			} else {
-				NgayThang ngayHoaDon = new NgayThang();
-				Date date = new Date();
-				Calendar calendar = Calendar.getInstance();
-				calendar.setTime(date);
-				ngayHoaDon.setThang(calendar.get(Calendar.MONTH) + 1);
-				if (tv.getNgaysinh().getThang() == ngayHoaDon.getNgay()){
-					tongtien =  (tongtien * 90) / 100;
+			NgayThang ngayHoaDon = new NgayThang();
+			Date date = new Date();
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(date);
+			ngayHoaDon.setThang(calendar.get(Calendar.MONTH) + 1);
+			if (tv.getNgaysinh().getThang() == ngayHoaDon.getThang()) {
+				tongtien = (tongtien * 90) / 100;
+			}
+			if (sudungDTL == 1) {
+				if (tongtien <= tv.getDiemtichluy() * 1000) {
+					tv.setDiemtichluy(tv.getDiemtichluy() - tongtien);
+					tongtien = 0;
+				} else {
+					tongtien = tongtien - (tv.getDiemtichluy() * 1000);
+					tv.setDiemtichluy(0);
 				}
-				tongtien = tongtien - (sudungDTL == 1 ? tv.getDiemtichluy() : 0);
 			}
 		}
 		System.out.println("Tong tien ban can thanh toan la: " + ChucNang.chuanHoaGia(tongtien) + 'd');
-		if (tv != null && sudungDTL == 2)
-			tv.setDiemtichluy(tv.getDiemtichluy() + (tongtien / 1000));
 		if (tv != null) {
-			System.out.println("Diem tich luy con lai cua ban: " + tv.getDiemtichluy());
-			DSThanhVien.ghiDSTVVaoFile("THANH_VIEN.txt");
+			if (sudungDTL == 1) {
+				System.out.println("Diem tich luy con lai cua ban: " + tv.getDiemtichluy());
+				DSThanhVien.ghiDSTVVaoFile("THANH_VIEN.txt");
+			}
+			if (sudungDTL == 2) {
+				tv.setDiemtichluy(tv.getDiemtichluy() + (tongtien / 1000));
+			}
 		}
 	}
 
@@ -333,6 +339,7 @@ public class nvDatHang extends NhanVien{
 			}
 		}
 	}
+
 	public static void main(String[] args) {
 		DSHoaDon.docHDtuFile("hoadon.txt");
 		DSHoaDon.docCTHDtuFile("cthd.txt");
