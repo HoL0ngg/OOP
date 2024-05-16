@@ -130,13 +130,11 @@ public class DSHoaDon {
 
         int tongTien = 0;
 
-        
         CTHD cthd = new CTHD();
         cthd.setMaChitetHoadon(maHoaDon);
         for (int i = 0; i < dssp.length; ++i) {
             int ten = i / SanPham.validSize;
             int size = i % SanPham.validSize;
-            
             if (dssp[i] != 0) {
                 cthd.setTen(ThucDon.thucdon.get(ten).getTen());
                 cthd.setSize(size);
@@ -200,7 +198,7 @@ public class DSHoaDon {
     }
 
     public static void ghiHDVaoFile(String path, Hoadon hd) {
-        try (FileWriter fw = new FileWriter(path, true)){
+        try (FileWriter fw = new FileWriter(new File(path), true)){
             StringBuilder sb = new StringBuilder();
             sb.append(hd.getMaHoadon()).append("#");
             sb.append(hd.getMaNhanvien()).append("#");
@@ -217,7 +215,7 @@ public class DSHoaDon {
     }
 
     public static void ghiDSCTHDVaoFile(String path) {
-        try (FileWriter fw = new FileWriter(path, false)){
+        try (FileWriter fw = new FileWriter(new File(path), false)){
             for(CTHD cthd : DSHoaDon.getCTHDList()){
                 StringBuilder sb = new StringBuilder();
                 sb.append(cthd.getMaChitetHoadon()).append("#");
@@ -231,11 +229,11 @@ public class DSHoaDon {
             fw.flush();
             fw.close();
         } catch (Exception e) {
-            // TODO: handle exception
+            
         }
     }
     public static void ghiCTHDVaoFile(String path, CTHD cthd) {
-        try (FileWriter fw = new FileWriter(path, true)){
+        try (FileWriter fw = new FileWriter(new File(path), true)){
             StringBuilder sb = new StringBuilder();
             sb.append(cthd.getMaChitetHoadon()).append("#");
             sb.append(cthd.getTen()).append("#");

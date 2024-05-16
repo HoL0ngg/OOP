@@ -28,9 +28,6 @@ public class nvPhaChe extends NhanVien {
                 "|");
         System.out.println();
         System.out.println("+---------------------------------------------------------------+");
-        // for(CTHD cthd : DSHoaDon.getCTHDList()){
-        // cthd.xuatThongTin();
-        // }
         int i = 0;
         for (; i < DSHoaDon.getCTHDList().size() - 1; i++) {
             DSHoaDon.getCTHDList().get(i).xuatThongTin();

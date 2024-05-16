@@ -1,3 +1,6 @@
+import java.util.Calendar;
+import java.util.Date;
+
 public class nvDatHang extends NhanVien{
 	// 1 mang luu vi tri voi moi vi tri la 3 size
 	private	int[] DSSanPham;
@@ -241,6 +244,14 @@ public class nvDatHang extends NhanVien{
 				tv.setDiemtichluy(tv.getDiemtichluy()*1000 - tongtien);
 				tongtien = 0;
 			} else {
+				NgayThang ngayHoaDon = new NgayThang();
+				Date date = new Date();
+				Calendar calendar = Calendar.getInstance();
+				calendar.setTime(date);
+				ngayHoaDon.setThang(calendar.get(Calendar.MONTH) + 1);
+				if (tv.getNgaysinh().getThang() == ngayHoaDon.getNgay()){
+					tongtien =  (tongtien * 90) / 100;
+				}
 				tongtien = tongtien - (sudungDTL == 1 ? tv.getDiemtichluy() : 0);
 			}
 		}
@@ -316,5 +327,13 @@ public class nvDatHang extends NhanVien{
 					return;
 			}
 		}
+	}
+	public static void main(String[] args) {
+		DSHoaDon.docHDtuFile("hoadon.txt");
+		DSHoaDon.docCTHDtuFile("cthd.txt");
+		ThucDon.setDonGiatuFile("trasua.txt");
+		ThucDon.setDonGiatuFile("caphe.txt");
+		nvDatHang nv = new nvDatHang();
+		nv.menu();
 	}
 }
