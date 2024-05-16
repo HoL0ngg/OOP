@@ -1,21 +1,21 @@
-tstc#Tra sua truyen thong		#15000#20000#25000
-tstx#Tra sua thai xanh			#15000#20000#25000
-tstd#Tra sua thai do			#15000#20000#25000
-tstd#Tra sua thach dua			#17000#21000#26000
-tsdl#Tra sua dai loan			#15000#20000#22000
-tsscl#Tra sua socola			#15000#20000#22000
-tsmc#Tra sua matcha			#15000#20000#22000
-tstcdd#Tra sua tran chau duong den	#20000#22000#27000
-tsvq#Tra sua viet quoc			#15000#20000#22000
-tskm#Tra sua khoai mon			#15000#20000#22000
-tsbd#Tra sua bi dao			#15000#17000#20000
-sttcdd#Sua tuoi duong den		#22000#27000#30000
-td#Tra dao				#10000#15000#17000
-to#Tra oi				#10000#15000#17000
-tt#Tra tao				#10000#15000#17000
-tdt#Tra dau tay				#10000#15000#17000
-tvq#Tra viet quoc			#10000#15000#17000
-txs#Tra xanh sua			#18000#23000#25000
-tol#Tra olong				#10000#15000#17000
-tda#Tra da#4000#10000#15000#
-tc		#Tra chanh		#8000#10000#15000
+tstx		#Tra sua thai xanh		#15000#20000#25000#True
+tstc		#Tra sua truyen thong		#15000#20000#25000#True
+tstd		#Tra sua thai do		#15000#20000#25000#True
+tstd		#Tra sua thach dua		#17000#21000#26000#True
+tsdl		#Tra sua dai loan		#15000#20000#22000#True
+tsscl		#Tra sua socola		#15000#20000#22000#True
+tsmc		#Tra sua matcha		#15000#20000#22000#True
+tstcdd		#Tra sua tran chau duong den		#20000#22000#27000#True
+tsvq		#Tra sua viet quoc		#15000#20000#22000#True
+tskm		#Tra sua khoai mon		#15000#20000#22000#True
+tsbd		#Tra sua bi dao		#15000#17000#20000#True
+sttcdd		#Sua tuoi duong den		#22000#27000#30000#True
+td		#Tra dao		#10000#15000#17000#True
+to		#Tra oi		#10000#15000#17000#True
+tt		#Tra tao		#10000#15000#17000#True
+tdt		#Tra dau tay		#10000#15000#17000#True
+tvq		#Tra viet quoc		#10000#15000#17000#True
+txs		#Tra xanh sua		#18000#23000#25000#True
+tol		#Tra olong		#10000#15000#17000#True
+tda		#Tra da		#4000#10000#15000#false
+tc		#Tra chanh		#8000#10000#15000#True

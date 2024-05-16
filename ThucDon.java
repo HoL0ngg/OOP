@@ -41,7 +41,7 @@ public class ThucDon {
 				}
 
 				sp.setGiaTien(tmp);
-
+				sp.setTrangthai(Boolean.parseBoolean(parts[5]));
 				thucdon.add(sp);
 
 			}
@@ -64,6 +64,8 @@ public class ThucDon {
 			System.out.println();
 			int index = 1;
 			for (SanPham sp : thucdon) {
+				if (!sp.getTrangthai())
+					continue;
 				if (sp instanceof TraSua) {
 					System.out.print((index++) + ". " + sp.getTen());
 
@@ -94,6 +96,8 @@ public class ThucDon {
 			System.out.println();
 			int index = 1;
 			for (SanPham sp : thucdon) {
+				if (!sp.getTrangthai())
+					continue;
 				if (sp instanceof CaPhe) {
 					System.out.print((index++) + ". " + sp.getTen());
 
@@ -164,7 +168,7 @@ public class ThucDon {
 				for (int i = 0; i < SanPham.validSize; ++i) {
 					sb.append(tmp[i]).append("#");
 				}
-				sb.deleteCharAt(sb.lastIndexOf("#"));
+				sb.append(sp.getTrangthai() == true ? "True" : "false");
 				sb.append(System.lineSeparator());
 				if (sp instanceof TraSua) {
 					fw1.write(sb.toString());
@@ -190,7 +194,7 @@ public class ThucDon {
 			for (int i = 0; i < SanPham.validSize; ++i) {
 				sb.append(tmp[i]).append("#");
 			}
-			sb.deleteCharAt(sb.lastIndexOf("#"));
+			sb.append(sp.getTrangthai() == true ? "True" : "false");
 			sb.append(System.lineSeparator());
 			fw.write(sb.toString());
 			fw.flush();

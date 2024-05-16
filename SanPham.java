@@ -24,6 +24,14 @@ public abstract class SanPham {
 		return ten;
 	}
 
+	public boolean getTrangthai() {
+		return trangthai;
+	}
+
+	public void setTrangthai(boolean trangthai) {
+		this.trangthai = trangthai;
+	}
+
 	public void setTen(String ten) {
 		this.ten = ten;
 	}
@@ -70,5 +78,6 @@ public abstract class SanPham {
 			// System.out.println();
 		}
 		this.setGiaTien(gia);
+		this.setTrangthai(true);
 	}
 }
