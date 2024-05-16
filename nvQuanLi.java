@@ -348,12 +348,12 @@ public class nvQuanLi extends NhanVien {
 	}
 
 	private void xoaSP() {
-		System.out.println("Nhap loai muon xoa");
+		System.out.println("Nhap loai muon ngung kinh doanh");
 		System.out.println("1. Tra sua");
 		System.out.println("2. Ca phe");
 		int luachon = ChucNang.chuanHoa(1, 2);
 		ThucDon.xuatMenu(luachon);
-		System.out.println("Nhap stt cua san pham muon xoa");
+		System.out.println("Nhap stt cua san pham muon ngung kinh doanh");
 		int vitriMon = ChucNang.chuanHoa(1,
 				((luachon == 1) ? ThucDon.indexOfCaPhe : ThucDon.thucdon.size() - ThucDon.indexOfCaPhe));
 		ThucDon.thucdon.get((vitriMon - 1) + ((luachon == 1) ? 0 : ThucDon.indexOfCaPhe)).setTrangthai(false);
@@ -375,21 +375,11 @@ public class nvQuanLi extends NhanVien {
 			System.out.println("| 6. Tim kiem thong tin nhan vien			|");
 			System.out.println("| 7. Xuat danh sach nhan vien				|");
 			System.out.println("| 8. Xuat danh sach hoa don				|");
-			System.out.println("| 9. Xoa san pham					|");
+			System.out.println("| 9. Xuat danh sach thanh vien			|");
+			System.out.println("| 10. Ngung kinh doanh san pham			|");
 			System.out.println("+=======================================================+");
 
-			// System.out.println("----------------------- NHAN VIEN QUAN LI
-			// -----------------------");
-			// System.out.println("1. Them san pham moi");
-			// System.out.println("2. Cap nhat va chinh sua thong tin san pham");
-			// System.out.println("3. Xoa san pham");
-			// System.out.println("4. Them nhan vien moi");
-			// System.out.println("5. Chinh sua thong tin nhan vien");
-			// System.out.println("6. Tim kiem thong tin nhan vien");
-			// System.out.println("7. Xuat danh sach nhan vien");
-			// System.out.println("8. Dang xuat");
-
-			int luachon = ChucNang.chuanHoa(0, 9);
+			int luachon = ChucNang.chuanHoa(0, 8);
 			switch (luachon) {
 				case 1:
 					this.themSanPham();
@@ -415,10 +405,14 @@ public class nvQuanLi extends NhanVien {
 				case 8:
 					this.xuatDSHD();
 					break;
+				case 9:
+					DSThanhVien.xuatDSTV();
+					break;
+				case 10:
+					this.xoaSP();
+					break;
 				case 0:
 					return;
-				case 9:
-					this.xoaSP();
 			}
 		}
 	}
