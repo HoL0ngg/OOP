@@ -133,9 +133,9 @@ public class DSHoaDon {
         CTHD cthd = new CTHD();
         cthd.setMaChitetHoadon(maHoaDon);
         for (int i = 0; i < dssp.length; ++i) {
-            int ten = i / SanPham.validSize;
-            int size = i % SanPham.validSize;
             if (dssp[i] != 0) {
+                int ten = i / SanPham.validSize;
+                int size = i % SanPham.validSize;
                 cthd.setTen(ThucDon.thucdon.get(ten).getTen());
                 cthd.setSize(size);
                 cthd.setSoluongSanpham(dssp[i]);
@@ -160,17 +160,17 @@ public class DSHoaDon {
             // System.out.printf("| Ma hoa don: %-65s |\n", hd.getMaHoadon());
             // System.out.printf("| Ma nhan vien: %-65s |\n", hd.getMaNhanvien());
             // System.out.printf("| Ngay: %-71s |\n", hd.getNgayHoadon());
-            System.out.format("%-79s %1s", 
-                            "|  Ma hoa don: " + hd.getMaHoadon(),
-                            "|");
+            System.out.format("%-79s %1s",
+                    "|  Ma hoa don: " + hd.getMaHoadon(),
+                    "|");
             System.out.println();
-            System.out.format("%-79s %1s", 
-                            "|  Ma nhan vien: " + hd.getMaNhanvien(),
-                            "|");
+            System.out.format("%-79s %1s",
+                    "|  Ma nhan vien: " + hd.getMaNhanvien(),
+                    "|");
             System.out.println();
-            System.out.format("%-79s %1s", 
-                            "|  Ngay: " + hd.getNgayHoadon(),
-                            "|");
+            System.out.format("%-79s %1s",
+                    "|  Ngay: " + hd.getNgayHoadon(),
+                    "|");
             System.out.println();
             System.out.println("+_______________________________________________________________________________+");
             System.out.println("| STT     Ten                       Size     SL      Don gia        Tien        |");
@@ -178,7 +178,7 @@ public class DSHoaDon {
             String mahoadon = hd.getMaHoadon();
             int stt = 1;
             for (CTHD cthd : CTHDList) {
-                if (cthd.getMaChitetHoadon().equals(mahoadon)){
+                if (cthd.getMaChitetHoadon().equals(mahoadon)) {
                     String size = SanPham.size[cthd.getSize()];
                     System.out.printf("| %-5s%-30s%-8s%-9d%-12d%-12d |\n",
                             stt++, cthd.getTen(),
@@ -188,9 +188,9 @@ public class DSHoaDon {
             }
             System.out.println("+-------------------------------------------------------------------------------+");
             System.out.format("%-55s %-23s %-1s",
-                            "|",
-                            "Tong tien: " + ChucNang.chuanHoaGia(hd.getTienHoadon()),
-                            "|");
+                    "|",
+                    "Tong tien: " + ChucNang.chuanHoaGia(hd.getTienHoadon()),
+                    "|");
             System.out.println();
             System.out.println("+===============================================================================+");
         }
@@ -198,7 +198,7 @@ public class DSHoaDon {
     }
 
     public static void ghiHDVaoFile(String path, Hoadon hd) {
-        try (FileWriter fw = new FileWriter(new File(path), true)){
+        try (FileWriter fw = new FileWriter(new File(path), true)) {
             StringBuilder sb = new StringBuilder();
             sb.append(hd.getMaHoadon()).append("#");
             sb.append(hd.getMaNhanvien()).append("#");
@@ -215,8 +215,8 @@ public class DSHoaDon {
     }
 
     public static void ghiDSCTHDVaoFile(String path) {
-        try (FileWriter fw = new FileWriter(new File(path), false)){
-            for(CTHD cthd : DSHoaDon.getCTHDList()){
+        try (FileWriter fw = new FileWriter(new File(path), false)) {
+            for (CTHD cthd : DSHoaDon.getCTHDList()) {
                 StringBuilder sb = new StringBuilder();
                 sb.append(cthd.getMaChitetHoadon()).append("#");
                 sb.append(cthd.getTen()).append("#");
@@ -229,11 +229,12 @@ public class DSHoaDon {
             fw.flush();
             fw.close();
         } catch (Exception e) {
-            
+
         }
     }
+
     public static void ghiCTHDVaoFile(String path, CTHD cthd) {
-        try (FileWriter fw = new FileWriter(new File(path), true)){
+        try (FileWriter fw = new FileWriter(new File(path), true)) {
             StringBuilder sb = new StringBuilder();
             sb.append(cthd.getMaChitetHoadon()).append("#");
             sb.append(cthd.getTen()).append("#");

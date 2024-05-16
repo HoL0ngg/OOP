@@ -141,7 +141,7 @@ public class nvDatHang extends NhanVien {
 			System.out.println("+-----------------------------+");
 			System.out.println("|       VUI LONG LUA CHON     |");
 			System.out.println("+=============================+");
-			int loai = ChucNang.chuanHoa(0, 2);
+			int loai = ChucNang.chuanHoa(1, 2);
 
 			ThucDon.xuatMenu(loai);
 
