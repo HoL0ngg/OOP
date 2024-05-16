@@ -59,20 +59,20 @@ public class DiaChi {
 	}
 
 	public void nhapThongTin() {
-		Scanner scan = new Scanner(System.in);
 		System.out.print("Nhap tinh thanh: ");
-		this.setTinhThanh(scan.nextLine());
+		this.setTinhThanh(ChucNang.chuanHoaChuoi());
 		System.out.print("Nhap quan huyen: ");
-		this.setQuanHuyen(scan.nextLine());
+		this.setQuanHuyen(ChucNang.chuanHoaChuoi());
 		System.out.print("Nhap phuong xa: ");
-		this.setPhuongXa(scan.nextLine());
+		this.setPhuongXa(ChucNang.chuanHoaChuoi());
 		System.out.print("Nhap so nha: ");
-		this.setSoNha(scan.nextLine());
+		this.setSoNha(ChucNang.chuanHoaChuoi());
 		System.out.print("Nhap ten duong: ");
-		this.setTenDuong(scan.nextLine());
-		//scan.close(); xay ra loi neu su dung
+		this.setTenDuong(ChucNang.chuanHoaChuoi());
 	}
-	public String xuatThongTin(){
-		return this.getSoNha() + " " + this.getTenDuong() + "," + this.getQuanHuyen() + "," + this.getPhuongXa() + "," + this.getTinhThanh();
+
+	public String xuatThongTin() {
+		return this.getSoNha() + " " + this.getTenDuong() + "," + this.getQuanHuyen() + "," + this.getPhuongXa() + ","
+				+ this.getTinhThanh();
 	}
 }

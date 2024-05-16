@@ -25,7 +25,7 @@ public class CaPhe extends SanPham {
 	}
 
 	@Override
-	public void nhapThongTin(){
+	public void nhapThongTin() {
 		super.nhapThongTin();
 	}
 

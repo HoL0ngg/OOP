@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class NgayThang {
 	private int ngay;
 	private int thang;
@@ -37,19 +35,18 @@ public class NgayThang {
 	public void setNam(int nam) {
 		this.nam = nam;
 	}
-	
+
 	public void nhapThongTin() {
-		Scanner scan = new Scanner(System.in);
 		System.out.print("Nhap ngay: ");
-		this.setNgay(Integer.parseInt(scan.nextLine()));
+		this.setNgay(Integer.parseInt(ChucNang.chuanHoaChuoi()));
 		System.out.print("Nhap thang: ");
-		this.setThang(Integer.parseInt(scan.nextLine()));
+		this.setThang(Integer.parseInt(ChucNang.chuanHoaChuoi()));
 		System.out.print("Nhap nam: ");
-		this.setNam(Integer.parseInt(scan.nextLine()));
+		this.setNam(Integer.parseInt(ChucNang.chuanHoaChuoi()));
 	}
 
 	@Override
-	public String toString(){
+	public String toString() {
 		return this.getNgay() + "/" + this.getThang() + "/" + this.getNam();
 	}
 }
