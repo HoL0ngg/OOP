@@ -79,6 +79,8 @@ public class DSThanhVien {
     }
 
     public static void xuatDSTV() {
+        ArrayList<ThanhVien> dstvmoi = (ArrayList<ThanhVien>) DSTV.clone();
+        Collections.sort(dstvmoi, new SoSanhNgaySinh());
         System.out.println("\n------------------------- THANH VIEN -------------------------");
         System.out.format("%-8s %-18s %-15s %-5s",
                 "ID",
@@ -87,15 +89,11 @@ public class DSThanhVien {
                 "|  Diem tich luy");
         System.out.println();
         System.out.println("--------------------------------------------------------------");
-        for (ThanhVien tv : DSTV) {
+        for (ThanhVien tv : dstvmoi) {
             tv.xuatThongTin();
         }
         System.out.println();
-    }
-
-    public static void xuatDSTVTheoNgaySinh() {
-        Collections.sort(DSTV, new SoSanhNgaySinh());
-        DSThanhVien.xuatDSTV();
+        dstvmoi = null;
     }
 
     private static String sinhMaTuDong() {
