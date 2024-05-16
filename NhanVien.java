@@ -104,5 +104,25 @@ public abstract class NhanVien {
 		System.out.println();
 	}
 
+	public void xuatThongTinCaNhan(){
+		System.out.println("\nMa nhan vien: " + this.getId());
+		System.out.println("Ho va ten: " + this.getTen());
+		System.out.println("So dien thoai: " + this.getSdt());
+		System.out.print("Chuc vu: ");
+		if(this instanceof nvQuanLi){
+			System.out.print("Nhan vien quan ly");
+		} else {
+			if (this instanceof nvPhaChe){
+				System.out.print("Nhan vien pha che");
+			} else {
+				System.out.print("Nhan vien dat hang");
+			}
+		}
+		System.out.println();
+		System.out.println("Dia chi: " + this.getDc().xuatThongTin());
+		System.out.println("Ngay sinh: " + this.getNgaysinh().toString());
+		System.out.println("Email: " + this.getEmail());
+		System.out.println();
+	}
 	public abstract void menu();
 }

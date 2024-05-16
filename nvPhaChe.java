@@ -75,23 +75,22 @@ public class nvPhaChe extends NhanVien {
             System.out.println("+-----------------------------------+");
             System.out.println("| 0. Dang xuat                      |");
             System.out.println("| 1. Xem don hang                   |");
+            System.out.println("| 2. Thong tin ca nhan              |");
             System.out.println("+===================================+");
-            int luachon = ChucNang.chuanHoa(0, 1);
+            int luachon = ChucNang.chuanHoa(0, 2);
             switch (luachon) {
                 case 0:
                     return;
                 case 1:
                     this.xulyDonHang();
                     break;
+                case 2:
+                    this.xuatThongTinCaNhan();
+                    break;
                 default:
                     break;
             }
         }
 
-    }
-
-    public static void main(String[] args) {
-        nvPhaChe nvpc = new nvPhaChe();
-        nvpc.menu();
     }
 }

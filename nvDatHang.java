@@ -318,25 +318,19 @@ public class nvDatHang extends NhanVien {
 			System.out.println("+-----------------------------------+");
 			System.out.println("| 0. Dang xuat                      |");
 			System.out.println("| 1. Nhan don hang                  |");
+			System.out.println("| 2. Thong tin ca nhan              |");
 			System.out.println("+===================================+");
-			int luachon = ChucNang.chuanHoa(0, 1);
+			int luachon = ChucNang.chuanHoa(0, 2);
 
 			switch (luachon) {
 				case 1:
 					this.nhanDonHang();
 					break;
+				case 2:
+					this.xuatThongTinCaNhan();
 				case 0:
 					return;
 			}
 		}
-	}
-
-	public static void main(String[] args) {
-		DSHoaDon.docHDtuFile("hoadon.txt");
-		DSHoaDon.docCTHDtuFile("cthd.txt");
-		ThucDon.setDonGiatuFile("trasua.txt");
-		ThucDon.setDonGiatuFile("caphe.txt");
-		nvDatHang nv = new nvDatHang();
-		nv.menu();
 	}
 }

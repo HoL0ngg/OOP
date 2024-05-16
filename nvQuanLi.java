@@ -375,11 +375,13 @@ public class nvQuanLi extends NhanVien {
 			System.out.println("| 6. Tim kiem thong tin nhan vien			|");
 			System.out.println("| 7. Xuat danh sach nhan vien				|");
 			System.out.println("| 8. Xuat danh sach hoa don				|");
-			System.out.println("| 9. Xuat danh sach thanh vien			|");
-			System.out.println("| 10. Ngung kinh doanh san pham			|");
+			System.out.println("| 9. Xuat danh sach thanh vien				|");
+			System.out.println("| 10. Xuat danh sach san pham				|");
+			System.out.println("| 11. Ngung kinh doanh san pham				|");
+			System.out.println("| 12. Thong tin ca nhan					|");
 			System.out.println("+=======================================================+");
 
-			int luachon = ChucNang.chuanHoa(0, 8);
+			int luachon = ChucNang.chuanHoa(0, 12);
 			switch (luachon) {
 				case 1:
 					this.themSanPham();
@@ -409,7 +411,13 @@ public class nvQuanLi extends NhanVien {
 					DSThanhVien.xuatDSTV();
 					break;
 				case 10:
+					ThucDon.xuatMenu(3);
+					break;
+				case 11:
 					this.xoaSP();
+					break;
+				case 12:
+					this.xuatThongTinCaNhan();
 					break;
 				case 0:
 					return;
