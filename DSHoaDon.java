@@ -180,7 +180,7 @@ public class DSHoaDon {
             for (CTHD cthd : CTHDList) {
                 if (cthd.getMaChitetHoadon().equals(mahoadon)){
                     String size = SanPham.size[cthd.getSize()];
-                    System.out.printf("| %-5s%-30s%-8s%-9d%-12d%-12d |\n",
+                    System.out.printf("| %-5s%-30s%-8s%-9d%-12d%-13d |\n",
                             stt++, cthd.getTen(),
                             size, cthd.getSoluongSanpham(),
                             cthd.getDonGia(), cthd.getDonGia() * cthd.getSoluongSanpham());
@@ -247,5 +247,9 @@ public class DSHoaDon {
             // TODO: handle exception
         }
     }
-
+    public static void main(String[] args) {
+        DSHoaDon.docCTHDtuFile("cthd.txt");
+        DSHoaDon.docHDtuFile("hoadon.txt");
+        DSHoaDon.xuatToanboHoadon();
+    }
 }
