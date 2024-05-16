@@ -4,9 +4,10 @@ public abstract class SanPham {
 	private String id;
 	private String ten;
 	private int giaTien[];
+	private boolean trangthai;
 
 	public static int maxLength = 0;
-	
+
 	// cac size co the co trong do uong
 	public static int validSize = 3;
 	public static String size[] = { "S", "M", "L", "XL", "XXL" };
@@ -47,27 +48,25 @@ public abstract class SanPham {
 		this.giaTien = giaTien;
 	}
 
-	public int getGiaTienAtIndex(int index){
+	public int getGiaTienAtIndex(int index) {
 		return giaTien[index];
 	}
 
-
-	//dung de cho nvQuanLi them SanPham vao List
-	public void nhapThongTin(){
-		Scanner scan = new Scanner(System.in);
+	// dung de cho nvQuanLi them SanPham vao List
+	public void nhapThongTin() {
 		do {
 			System.out.print("Nhap id san pham: ");
 			this.setId(ChucNang.chuanHoaChuoi());
-			if(!ThucDon.kiemTraID(this.getId())){
+			if (!ThucDon.kiemTraID(this.getId())) {
 				System.out.println("Ma san pham da ton tai. Vui long nhap lai.");
 			}
-		} while (!ThucDon.kiemTraID(this.getId())); //Kiem tra ID da ton tai trong ds chua
+		} while (!ThucDon.kiemTraID(this.getId())); // Kiem tra ID da ton tai trong ds chua
 		System.out.print("Nhap ten san pham: ");
 		this.setTen(ChucNang.chuanHoaChuoi());
-		int gia[] = new int[SanPham.validSize]; 
-		for (int i = 0 ; i < SanPham.validSize; ++i){
+		int gia[] = new int[SanPham.validSize];
+		for (int i = 0; i < SanPham.validSize; ++i) {
 			System.out.print("Nhap vao gia size " + SanPham.size[i] + ": ");
-			gia[i] = Integer.parseInt(scan.nextLine());
+			gia[i] = Integer.parseInt(ChucNang.chuanHoaChuoi());
 			// System.out.println();
 		}
 		this.setGiaTien(gia);
