@@ -21,3 +21,4 @@ HD11#Tra sua thai xanh#M#1#20000
 HD11#Tra sua dai loan#L#1#22000
 HD12#Tra sua tran chau duong den#L#3#27000
 HD12#Cappuccino#L#1#32000
+HD13#Tra sua truyen thong#S#1#15000
