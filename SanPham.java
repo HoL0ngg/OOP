@@ -9,6 +9,8 @@ public abstract class SanPham {
 	// cac size co the co trong do uong
 	public static int validSize = 3;
 	public static String size[] = { "S", "M", "L", "XL", "XXL" };
+	public static String[] duong = { "0%", "25%", "50%", "75%", "100%" };
+	public static String[] da = { "0%", "25%", "50%", "75%", "100%" };
 
 	public SanPham() {
 	}

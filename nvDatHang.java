@@ -5,6 +5,8 @@ public class nvDatHang extends NhanVien {
 	// 1 mang luu vi tri voi moi vi tri la 3 size
 	private int[] DSSanPham;
 	private int demSanPham;
+	private int[] chonDuong;
+	private int[] chonDa;
 
 	public nvDatHang() {
 		super();
@@ -57,11 +59,16 @@ public class nvDatHang extends NhanVien {
 
 				// so luong
 				System.out.println(" " + SanPham.size[size] + "\t   " + this.DSSanPham[i] + "\t|");
+				if (chonDuong[i] != 4 && i < ThucDon.indexOfCaPhe * SanPham.validSize)
+					System.out.println("|\t + " + SanPham.duong[chonDuong[i]] + " duong\t\t\t\t\t|");
+				if (chonDa[i] != 4)
+					System.out.println("|\t + " + SanPham.da[chonDa[i]] + " da\t\t\t\t\t|");
+				System.out.println("+-------------------------------------------------------+");
 
 				tongtien += this.DSSanPham[i] * ThucDon.thucdon.get(ten).getGiaTienAtIndex(size);
 			}
 		}
-		System.out.println("+-------------------------------------------------------+");
+		// System.out.println("+-------------------------------------------------------+");
 		System.out.print("|");
 		for (int i = cntTab; i <= lenOfHoaDon; ++i) {
 			System.out.print("\t");
@@ -155,13 +162,38 @@ public class nvDatHang extends NhanVien {
 
 			int kichThuoc = ChucNang.chuanHoa(1, SanPham.validSize);
 
-			if (this.DSSanPham[(vitriMon - 1) * SanPham.validSize + (kichThuoc - 1)
-					+ (loai == 2 ? 1 : 0) * ThucDon.indexOfCaPhe * SanPham.validSize] == 0)
+			int vitri = (vitriMon - 1) * SanPham.validSize + (kichThuoc - 1)
+					+ (loai == 2 ? 1 : 0) * ThucDon.indexOfCaPhe * SanPham.validSize;
+
+			if (this.DSSanPham[vitri] == 0)
 				this.demSanPham++;
 
-			this.DSSanPham[(vitriMon - 1) * SanPham.validSize + (kichThuoc - 1)
-					+ (loai == 2 ? 1 : 0) * ThucDon.indexOfCaPhe * SanPham.validSize]++;
+			this.DSSanPham[vitri]++;
 
+			if (loai == 1) {
+				System.out.println("Moi chon luong duong");
+				for (int i = 0; i < SanPham.duong.length; ++i) {
+					System.out.println((i + 1) + ". " + SanPham.duong[i]);
+				}
+				int luachon = ChucNang.chuanHoa(1, SanPham.duong.length);
+				this.chonDuong[vitri] = luachon - 1;
+
+				System.out.println("Moi chon luong da");
+				for (int i = 0; i < SanPham.da.length; ++i) {
+					System.out.println((i + 1) + ". " + SanPham.da[i]);
+				}
+				luachon = ChucNang.chuanHoa(1, SanPham.da.length);
+				this.chonDa[vitri] = luachon - 1;
+			}
+			if (loai == 2) {
+				System.out.println("Moi chon luong da");
+				System.out.println("1. Khong da");
+				System.out.println("2. Co da");
+				int luachon = ChucNang.chuanHoa(1, 2);
+				if (luachon == 2)
+					luachon = 5;
+				luachon = this.chonDa[vitri] = luachon - 1;
+			}
 			this.xuatDonHang();
 
 			System.out.println("Ban co muon chon nua khong ?");
@@ -272,6 +304,8 @@ public class nvDatHang extends NhanVien {
 		// ThucDon.setDonGiatuFile("caphe.txt");
 
 		this.DSSanPham = new int[ThucDon.thucdon.size() * SanPham.validSize];
+		this.chonDuong = new int[ThucDon.thucdon.size() * SanPham.validSize];
+		this.chonDa = new int[ThucDon.thucdon.size() * SanPham.validSize];
 		this.demSanPham = 0;
 
 		// xu li thao tac nguoi dung
@@ -328,6 +362,7 @@ public class nvDatHang extends NhanVien {
 					break;
 				case 2:
 					this.xuatThongTinCaNhan();
+					break;
 				case 0:
 					return;
 			}
