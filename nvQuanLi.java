@@ -419,8 +419,4 @@ public class nvQuanLi extends NhanVien {
 			}
 		}
 	}
-	public static void main(String[] args) {
-		nvQuanLi nv = new nvQuanLi();
-		nv.menu();
-	}
 }
