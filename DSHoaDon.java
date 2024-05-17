@@ -66,7 +66,7 @@ public class DSHoaDon {
             }
 
         } catch (Exception e) {
-            System.out.println("Khong the mo file de doc san pham");
+            System.out.println("Khong the mo file de doc hoa don");
         }
     }
 
@@ -100,12 +100,11 @@ public class DSHoaDon {
                 cthd.setSize(intsize);
                 cthd.setSoluongSanpham(Integer.parseInt(parts[3]));
                 cthd.setDonGia(Integer.parseInt(parts[4]));
-
+                cthd.setHoanthanh(Boolean.parseBoolean(parts[5]));
                 DSHoaDon.CTHDList.add(cthd);
             }
-
         } catch (Exception e) {
-            System.out.println("Khong the mo file de doc san pham");
+            System.out.println("Khong the mo file de doc cthd");
         }
     }
 
@@ -154,45 +153,47 @@ public class DSHoaDon {
 
     public static void xuatToanboHoadon() {
         for (Hoadon hd : DSHD) {
-            System.out.println("+===============================================================================+");
-            System.out.println("|                                 HOA DON                                       |");
-            System.out.println("+-------------------------------------------------------------------------------+");
+            System.out.println();
+            System.out.println("\n+===================================================================================================+");
+            System.out.println("|                                              HOA DON                                              |");
+            System.out.println("+---------------------------------------------------------------------------------------------------+");
             // System.out.printf("| Ma hoa don: %-65s |\n", hd.getMaHoadon());
             // System.out.printf("| Ma nhan vien: %-65s |\n", hd.getMaNhanvien());
             // System.out.printf("| Ngay: %-71s |\n", hd.getNgayHoadon());
-            System.out.format("%-79s %1s",
+            System.out.format("%-99s %1s",
                     "|  Ma hoa don: " + hd.getMaHoadon(),
                     "|");
             System.out.println();
-            System.out.format("%-79s %1s",
+            System.out.format("%-99s %1s",
                     "|  Ma nhan vien: " + hd.getMaNhanvien(),
                     "|");
             System.out.println();
-            System.out.format("%-79s %1s",
+            System.out.format("%-99s %1s",
                     "|  Ngay: " + hd.getNgayHoadon(),
                     "|");
             System.out.println();
-            System.out.println("+_______________________________________________________________________________+");
-            System.out.println("| STT     Ten                       Size     SL      Don gia        Tien        |");
-            System.out.println("+-------------------------------------------------------------------------------+");
+            System.out.println("+___________________________________________________________________________________________________+");
+            System.out.println("| STT     Ten                         Size      SL        Don gia       Tien         Trang thai     |");
+            System.out.println("+---------------------------------------------------------------------------------------------------+");
             String mahoadon = hd.getMaHoadon();
             int stt = 1;
             for (CTHD cthd : CTHDList) {
                 if (cthd.getMaChitetHoadon().equals(mahoadon)) {
                     String size = SanPham.size[cthd.getSize()];
-                    System.out.printf("| %-5s%-30s%-8s%-9d%-12d%-13d |\n",
+                    System.out.printf("| %-5s %-30s %-8s %-9d %-12d %-13d %-14s |\n",
                             stt++, cthd.getTen(),
                             size, cthd.getSoluongSanpham(),
-                            cthd.getDonGia(), cthd.getDonGia() * cthd.getSoluongSanpham());
+                            cthd.getDonGia(), cthd.getDonGia() * cthd.getSoluongSanpham(),
+                            (cthd.isHoanthanh()? "Hoan thanh" : "Dang xu ly"));
                 }
             }
-            System.out.println("+-------------------------------------------------------------------------------+");
-            System.out.format("%-55s %-23s %-1s",
+            System.out.println("+---------------------------------------------------------------------------------------------------+");
+            System.out.format("%-75s %-23s %-1s",
                     "|",
                     "Tong tien: " + ChucNang.chuanHoaGia(hd.getTienHoadon()),
                     "|");
             System.out.println();
-            System.out.println("+===============================================================================+");
+            System.out.println("+===================================================================================================+");
         }
         System.out.println();
     }
@@ -222,14 +223,15 @@ public class DSHoaDon {
                 sb.append(cthd.getTen()).append("#");
                 sb.append(SanPham.size[cthd.getSize()]).append("#");
                 sb.append(cthd.getSoluongSanpham()).append("#");
-                sb.append(cthd.getDonGia());
+                sb.append(cthd.getDonGia() + "#");
+                sb.append(cthd.isHoanthanh()? "True" : "False");
                 sb.append(System.lineSeparator());
                 fw.write(sb.toString());
             }
             fw.flush();
             fw.close();
         } catch (Exception e) {
-
+            System.out.println("Khong the ghi dscthd");
         }
     }
 
@@ -240,12 +242,13 @@ public class DSHoaDon {
             sb.append(cthd.getTen()).append("#");
             sb.append(SanPham.size[cthd.getSize()]).append("#");
             sb.append(cthd.getSoluongSanpham()).append("#");
-            sb.append(cthd.getDonGia());
+            sb.append(cthd.getDonGia() + "#");
+            sb.append("false");
             sb.append(System.lineSeparator());
             fw.write(sb.toString());
             fw.close();
         } catch (Exception e) {
-            // TODO: handle exception
+            System.out.println("Khong the ghi cthd vao file");
         }
     }
     public static void main(String[] args) {

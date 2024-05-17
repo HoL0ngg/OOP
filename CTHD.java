@@ -4,6 +4,7 @@ public class CTHD {
     public int size;
     public int soluongSanpham;
     public int donGia;
+    public boolean hoanthanh;
 
     public CTHD() {
     }
@@ -34,6 +35,14 @@ public class CTHD {
 
     public String getTen() {
         return ten;
+    }
+
+    public boolean isHoanthanh() {
+        return hoanthanh;
+    }
+
+    public void setHoanthanh(boolean hoanthanh) {
+        this.hoanthanh = hoanthanh;
     }
 
     public void setMaChitetHoadon(String maChitetHoadon) {
@@ -73,13 +82,14 @@ public class CTHD {
                 stringsize = "L";
                 break;
         }
-        System.out.format("%-1s %5s %-30s %-7s %-5s %-10s %-1s",
+        System.out.format("%-1s %5s %-30s %-7s %-5s %-10s %-15s %-1s",
                 "|",
                 this.getMaChitetHoadon(),
                 "|  " + this.getTen(),
                 "|  " + stringsize,
                 "|  " + this.getSoluongSanpham(),
-                "|  " + this.getDonGia(),
+                "|  " + ChucNang.chuanHoaGia(this.getDonGia()),
+                "|  " + (this.isHoanthanh()? "Hoan thanh" : "Dang xu ly"),
                 "|");
         System.out.println();
 
