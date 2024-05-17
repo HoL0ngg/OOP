@@ -9,12 +9,13 @@ public class CTHD {
     public CTHD() {
     }
 
-    public CTHD(String maHoadon, String ten, int soluongSanpham, int size, int tienSanpham) {
+    public CTHD(String maHoadon, String ten, int soluongSanpham, int size, int tienSanpham, boolean hoanthanh) {
         this.maChitetHoadon = maHoadon;
         this.soluongSanpham = soluongSanpham;
         this.ten = ten;
         this.size = size;
         this.donGia = tienSanpham;
+        this.hoanthanh = hoanthanh;
     }
 
     public int getSize() {
