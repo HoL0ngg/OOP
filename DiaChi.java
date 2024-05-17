@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class DiaChi {
 	private String TinhThanh;
 	private String QuanHuyen;

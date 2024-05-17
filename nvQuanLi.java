@@ -1,5 +1,4 @@
 import java.util.Collections;
-import java.util.Scanner;
 
 public class nvQuanLi extends NhanVien {
 	private DSNhanVien dsNhanVien;
@@ -134,9 +133,9 @@ public class nvQuanLi extends NhanVien {
 		return -1;
 	}
 
-	private void docDSNVTuFile(String filepath) {
-		this.dsNhanVien.nhapNVtuFile(filepath);
-	}
+	// private void docDSNVTuFile(String filepath) {
+	// this.dsNhanVien.nhapNVtuFile(filepath);
+	// }
 
 	private void chinhsuaThongTinNV() {
 		this.xuatDSNV();

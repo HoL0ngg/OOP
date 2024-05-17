@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public abstract class SanPham {
 	private String id;
 	private String ten;

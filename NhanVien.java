@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public abstract class NhanVien {
 	private String id;
 	private String ten;
@@ -74,45 +72,44 @@ public abstract class NhanVien {
 	}
 
 	public void nhapThongTin() {
-		Scanner scan = new Scanner(System.in);
 		System.out.print("Nhap id: ");
-		this.setId(scan.nextLine());
+		this.setId(ChucNang.chuanHoaChuoi());
 		System.out.print("Nhap ten: ");
-		this.setTen(scan.nextLine());
+		this.setTen(ChucNang.chuanHoaChuoi());
 		System.out.println("Nhap dia chi: ");
 		DiaChi dc = new DiaChi();
 		dc.nhapThongTin();
 		this.setDc(dc);
 		System.out.print("Nhap so dien thoai: ");
-		this.setSdt(scan.nextLine());
+		this.setSdt(ChucNang.chuanHoaChuoi());
 		System.out.print("Nhap dia chi email: ");
-		this.setEmail(scan.nextLine());
+		this.setEmail(ChucNang.chuanHoaChuoi());
 		System.out.println("Nhap ngay sinh: ");
 		NgayThang ngaysinh = new NgayThang();
 		ngaysinh.nhapThongTin();
 		this.setNgaysinh(ngaysinh);
 	}
 
-	public void xuatThongTin(){
-		System.out.format("%-8s %-18s %-15s %-55s %-13s %-33s", 
-		this.getId(),
-		"|  " + this.getTen(),
-		"|  " + this.getNgaysinh(),
-		"|  " + this.getDc().xuatThongTin(),
-		"|  " + this.getSdt(),
-		"|  " + this.getEmail());
+	public void xuatThongTin() {
+		System.out.format("%-8s %-18s %-15s %-55s %-13s %-33s",
+				this.getId(),
+				"|  " + this.getTen(),
+				"|  " + this.getNgaysinh(),
+				"|  " + this.getDc().xuatThongTin(),
+				"|  " + this.getSdt(),
+				"|  " + this.getEmail());
 		System.out.println();
 	}
 
-	public void xuatThongTinCaNhan(){
+	public void xuatThongTinCaNhan() {
 		System.out.println("\nMa nhan vien: " + this.getId());
 		System.out.println("Ho va ten: " + this.getTen());
 		System.out.println("So dien thoai: " + this.getSdt());
 		System.out.print("Chuc vu: ");
-		if(this instanceof nvQuanLi){
+		if (this instanceof nvQuanLi) {
 			System.out.print("Nhan vien quan ly");
 		} else {
-			if (this instanceof nvPhaChe){
+			if (this instanceof nvPhaChe) {
 				System.out.print("Nhan vien pha che");
 			} else {
 				System.out.print("Nhan vien dat hang");
@@ -124,5 +121,6 @@ public abstract class NhanVien {
 		System.out.println("Email: " + this.getEmail());
 		System.out.println();
 	}
+
 	public abstract void menu();
 }
