@@ -361,7 +361,6 @@ public class nvQuanLi extends NhanVien {
 
 	@Override
 	public void menu() {
-		this.dsNhanVien.nhapNVtuFile("NHAN_VIEN.txt");
 		while (true) {
 			System.out.println("+=======================================================+");
 			System.out.println("|			NHAN VIEN QUAN LI		|");
