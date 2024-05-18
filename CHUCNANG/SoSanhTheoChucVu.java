@@ -1,4 +1,9 @@
+package CHUCNANG;
 import java.util.Comparator;
+
+import NHANVIEN.NhanVien;
+import NHANVIEN.nvPhaChe;
+import NHANVIEN.nvQuanLi;
 
 public class SoSanhTheoChucVu implements Comparator<NhanVien>{
 

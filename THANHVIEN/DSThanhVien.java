@@ -1,8 +1,12 @@
+package THANHVIEN;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+import CHUCNANG.NgayThang;
+import CHUCNANG.SoSanhNgaySinh;
 
 public class DSThanhVien {
     public static ArrayList<ThanhVien> DSTV = new ArrayList<>();

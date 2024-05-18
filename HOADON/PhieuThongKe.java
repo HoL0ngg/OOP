@@ -1,11 +1,20 @@
-
+package HOADON;
 
 import java.util.ArrayList;
-import java.util.List;
+import CHUCNANG.NgayThang;
 
 public class PhieuThongKe {
     private NgayThang NgayThongke;
-    private List<Hoadon> DSHD;
+    private int doanhthu;
+    private int 
+
+    public NgayThang getNgay(){
+        return NgayThongke;
+    }
+    
+    public ArrayList<Hoadon> getDSHD(){
+        return DSHD;
+    }
     
     public PhieuThongKe(NgayThang NgayThongke){
         this.NgayThongke = NgayThongke;
@@ -16,7 +25,7 @@ public class PhieuThongKe {
         if (hoadon.getNgayHoadon().equals(this.NgayThongke)){
             DSHD.add(hoadon);
         } else {
-            System.out.println("Hóa đơn không phù hợp với ngày của phiếu thống kê.");
+            System.out.println("Ngay hoa don khong hop le");
         }
     }
     
@@ -28,13 +37,6 @@ public class PhieuThongKe {
         return tongDoanhthu;
     }
     
-    public NgayThang getNgay(){
-        return NgayThongke;
-    }
-    
-    public List<Hoadon> getDSHD(){
-        return DSHD;
-    }
     
     public static void main(String[] args){
         //Tạo phiếu thống kê doanh thu cho ngày 17-05-2024;

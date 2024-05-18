@@ -1,11 +1,10 @@
-
+package HOADON;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ThongKe {
     
-    private List<PhieuThongKe> DSPTK;
+    private ArrayList<PhieuThongKe> DSPTK;
     
     public ThongKe(){
         this.DSPTK = new ArrayList<>();

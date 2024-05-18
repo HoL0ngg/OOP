@@ -1,3 +1,4 @@
+package CHUCNANG;
 import java.util.Scanner;
 
 public class ChucNang {

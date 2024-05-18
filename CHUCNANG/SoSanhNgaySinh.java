@@ -1,4 +1,7 @@
+package CHUCNANG;
 import java.util.Comparator;
+
+import THANHVIEN.ThanhVien;
 
 public class SoSanhNgaySinh implements Comparator<ThanhVien> {
 

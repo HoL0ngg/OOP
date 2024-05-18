@@ -1,3 +1,7 @@
+package HOADON;
+
+import CHUCNANG.NgayThang;
+
 public class Hoadon {
     public String maHoadon;
     public String maNhanvien;

@@ -1,7 +1,11 @@
+package NHANVIEN;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import CHUCNANG.DiaChi;
+import CHUCNANG.NgayThang;
 
 public class DSNhanVien {
     private static ArrayList<NhanVien> dsnv = new ArrayList<NhanVien>();

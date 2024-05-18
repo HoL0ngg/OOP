@@ -1,3 +1,6 @@
+package THANHVIEN;
+import CHUCNANG.ChucNang;
+import CHUCNANG.NgayThang;
 
 public class ThanhVien {
     private String id;

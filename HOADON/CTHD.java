@@ -1,3 +1,8 @@
+package HOADON;
+
+import CHUCNANG.ChucNang;
+import SANPHAM.SanPham;
+
 public class CTHD {
     private String maChitetHoadon;
     private String ten;
