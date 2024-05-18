@@ -1,57 +1,37 @@
 package HOADON;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import SANPHAM.ThucDon;
 
 public class ThongKe {
-    
-    private ArrayList<PhieuThongKe> DSPTK;
-    
-    public ThongKe(){
-        this.DSPTK = new ArrayList<>();
+    private DSHoaDon dshd;
+    private static int[] soluongdon;
+    private static int[] doanhthu;
+    private static int[] soluonghang;
+
+    public ThongKe() {
     }
-    
-    public void themPhieuThongke(PhieuThongKe phieu){
-        DSPTK.add(phieu);
+
+    public void thongKeThang() {
+        ThongKe.soluongdon = new int[12];
+        ThongKe.doanhthu = new int[12];
+        ThongKe.soluonghang = new int[ThucDon.thucdon.size()];
+        List<Hoadon> = DSHoaDon.getDSHD();
+        List<CTHD> = dshd.ge
+
     }
-    
-    //Thống kê doanh thu theo tháng
-    public double ThongKeTheoThang(int thang, int nam){
-        double tongDoanhthu = 0.0;
-        for(PhieuThongKe phieu: DSPTK){
-            if(phieu.getNgay().getThang() == thang && phieu.getNgay().getThang() == nam){
-                tongDoanhthu += phieu.ThongkeNgay();
-            }
-        }
-        return tongDoanhthu;
+
+    public static void thongKeNgay() {
+        ThongKe.soluongdon = new int[31];
+        ThongKe.doanhthu = new int[31];
+        ThongKe.soluonghang = new int[ThucDon.thucdon.size()];
     }
-    
-    //Thống kê doanh thu theo quý
-    public double ThongKeTheoQuy(int quy, int nam){
-        double tongDoanhthu = 0.0;
-        for(PhieuThongKe phieu : DSPTK){
-            int thang = phieu.getNgay().getThang();
-            int quytheothang = (int) Math.ceil(thang / 3.0);
-            if(quytheothang == quy && phieu.getNgay().getNam() == nam){
-                tongDoanhthu += phieu.ThongkeNgay();
-            }
-        }
-        return tongDoanhthu;
-    }
-    
-    //Thống kê doanh thu theo năm
-    public double ThongKeTheoNam(int nam){
-        double tongDoanhthu = 0.0;
-        for(PhieuThongKe phieu : DSPTK){
-            if(phieu.getNgay().getNam() == nam){
-                tongDoanhthu += phieu.ThongkeNgay();
-            }
-        }
-        return tongDoanhthu;
-    }
-    
-    public static void main(String[] args){
-        ThongKe thongKe = new ThongKe();
-        
-        
+
+    public static void thongKeNam() {
+        ThongKe.soluongdon = new int[4];
+        ThongKe.doanhthu = new int[4];
+        ThongKe.soluonghang = new int[ThucDon.thucdon.size()];
     }
 }

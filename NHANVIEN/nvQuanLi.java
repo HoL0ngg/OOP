@@ -344,9 +344,15 @@ public class nvQuanLi extends NhanVien {
 	}
 
 	private void chinhsuaTen(int indexSpThayDoi) {
-		System.out.println("Nhap vao ten san pham muon chinh sua: ");
-		String ten = ChucNang.chuanHoaChuoi();
-		ThucDon.thucdon.get(indexSpThayDoi).setTen(ten);
+		System.out.print("Nhap vao ten san pham muon chinh sua: ");
+		String ten = "";
+		do {
+			ten = ChucNang.chuanHoaChuoi();
+			ThucDon.thucdon.get(indexSpThayDoi).setTen(ten);
+			if (!ThucDon.kiemTraTen(ThucDon.thucdon.get(indexSpThayDoi).getTen())) {
+				System.out.println("Ten san pham da ton tai. Vui long nhap lai.");
+			}
+		} while (!ThucDon.kiemTraTen(ThucDon.thucdon.get(indexSpThayDoi).getTen()));
 		ThucDon.ghiDSVaoFile();
 	}
 
@@ -354,9 +360,10 @@ public class nvQuanLi extends NhanVien {
 		int tmp[] = new int[SanPham.validSize];
 		for (int i = 0; i < SanPham.validSize; ++i) {
 			System.out.print("Nhap gia size " + SanPham.size[i] + ": ");
-			tmp[i] = Integer.parseInt(ChucNang.chuanHoaChuoi());
+			tmp[i] = ChucNang.chuanHoa(60000);
 		}
 		ThucDon.thucdon.get(indexSpThayDoi).setGiaTien(tmp);
+		ThucDon.ghiDSVaoFile();
 	}
 
 	private void chinhsuaSanPham() {
@@ -375,10 +382,7 @@ public class nvQuanLi extends NhanVien {
 			System.out.println("Chon thong tin can chinh sua");
 			System.out.println("1. Ten");
 			System.out.println("2. Don gia");
-			// System.out.println("3. So luong hang");
 			luachon = ChucNang.chuanHoa(1, 2);
-
-			// Phan nay chua lam !!!
 
 			switch (luachon) {
 				case 1:
@@ -387,15 +391,11 @@ public class nvQuanLi extends NhanVien {
 				case 2:
 					this.chinhsuaDonGia(indexSpThayDoi);
 					break;
-				// case 3:
-				// this.chinhsuaSoLuongHang(indexSpThayDoi);
-				// break;
 			}
 
 			System.out.println("Ban co muon chinh sua nua khong ?");
 			System.out.println("1. Co");
 			System.out.println("2. Khong");
-			System.out.print("Nhap lua chon: ");
 			int chonTiep = ChucNang.chuanHoa(1, 2);
 			if (chonTiep == 2)
 				break;
