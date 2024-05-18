@@ -73,8 +73,13 @@ public abstract class SanPham {
 				System.out.println("Ma san pham da ton tai. Vui long nhap lai.");
 			}
 		} while (!ThucDon.kiemTraID(this.getId())); // Kiem tra ID da ton tai trong ds chua
-		System.out.print("Nhap ten san pham: ");
-		this.setTen(ChucNang.chuanHoaChuoi());
+		do {
+			System.out.print("Nhap ten san pham: ");
+			this.setTen(ChucNang.chuanHoaChuoi());
+			if (!ThucDon.kiemTraTen(this.getTen())) {
+				System.out.println("Ten san pham da ton tai. Vui long nhap lai.");
+			}
+		} while (!ThucDon.kiemTraTen(this.getTen()));
 		int gia[] = new int[SanPham.validSize];
 		for (int i = 0; i < SanPham.validSize; ++i) {
 			System.out.print("Nhap vao gia size " + SanPham.size[i] + ": ");
