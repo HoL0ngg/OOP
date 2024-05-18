@@ -124,7 +124,7 @@ public class nvQuanLi extends NhanVien {
 	private void themNhanVien() {
 		NhanVien nv = null;
 		int luachon;
-		System.out.println("\nNhap kieu nhan vien can them: ");
+		System.out.println("\nNhap vi tri nhan vien can them: ");
 		System.out.println("1. Nhan vien quan li");
 		System.out.println("2. Nhan vien pha che");
 		System.out.println("3. Nhan vien dat hang");
