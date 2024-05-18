@@ -132,7 +132,7 @@ public class ThucDon {
 		int temp[] = sp.getGiaTien();
 		System.out.print("Gia: ");
 		for (int i = 0; i < SanPham.validSize; ++i) {
-			System.out.print(ChucNang.chuanHoaGia(temp[i]) + "%-5s");
+			System.out.println("Gia size " + SanPham.size[i] + ": " + ChucNang.chuanHoaGia(temp[i]));
 		}
 		System.out.println();
 	}
