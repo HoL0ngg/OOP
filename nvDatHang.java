@@ -10,6 +10,10 @@ public class nvDatHang extends NhanVien {
 	}
 
 	private int xuatDonHang() {
+		if (this.demSanPham == 0) {
+			System.out.println("\tBan chua co don hang");
+			return 0;
+		}
 		int tongtien = 0;
 		int cntTab = (SanPham.maxLength / 8) + 1;
 		String navList[] = { "Ten mon hang", "Size", "So luong", "Don gia" };
@@ -165,11 +169,14 @@ public class nvDatHang extends NhanVien {
 	}
 
 	private void thaydoiChiTiet(int index) {
-		System.out.println("Ban muon thay doi gi ?");
-		System.out.println("1. Thay doi kich thuoc");
-		System.out.println("2. Thay doi luong duong");
-		System.out.println("3. Thay doi luong da");
-		System.out.println("4. Thay doi so luong");
+		System.out.println("+==================================+");
+		System.out.println("|         THAY DOI LUA CHON        |");
+		System.out.println("+----------------------------------+");
+		System.out.println("| 1. Thay doi size                 |");
+		System.out.println("| 2. Thay doi luong duong          |");
+		System.out.println("| 3. Thay doi luong da             |");
+		System.out.println("| 4. Thay doi so luong             |");
+		System.out.println("+==================================+");
 		int luachon = ChucNang.chuanHoa(1, 4);
 		int hehe = 0;
 		switch (luachon) {
@@ -200,8 +207,16 @@ public class nvDatHang extends NhanVien {
 				break;
 
 			case 4:
-				System.out.println("Moi nhap so luong");
-				hehe = ChucNang.chuanHoa(0, 1000);
+				System.out.print("Moi nhap so luong: ");
+				hehe = Integer.parseInt(ChucNang.chuanHoaChuoi());
+				if (hehe < 0) {
+					System.out.println("Gia tri khong hop le !");
+					hehe = ChucNang.chuanHoa(0, 1000);
+				}
+				if (hehe == 0) {
+					this.xoaSanPham(index);
+					return;
+				}
 				break;
 		}
 		int cnt = 0;
@@ -215,15 +230,16 @@ public class nvDatHang extends NhanVien {
 					this.DSSanPham[i] = hehe;
 					return;
 				}
+				int size = (i / (SanPham.duong.length * SanPham.da.length)) % SanPham.validSize;
+				int duong = (i / SanPham.da.length) % SanPham.duong.length;
+				int da = i % SanPham.da.length;
 				this.DSSanPham[i] = 0;
-				if (this.DSSanPham[i + (hehe - (i % (luachon == 3 ? SanPham.da.length
-						: luachon == 2 ? SanPham.duong.length : SanPham.validSize)))
-						* (luachon == 1 ? SanPham.duong.length * SanPham.da.length
+				if (this.DSSanPham[i + (hehe - (luachon == 1 ? size : (luachon == 2 ? duong : da)))
+						* (luachon == 1 ? (SanPham.duong.length * SanPham.da.length)
 								: luachon == 2 ? SanPham.da.length : 1)] != 0)
 					this.demSanPham--;
-				this.DSSanPham[i + (hehe - (i % (luachon == 3 ? SanPham.da.length
-						: luachon == 2 ? SanPham.duong.length : SanPham.validSize)))
-						* (luachon == 1 ? SanPham.duong.length * SanPham.da.length
+				this.DSSanPham[i + (hehe - (luachon == 1 ? size : (luachon == 2 ? duong : da)))
+						* (luachon == 1 ? (SanPham.duong.length * SanPham.da.length)
 								: luachon == 2 ? SanPham.da.length : 1)]++;
 				return;
 			}
@@ -261,11 +277,6 @@ public class nvDatHang extends NhanVien {
 			System.out.println("| 3. Thay doi chi tiet             |");
 			System.out.println("| 4. Xoa san pham                  |");
 			System.out.println("+==================================+");
-			System.out.println("Ban muon thay doi gi ? ");
-			System.out.println("1. Them san pham");
-			System.out.println("2. Thay doi san pham");
-			System.out.println("3. Thay doi chi tiet");
-			System.out.println("4. Xoa san pham");
 			int hehe = ChucNang.chuanHoa(1, 4);
 
 			this.xuatDonHang();
@@ -307,13 +318,15 @@ public class nvDatHang extends NhanVien {
 
 	private void thanhtoan(int tongtien, ThanhVien tv) {
 		// DTL == diem tich luy
-		int sudungDTL = 0;
+		int sudungDTL = 2;
 		if (tv != null) {
-			System.out.println("Ban co " + tv.getDiemtichluy() + " diem tich luy");
-			System.out.println("Ban co muon su dung ?");
-			System.out.println("1. Co");
-			System.out.println("2. Khong");
-			sudungDTL = ChucNang.chuanHoa(1, 2);
+			if (tv.getDiemtichluy() != 0) {
+				System.out.println("Ban co " + tv.getDiemtichluy() + " diem tich luy");
+				System.out.println("Ban co muon su dung ?");
+				System.out.println("1. Co");
+				System.out.println("2. Khong");
+				sudungDTL = ChucNang.chuanHoa(1, 2);
+			}
 		}
 		if (tv != null) {
 			NgayThang ngayHoaDon = new NgayThang();

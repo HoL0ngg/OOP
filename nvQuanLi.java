@@ -287,6 +287,7 @@ public class nvQuanLi extends NhanVien {
 		System.out.println("Nhap vao ten san pham muon chinh sua: ");
 		String ten = ChucNang.chuanHoaChuoi();
 		ThucDon.thucdon.get(indexSpThayDoi).setTen(ten);
+		ThucDon.ghiDSVaoFile();
 	}
 
 	private void chinhsuaDonGia(int indexSpThayDoi) {
