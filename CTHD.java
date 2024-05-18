@@ -1,10 +1,12 @@
 public class CTHD {
-    public String maChitetHoadon;
-    public String ten;
-    public int size;
-    public int soluongSanpham;
-    public int donGia;
-    public boolean hoanthanh;
+    private String maChitetHoadon;
+    private String ten;
+    private int size;
+    private int soluongSanpham;
+    private int donGia;
+    private boolean hoanthanh;
+    private int duong;
+    private int da;
 
     public CTHD() {
     }
@@ -64,6 +66,22 @@ public class CTHD {
 
     public void setDonGia(int donGia) {
         this.donGia = donGia;
+    }
+
+    public int getDuong() {
+        return duong;
+    }
+
+    public void setDuong(int duong) {
+        this.duong = duong;
+    }
+
+    public int getDa() {
+        return da;
+    }
+
+    public void setDa(int da) {
+        this.da = da;
     }
 
     public void xuatHoadon() {

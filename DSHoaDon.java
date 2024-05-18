@@ -108,7 +108,7 @@ public class DSHoaDon {
         }
     }
 
-    public static void them(int[] dssp, NhanVien nv) {
+    public static void them(int[] dssp, int[] chonduong, int[] chonda, NhanVien nv) {
         Hoadon hoadon = new Hoadon();
         String maHoaDon = "HD" + DSHoaDon.SLHD++;
         hoadon.setMaNhanvien(nv.getId());
@@ -139,6 +139,9 @@ public class DSHoaDon {
                 cthd.setSize(size);
                 cthd.setSoluongSanpham(dssp[i]);
                 cthd.setDonGia(ThucDon.thucdon.get(ten).getGiaTienAtIndex(size));
+                cthd.setHoanthanh(false);
+                cthd.setDuong(chonduong[i]);
+                cthd.setDa(chonda[i]);
                 temp.add(cthd);
                 double tien = cthd.getDonGia() * cthd.getSoluongSanpham();
                 tongTien += tien;
@@ -232,8 +235,10 @@ public class DSHoaDon {
                 sb.append(cthd.getTen()).append("#");
                 sb.append(SanPham.size[cthd.getSize()]).append("#");
                 sb.append(cthd.getSoluongSanpham()).append("#");
-                sb.append(cthd.getDonGia() + "#");
-                sb.append(cthd.isHoanthanh() ? "True" : "False");
+                sb.append(cthd.getDonGia()).append("#");
+                sb.append(cthd.isHoanthanh() ? "True" : "False").append("#");
+                sb.append(cthd.getDuong()).append("#");
+                sb.append(cthd.getDa());
                 sb.append(System.lineSeparator());
                 fw.write(sb.toString());
             }
@@ -251,8 +256,10 @@ public class DSHoaDon {
             sb.append(cthd.getTen()).append("#");
             sb.append(SanPham.size[cthd.getSize()]).append("#");
             sb.append(cthd.getSoluongSanpham()).append("#");
-            sb.append(cthd.getDonGia() + "#");
-            sb.append("false");
+            sb.append(cthd.getDonGia()).append("#");
+            sb.append("false").append("#");
+            sb.append(cthd.getDuong()).append("#");
+            sb.append(cthd.getDa());
             sb.append(System.lineSeparator());
             fw.write(sb.toString());
             fw.close();

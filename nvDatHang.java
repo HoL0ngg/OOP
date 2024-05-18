@@ -340,7 +340,7 @@ public class nvDatHang extends NhanVien {
 
 		this.thanhtoan(tong, tv);
 
-		DSHoaDon.them(this.DSSanPham, this);
+		DSHoaDon.them(this.DSSanPham, this.chonDuong, this.chonDa, this);
 
 	}
 
