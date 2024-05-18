@@ -112,5 +112,29 @@ public class CTHD {
                 "|");
         System.out.println();
 
+        if (this.getDuong() != SanPham.duong.length - 1) {
+            System.out.format("%-1s %5s %-24s %-7s %-5s %-10s %-15s %-1s",
+                    "|",
+                    "",
+                    "|\t+ " + SanPham.duong[this.duong] + " duong",
+                    "|",
+                    "|",
+                    "|",
+                    "|",
+                    "|");
+            System.out.println();
+        }
+        if (this.getDa() != SanPham.da.length - 1) {
+            System.out.format("%-1s %5s %-24s %-7s %-5s %-10s %-15s %-1s",
+                    "|",
+                    "",
+                    "|\t+ " + SanPham.da[this.da] + " da",
+                    "|",
+                    "|",
+                    "|",
+                    "|",
+                    "|");
+            System.out.println();
+        }
     }
 }

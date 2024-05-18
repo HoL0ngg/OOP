@@ -300,8 +300,6 @@ public class nvDatHang extends NhanVien {
 	}
 
 	private void nhanDonHang() {
-		// ThucDon.setDonGiatuFile("trasua.txt");
-		// ThucDon.setDonGiatuFile("caphe.txt");
 
 		this.DSSanPham = new int[ThucDon.thucdon.size() * SanPham.validSize];
 		this.chonDuong = new int[ThucDon.thucdon.size() * SanPham.validSize];

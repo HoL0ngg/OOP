@@ -56,12 +56,12 @@ public class nvPhaChe extends NhanVien {
                     int index = 0;
                     CTHD cthd = new CTHD();
                     for (CTHD temp : DSHoaDon.getCTHDList()) {
-                        if(temp.isHoanthanh()){
+                        if (temp.isHoanthanh()) {
                             ++index;
                             continue;
                         }
                         cthd = DSHoaDon.getCTHDList().get(index);
-                        if(temp.getMaChitetHoadon().equalsIgnoreCase(cthd.getMaChitetHoadon())){
+                        if (temp.getMaChitetHoadon().equalsIgnoreCase(cthd.getMaChitetHoadon())) {
                             temp.setHoanthanh(true);
                         }
                     }
@@ -97,6 +97,7 @@ public class nvPhaChe extends NhanVien {
         }
 
     }
+
     public static void main(String[] args) {
         DSHoaDon.docCTHDtuFile("cthd.txt");
         DSHoaDon.docHDtuFile("hoadon.txt");

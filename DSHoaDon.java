@@ -101,6 +101,8 @@ public class DSHoaDon {
                 cthd.setSoluongSanpham(Integer.parseInt(parts[3]));
                 cthd.setDonGia(Integer.parseInt(parts[4]));
                 cthd.setHoanthanh(Boolean.parseBoolean(parts[5]));
+                cthd.setDuong(Integer.parseInt(parts[6]));
+                cthd.setDa(Integer.parseInt(parts[7]));
                 DSHoaDon.CTHDList.add(cthd);
             }
         } catch (Exception e) {
