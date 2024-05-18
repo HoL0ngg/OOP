@@ -87,10 +87,10 @@ public class CTHD {
                 "|",
                 this.getMaChitetHoadon(),
                 "|  " + this.getTen(),
-                "|  " + stringsize,
+                "|   " + stringsize,
                 "|  " + this.getSoluongSanpham(),
-                "|  " + ChucNang.chuanHoaGia(this.getDonGia()),
-                "|  " + (this.isHoanthanh()? "Hoan thanh" : "Dang xu ly"),
+                "|  " + ChucNang.chuanHoaGia(this.getDonGia()) + "d",
+                "|  " + (this.isHoanthanh() ? "Hoan thanh" : "Dang xu ly"),
                 "|");
         System.out.println();
 
