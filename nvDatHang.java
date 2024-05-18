@@ -208,11 +208,7 @@ public class nvDatHang extends NhanVien {
 
 			case 4:
 				System.out.print("Moi nhap so luong: ");
-				hehe = Integer.parseInt(ChucNang.chuanHoaChuoi());
-				if (hehe < 0) {
-					System.out.println("Gia tri khong hop le !");
-					hehe = ChucNang.chuanHoa(0, 1000);
-				}
+				hehe = ChucNang.chuanHoa(1000);
 				if (hehe == 0) {
 					this.xoaSanPham(index);
 					return;
@@ -288,20 +284,20 @@ public class nvDatHang extends NhanVien {
 
 				case 2:
 					System.out.println("Nhap stt san pham can thay doi: ");
-					int spBiThayDoi = ChucNang.chuanHoa(1, this.demSanPham);
+					int spBiThayDoi = ChucNang.chuanHoa(this.demSanPham);
 					this.thaydoiSanPham(spBiThayDoi);
 					break;
 
 				case 3:
 					System.out.println("Nhap stt san pham can thay doi chi tiet: ");
-					int spthaydoi = ChucNang.chuanHoa(1, this.demSanPham);
+					int spthaydoi = ChucNang.chuanHoa(this.demSanPham);
 
 					this.thaydoiChiTiet(spthaydoi);
 					break;
 
 				case 4:
 					System.out.println("Nhap stt san pham can xoa: ");
-					int spBiXoa = ChucNang.chuanHoa(1, this.demSanPham);
+					int spBiXoa = ChucNang.chuanHoa(this.demSanPham);
 					this.xoaSanPham(spBiXoa);
 					break;
 			}
