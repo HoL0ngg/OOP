@@ -110,7 +110,7 @@ public class DSHoaDon {
         }
     }
 
-    public static void them(int[] dssp, int[] chonduong, int[] chonda, NhanVien nv) {
+    public static void them(int[] dssp, NhanVien nv) {
         Hoadon hoadon = new Hoadon();
         String maHoaDon = "HD" + DSHoaDon.SLHD++;
         hoadon.setMaNhanvien(nv.getId());
@@ -135,15 +135,17 @@ public class DSHoaDon {
         cthd.setMaChitetHoadon(maHoaDon);
         for (int i = 0; i < dssp.length; ++i) {
             if (dssp[i] != 0) {
-                int ten = i / SanPham.validSize;
-                int size = i % SanPham.validSize;
+                int ten = i / (SanPham.validSize * SanPham.duong.length * SanPham.da.length);
+                int size = (i / (SanPham.duong.length * SanPham.da.length)) % SanPham.validSize;
+                int duong = (i / SanPham.da.length) % SanPham.duong.length;
+                int da = i % SanPham.da.length;
                 cthd.setTen(ThucDon.thucdon.get(ten).getTen());
                 cthd.setSize(size);
                 cthd.setSoluongSanpham(dssp[i]);
                 cthd.setDonGia(ThucDon.thucdon.get(ten).getGiaTienAtIndex(size));
                 cthd.setHoanthanh(false);
-                cthd.setDuong(chonduong[i]);
-                cthd.setDa(chonda[i]);
+                cthd.setDuong(duong);
+                cthd.setDa(da);
                 temp.add(cthd);
                 double tien = cthd.getDonGia() * cthd.getSoluongSanpham();
                 tongTien += tien;
