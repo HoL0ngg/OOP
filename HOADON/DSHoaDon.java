@@ -4,11 +4,13 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import CHUCNANG.ChucNang;
 import CHUCNANG.NgayThang;
+import CHUCNANG.SoSanhNgayHĐ;
 import NHANVIEN.NhanVien;
 import SANPHAM.SanPham;
 import SANPHAM.ThucDon;
@@ -279,4 +281,7 @@ public class DSHoaDon {
         }
     }
 
+    public void sapxepHĐTheoNgay(){
+        Collections.sort(DSHoaDon.getDSHD(), new SoSanhNgayHĐ());
+    }
 }

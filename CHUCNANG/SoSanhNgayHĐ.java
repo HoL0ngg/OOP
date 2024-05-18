@@ -1,14 +1,15 @@
 package CHUCNANG;
 
 import java.util.Comparator;
-import THANHVIEN.ThanhVien;
+import HOADON.Hoadon;
 
-public class SoSanhNgaySinh implements Comparator<ThanhVien> {
+
+public class SoSanhNgayHĐ implements Comparator<Hoadon> {
 
     @Override
-    public int compare(ThanhVien o1, ThanhVien o2) {
-        NgayThang date1 = o1.getNgaysinh();
-        NgayThang date2 = o2.getNgaysinh();
+    public int compare(Hoadon o1, Hoadon o2) {
+        NgayThang date1 = o1.getNgayHoadon();
+        NgayThang date2 = o2.getNgayHoadon();
         if (date1.getNam() != date2.getNam())
             return date1.getNam() - date2.getNam();
         if (date1.getThang() != date2.getThang())
@@ -17,4 +18,5 @@ public class SoSanhNgaySinh implements Comparator<ThanhVien> {
             return date1.getNgay() - date2.getNgay();
         return 0;
     }
+    
 }
