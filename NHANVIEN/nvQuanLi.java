@@ -344,15 +344,15 @@ public class nvQuanLi extends NhanVien {
 	}
 
 	private void chinhsuaTen(int indexSpThayDoi) {
-		System.out.print("Nhap vao ten san pham muon chinh sua: ");
 		String ten = "";
 		do {
+			System.out.print("Nhap vao ten san pham muon chinh sua: ");
 			ten = ChucNang.chuanHoaChuoi();
 			ThucDon.thucdon.get(indexSpThayDoi).setTen(ten);
-			if (!ThucDon.kiemTraTen(ThucDon.thucdon.get(indexSpThayDoi).getTen())) {
+			if (!ThucDon.kiemTraTen(ten)) {
 				System.out.println("Ten san pham da ton tai. Vui long nhap lai.");
 			}
-		} while (!ThucDon.kiemTraTen(ThucDon.thucdon.get(indexSpThayDoi).getTen()));
+		} while (!ThucDon.kiemTraTen(ten));
 		ThucDon.ghiDSVaoFile();
 	}
 
