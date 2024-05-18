@@ -77,6 +77,38 @@ public class nvQuanLi extends NhanVien {
 		Collections.sort(this.dsNhanVien.getDSNV(), new SoSanhTheoChucVu());
 	}
 
+	private String sinhMaTuDong(int loai) {
+        String stt = Integer.toString(this.dsNhanVien.getDSNV().size() + 1);
+        int count = 5 - stt.length();
+        StringBuilder result = new StringBuilder();
+        switch (loai) {
+			case 1:
+				result.append("QL");
+				break;
+			case 2:
+				result.append("PC");
+				break;
+			case 3:
+				result.append("DH");
+				break;
+		}
+        while (count > 0) {
+            result.append("0");
+            --count;
+        }
+        result.append(stt);
+        return result.toString();
+    }
+
+	private boolean daTonTaiThongTin(String dulieu){
+		for(NhanVien nv : this.dsNhanVien.getDSNV()){
+			if(nv.getEmail().equalsIgnoreCase(dulieu) || nv.getSdt().equalsIgnoreCase(dulieu)){
+				return true;
+			}
+		}
+		return false;
+	}
+
 	private void themNhanVien() {
 		NhanVien nv = null;
 		int luachon;
@@ -95,15 +127,35 @@ public class nvQuanLi extends NhanVien {
 			case 3:
 				nv = new nvPhaChe();
 				break;
-			default:
-				break;
 		}
-		do {
-			nv.nhapThongTin();
-			if (!this.dsNhanVien.kiemTraIDNV(nv.getId())) {
-				System.out.println("Ma nhan vien da ton tai. Vui long nhap lai.");
+		nv.setId(this.sinhMaTuDong(luachon));
+		System.out.print("Nhap ten: ");
+		nv.setTen(ChucNang.chuanHoaChuoi());
+		System.out.println("Nhap dia chi: ");
+		DiaChi dc = new DiaChi();
+		dc.nhapThongTin();
+		nv.setDc(dc);
+		
+		do{
+			System.out.print("Nhap so dien thoai: ");
+			nv.setSdt(ChucNang.chuanHoaChuoi());
+			if (this.daTonTaiThongTin(nv.getSdt())) {
+				System.out.println("So dien thoai da ton tai. Vui long nhap lai");
 			}
-		} while (!this.dsNhanVien.kiemTraIDNV(nv.getId()));
+		} while (this.daTonTaiThongTin(nv.getSdt()));
+
+		do{
+			System.out.print("Nhap dia chi email: ");
+			nv.setEmail(ChucNang.chuanHoaChuoi());
+			if (this.daTonTaiThongTin(nv.getEmail())) {
+				System.out.println("Email da ton tai. Vui long nhap lai");
+			}
+		} while (this.daTonTaiThongTin(nv.getEmail()));
+
+		System.out.println("Nhap ngay sinh: ");
+		NgayThang ngaysinh = new NgayThang();
+		ngaysinh.nhapThongTin();
+		nv.setNgaysinh(ngaysinh);
 		int xacnhan = ChucNang.xacNhanThaoTac();
 		switch (xacnhan) {
 			case 0:
@@ -172,36 +224,32 @@ public class nvQuanLi extends NhanVien {
 					"---------------------------------------------------------------------------------------------------------------------------------------------------");
 			nvThayDoiTT.xuatThongTin();
 			System.out.println("\nChon thong tin can chinh sua");
-			System.out.println("1. Chinh sua ID");
-			System.out.println("2. Chinh sua ten");
-			System.out.println("3. Chinh sua dia chi");
-			System.out.println("4. Chinh sua so dien thoai");
-			System.out.println("5. Chinh sua email");
-			System.out.println("6. Chinh sua ngay sinh");
 			System.out.println("0. Thoat");
-			int luachon = ChucNang.chuanHoa(0, 7);
+			System.out.println("1. Chinh sua ten");
+			System.out.println("2. Chinh sua dia chi");
+			System.out.println("3. Chinh sua so dien thoai");
+			System.out.println("4. Chinh sua email");
+			System.out.println("5. Chinh sua ngay sinh");
+			int luachon = ChucNang.chuanHoa(0, 5);
 			System.out.print("Nhap thong tin chinh sua: ");
 			switch (luachon) {
 				case 0:
 					return;
 				case 1:
-					nvThayDoiTT.setId(ChucNang.chuanHoaChuoi());
-					break;
-				case 2:
 					nvThayDoiTT.setTen(ChucNang.chuanHoaChuoi());
 					break;
-				case 3:
+				case 2:
 					DiaChi diachimoi = new DiaChi();
 					diachimoi.nhapThongTin();
 					nvThayDoiTT.setDc(diachimoi);
 					break;
-				case 4:
+				case 3:
 					nvThayDoiTT.setSdt(ChucNang.chuanHoaChuoi());
 					break;
-				case 5:
+				case 4:
 					nvThayDoiTT.setEmail(ChucNang.chuanHoaChuoi());
 					break;
-				case 6:
+				case 5:
 					NgayThang ngaysinhmoi = new NgayThang();
 					ngaysinhmoi.nhapThongTin();
 					nvThayDoiTT.setNgaysinh(ngaysinhmoi);
