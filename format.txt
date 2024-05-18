@@ -6,5 +6,4 @@ Format file "HOA_DON.txt"
     <IDHĐ>#<IDNV>#<Ngày>#<Tháng>#<Năm>#<TiềnHĐ>
 Format file "CHI_TIET_HOA_DON.txt
     <IDHĐ>#<IDSP>#<SizeSP>#<Số lượng>#<Đơn giá>
-TODO list:
-- Chỉnh chức năng cập nhật thông tin sp
+ 

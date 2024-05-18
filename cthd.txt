@@ -1,21 +1,21 @@
-HD1#Tra viet quoc#M#1#15000#False#2#2
-HD2#Tra sua dai loan#L#2#22000#False#4#3
-HD2#Ca phe muoi#L#1#20000#False#2#4
-HD3#Tra sua viet quoc#M#1#20000#False#3#4
-HD3#Tra dao#L#1#17000#False#4#4
-HD3#Ca phe muoi#L#1#20000#False#4#4
-HD4#Ca phe trung#M#1#20000#False#4#4
-HD5#Tra sua thach dua#M#1#21000#False#4#4
-HD5#Den da khong duong#L#1#12000#False#2#4
-HD6#Tra chanh#L#1#15000#False#4#4
-HD6#Cacao da#L#1#17000#False#4#4
-HD7#Tra chanh#L#1#15000#False#4#4
-HD7#Ca phe trung#L#1#24000#False#4#4
-HD8#Tra viet quoc#L#1#17000#False#4#4
-HD8#Cacao da#S#1#12000#False#4#4
-HD9#Tra sua truyen thong#S#1#15000#False#4#4
-HD10#Tra sua dai loan#M#1#20000#False#4#4
-HD10#Sua tuoi duong den#L#1#30000#False#4#4
+HD1#Tra viet quoc#M#1#15000#True#2#2
+HD2#Tra sua dai loan#L#2#22000#True#4#3
+HD2#Ca phe muoi#L#1#20000#True#2#4
+HD3#Tra sua viet quoc#M#1#20000#True#3#4
+HD3#Tra dao#L#1#17000#True#4#4
+HD3#Ca phe muoi#L#1#20000#True#4#4
+HD4#Ca phe trung#M#1#20000#True#4#4
+HD5#Tra sua thach dua#M#1#21000#True#4#4
+HD5#Den da khong duong#L#1#12000#True#2#4
+HD6#Tra chanh#L#1#15000#True#4#4
+HD6#Cacao da#L#1#17000#True#4#4
+HD7#Tra chanh#L#1#15000#True#4#4
+HD7#Ca phe trung#L#1#24000#True#4#4
+HD8#Tra viet quoc#L#1#17000#True#4#4
+HD8#Cacao da#S#1#12000#True#4#4
+HD9#Tra sua truyen thong#S#1#15000#True#4#4
+HD10#Tra sua dai loan#M#1#20000#True#4#4
+HD10#Sua tuoi duong den#L#1#30000#True#4#4
 HD10#Bac xiu#S#1#12000#True#4#4
 HD11#Tra sua thai xanh#M#1#20000#True#4#4
 HD11#Tra sua dai loan#L#1#22000#True#4#4
@@ -24,6 +24,6 @@ HD12#Cappuccino#L#1#32000#True#4#4
 HD13#Tra sua truyen thong#S#1#15000#True#4#4
 HD14#Tra sua thai xanh#S#1#15000#True#4#4
 HD14#Tra sua truyen thong#M#1#20000#True#4#4
-HD15#Tra sua tran chau duong den#L#1#27000#false#3#2
-HD15#Cacao da#S#1#12000#false#4#4
-HD16#Tra sua tran chau duong den#L#3#27000#false#0#0
+HD15#Tra sua tran chau duong den#L#1#27000#True#3#2
+HD15#Cacao da#S#1#12000#True#4#4
+HD16#Tra sua tran chau duong den#L#3#27000#True#0#0
