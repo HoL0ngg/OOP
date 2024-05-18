@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
 
 public class nvQuanLi extends NhanVien {
 	private DSNhanVien dsNhanVien;
@@ -63,7 +62,8 @@ public class nvQuanLi extends NhanVien {
 				"|  Dia chi",
 				"|  SDT",
 				"|  Email");
-		System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------");
+		System.out.println(
+				"---------------------------------------------------------------------------------------------------------------------------------------------------");
 		while (this.dsNhanVien.getDSNV().get(i) instanceof nvDatHang) {
 			this.dsNhanVien.getDSNV().get(i).xuatThongTin();
 			++i;
@@ -130,16 +130,17 @@ public class nvQuanLi extends NhanVien {
 		int i = 1;
 		System.out.println();
 		System.out.format("%-3s %-10s %-18s %-15s %-55s %-13s %-33s",
-					"STT",
-					"|  ID",
-					"|  Ten",
-					"|  Ngay sinh",
-					"|  Dia chi",
-					"|  SDT",
-					"|  Email");
+				"STT",
+				"|  ID",
+				"|  Ten",
+				"|  Ngay sinh",
+				"|  Dia chi",
+				"|  SDT",
+				"|  Email");
 		System.out.println();
-		System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------");
-		for(NhanVien nv : temp){
+		System.out.println(
+				"---------------------------------------------------------------------------------------------------------------------------------------------------");
+		for (NhanVien nv : temp) {
 			System.out.format("%-3s %-10s %-18s %-15s %-55s %-13s %-33s",
 					i,
 					"|  " + nv.getId(),
@@ -149,7 +150,8 @@ public class nvQuanLi extends NhanVien {
 					"|  " + nv.getSdt(),
 					"|  " + nv.getEmail());
 			System.out.println();
-			System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------");
+			System.out.println(
+					"---------------------------------------------------------------------------------------------------------------------------------------------------");
 			++i;
 		}
 		int index = ChucNang.chuanHoa(1, (i - 1));
@@ -166,7 +168,8 @@ public class nvQuanLi extends NhanVien {
 					"|  SDT",
 					"|  Email");
 			System.out.println();
-			System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------");
+			System.out.println(
+					"---------------------------------------------------------------------------------------------------------------------------------------------------");
 			nvThayDoiTT.xuatThongTin();
 			System.out.println("\nChon thong tin can chinh sua");
 			System.out.println("1. Chinh sua ID");
@@ -268,13 +271,12 @@ public class nvQuanLi extends NhanVien {
 		}
 	}
 
-	private ArrayList<NhanVien> timkiemNV(){
-		Scanner scan = new Scanner(System.in);
+	private ArrayList<NhanVien> timkiemNV() {
 		System.out.print("Tim kiem: ");
-		String timkiem = scan.nextLine();
+		String timkiem = ChucNang.chuanHoaChuoi();
 		ArrayList<NhanVien> result = new ArrayList<>();
-		for(NhanVien nv : this.dsNhanVien.getDSNV()){
-			if(nv.getTen().toLowerCase().contains(timkiem.toLowerCase())){
+		for (NhanVien nv : this.dsNhanVien.getDSNV()) {
+			if (nv.getTen().toLowerCase().contains(timkiem.toLowerCase())) {
 				result.add(nv);
 			}
 		}
@@ -395,7 +397,7 @@ public class nvQuanLi extends NhanVien {
 				case 5:
 					this.chinhsuaThongTinNV();
 					this.dsNhanVien.ghiVaoFile("NHAN_VIEN.txt");
-					break;//sua lai
+					break;// sua lai
 				case 6:
 					this.xuatDSNV();
 					break;
