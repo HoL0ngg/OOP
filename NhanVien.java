@@ -72,8 +72,6 @@ public abstract class NhanVien {
 	}
 
 	public void nhapThongTin() {
-		System.out.print("Nhap id: ");
-		this.setId(ChucNang.chuanHoaChuoi());
 		System.out.print("Nhap ten: ");
 		this.setTen(ChucNang.chuanHoaChuoi());
 		System.out.println("Nhap dia chi: ");

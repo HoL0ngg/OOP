@@ -15,3 +15,4 @@
 2#PC0004#Danh Thi Ngoc Chau#TP.HCM#Binh Chanh#Tan Kien#123/321#Kinh Duong Vuong#0772152991#chaudanhthingoc205@gmail.com#17#3#2005
 3#DH0007#Ngoc Chau#TP.HCM#Binh Chanh#Tan Kien#123/321#Kinh Duong Vuong#0772152992#chaudanhthingoc205@gmail.com#17#3#2005
 1#QL0004#Hot Girl Binh Chanh#TP.HCM#Binh Chanh#Tan Kien#123/321#Kinh Duong Vuong#0772152993#chaudanhthingoc205@gmail.com#17#3#2005
+1#QL00018#Quoc Beo#TP.HCM#Binh Tan#An Lac A#28/2#Phung Ta Chu#0938381444#baohoo1002@gmail.com#10#2#2005
