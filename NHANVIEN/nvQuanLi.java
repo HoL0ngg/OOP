@@ -90,10 +90,10 @@ public class nvQuanLi extends NhanVien {
 	}
 
 	private String sinhMaTuDong(int loai) {
-        String stt = Integer.toString(this.dsNhanVien.getDSNV().size() + 1);
-        int count = 5 - stt.length();
-        StringBuilder result = new StringBuilder();
-        switch (loai) {
+		String stt = Integer.toString(this.dsNhanVien.getDSNV().size() + 1);
+		int count = 5 - stt.length();
+		StringBuilder result = new StringBuilder();
+		switch (loai) {
 			case 1:
 				result.append("QL");
 				break;
@@ -104,17 +104,17 @@ public class nvQuanLi extends NhanVien {
 				result.append("DH");
 				break;
 		}
-        while (count > 0) {
-            result.append("0");
-            --count;
-        }
-        result.append(stt);
-        return result.toString();
-    }
+		while (count > 0) {
+			result.append("0");
+			--count;
+		}
+		result.append(stt);
+		return result.toString();
+	}
 
-	private boolean daTonTaiThongTin(String dulieu){
-		for(NhanVien nv : this.dsNhanVien.getDSNV()){
-			if(nv.getEmail().equalsIgnoreCase(dulieu) || nv.getSdt().equalsIgnoreCase(dulieu)){
+	private boolean daTonTaiThongTin(String dulieu) {
+		for (NhanVien nv : this.dsNhanVien.getDSNV()) {
+			if (nv.getEmail().equalsIgnoreCase(dulieu) || nv.getSdt().equalsIgnoreCase(dulieu)) {
 				return true;
 			}
 		}
@@ -124,7 +124,7 @@ public class nvQuanLi extends NhanVien {
 	private void themNhanVien() {
 		NhanVien nv = null;
 		int luachon;
-		System.out.println("\nNhap kieu nhan vien can them: ");
+		System.out.println("\nNhap vi tri nhan vien can them: ");
 		System.out.println("1. Nhan vien quan li");
 		System.out.println("2. Nhan vien pha che");
 		System.out.println("3. Nhan vien dat hang");
@@ -148,7 +148,7 @@ public class nvQuanLi extends NhanVien {
 		dc.nhapThongTin();
 		nv.setDc(dc);
 
-		do{
+		do {
 			System.out.print("Nhap so dien thoai: ");
 			nv.setSdt(ChucNang.chuanHoaChuoi());
 			if (this.daTonTaiThongTin(nv.getSdt())) {
@@ -156,7 +156,7 @@ public class nvQuanLi extends NhanVien {
 			}
 		} while (this.daTonTaiThongTin(nv.getSdt()));
 
-		do{
+		do {
 			System.out.print("Nhap dia chi email: ");
 			nv.setEmail(ChucNang.chuanHoaChuoi());
 			if (this.daTonTaiThongTin(nv.getEmail())) {
