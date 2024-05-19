@@ -238,6 +238,7 @@ public class nvDatHang extends NhanVien {
 				int size = (i / (SanPham.duong.length * SanPham.da.length)) % SanPham.validSize;
 				int duong = (i / SanPham.da.length) % SanPham.duong.length;
 				int da = i % SanPham.da.length;
+				int val = this.DSSanPham[i];
 				this.DSSanPham[i] = 0;
 				if (this.DSSanPham[i + (hehe - (luachon == 1 ? size : (luachon == 2 ? duong : da)))
 						* (luachon == 1 ? (SanPham.duong.length * SanPham.da.length)
@@ -245,7 +246,7 @@ public class nvDatHang extends NhanVien {
 					this.demSanPham--;
 				this.DSSanPham[i + (hehe - (luachon == 1 ? size : (luachon == 2 ? duong : da)))
 						* (luachon == 1 ? (SanPham.duong.length * SanPham.da.length)
-								: luachon == 2 ? SanPham.da.length : 1)]++;
+								: luachon == 2 ? SanPham.da.length : 1)] = val;
 				return;
 			}
 		}
@@ -292,21 +293,21 @@ public class nvDatHang extends NhanVien {
 					break;
 
 				case 2:
-					System.out.println("Nhap stt san pham can thay doi: ");
-					int spBiThayDoi = ChucNang.chuanHoa(this.demSanPham);
+					System.out.println("Nhap stt san pham can thay doi");
+					int spBiThayDoi = ChucNang.chuanHoa(1, this.demSanPham);
 					this.thaydoiSanPham(spBiThayDoi);
 					break;
 
 				case 3:
-					System.out.println("Nhap stt san pham can thay doi chi tiet: ");
-					int spthaydoi = ChucNang.chuanHoa(this.demSanPham);
+					System.out.println("Nhap stt san pham can thay doi chi tiet");
+					int spthaydoi = ChucNang.chuanHoa(1, this.demSanPham);
 
 					this.thaydoiChiTiet(spthaydoi);
 					break;
 
 				case 4:
-					System.out.println("Nhap stt san pham can xoa: ");
-					int spBiXoa = ChucNang.chuanHoa(this.demSanPham);
+					System.out.println("Nhap stt san pham can xoa");
+					int spBiXoa = ChucNang.chuanHoa(1, this.demSanPham);
 					this.xoaSanPham(spBiXoa);
 					break;
 			}
@@ -318,15 +319,14 @@ public class nvDatHang extends NhanVien {
 			System.out.println("2. Khong");
 			chonlai = ChucNang.chuanHoa(1, 2);
 		}
-		// scan.close();
 	}
 
 	private void thanhtoan(int tongtien, ThanhVien tv) {
 		// DTL == diem tich luy
 		int sudungDTL = 2;
 		if (tv != null) {
+			System.out.println("Ban co " + tv.getDiemtichluy() + " Diem tich luy");
 			if (tv.getDiemtichluy() != 0) {
-				System.out.println("Ban co " + tv.getDiemtichluy() + " diem tich luy");
 				System.out.println("Ban co muon su dung ?");
 				System.out.println("1. Co");
 				System.out.println("2. Khong");
@@ -352,20 +352,32 @@ public class nvDatHang extends NhanVien {
 				}
 			}
 		}
-		System.out.println("Tong tien ban can thanh toan la: " + ChucNang.chuanHoaGia(tongtien) + 'd');
+		System.out.println("\tTong tien ban can thanh toan la: " + ChucNang.chuanHoaGia(tongtien) + 'd');
 		if (tv != null) {
-			if (sudungDTL == 1) {
-				System.out.println("Diem tich luy con lai cua ban: " + tv.getDiemtichluy());
-				DSThanhVien.ghiDSTVVaoFile("THANH_VIEN.txt");
-			}
-			if (sudungDTL == 2) {
-				tv.setDiemtichluy(tv.getDiemtichluy() + (tongtien / 1000));
-			}
+			// if (sudungDTL == 1) {
+			// System.out.println("Diem tich luy con lai cua ban: " + tv.getDiemtichluy());
+			// DSThanhVien.ghiDSTVVaoFile("THANH_VIEN.txt");
+			// }
+			// if (sudungDTL == 2) {
+			// tv.setDiemtichluy(tv.getDiemtichluy() + (tongtien / 1000));
+			// System.out.println("Ban duoc tang diem tich luy");
+			// System.out.println("Diem tich luy hien tai cua ban la: " +
+			// tv.getDiemtichluy());
+			// }
+			System.out.println("+=======================================+");
+			System.out.println("|              THE THANH VIEN           |");
+			System.out.println("+---------------------------------------+");
+			System.out.printf("| Ten: %-32s |\n", tv.getTen());
+			System.out.printf("| SDT: %-32s |\n", tv.getSđt());
+			System.out.printf("| Diem tich luy: %-23d|\n", tv.getDiemtichluy());
+			System.out.printf("| Ngay tao the: %-24s|\n", tv.getNgaytaothe());
+			System.out.println("+=======================================+");
+			DSThanhVien.ghiDSTVVaoFile("THANH_VIEN.txt");
 		}
+		System.out.println();
 	}
 
 	private void nhanDonHang() {
-
 		this.DSSanPham = new int[ThucDon.thucdon.size() * SanPham.validSize * SanPham.duong.length * SanPham.da.length];
 		this.demSanPham = 0;
 
@@ -403,7 +415,6 @@ public class nvDatHang extends NhanVien {
 		this.thanhtoan(tong, tv);
 
 		DSHoaDon.them(this.DSSanPham, this);
-
 	}
 
 	// Menu cho nhan vien dat hang

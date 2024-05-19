@@ -281,7 +281,7 @@ public class DSHoaDon {
         }
     }
 
-    public void sapxepHĐTheoNgay(){
+    public void sapxepHĐTheoNgay() {
         Collections.sort(DSHoaDon.getDSHD(), new SoSanhNgayHĐ());
     }
 }

@@ -1,4 +1,5 @@
 package CHUCNANG;
+
 public class NgayThang {
 	private int ngay;
 	private int thang;
@@ -38,12 +39,31 @@ public class NgayThang {
 	}
 
 	public void nhapThongTin() {
-		System.out.print("Nhap ngay: ");
-		this.setNgay(Integer.parseInt(ChucNang.chuanHoaChuoi()));
-		System.out.print("Nhap thang: ");
-		this.setThang(Integer.parseInt(ChucNang.chuanHoaChuoi()));
-		System.out.print("Nhap nam: ");
-		this.setNam(Integer.parseInt(ChucNang.chuanHoaChuoi()));
+		int[] thang = new int[] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+		while (true) {
+			try {
+				System.out.print("Nhap ngay: ");
+				int day = Integer.parseInt(ChucNang.chuanHoaChuoi());
+				System.out.print("Nhap thang: ");
+				int month = Integer.parseInt(ChucNang.chuanHoaChuoi());
+				System.out.print("Nhap nam: ");
+				int year = Integer.parseInt(ChucNang.chuanHoaChuoi());
+				if (year % 4 == 0 && year % 100 != 0)
+					thang[1]++;
+				while (thang[month - 1] < day || day < 0) {
+					System.out.println("Gia tri khong hop le, vui long nhap lai");
+					System.out.print("Nhap ngay: ");
+					day = Integer.parseInt(ChucNang.chuanHoaChuoi());
+					System.out.print("Nhap thang: ");
+					month = Integer.parseInt(ChucNang.chuanHoaChuoi());
+					System.out.print("Nhap nam: ");
+					year = Integer.parseInt(ChucNang.chuanHoaChuoi());
+				}
+				break;
+			} catch (Exception e) {
+				System.out.println("Gia tri khong hop le, vui long nhap lai");
+			}
+		}
 	}
 
 	@Override

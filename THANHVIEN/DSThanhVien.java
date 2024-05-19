@@ -31,10 +31,13 @@ public class DSThanhVien {
                 tv.setId(parts[0]);
                 tv.setTen(parts[1]);
                 tv.setSđt(parts[2]);
-                NgayThang tmp = new NgayThang(Integer.parseInt(parts[3]), Integer.parseInt(parts[4]),
+                NgayThang ngaysinh = new NgayThang(Integer.parseInt(parts[3]), Integer.parseInt(parts[4]),
                         Integer.parseInt(parts[5]));
-                tv.setNgaysinh(tmp);
+                tv.setNgaysinh(ngaysinh);
                 tv.setDiemtichluy(Integer.parseInt(parts[6]));
+                NgayThang ngaytaothe = new NgayThang(Integer.parseInt(parts[7]), Integer.parseInt(parts[8]),
+                        Integer.parseInt(parts[9]));
+                tv.setNgaytaothe(ngaytaothe);
                 DSThanhVien.DSTV.add(tv);
             }
         } catch (Exception e) {
@@ -52,7 +55,10 @@ public class DSThanhVien {
                 sb.append(tv.getNgaysinh().getNgay() + "#")
                         .append(tv.getNgaysinh().getThang() + "#")
                         .append(tv.getNgaysinh().getNam() + "#");
-                sb.append(tv.getDiemtichluy());
+                sb.append(tv.getDiemtichluy() + "#");
+                sb.append(tv.getNgaytaothe().getNgay() + "#")
+                        .append(tv.getNgaytaothe().getThang() + "#")
+                        .append(tv.getNgaytaothe().getNam() + "#");
                 sb.append(System.lineSeparator());
                 fw.write(sb.toString());
             }
@@ -72,7 +78,10 @@ public class DSThanhVien {
             sb.append(tv.getNgaysinh().getNgay() + "#")
                     .append(tv.getNgaysinh().getThang() + "#")
                     .append(tv.getNgaysinh().getNam() + "#");
-            sb.append(tv.getDiemtichluy());
+            sb.append(tv.getDiemtichluy() + "#");
+            sb.append(tv.getNgaytaothe().getNgay() + "#")
+                    .append(tv.getNgaytaothe().getThang() + 1 + "#")
+                    .append(tv.getNgaytaothe().getNam());
             sb.append(System.lineSeparator());
             fw.write(sb.toString());
             fw.flush();

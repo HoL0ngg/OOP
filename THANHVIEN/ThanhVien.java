@@ -1,4 +1,7 @@
 package THANHVIEN;
+
+import java.util.Calendar;
+
 import CHUCNANG.ChucNang;
 import CHUCNANG.NgayThang;
 
@@ -8,6 +11,7 @@ public class ThanhVien {
     private String sđt;
     private NgayThang ngaysinh;
     private int diemtichluy;
+    private NgayThang ngaytaothe;
 
     public ThanhVien() {
     }
@@ -36,6 +40,14 @@ public class ThanhVien {
         this.ten = ten;
     }
 
+    public NgayThang getNgaytaothe() {
+        return ngaytaothe;
+    }
+
+    public void setNgaytaothe(NgayThang ngaytaothe) {
+        this.ngaytaothe = ngaytaothe;
+    }
+
     public NgayThang getNgaysinh() {
         return ngaysinh;
     }
@@ -47,7 +59,7 @@ public class ThanhVien {
     public int getDiemtichluy() {
         return diemtichluy;
     }
-    
+
     public void setDiemtichluy(int diemtichluy) {
         this.diemtichluy = diemtichluy;
     }
@@ -60,16 +72,16 @@ public class ThanhVien {
         this.sđt = sđt;
     }
 
-    public void xuatThongTin(){
+    public void xuatThongTin() {
         System.out.format("%-8s %-18s %-15s %-5s",
-        this.getId(),
-        "|  " + this.getTen(),
-        "|  " + this.getNgaysinh(),
-        "|  " + this.getDiemtichluy());
+                this.getId(),
+                "|  " + this.getTen(),
+                "|  " + this.getNgaysinh(),
+                "|  " + this.getDiemtichluy());
         System.out.println();
     }
 
-    public void nhapThongTin(){
+    public void nhapThongTin() {
         System.out.print("Nhap ten: ");
         setTen(ChucNang.chuanHoaChuoi());
         System.out.print("Nhap so dien thoai: ");
@@ -79,6 +91,10 @@ public class ThanhVien {
         tmp.nhapThongTin();
         this.setNgaysinh(tmp);
         this.setDiemtichluy(0);
+        Calendar calendar = Calendar.getInstance();
+        NgayThang date = new NgayThang(calendar.get(Calendar.DATE), calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.YEAR));
+        this.setNgaytaothe(date);
     }
 
 }
