@@ -41,6 +41,7 @@ public class DSNhanVien {
                 }
                 nv.setId(parts[1]);
                 nv.setTen(parts[2]);
+                // System.out.println("h3h3");
                 DiaChi dc = new DiaChi(parts[3], parts[4], parts[5], parts[6], parts[7]);
                 nv.setDc(dc);
                 nv.setSdt(parts[8]);

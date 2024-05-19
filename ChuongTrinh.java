@@ -37,6 +37,9 @@ public class ChuongTrinh {
 						break;
 					}
 				}
+				if(nhanvien == null){
+					System.out.println("Khong ton tai tai khoan");
+				}
 			}
 			nhanvien.menu();
 		}

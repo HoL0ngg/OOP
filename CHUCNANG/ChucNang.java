@@ -89,12 +89,18 @@ public class ChucNang {
 
     public static String chuaHoaSDT() {
         Scanner scan = new Scanner(System.in);
-        String sdt = scan.nextLine();
-        while (sdt.charAt(0) != '0' && sdt.length() < 10) {
-            System.out.println("Gia tri khong hop le !");
-            System.out.print("Moi nhap lai SDT: ");
-            sdt = scan.nextLine();
-        }
+        String sdt = "";
+        boolean isSDT = true;
+        do {
+            isSDT = true;
+            sdt = scan.nextLine().trim();
+            for (int i = 0; i < sdt.length(); ++i) {
+                if (sdt.charAt(i) <= '0' || sdt.charAt(i) >= '9')
+                    isSDT = false;
+            }
+            if (sdt.charAt(0) != '0' && sdt.charAt(1) == '0' && sdt.length() < 10 && sdt.length() > 11)
+                isSDT = false;
+        } while (!isSDT);
         return sdt;
     }
 
@@ -121,5 +127,28 @@ public class ChucNang {
             }
         }
         return soNha;
+    }
+
+    public static String chuanHoaEmail() {
+        Scanner scan = new Scanner(System.in);
+        char[] check = { '@', '.' };
+        boolean isEmail = false;
+        String mail = "";
+        do {
+            mail = scan.nextLine().trim();
+            int i = 1;
+            int j = 0;
+            while (i < mail.length() && j < check.length) {
+                if (mail.charAt(i) == check[j]) {
+                    i = i + 2;
+                    j++;
+                }
+            }
+            if (j == check.length - 1 && mail.length() - i > 2)
+                isEmail = true;
+
+        } while (!isEmail);
+
+        return mail;
     }
 }
