@@ -8,7 +8,6 @@ public abstract class SanPham {
 	private String id;
 	private String ten;
 	private int giaTien[];
-	private boolean trangthai;
 
 	public static int maxLength = 0;
 
@@ -28,14 +27,6 @@ public abstract class SanPham {
 
 	public String getTen() {
 		return ten;
-	}
-
-	public boolean getTrangthai() {
-		return trangthai;
-	}
-
-	public void setTrangthai(boolean trangthai) {
-		this.trangthai = trangthai;
 	}
 
 	public void setTen(String ten) {
@@ -85,6 +76,5 @@ public abstract class SanPham {
 			gia[i] = ChucNang.chuanHoa(1000, 60000);
 		}
 		this.setGiaTien(gia);
-		this.setTrangthai(true);
 	}
 }
