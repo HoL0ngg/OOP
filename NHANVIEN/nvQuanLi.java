@@ -331,8 +331,11 @@ public class nvQuanLi extends NhanVien {
 				spxoa = null;
 				return;
 			case 1:
-				ThucDon.thucdon.remove(spxoa);
+				spxoa.setTrangthai(false);
+				if (spxoa instanceof TraSua)
+					ThucDon.indexOfCaPhe--;
 				ThucDon.ghiDSVaoFile();
+				ThucDon.thucdon.remove(spxoa);
 				System.out.println("Da xoa san pham");
 				break;
 		}
@@ -355,7 +358,7 @@ public class nvQuanLi extends NhanVien {
 	}
 
 	private void kinhdoanhLaiSP() {
-		ArrayList<SanPham> list = new ArrayList<>();
+		ArrayList<SanPham> list = new ArrayList<SanPham>();
 		for (SanPham sp : ThucDon.thucdon) {
 			if (sp.getTrangthai() == false) {
 				list.add(sp);
@@ -367,9 +370,11 @@ public class nvQuanLi extends NhanVien {
 				System.out.println((i + 1) + ". " + list.get(i).getTen());
 			}
 			System.out.print("Moi nhap lua chon: ");
-			int luachon = ChucNang.chuanHoa(1, list.size());
+			int luachon = ChucNang.chuanHoa(1, list.size()) - 1;
 			list.get(luachon).setTrangthai(true);
+			ThucDon.ghiDSVaoFile();
 			ThucDon.thucdon.add(list.get(luachon));
+			System.out.println("Da kinh doanh lai san pham");
 		} else {
 			System.out.println("Khong co san pham da ngung kinh doanh");
 		}
