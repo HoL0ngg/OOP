@@ -16,15 +16,15 @@ public class ChuongTrinh {
 		ThucDon.setDonGiatuFile("caphe.txt");
 		DSThanhVien.docDSTVTuFile("THANH_VIEN.txt");
 
-		// DSHoaDon.xuatToanboHoadon();
+		// ThongKe.thongKeQuy();
 
 		while (true) {
 			NhanVien nhanvien = null;
 			while (nhanvien == null) {
 				System.out.println("+========================================+");
-				System.out.println("|         EINHORN COFFE - TEA SHOP       |");
+				System.out.println("| EINHORN COFFE - TEA SHOP |");
 				System.out.println("+----------------------------------------+");
-				System.out.println("|                 DANG NHAP              |");
+				System.out.println("| DANG NHAP |");
 				System.out.println("+----------------------------------------+");
 				System.out.print(" Username: ");
 				String name = ChucNang.chuanHoaChuoi().trim();
