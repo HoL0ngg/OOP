@@ -4,12 +4,13 @@ import NHANVIEN.DSNhanVien;
 import NHANVIEN.NhanVien;
 import SANPHAM.ThucDon;
 import THANHVIEN.DSThanhVien;
+
 public class ChuongTrinh {
 	public static void main(String[] args) {
 		DSNhanVien dsnv = new DSNhanVien();
 		DSHoaDon.docHDtuFile("hoadon.txt");
 		DSHoaDon.docCTHDtuFile("cthd.txt");
-		DSHoaDon.SLHD = DSHoaDon.getDSHD().size() + 1;
+		// DSHoaDon.SLHD = DSHoaDon.getDSHD().size() + 1;
 		dsnv.nhapNVtuFile("NHAN_VIEN.txt");
 		ThucDon.setDonGiatuFile("trasua.txt");
 		ThucDon.setDonGiatuFile("caphe.txt");
@@ -36,7 +37,7 @@ public class ChuongTrinh {
 						break;
 					}
 				}
-				if(nhanvien == null){
+				if (nhanvien == null) {
 					System.out.println("Khong ton tai tai khoan");
 				}
 			}

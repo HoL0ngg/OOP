@@ -1,11 +1,11 @@
-cpd		#Ca phe den		#7000#10000#12000#True
-cps		#Ca phe sua		#12000#15000#17000#True
-cppm		#Ca phe pha may		#18000#22000#26000#True
-cpcd		#Ca phe cot dua		#18000#23000#27000#True
-cpm		#Ca phe muoi		#15000#17000#20000#True
-cpcn		#Cappuccino		#22000#27000#32000#True
-ccd		#Cacao da		#12000#15000#17000#True
-cpsd		#Ca phe sua dua		#14000#20000#25000#True
-cpt		#Ca phe trung		#12000#15000#19000#True
-ccn		#Cacao nong		#12000#16000#18000#True
-bx		#Bac xiu		#16000#18000#24000#True
+cp1		#Ca phe den		#7000#10000#12000#True
+cp2		#Ca phe sua		#12000#15000#17000#True
+cp3		#Ca phe pha may		#18000#22000#26000#True
+cp4		#Ca phe cot dua		#18000#23000#27000#True
+cp5		#Ca phe muoi		#15000#17000#20000#True
+cp6		#Cappuccino		#22000#27000#32000#True
+cc7		#Cacao da		#12000#15000#17000#True
+cp8		#Ca phe sua dua		#14000#20000#25000#True
+cp9		#Ca phe trung		#12000#15000#19000#True
+cp10		#Cacao nong		#12000#16000#18000#True
+cf11		#Bac xiu		#16000#18000#24000#True

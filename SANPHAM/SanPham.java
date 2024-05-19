@@ -1,5 +1,7 @@
 package SANPHAM;
 
+import java.security.DrbgParameters.Capability;
+
 import CHUCNANG.ChucNang;
 
 public abstract class SanPham {
@@ -66,13 +68,10 @@ public abstract class SanPham {
 
 	// dung de cho nvQuanLi them SanPham vao List
 	public void nhapThongTin() {
-		do {
-			System.out.print("Nhap id san pham: ");
-			this.setId(ChucNang.chuanHoaTen());
-			if (!ThucDon.kiemTraID(this.getId())) {
-				System.out.println("Ma san pham da ton tai. Vui long nhap lai.");
-			}
-		} while (!ThucDon.kiemTraID(this.getId())); // Kiem tra ID da ton tai trong ds chua
+		if (this instanceof TraSua)
+			this.setId("ts" + (ThucDon.indexOfCaPhe + 1));
+		if (this instanceof CaPhe)
+			this.setId("cp" + (ThucDon.thucdon.size() - ThucDon.indexOfCaPhe + 1));
 		do {
 			System.out.print("Nhap ten san pham: ");
 			this.setTen(ChucNang.chuanHoaTen());
@@ -84,7 +83,6 @@ public abstract class SanPham {
 		for (int i = 0; i < SanPham.validSize; ++i) {
 			System.out.print("Nhap vao gia size " + SanPham.size[i] + ": ");
 			gia[i] = ChucNang.chuanHoa(1000, 60000);
-			// System.out.println();
 		}
 		this.setGiaTien(gia);
 		this.setTrangthai(true);
