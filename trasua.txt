@@ -20,3 +20,4 @@ ts19		#Tra sua thit heo		#10000#11000#12000#True
 ts20		#Tra sua chuoi		#12222#44444#33333#True
 ts21		#Tra sua trung		#1#12#13#True
 ts22		#Tra sua chua		#12000#13000#14000#True
+ts23		#Tra sua Han Quoc		#20000#21000#22000#True
