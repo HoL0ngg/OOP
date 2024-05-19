@@ -90,11 +90,36 @@ public class ChucNang {
     public static String chuaHoaSDT() {
         Scanner scan = new Scanner(System.in);
         String sdt = scan.nextLine();
-        while (sdt.charAt(0) != '0' || sdt.length() < 10) {
+        while (sdt.charAt(0) != '0' && sdt.length() < 10) {
             System.out.println("Gia tri khong hop le !");
             System.out.print("Moi nhap lai SDT: ");
             sdt = scan.nextLine();
         }
         return sdt;
+    }
+
+    public static String chuanHoaSoNha() {
+        Scanner scan = new Scanner(System.in);
+        String soNha = scan.nextLine();
+        boolean check = false;
+        soNha = soNha.trim();
+        for (int i = 0; i < soNha.length(); ++i) {
+            if (soNha.charAt(i) >= '0' && soNha.charAt(i) <= '9') {
+                check = true;
+                break;
+            }
+        }
+        while (soNha.length() < 1 && !check) {
+            System.out.print("Gia tri khong hop le, moi nhap lai so nha: ");
+            soNha = scan.nextLine();
+            soNha = soNha.trim();
+            for (int i = 0; i < soNha.length(); ++i) {
+                if (soNha.charAt(i) >= '0' && soNha.charAt(i) <= '9') {
+                    check = true;
+                    break;
+                }
+            }
+        }
+        return soNha;
     }
 }

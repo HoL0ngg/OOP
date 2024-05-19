@@ -21,7 +21,7 @@ public class ThongKe {
         int tongdon = 0;
         int tongDoanhthu = 0;
         System.out.print("Nhap nam muon thong ke: ");
-        int nam = ChucNang.chuanHoa(2024);
+        int nam = ChucNang.chuanHoa(1, 2024);
         for (Hoadon hd : DSHoaDon.getDSHD()) {
             if (hd.getNgayHoadon().getNam() == nam) {
                 soluongdon[hd.getNgayHoadon().getThang() / 4]++;
@@ -82,7 +82,7 @@ public class ThongKe {
         ThongKe.doanhthu = new int[12];
         ThongKe.soluonghang = new int[ThucDon.thucdon.size()];
         System.out.print("Nhap nam muon thong ke: ");
-        int nam = ChucNang.chuanHoa(2024);
+        int nam = ChucNang.chuanHoa(1, 2024);
         for (Hoadon hd : DSHoaDon.getDSHD()) {
             if (hd.getNgayHoadon().getNam() == nam) {
                 soluongdon[hd.getNgayHoadon().getThang()]++;

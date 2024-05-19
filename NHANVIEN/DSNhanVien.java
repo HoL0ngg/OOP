@@ -41,7 +41,7 @@ public class DSNhanVien {
                 }
                 nv.setId(parts[1]);
                 nv.setTen(parts[2]);
-                DiaChi dc = new DiaChi(parts[3], parts[4], parts[5], Integer.parseInt(parts[6]), parts[7]);
+                DiaChi dc = new DiaChi(parts[3], parts[4], parts[5], parts[6], parts[7]);
                 nv.setDc(dc);
                 nv.setSdt(parts[8]);
                 nv.setEmail(parts[9]);
@@ -51,7 +51,8 @@ public class DSNhanVien {
                 DSNhanVien.dsnv.add(nv);
             }
         } catch (Exception e) {
-            System.out.println("Khong the mo file");
+            System.out.println(e.getMessage());
+            // System.out.println("Khong the mo file");
         }
     }
 
