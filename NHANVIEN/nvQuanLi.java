@@ -354,6 +354,25 @@ public class nvQuanLi extends NhanVien {
 		return result;
 	}
 
+	private void kinhdoanhLaiSP() {
+		ArrayList<SanPham> list = new ArrayList<>();
+		for (SanPham sp : ThucDon.thucdon) {
+			if (sp.getTrangthai() == false) {
+				list.add(sp);
+			}
+		}
+		if (list.size() > 0) {
+			System.out.println("Chon stt san pham ban muon kinh doanh lai");
+			for (int i = 0; i < list.size(); ++i) {
+				System.out.println((i + 1) + ". " + list.get(i).getTen());
+			}
+			System.out.print("Moi nhap lua chon: ");
+			int luachon = ChucNang.chuanHoa(1, list.size());
+			list.get(luachon).setTrangthai(true);
+			ThucDon.thucdon.add(list.get(luachon));
+		}
+	}
+
 	private void chinhsuaTen(int indexSpThayDoi) {
 		String ten = "";
 		do {
@@ -368,18 +387,18 @@ public class nvQuanLi extends NhanVien {
 
 	}
 
-	private void chinhsuaMa(int indexSpThayDoi) {
-		String id = "";
-		do {
-			System.out.print("Nhap vao ma san pham muon chinh sua: ");
-			id = ChucNang.chuanHoaChuoi();
-			if (!ThucDon.kiemTraID(id)) {
-				System.out.println("Ma san pham da ton tai. Vui long nhap lai.");
-			}
-		} while (!ThucDon.kiemTraID(id));
-		ThucDon.thucdon.get(indexSpThayDoi).setId(id);
-		ThucDon.ghiDSVaoFile();
-	}
+	// private void chinhsuaMa(int indexSpThayDoi) {
+	// String id = "";
+	// do {
+	// System.out.print("Nhap vao ma san pham muon chinh sua: ");
+	// id = ChucNang.chuanHoaChuoi();
+	// if (!ThucDon.kiemTraID(id)) {
+	// System.out.println("Ma san pham da ton tai. Vui long nhap lai.");
+	// }
+	// } while (!ThucDon.kiemTraID(id));
+	// ThucDon.thucdon.get(indexSpThayDoi).setId(id);
+	// ThucDon.ghiDSVaoFile();
+	// }
 
 	private void chinhsuaDonGia(int indexSpThayDoi) {
 		int tmp[] = new int[SanPham.validSize];
@@ -413,7 +432,7 @@ public class nvQuanLi extends NhanVien {
 			switch (luachon) {
 				case 1:
 					this.chinhsuaTen(indexSpThayDoi);
-					this.chinhsuaMa(indexSpThayDoi);
+					// this.chinhsuaMa(indexSpThayDoi);
 					System.out.println("San pham da duoc chinh sua!");
 					break;
 				case 2:
@@ -460,15 +479,15 @@ public class nvQuanLi extends NhanVien {
 			System.out.println("| 0. Dang xuat				   	        |");
 			System.out.println("| 1. Them san pham moi					|");
 			System.out.println("| 2. Chinh sua thong tin san pham		        |");
-			System.out.println("| 3. Xoa san pham					|");
-			System.out.println("| 4. Them nhan vien moi					|");
-			System.out.println("| 5. Chinh sua thong tin nhan vien			|");
-			System.out.println("| 6. Xuat danh sach nhan vien				|");
-			System.out.println("| 7. Xuat danh sach hoa don				|");
-			System.out.println("| 8. Xuat danh sach thanh vien				|");
-			System.out.println("| 9. Xuat danh sach san pham				|");
-			System.out.println("| 10. Ngung kinh doanh san pham				|");
-			System.out.println("| 11. Thong tin ca nhan					|");
+			System.out.println("| 3. Ngung kinh doanh san pham				|");
+			System.out.println("| 4. Kinh doanh lai san pham				|");
+			System.out.println("| 5. Them nhan vien moi					|");
+			System.out.println("| 6. Chinh sua thong tin nhan vien			|");
+			System.out.println("| 7. Xuat danh sach nhan vien				|");
+			System.out.println("| 8. Xuat danh sach hoa don				|");
+			System.out.println("| 9. Xuat danh sach thanh vien				|");
+			System.out.println("| 10. Xuat danh sach san pham				|");
+			System.out.println("| 11. Xuat thong tin ca nhan				|");
 			System.out.println("+=======================================================+");
 			System.out.print("Moi nhap lua chon: ");
 			int luachon = ChucNang.chuanHoa(0, 11);
@@ -483,26 +502,26 @@ public class nvQuanLi extends NhanVien {
 					this.xoaSanPham();
 					break;
 				case 4:
-					this.themNhanVien();
+					this.kinhdoanhLaiSP();
 					break;
 				case 5:
-					this.chinhsuaThongTinNV();
-					this.dsNhanVien.ghiVaoFile("NHAN_VIEN.txt");
-					break;// sua lai
-				case 6:
-					this.xuatDSNV();
+					this.themNhanVien();
 					break;
+				case 6:
+					this.chinhsuaThongTinNV();
+					break;// sua lai
 				case 7:
-					this.xuatDSHD();
+					this.xuatDSNV();
+					this.dsNhanVien.ghiVaoFile("NHAN_VIEN.txt");
 					break;
 				case 8:
-					DSThanhVien.xuatDSTV();
+					this.xuatDSHD();
 					break;
 				case 9:
-					ThucDon.xuatMenu(3);
+					DSThanhVien.xuatDSTV();
 					break;
 				case 10:
-					this.xoaSP();
+					ThucDon.xuatMenu(3);
 					break;
 				case 11:
 					this.xuatThongTinCaNhan();
