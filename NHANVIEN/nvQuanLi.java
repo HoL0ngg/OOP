@@ -34,7 +34,8 @@ public class nvQuanLi extends NhanVien {
 				"|  SDT",
 				"|  Email");
 		System.out.println();
-		System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------");
+		System.out.println(
+				"---------------------------------------------------------------------------------------------------------------------------------------------------------");
 		int i = 0;
 		while (this.dsNhanVien.getDSNV().get(i) instanceof nvQuanLi) {
 			this.dsNhanVien.getDSNV().get(i).xuatThongTin();
@@ -43,7 +44,8 @@ public class nvQuanLi extends NhanVien {
 				break;
 		}
 		System.out.println();
-		System.out.println("------------------------------------------------------------------- NHAN VIEN PHA CHE -------------------------------------------------------------------");
+		System.out.println(
+				"------------------------------------------------------------------- NHAN VIEN PHA CHE -------------------------------------------------------------------");
 		System.out.format("%-10s %-23s %-15s %-55s %-13s %-33s",
 				"ID",
 				"|  Ten",
@@ -52,7 +54,8 @@ public class nvQuanLi extends NhanVien {
 				"|  SDT",
 				"|  Email");
 		System.out.println();
-		System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------");
+		System.out.println(
+				"---------------------------------------------------------------------------------------------------------------------------------------------------------");
 		while (this.dsNhanVien.getDSNV().get(i) instanceof nvPhaChe) {
 			this.dsNhanVien.getDSNV().get(i).xuatThongTin();
 			++i;
@@ -60,7 +63,8 @@ public class nvQuanLi extends NhanVien {
 				break;
 		}
 		System.out.println();
-		System.out.println("------------------------------------------------------------------- NHAN VIEN DAT HANG ------------------------------------------------------------------");
+		System.out.println(
+				"------------------------------------------------------------------- NHAN VIEN DAT HANG ------------------------------------------------------------------");
 		System.out.format("%-10s %-23s %-15s %-55s %-13s %-33s",
 				"ID",
 				"|  Ten",
@@ -69,7 +73,8 @@ public class nvQuanLi extends NhanVien {
 				"|  SDT",
 				"|  Email");
 		System.out.println();
-		System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------");
+		System.out.println(
+				"---------------------------------------------------------------------------------------------------------------------------------------------------------");
 		while (this.dsNhanVien.getDSNV().get(i) instanceof nvDatHang) {
 			this.dsNhanVien.getDSNV().get(i).xuatThongTin();
 			++i;
@@ -187,7 +192,7 @@ public class nvQuanLi extends NhanVien {
 
 	private void chinhsuaThongTinNV() {
 		ArrayList<NhanVien> temp = this.timkiemNV();
-		if(temp == null){
+		if (temp == null) {
 			return;
 		}
 		int i = 1;
@@ -201,7 +206,8 @@ public class nvQuanLi extends NhanVien {
 				"|  SDT",
 				"|  Email");
 		System.out.println();
-		System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------");
+		System.out.println(
+				"-------------------------------------------------------------------------------------------------------------------------------------------------------------");
 		for (NhanVien nv : temp) {
 			System.out.format("%-3s %-10s %-23s %-15s %-55s %-13s %-33s",
 					i,
@@ -212,7 +218,8 @@ public class nvQuanLi extends NhanVien {
 					"|  " + nv.getSdt(),
 					"|  " + nv.getEmail());
 			System.out.println();
-			System.out.println("-------------------------------------------------------------------------------------------------------------------------------------------------------------");
+			System.out.println(
+					"-------------------------------------------------------------------------------------------------------------------------------------------------------------");
 			++i;
 		}
 		System.out.print("Moi nhap lua chon: ");
@@ -230,7 +237,8 @@ public class nvQuanLi extends NhanVien {
 					"|  SDT",
 					"|  Email");
 			System.out.println();
-			System.out.println("-----------------------------------------------------------------------------------------------------------------------------------------------------------");
+			System.out.println(
+					"-----------------------------------------------------------------------------------------------------------------------------------------------------------");
 			nvThayDoiTT.xuatThongTin();
 			System.out.println("\nChon thong tin can chinh sua");
 			System.out.println("0. Thoat");
@@ -339,7 +347,7 @@ public class nvQuanLi extends NhanVien {
 				result.add(nv);
 			}
 		}
-		if(result.isEmpty()){
+		if (result.isEmpty()) {
 			System.out.println("Khong co ket qua");
 			result = null;
 		}
@@ -500,6 +508,7 @@ public class nvQuanLi extends NhanVien {
 					this.xuatThongTinCaNhan();
 					break;
 				case 0:
+					System.out.println("");
 					return;
 			}
 		}
