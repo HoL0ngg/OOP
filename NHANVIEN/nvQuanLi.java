@@ -371,9 +371,15 @@ public class nvQuanLi extends NhanVien {
 			}
 			System.out.print("Moi nhap lua chon: ");
 			int luachon = ChucNang.chuanHoa(1, list.size()) - 1;
-			list.get(luachon).setTrangthai(true);
-			ThucDon.ghiDSVaoFile();
-			ThucDon.thucdon.add(list.get(luachon));
+			if (list.get(luachon) instanceof TraSua) {
+				ThucDon.setSanPhamVaoFile("trasua.txt", list.get(luachon));
+				ThucDon.thucdon.add(ThucDon.indexOfCaPhe, list.get(luachon));
+				ThucDon.indexOfCaPhe++;
+			}
+			if (list.get(luachon) instanceof CaPhe) {
+				ThucDon.thucdon.add(list.get(luachon));
+				ThucDon.setSanPhamVaoFile("caphe.txt", list.get(luachon));
+			}
 			System.out.println("Da kinh doanh lai san pham");
 		} else {
 			System.out.println("Khong co san pham da ngung kinh doanh");
