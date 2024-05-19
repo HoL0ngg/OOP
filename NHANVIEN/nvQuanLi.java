@@ -222,7 +222,7 @@ public class nvQuanLi extends NhanVien {
 					"-------------------------------------------------------------------------------------------------------------------------------------------------------------");
 			++i;
 		}
-		System.out.print("Moi nhap lua chon: ");
+		System.out.print("Moi nhap so thu tu nhan vien can chinh sua: ");
 		int index = ChucNang.chuanHoa(1, (i - 1));
 		--index;
 		NhanVien nvThayDoiTT = temp.get(index);
@@ -428,7 +428,6 @@ public class nvQuanLi extends NhanVien {
 			int chonTiep = ChucNang.chuanHoa(1, 2);
 			if (chonTiep == 2)
 				break;
-
 		}
 	}
 
