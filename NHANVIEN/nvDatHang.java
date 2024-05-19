@@ -375,16 +375,12 @@ public class nvDatHang extends NhanVien {
 		System.out.println("Tong tien ban can thanh toan la: " + ChucNang.chuanHoaGia(tongtien) + 'd');
 		System.out.println();
 		if (tv != null) {
-			// if (sudungDTL == 1) {
-			// System.out.println("Diem tich luy con lai cua ban: " + tv.getDiemtichluy());
-			// DSThanhVien.ghiDSTVVaoFile("THANH_VIEN.txt");
-			// }
-			// if (sudungDTL == 2) {
-			// tv.setDiemtichluy(tv.getDiemtichluy() + (tongtien / 1000));
-			// System.out.println("Ban duoc tang diem tich luy");
-			// System.out.println("Diem tich luy hien tai cua ban la: " +
-			// tv.getDiemtichluy());
-			// }
+			if (sudungDTL == 1) {
+				DSThanhVien.ghiDSTVVaoFile("THANH_VIEN.txt");
+			}
+			if (sudungDTL == 2) {
+				tv.setDiemtichluy(tv.getDiemtichluy() + (tongtien / 1000));
+			}
 			System.out.println("+=======================================+");
 			System.out.println("|              THE THANH VIEN           |");
 			System.out.println("+---------------------------------------+");
