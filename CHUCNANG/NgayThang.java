@@ -57,6 +57,9 @@ public class NgayThang {
 			System.out.print("Nhap nam: ");
 			year = ChucNang.chuanHoa(1, 2024);
 		}
+		this.setNgay(day);
+		this.setThang(month);
+		this.setNam(year);
 	}
 
 	@Override
