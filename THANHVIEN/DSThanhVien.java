@@ -58,7 +58,7 @@ public class DSThanhVien {
                 sb.append(tv.getDiemtichluy() + "#");
                 sb.append(tv.getNgaytaothe().getNgay() + "#")
                         .append(tv.getNgaytaothe().getThang() + "#")
-                        .append(tv.getNgaytaothe().getNam() + "#");
+                        .append(tv.getNgaytaothe().getNam());
                 sb.append(System.lineSeparator());
                 fw.write(sb.toString());
             }

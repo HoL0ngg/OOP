@@ -1,7 +1,8 @@
 package NHANVIEN;
 
+import java.time.Year;
 import java.util.Calendar;
-import java.util.Date;
+// import java.util.Date;
 import CHUCNANG.ChucNang;
 import CHUCNANG.NgayThang;
 import HOADON.DSHoaDon;
@@ -324,8 +325,16 @@ public class nvDatHang extends NhanVien {
 	private void thanhtoan(int tongtien, ThanhVien tv) {
 		// DTL == diem tich luy
 		int sudungDTL = 2;
+		Calendar calendar = Calendar.getInstance();
 		if (tv != null) {
+			if (!ChucNang.SoSanhNgay(tv.getNgaytaothe(), calendar)) {
+				tv.setDiemtichluy(0);
+				System.out.println("THE CUA BAN DA HET HAN");
+				tv.setNgaytaothe(new NgayThang(calendar.get(Calendar.DATE), calendar.get(Calendar.MONTH) + 1,
+						calendar.get(Calendar.YEAR)));
+			}
 			System.out.println("Ban co " + tv.getDiemtichluy() + " Diem tich luy");
+			System.out.println();
 			if (tv.getDiemtichluy() != 0) {
 				System.out.println("Ban co muon su dung ?");
 				System.out.println("1. Co");
@@ -334,12 +343,10 @@ public class nvDatHang extends NhanVien {
 			}
 		}
 		if (tv != null) {
-			NgayThang ngayHoaDon = new NgayThang();
-			Date date = new Date();
-			Calendar calendar = Calendar.getInstance();
-			calendar.setTime(date);
-			ngayHoaDon.setThang(calendar.get(Calendar.MONTH) + 1);
-			if (tv.getNgaysinh().getThang() == ngayHoaDon.getThang()) {
+			// Date date = new Date();
+			// calendar.setTime(date);
+			if (tv.getNgaysinh().getThang() == (calendar.get(Calendar.MONTH) + 1)) {
+				System.out.println("Ban dang trong thang sinh nhat nen duoc giam 10% tren tong hoa don.");
 				tongtien = (tongtien * 90) / 100;
 			}
 			if (sudungDTL == 1) {
@@ -352,7 +359,8 @@ public class nvDatHang extends NhanVien {
 				}
 			}
 		}
-		System.out.println("\tTong tien ban can thanh toan la: " + ChucNang.chuanHoaGia(tongtien) + 'd');
+		System.out.println("Tong tien ban can thanh toan la: " + ChucNang.chuanHoaGia(tongtien) + 'd');
+		System.out.println();
 		if (tv != null) {
 			// if (sudungDTL == 1) {
 			// System.out.println("Diem tich luy con lai cua ban: " + tv.getDiemtichluy());

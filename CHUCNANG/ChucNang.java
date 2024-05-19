@@ -1,4 +1,6 @@
 package CHUCNANG;
+
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class ChucNang {
@@ -73,5 +75,14 @@ public class ChucNang {
                 System.out.println("Gia tri khong hop le!");
             }
         }
+    }
+
+    public static boolean SoSanhNgay(NgayThang ngay, Calendar today) {
+        if (ngay.getNam() < today.get(Calendar.YEAR))
+            if (ngay.getThang() == (today.get(Calendar.MONTH) + 1) && ngay.getNgay() < today.get(Calendar.DAY_OF_MONTH))
+                return false;
+        if (ngay.getThang() < (today.get(Calendar.MONTH) + 1))
+            return false;
+        return true;
     }
 }
