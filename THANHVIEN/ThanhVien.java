@@ -83,7 +83,7 @@ public class ThanhVien {
 
     public void nhapThongTin() {
         System.out.print("Nhap ten: ");
-        setTen(ChucNang.chuanHoaChuoi());
+        setTen(ChucNang.chuanHoaTen());
         System.out.print("Nhap so dien thoai: ");
         setSđt(ChucNang.chuaHoaSDT());
         System.out.println("Nhap ngay thang nam sinh");

@@ -60,7 +60,7 @@ public class DiaChi {
 
 	public void nhapThongTin() {
 		System.out.print("Nhap tinh thanh: ");
-		this.setTinhThanh(ChucNang.chuanHoaChuoi());
+		this.setTinhThanh(ChucNang.chuanHoaTen());
 		System.out.print("Nhap quan huyen: ");
 		this.setQuanHuyen(ChucNang.chuanHoaChuoi());
 		System.out.print("Nhap phuong xa: ");
@@ -68,7 +68,7 @@ public class DiaChi {
 		System.out.print("Nhap so nha: ");
 		this.setSoNha(ChucNang.chuanHoaSoNha());
 		System.out.print("Nhap ten duong: ");
-		this.setTenDuong(ChucNang.chuanHoaChuoi());
+		this.setTenDuong(ChucNang.chuanHoaTen());
 	}
 
 	public String xuatThongTin() {

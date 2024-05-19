@@ -420,7 +420,7 @@ public class nvDatHang extends NhanVien {
 		ThanhVien tv = null;
 		if (luachon == 1) {
 			System.out.print("Nhap so dien thoai thanh vien: ");
-			String sdt = ChucNang.chuanHoaChuoi();
+			String sdt = ChucNang.chuaHoaSDT();
 			tv = DSThanhVien.timkiemTVTheoSDT(sdt);
 		}
 
