@@ -3,6 +3,7 @@ package NHANVIEN;
 import CHUCNANG.ChucNang;
 import CHUCNANG.DiaChi;
 import CHUCNANG.NgayThang;
+import SANPHAM.nvPhaChe;
 
 public abstract class NhanVien {
 	private String id;
@@ -85,7 +86,7 @@ public abstract class NhanVien {
 		dc.nhapThongTin();
 		this.setDc(dc);
 		System.out.print("Nhap so dien thoai: ");
-		this.setSdt(ChucNang.chuanHoaChuoi());
+		this.setSdt(ChucNang.chuaHoaSDT());
 		System.out.print("Nhap dia chi email: ");
 		this.setEmail(ChucNang.chuanHoaChuoi());
 		System.out.println("Nhap ngay sinh: ");
@@ -95,7 +96,7 @@ public abstract class NhanVien {
 	}
 
 	public void xuatThongTin() {
-		System.out.format("%-10s %-18s %-15s %-55s %-13s %-33s",
+		System.out.format("%-10s %-23s %-15s %-55s %-13s %-33s",
 				this.getId(),
 				"|  " + this.getTen(),
 				"|  " + this.getNgaysinh(),

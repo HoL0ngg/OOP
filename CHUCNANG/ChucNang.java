@@ -18,6 +18,7 @@ public class ChucNang {
 
             } catch (Exception e) {
                 System.out.println("Gia tri khong hop le!");
+                System.out.print("Moi nhap lua chon: ");
             }
         }
     }
@@ -38,6 +39,7 @@ public class ChucNang {
         System.out.println("\nXac nhan thuc hien thao tac?");
         System.out.println("0. Khong xac nhan");
         System.out.println("1. Xac nhan");
+        System.out.print("Moi nhap lua chon: ");
         int xacnhan = ChucNang.chuanHoa(0, 1);
         return xacnhan;
     }
@@ -83,5 +85,16 @@ public class ChucNang {
         if (ngay.getThang() < (today.get(Calendar.MONTH) + 1))
             return false;
         return true;
+    }
+
+    public static String chuaHoaSDT() {
+        Scanner scan = new Scanner(System.in);
+        String sdt = scan.nextLine();
+        while (sdt.charAt(0) != '0' || sdt.length() < 10) {
+            System.out.println("Gia tri khong hop le !");
+            System.out.print("Moi nhap lai SDT: ");
+            sdt = scan.nextLine();
+        }
+        return sdt;
     }
 }
