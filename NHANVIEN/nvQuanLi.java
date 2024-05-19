@@ -266,6 +266,7 @@ public class nvQuanLi extends NhanVien {
 					nvThayDoiTT.setNgaysinh(ngaysinhmoi);
 					break;
 			}
+			dsNhanVien.ghiVaoFile("NHAN_VIEN.txt");
 		}
 	}
 
@@ -291,15 +292,14 @@ public class nvQuanLi extends NhanVien {
 				sp = null;
 				return;
 			case 1:
-				if (sp instanceof TraSua)
-					ThucDon.setSanPhamVaoFile("trasua.txt", sp);
-				if (sp instanceof CaPhe)
-					ThucDon.setSanPhamVaoFile("caphe.txt", sp);
 				if (sp instanceof TraSua) {
+					ThucDon.setSanPhamVaoFile("trasua.txt", sp);
 					ThucDon.thucdon.add(ThucDon.indexOfCaPhe, sp);
 					ThucDon.indexOfCaPhe++;
-				} else {
+				}
+				if (sp instanceof CaPhe) {
 					ThucDon.thucdon.add(sp);
+					ThucDon.setSanPhamVaoFile("caphe.txt", sp);
 				}
 				System.out.println("Da them san pham\n");
 				break;
@@ -439,7 +439,7 @@ public class nvQuanLi extends NhanVien {
 	public void menu() {
 		while (true) {
 			System.out.println("+=======================================================+");
-			System.out.println("|	             NHAN VIEN QUAN LI  	      	|");
+			System.out.println("|	             NHAN VIEN QUAN LI  		  	|");
 			System.out.println("+-------------------------------------------------------+");
 			System.out.println("| 0. Dang xuat				   	        |");
 			System.out.println("| 1. Them san pham moi					|");
