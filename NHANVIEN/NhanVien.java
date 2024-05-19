@@ -3,6 +3,7 @@ package NHANVIEN;
 import CHUCNANG.ChucNang;
 import CHUCNANG.DiaChi;
 import CHUCNANG.NgayThang;
+import SANPHAM.nvPhaChe;
 
 public abstract class NhanVien {
 	private String id;
@@ -95,7 +96,7 @@ public abstract class NhanVien {
 	}
 
 	public void xuatThongTin() {
-		System.out.format("%-10s %-18s %-15s %-55s %-13s %-33s",
+		System.out.format("%-10s %-23s %-15s %-55s %-13s %-33s",
 				this.getId(),
 				"|  " + this.getTen(),
 				"|  " + this.getNgaysinh(),

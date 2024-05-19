@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import CHUCNANG.DiaChi;
 import CHUCNANG.NgayThang;
+import SANPHAM.nvPhaChe;
 
 public class DSNhanVien {
     private static ArrayList<NhanVien> dsnv = new ArrayList<NhanVien>();
