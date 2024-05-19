@@ -3,7 +3,6 @@ package NHANVIEN;
 import CHUCNANG.ChucNang;
 import CHUCNANG.DiaChi;
 import CHUCNANG.NgayThang;
-import SANPHAM.nvPhaChe;
 
 public abstract class NhanVien {
 	private String id;
