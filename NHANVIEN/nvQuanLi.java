@@ -370,6 +370,8 @@ public class nvQuanLi extends NhanVien {
 			int luachon = ChucNang.chuanHoa(1, list.size());
 			list.get(luachon).setTrangthai(true);
 			ThucDon.thucdon.add(list.get(luachon));
+		} else {
+			System.out.println("Khong co san pham da ngung kinh doanh");
 		}
 	}
 
