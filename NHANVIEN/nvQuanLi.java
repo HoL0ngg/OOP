@@ -353,7 +353,7 @@ public class nvQuanLi extends NhanVien {
 		} while (!ThucDon.kiemTraTen(ten));
 		ThucDon.thucdon.get(indexSpThayDoi).setTen(ten);
 		ThucDon.ghiDSVaoFile();
-		System.out.println("Da chinh sua ten san pham");
+
 	}
 
 	private void chinhsuaMa(int indexSpThayDoi) {
@@ -361,11 +361,11 @@ public class nvQuanLi extends NhanVien {
 		do {
 			System.out.print("Nhap vao ma san pham muon chinh sua: ");
 			id = ChucNang.chuanHoaChuoi();
-			ThucDon.thucdon.get(indexSpThayDoi).setId(id);
 			if (!ThucDon.kiemTraID(id)) {
 				System.out.println("Ma san pham da ton tai. Vui long nhap lai.");
 			}
 		} while (!ThucDon.kiemTraID(id));
+		ThucDon.thucdon.get(indexSpThayDoi).setId(id);
 		ThucDon.ghiDSVaoFile();
 	}
 
@@ -393,18 +393,17 @@ public class nvQuanLi extends NhanVien {
 		while (true) {
 			int luachon;
 			System.out.println("Chon thong tin can chinh sua");
-			System.out.println("1. Ma san pham");
-			System.out.println("2. Ten");
-			System.out.println("3. Don gia");
+			System.out.println("1. Ten");
+			System.out.println("2. Don gia");
 			luachon = ChucNang.chuanHoa(1, 2);
 
 			switch (luachon) {
 				case 1:
-					this.chinhsuaMa(indexSpThayDoi);
-				case 2:
 					this.chinhsuaTen(indexSpThayDoi);
+					this.chinhsuaMa(indexSpThayDoi);
+					System.out.println("San pham da duoc chinh sua!");
 					break;
-				case 3:
+				case 2:
 					this.chinhsuaDonGia(indexSpThayDoi);
 					break;
 			}
@@ -440,11 +439,11 @@ public class nvQuanLi extends NhanVien {
 	public void menu() {
 		while (true) {
 			System.out.println("+=======================================================+");
-			System.out.println("|			NHAN VIEN QUAN LI		|");
+			System.out.println("|	             NHAN VIEN QUAN LI  	      	|");
 			System.out.println("+-------------------------------------------------------+");
-			System.out.println("| 0. Dang xuat						|");
+			System.out.println("| 0. Dang xuat				   	        |");
 			System.out.println("| 1. Them san pham moi					|");
-			System.out.println("| 2. Cap nhat va chinh sua thong tin san pham		|");
+			System.out.println("| 2. Chinh sua thong tin san pham		        |");
 			System.out.println("| 3. Xoa san pham					|");
 			System.out.println("| 4. Them nhan vien moi					|");
 			System.out.println("| 5. Chinh sua thong tin nhan vien			|");
