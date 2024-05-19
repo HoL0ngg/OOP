@@ -127,6 +127,7 @@ public class nvQuanLi extends NhanVien {
 		System.out.println("1. Nhan vien quan li");
 		System.out.println("2. Nhan vien pha che");
 		System.out.println("3. Nhan vien dat hang");
+		System.out.print("Moi nhap lua chon: ");
 		luachon = ChucNang.chuanHoa(1, 3);
 		switch (luachon) {
 			case 1:
@@ -217,6 +218,7 @@ public class nvQuanLi extends NhanVien {
 					"---------------------------------------------------------------------------------------------------------------------------------------------------");
 			++i;
 		}
+		System.out.print("Moi nhap lua chon: ");
 		int index = ChucNang.chuanHoa(1, (i - 1));
 		--index;
 		NhanVien nvThayDoiTT = temp.get(index);
@@ -241,6 +243,7 @@ public class nvQuanLi extends NhanVien {
 			System.out.println("3. Chinh sua so dien thoai");
 			System.out.println("4. Chinh sua email");
 			System.out.println("5. Chinh sua ngay sinh");
+			System.out.print("Moi nhap lua chon: ");
 			int luachon = ChucNang.chuanHoa(0, 5);
 			System.out.print("Nhap thong tin chinh sua: ");
 			switch (luachon) {
@@ -275,6 +278,7 @@ public class nvQuanLi extends NhanVien {
 		System.out.println("\nNhap loai do uong can them: ");
 		System.out.println("1. Tra sua");
 		System.out.println("2. Ca phe");
+		System.out.print("Moi nhap lua chon: ");
 		int LuaChon = ChucNang.chuanHoa(1, 2);
 		switch (LuaChon) {
 			case 1:
@@ -373,7 +377,7 @@ public class nvQuanLi extends NhanVien {
 		int tmp[] = new int[SanPham.validSize];
 		for (int i = 0; i < SanPham.validSize; ++i) {
 			System.out.print("Nhap gia size " + SanPham.size[i] + ": ");
-			tmp[i] = ChucNang.chuanHoa(60000);
+			tmp[i] = ChucNang.chuanHoa(1000, 60000);
 		}
 		ThucDon.thucdon.get(indexSpThayDoi).setGiaTien(tmp);
 		ThucDon.ghiDSVaoFile();
@@ -395,6 +399,7 @@ public class nvQuanLi extends NhanVien {
 			System.out.println("Chon thong tin can chinh sua");
 			System.out.println("1. Ten");
 			System.out.println("2. Don gia");
+			System.out.print("Moi nhap lua chon: ");
 			luachon = ChucNang.chuanHoa(1, 2);
 
 			switch (luachon) {
@@ -411,6 +416,7 @@ public class nvQuanLi extends NhanVien {
 			System.out.println("Ban co muon chinh sua nua khong ?");
 			System.out.println("1. Co");
 			System.out.println("2. Khong");
+			System.out.print("Moi nhap lua chon: ");
 			int chonTiep = ChucNang.chuanHoa(1, 2);
 			if (chonTiep == 2)
 				break;
@@ -426,9 +432,11 @@ public class nvQuanLi extends NhanVien {
 		System.out.println("Nhap loai muon ngung kinh doanh");
 		System.out.println("1. Tra sua");
 		System.out.println("2. Ca phe");
+		System.out.print("Moi nhap lua chon: ");
 		int luachon = ChucNang.chuanHoa(1, 2);
 		ThucDon.xuatMenu(luachon);
 		System.out.println("Nhap stt cua san pham muon ngung kinh doanh");
+		System.out.print("Moi nhap lua chon: ");
 		int vitriMon = ChucNang.chuanHoa(1,
 				((luachon == 1) ? ThucDon.indexOfCaPhe : ThucDon.thucdon.size() - ThucDon.indexOfCaPhe));
 		ThucDon.thucdon.get((vitriMon - 1) + ((luachon == 1) ? 0 : ThucDon.indexOfCaPhe)).setTrangthai(false);
@@ -454,7 +462,7 @@ public class nvQuanLi extends NhanVien {
 			System.out.println("| 10. Ngung kinh doanh san pham				|");
 			System.out.println("| 11. Thong tin ca nhan					|");
 			System.out.println("+=======================================================+");
-
+			System.out.print("Moi nhap lua chon: ");
 			int luachon = ChucNang.chuanHoa(0, 11);
 			switch (luachon) {
 				case 1:
