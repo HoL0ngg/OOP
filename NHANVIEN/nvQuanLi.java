@@ -7,6 +7,7 @@ import CHUCNANG.DiaChi;
 import CHUCNANG.NgayThang;
 import CHUCNANG.SoSanhTheoChucVu;
 import HOADON.DSHoaDon;
+import HOADON.ThongKe;
 import SANPHAM.CaPhe;
 import SANPHAM.SanPham;
 import SANPHAM.ThucDon;
@@ -331,11 +332,10 @@ public class nvQuanLi extends NhanVien {
 				spxoa = null;
 				return;
 			case 1:
-				spxoa.setTrangthai(false);
 				if (spxoa instanceof TraSua)
 					ThucDon.indexOfCaPhe--;
-				ThucDon.ghiDSVaoFile();
 				ThucDon.thucdon.remove(spxoa);
+				ThucDon.ghiDSVaoFile();
 				System.out.println("Da xoa san pham");
 				break;
 		}
@@ -357,28 +357,34 @@ public class nvQuanLi extends NhanVien {
 		return result;
 	}
 
-	private void kinhdoanhLaiSP() {
-		ArrayList<SanPham> list = new ArrayList<SanPham>();
-		for (SanPham sp : ThucDon.thucdon) {
-			if (sp.getTrangthai() == false) {
-				list.add(sp);
-			}
-		}
-		if (list.size() > 0) {
-			System.out.println("Chon stt san pham ban muon kinh doanh lai");
-			for (int i = 0; i < list.size(); ++i) {
-				System.out.println((i + 1) + ". " + list.get(i).getTen());
-			}
-			System.out.print("Moi nhap lua chon: ");
-			int luachon = ChucNang.chuanHoa(1, list.size()) - 1;
-			list.get(luachon).setTrangthai(true);
-			ThucDon.ghiDSVaoFile();
-			ThucDon.thucdon.add(list.get(luachon));
-			System.out.println("Da kinh doanh lai san pham");
-		} else {
-			System.out.println("Khong co san pham da ngung kinh doanh");
-		}
-	}
+	// private void kinhdoanhLaiSP() {
+	// ArrayList<SanPham> list = new ArrayList<SanPham>();
+	// for (SanPham sp : ThucDon.thucdon) {
+	// if (sp.getTrangthai() == false) {
+	// list.add(sp);
+	// }
+	// }
+	// if (list.size() > 0) {
+	// System.out.println("Chon stt san pham ban muon kinh doanh lai");
+	// for (int i = 0; i < list.size(); ++i) {
+	// System.out.println((i + 1) + ". " + list.get(i).getTen());
+	// }
+	// System.out.print("Moi nhap lua chon: ");
+	// int luachon = ChucNang.chuanHoa(1, list.size()) - 1;
+	// if (list.get(luachon) instanceof TraSua) {
+	// ThucDon.setSanPhamVaoFile("trasua.txt", list.get(luachon));
+	// ThucDon.thucdon.add(ThucDon.indexOfCaPhe, list.get(luachon));
+	// ThucDon.indexOfCaPhe++;
+	// }
+	// if (list.get(luachon) instanceof CaPhe) {
+	// ThucDon.thucdon.add(list.get(luachon));
+	// ThucDon.setSanPhamVaoFile("caphe.txt", list.get(luachon));
+	// }
+	// System.out.println("Da kinh doanh lai san pham");
+	// } else {
+	// System.out.println("Khong co san pham da ngung kinh doanh");
+	// }
+	// }
 
 	private void chinhsuaTen(int indexSpThayDoi) {
 		String ten = "";
@@ -461,20 +467,22 @@ public class nvQuanLi extends NhanVien {
 		DSHoaDon.xuatToanboHoadon();
 	}
 
-	private void xoaSP() {
-		System.out.println("Nhap loai muon ngung kinh doanh");
-		System.out.println("1. Tra sua");
-		System.out.println("2. Ca phe");
-		System.out.print("Moi nhap lua chon: ");
-		int luachon = ChucNang.chuanHoa(1, 2);
-		ThucDon.xuatMenu(luachon);
-		System.out.println("Nhap stt cua san pham muon ngung kinh doanh");
-		System.out.print("Moi nhap lua chon: ");
-		int vitriMon = ChucNang.chuanHoa(1,
-				((luachon == 1) ? ThucDon.indexOfCaPhe : ThucDon.thucdon.size() - ThucDon.indexOfCaPhe));
-		ThucDon.thucdon.get((vitriMon - 1) + ((luachon == 1) ? 0 : ThucDon.indexOfCaPhe)).setTrangthai(false);
-		ThucDon.ghiDSVaoFile();
-	}
+	// private void xoaSP() {
+	// System.out.println("Nhap loai muon ngung kinh doanh");
+	// System.out.println("1. Tra sua");
+	// System.out.println("2. Ca phe");
+	// System.out.print("Moi nhap lua chon: ");
+	// int luachon = ChucNang.chuanHoa(1, 2);
+	// ThucDon.xuatMenu(luachon);
+	// System.out.println("Nhap stt cua san pham muon ngung kinh doanh");
+	// System.out.print("Moi nhap lua chon: ");
+	// int vitriMon = ChucNang.chuanHoa(1,
+	// ((luachon == 1) ? ThucDon.indexOfCaPhe : ThucDon.thucdon.size() -
+	// ThucDon.indexOfCaPhe));
+	// ThucDon.thucdon.get((vitriMon - 1) + ((luachon == 1) ? 0 :
+	// ThucDon.indexOfCaPhe)).setTrangthai(false);
+	// ThucDon.ghiDSVaoFile();
+	// }
 
 	@Override
 	public void menu() {
@@ -486,14 +494,14 @@ public class nvQuanLi extends NhanVien {
 			System.out.println("| 1. Them san pham moi					|");
 			System.out.println("| 2. Chinh sua thong tin san pham		        |");
 			System.out.println("| 3. Ngung kinh doanh san pham				|");
-			System.out.println("| 4. Kinh doanh lai san pham				|");
-			System.out.println("| 5. Them nhan vien moi					|");
-			System.out.println("| 6. Chinh sua thong tin nhan vien			|");
-			System.out.println("| 7. Xuat danh sach nhan vien				|");
-			System.out.println("| 8. Xuat danh sach hoa don				|");
-			System.out.println("| 9. Xuat danh sach thanh vien				|");
-			System.out.println("| 10. Xuat danh sach san pham				|");
-			System.out.println("| 11. Xuat thong tin ca nhan				|");
+			System.out.println("| 4. Them nhan vien moi					|");
+			System.out.println("| 5. Chinh sua thong tin nhan vien			|");
+			System.out.println("| 6. Xuat danh sach nhan vien				|");
+			System.out.println("| 7. Xuat danh sach hoa don				|");
+			System.out.println("| 8. Xuat danh sach thanh vien				|");
+			System.out.println("| 9. Xuat danh sach san pham				|");
+			System.out.println("| 10. Xuat thong tin ca nhan				|");
+			System.out.println("| 11. Thong ke						|");
 			System.out.println("+=======================================================+");
 			System.out.print("Moi nhap lua chon: ");
 			int luachon = ChucNang.chuanHoa(0, 11);
@@ -508,28 +516,37 @@ public class nvQuanLi extends NhanVien {
 					this.xoaSanPham();
 					break;
 				case 4:
-					this.kinhdoanhLaiSP();
-					break;
-				case 5:
 					this.themNhanVien();
 					break;
-				case 6:
+				case 5:
 					this.chinhsuaThongTinNV();
+					// this.dsNhanVien.ghiVaoFile("NHAN_VIEN.txt");
 					break;// sua lai
-				case 7:
+				case 6:
 					this.xuatDSNV();
 					break;
-				case 8:
+				case 7:
 					this.xuatDSHD();
 					break;
-				case 9:
+				case 8:
 					DSThanhVien.xuatDSTV();
 					break;
-				case 10:
+				case 9:
 					ThucDon.xuatMenu(3);
 					break;
-				case 11:
+				case 10:
 					this.xuatThongTinCaNhan();
+					break;
+				case 11:
+					System.out.println("Moi nhap loai thong ke");
+					System.out.println("1. Thong ke theo quy");
+					System.out.println("2. Thong ke theo thang");
+					System.out.print("Moi nhap lua chon: ");
+					int chon = ChucNang.chuanHoa(1, 2);
+					if (chon == 1)
+						ThongKe.thongKeQuy();
+					if (chon == 2)
+						ThongKe.thongKeThang();
 					break;
 				case 0:
 					System.out.println("");
