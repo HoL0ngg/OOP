@@ -242,7 +242,7 @@ public class nvQuanLi extends NhanVien {
 			System.out.println("5. Chinh sua ngay sinh");
 			System.out.print("Moi nhap lua chon: ");
 			int luachon = ChucNang.chuanHoa(0, 5);
-			System.out.print("Nhap thong tin chinh sua: ");
+			System.out.println("Nhap thong tin chinh sua:");
 			switch (luachon) {
 				case 0:
 					return;
@@ -448,7 +448,7 @@ public class nvQuanLi extends NhanVien {
 	public void menu() {
 		while (true) {
 			System.out.println("+=======================================================+");
-			System.out.println("|	             NHAN VIEN QUAN LI  		  	|");
+			System.out.println("|	            NHAN VIEN QUAN LI  		 	|");
 			System.out.println("+-------------------------------------------------------+");
 			System.out.println("| 0. Dang xuat				   	        |");
 			System.out.println("| 1. Them san pham moi					|");
