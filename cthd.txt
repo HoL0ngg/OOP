@@ -41,3 +41,4 @@ HD25#Ca phe pha may#L#1#26000#False#4#4
 HD25#Ca phe pha may#L#1#26000#False#4#4
 HD26#Tra sua dai loan#L#1#22000#False#0#1
 HD27#Ca phe pha may#L#1#26000#False#4#4
+HD27#Tra sua truyen thong#M#1#20000#false#1#1
