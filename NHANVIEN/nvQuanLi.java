@@ -354,6 +354,7 @@ public class nvQuanLi extends NhanVien {
 			}
 		} while (!ThucDon.kiemTraTen(ten));
 		ThucDon.ghiDSVaoFile();
+		System.out.println("Da chinh sua ten san pham");
 	}
 
 	private void chinhsuaDonGia(int indexSpThayDoi) {
