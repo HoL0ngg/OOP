@@ -17,8 +17,6 @@ public class ChuongTrinh {
 		ThucDon.setDonGiatuFile("caphe.txt");
 		DSThanhVien.docDSTVTuFile("THANH_VIEN.txt");
 
-		// DSHoaDon.xuatToanboHoadon();
-
 		ThongKe.thongKeQuy();
 
 		// while (true) {
