@@ -20,7 +20,7 @@ public class DSHoaDon {
     private static List<CTHD> CTHDList = new ArrayList<>();
 
     // so luong hoa don
-    public static int SLHD = 1;
+    // public static int SLHD = 1;
 
     public DSHoaDon() {
     }
@@ -41,13 +41,13 @@ public class DSHoaDon {
         CTHDList = cTHDList;
     }
 
-    public static int getSLHD() {
-        return SLHD;
-    }
+    // public static int getSLHD() {
+    // return SLHD;
+    // }
 
-    public static void setSLHD(int sLHD) {
-        SLHD = sLHD;
-    }
+    // public static void setSLHD(int sLHD) {
+    // SLHD = sLHD;
+    // }
 
     public static void docHDtuFile(String path) {
         // File file = new File(path);
@@ -121,7 +121,7 @@ public class DSHoaDon {
 
     public static void them(int[] dssp, NhanVien nv) {
         Hoadon hoadon = new Hoadon();
-        String maHoaDon = "HD" + DSHoaDon.SLHD++;
+        String maHoaDon = "HD" + DSHoaDon.DSHD.size();
         hoadon.setMaNhanvien(nv.getId());
         hoadon.setMaHoadon(maHoaDon);
 

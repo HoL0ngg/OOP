@@ -1,22 +1,22 @@
-tstx		#Tra sua thai xanh		#15000#20000#25000#True
-tstc		#Tra sua truyen thong		#15000#20000#25000#True
-tstd		#Tra sua thai do		#15000#20000#25000#True
-tstd		#Tra sua thach dua		#17000#21000#26000#True
-tsdl		#Tra sua dai loan		#15000#20000#22000#True
-tsscl		#Tra sua socola		#15000#20000#22000#True
-tsmc		#Tra sua matcha		#15000#20000#22000#True
-tstcdd		#Tra sua tran chau duong den		#20000#22000#27000#True
-tsvq		#Tra sua viet quoc		#15000#20000#22000#True
-tskm		#Tra sua khoai mon		#15000#20000#22000#True
-tsbd		#Tra sua bi dao		#15000#17000#20000#True
-sttcdd		#Sua tuoi duong den		#22000#27000#30000#True
-tsd		#Tra sua dao		#10000#15000#17000#True
-tso		#Tra sua oi		#10000#15000#17000#True
-tst		#Tra sua tao		#10000#15000#17000#True
-tsd		#Tra sua dau		#10000#15000#17000#True
-txs		#Tra xanh sua		#18000#23000#25000#True
-tsol		#Tra sua olong		#10000#15000#17000#True
-tsth		#Tra sua thit heo		#10000#11000#12000#True
-tat		#Tra sua chuoi		#12222#44444#33333#True
-te		#Tra sua trung		#1#12#13#True
-tsch		#Tra sua chua		#12000#13000#14000#True
+ts1		#Tra sua thai xanh		#15000#20000#25000#True
+ts2		#Tra sua truyen thong		#15000#20000#25000#True
+ts3		#Tra sua thai do		#15000#20000#25000#True
+ts4		#Tra sua thach dua		#17000#21000#26000#True
+ts5		#Tra sua dai loan		#15000#20000#22000#True
+ts6		#Tra sua socola		#15000#20000#22000#True
+ts7		#Tra sua matcha		#15000#20000#22000#True
+ts8		#Tra sua tran chau duong den		#20000#22000#27000#True
+ts9		#Tra sua viet quoc		#15000#20000#22000#True
+ts10		#Tra sua khoai mon		#15000#20000#22000#True
+ts11		#Tra sua bi dao		#15000#17000#20000#True
+ts12		#Sua tuoi duong den		#22000#27000#30000#True
+ts13		#Tra sua dao		#10000#15000#17000#True
+ts14		#Tra sua oi		#10000#15000#17000#True
+ts15		#Tra sua tao		#10000#15000#17000#True
+ts16		#Tra sua dau		#10000#15000#17000#True
+tx17		#Tra xanh sua		#18000#23000#25000#True
+ts18		#Tra sua olong		#10000#15000#17000#True
+ts19		#Tra sua thit heo		#10000#11000#12000#True
+ts20		#Tra sua chuoi		#12222#44444#33333#True
+ts21		#Tra sua trung		#1#12#13#True
+ts22		#Tra sua chua		#12000#13000#14000#True
