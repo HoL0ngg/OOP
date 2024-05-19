@@ -112,7 +112,8 @@ public class nvQuanLi extends NhanVien {
 
 	private boolean daTonTaiThongTin(String dulieu) {
 		for (NhanVien nv : this.dsNhanVien.getDSNV()) {
-			if (nv.getEmail().equalsIgnoreCase(dulieu) || nv.getSdt().equalsIgnoreCase(dulieu)) {
+			if (nv.getEmail().equalsIgnoreCase(dulieu) || nv.getSdt().equalsIgnoreCase(dulieu)
+					|| nv.getTen().equalsIgnoreCase(dulieu)) {
 				return true;
 			}
 		}
@@ -149,10 +150,10 @@ public class nvQuanLi extends NhanVien {
 		do {
 			System.out.print("Nhap so dien thoai: ");
 			nv.setSdt(ChucNang.chuanHoaChuoi());
-			if (this.daTonTaiThongTin(nv.getSdt())) {
-				System.out.println("So dien thoai da ton tai. Vui long nhap lai");
+			if (this.daTonTaiThongTin(nv.getSdt()) && this.daTonTaiThongTin(nv.getTen())) {
+				System.out.println("Nhan vien da ton tai. Vui long nhap lai");
 			}
-		} while (this.daTonTaiThongTin(nv.getSdt()));
+		} while (this.daTonTaiThongTin(nv.getSdt()) && this.daTonTaiThongTin(nv.getTen()));
 
 		do {
 			System.out.print("Nhap dia chi email: ");
