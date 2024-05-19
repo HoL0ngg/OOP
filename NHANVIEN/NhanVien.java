@@ -85,7 +85,7 @@ public abstract class NhanVien {
 		dc.nhapThongTin();
 		this.setDc(dc);
 		System.out.print("Nhap so dien thoai: ");
-		this.setSdt(ChucNang.chuanHoaChuoi());
+		this.setSdt(ChucNang.chuaHoaSDT());
 		System.out.print("Nhap dia chi email: ");
 		this.setEmail(ChucNang.chuanHoaChuoi());
 		System.out.println("Nhap ngay sinh: ");

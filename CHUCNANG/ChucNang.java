@@ -84,4 +84,15 @@ public class ChucNang {
             return false;
         return true;
     }
+
+    public static String chuaHoaSDT() {
+        Scanner scan = new Scanner(System.in);
+        String sdt = scan.nextLine();
+        while (sdt.charAt(0) != '0' || sdt.length() < 10) {
+            System.out.println("Gia tri khong hop le !");
+            System.out.print("Moi nhap lai SDT: ");
+            sdt = scan.nextLine();
+        }
+        return sdt;
+    }
 }

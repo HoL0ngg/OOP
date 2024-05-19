@@ -10,19 +10,19 @@ import CHUCNANG.NgayThang;
 public class DSNhanVien {
     private static ArrayList<NhanVien> dsnv = new ArrayList<NhanVien>();
 
-    public DSNhanVien(){
+    public DSNhanVien() {
     }
 
-    public DSNhanVien(ArrayList<NhanVien> dsnv){
+    public DSNhanVien(ArrayList<NhanVien> dsnv) {
         DSNhanVien.dsnv = dsnv;
     }
 
-    public ArrayList<NhanVien> getDSNV(){
+    public ArrayList<NhanVien> getDSNV() {
         return DSNhanVien.dsnv;
     }
 
-    public void nhapNVtuFile(String path){
-        try (Scanner scan = new Scanner(new File(path))){
+    public void nhapNVtuFile(String path) {
+        try (Scanner scan = new Scanner(new File(path))) {
             NhanVien nv = null;
             while (scan.hasNextLine()) {
                 String line = scan.nextLine();
@@ -35,16 +35,17 @@ public class DSNhanVien {
                         nv = new nvPhaChe();
                         break;
                     case 3:
-                        nv  = new nvDatHang();
+                        nv = new nvDatHang();
                         break;
                 }
                 nv.setId(parts[1]);
                 nv.setTen(parts[2]);
-                DiaChi dc = new DiaChi(parts[3], parts[4], parts[5], parts[6], parts[7]);
+                DiaChi dc = new DiaChi(parts[3], parts[4], parts[5], Integer.parseInt(parts[6]), parts[7]);
                 nv.setDc(dc);
                 nv.setSdt(parts[8]);
                 nv.setEmail(parts[9]);
-                NgayThang ngaysinh = new NgayThang(Integer.parseInt(parts[10]), Integer.parseInt(parts[11]), Integer.parseInt(parts[12]));
+                NgayThang ngaysinh = new NgayThang(Integer.parseInt(parts[10]), Integer.parseInt(parts[11]),
+                        Integer.parseInt(parts[12]));
                 nv.setNgaysinh(ngaysinh);
                 DSNhanVien.dsnv.add(nv);
             }
@@ -52,25 +53,25 @@ public class DSNhanVien {
             System.out.println("Khong the mo file");
         }
     }
-    
-    public boolean kiemTraIDNV(String id){
-        for(NhanVien nv : this.getDSNV()){
-            if(nv.getId().equalsIgnoreCase(id)){
+
+    public boolean kiemTraIDNV(String id) {
+        for (NhanVien nv : this.getDSNV()) {
+            if (nv.getId().equalsIgnoreCase(id)) {
                 return false;
             }
         }
         return true;
     }
 
-    public void ghiVaoFile(String filepath){
+    public void ghiVaoFile(String filepath) {
         File file = new File(filepath);
-        try(FileWriter fw = new FileWriter(file, false)) {
-            for(NhanVien nv : this.getDSNV()){
+        try (FileWriter fw = new FileWriter(file, false)) {
+            for (NhanVien nv : this.getDSNV()) {
                 StringBuilder sb = new StringBuilder();
-                if(nv instanceof nvQuanLi){
+                if (nv instanceof nvQuanLi) {
                     sb.append(1 + "#");
                 } else {
-                    if(nv instanceof nvPhaChe){
+                    if (nv instanceof nvPhaChe) {
                         sb.append(2 + "#");
                     } else {
                         sb.append(3 + "#");
@@ -79,15 +80,15 @@ public class DSNhanVien {
                 sb.append(nv.getId() + "#");
                 sb.append(nv.getTen() + "#");
                 sb.append(nv.getDc().getTinhThanh() + "#")
-                .append(nv.getDc().getQuanHuyen() + "#")
-                .append(nv.getDc().getPhuongXa() + "#")
-                .append(nv.getDc().getSoNha() + "#")
-                .append(nv.getDc().getTenDuong() + "#");
+                        .append(nv.getDc().getQuanHuyen() + "#")
+                        .append(nv.getDc().getPhuongXa() + "#")
+                        .append(nv.getDc().getSoNha() + "#")
+                        .append(nv.getDc().getTenDuong() + "#");
                 sb.append(nv.getSdt() + "#");
                 sb.append(nv.getEmail() + "#");
                 sb.append(nv.getNgaysinh().getNgay() + "#")
-                .append(nv.getNgaysinh().getThang() + "#")
-                .append(nv.getNgaysinh().getNam());
+                        .append(nv.getNgaysinh().getThang() + "#")
+                        .append(nv.getNgaysinh().getNam());
                 sb.append(System.lineSeparator());
                 fw.write(sb.toString());
             }
@@ -98,14 +99,14 @@ public class DSNhanVien {
         }
     }
 
-    public void ghiVaoFile(String filepath, NhanVien nvmoi){
+    public void ghiVaoFile(String filepath, NhanVien nvmoi) {
         File file = new File(filepath);
-        try(FileWriter fw = new FileWriter(file, true)) {
+        try (FileWriter fw = new FileWriter(file, true)) {
             StringBuilder sb = new StringBuilder();
-            if(nvmoi instanceof nvQuanLi){
+            if (nvmoi instanceof nvQuanLi) {
                 sb.append(1 + "#");
             } else {
-                if(nvmoi instanceof nvPhaChe){
+                if (nvmoi instanceof nvPhaChe) {
                     sb.append(2 + "#");
                 } else {
                     sb.append(3 + "#");
@@ -114,15 +115,15 @@ public class DSNhanVien {
             sb.append(nvmoi.getId() + "#");
             sb.append(nvmoi.getTen() + "#");
             sb.append(nvmoi.getDc().getTinhThanh() + "#")
-            .append(nvmoi.getDc().getQuanHuyen() + "#")
-            .append(nvmoi.getDc().getPhuongXa() + "#")
-            .append(nvmoi.getDc().getSoNha() + "#")
-            .append(nvmoi.getDc().getTenDuong() + "#");
+                    .append(nvmoi.getDc().getQuanHuyen() + "#")
+                    .append(nvmoi.getDc().getPhuongXa() + "#")
+                    .append(nvmoi.getDc().getSoNha() + "#")
+                    .append(nvmoi.getDc().getTenDuong() + "#");
             sb.append(nvmoi.getSdt() + "#");
             sb.append(nvmoi.getEmail() + "#");
             sb.append(nvmoi.getNgaysinh().getNgay() + "#")
-            .append(nvmoi.getNgaysinh().getThang() + "#")
-            .append(nvmoi.getNgaysinh().getNam());
+                    .append(nvmoi.getNgaysinh().getThang() + "#")
+                    .append(nvmoi.getNgaysinh().getNam());
             sb.append(System.lineSeparator());
             fw.write(sb.toString());
             DSNhanVien.dsnv.add(nvmoi);
