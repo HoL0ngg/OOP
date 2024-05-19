@@ -17,8 +17,6 @@ public class nvQuanLi extends NhanVien {
 	private DSNhanVien dsNhanVien;
 	// private DSHoaDon dsHoaDon;
 
-	// getter/setters
-
 	public nvQuanLi() {
 		super();
 		this.dsNhanVien = new DSNhanVien();
@@ -348,11 +346,11 @@ public class nvQuanLi extends NhanVien {
 		do {
 			System.out.print("Nhap vao ten san pham muon chinh sua: ");
 			ten = ChucNang.chuanHoaChuoi();
-			ThucDon.thucdon.get(indexSpThayDoi).setTen(ten);
 			if (!ThucDon.kiemTraTen(ten)) {
 				System.out.println("Ten san pham da ton tai. Vui long nhap lai.");
 			}
 		} while (!ThucDon.kiemTraTen(ten));
+		ThucDon.thucdon.get(indexSpThayDoi).setTen(ten);
 		ThucDon.ghiDSVaoFile();
 		System.out.println("Da chinh sua ten san pham");
 	}
