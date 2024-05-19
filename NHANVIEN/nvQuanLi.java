@@ -7,6 +7,7 @@ import CHUCNANG.DiaChi;
 import CHUCNANG.NgayThang;
 import CHUCNANG.SoSanhTheoChucVu;
 import HOADON.DSHoaDon;
+import HOADON.ThongKe;
 import SANPHAM.CaPhe;
 import SANPHAM.SanPham;
 import SANPHAM.ThucDon;
@@ -500,9 +501,10 @@ public class nvQuanLi extends NhanVien {
 			System.out.println("| 8. Xuat danh sach thanh vien				|");
 			System.out.println("| 9. Xuat danh sach san pham				|");
 			System.out.println("| 10. Xuat thong tin ca nhan				|");
+			System.out.println("| 11. Thong ke						|");
 			System.out.println("+=======================================================+");
 			System.out.print("Moi nhap lua chon: ");
-			int luachon = ChucNang.chuanHoa(0, 10);
+			int luachon = ChucNang.chuanHoa(0, 11);
 			switch (luachon) {
 				case 1:
 					this.themSanPham();
@@ -534,6 +536,17 @@ public class nvQuanLi extends NhanVien {
 					break;
 				case 10:
 					this.xuatThongTinCaNhan();
+					break;
+				case 11:
+					System.out.println("Moi nhap loai thong ke");
+					System.out.println("1. Thong ke theo quy");
+					System.out.println("2. Thong ke theo thang");
+					System.out.print("Moi nhap lua chon: ");
+					int chon = ChucNang.chuanHoa(1, 2);
+					if (chon == 1)
+						ThongKe.thongKeQuy();
+					if (chon == 2)
+						ThongKe.thongKeThang();
 					break;
 				case 0:
 					System.out.println("");

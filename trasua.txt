@@ -1,21 +1,21 @@
-ts1		#Tra sua thai xanh		#15000#20000#25000#
-ts2		#Tra sua truyen thong		#15000#20000#25000#
-ts3		#Tra sua thai do		#15000#20000#25000#
-ts4		#Tra sua thach dua		#17000#21000#26000#
-ts5		#Tra sua dai loan		#15000#20000#22000#
-ts6		#Tra sua socola		#15000#20000#22000#
-ts7		#Tra sua matcha		#15000#20000#22000#
-ts8		#Tra sua tran chau duong den		#20000#22000#27000#
-ts10		#Tra sua khoai mon		#15000#20000#22000#
-ts11		#Tra sua bi dao		#15000#17000#20000#
-ts12		#Sua tuoi duong den		#22000#27000#30000#
-ts13		#Tra sua dao		#10000#15000#17000#
-ts14		#Tra sua oi		#10000#15000#17000#
-ts15		#Tra sua tao		#10000#15000#17000#
-ts16		#Tra sua dau		#10000#15000#17000#
-tx17		#Tra xanh sua		#18000#23000#25000#
-ts18		#Tra sua olong		#10000#15000#17000#
-ts19		#Tra sua thit heo		#10000#11000#12000#
-ts20		#Tra sua chuoi		#12222#44444#33333#
-ts21		#Tra sua trung		#1#12#13#
-ts22		#Tra sua chua		#12000#13000#14000#
+ts1		#Tra sua thai xanh		#15000#20000#25000
+ts2		#Tra sua truyen thong		#15000#20000#25000
+ts3		#Tra sua thai do		#15000#20000#25000
+ts4		#Tra sua thach dua		#17000#21000#26000
+ts5		#Tra sua dai loan		#15000#20000#22000
+ts6		#Tra sua socola		#15000#20000#22000
+ts7		#Tra sua matcha		#15000#20000#22000
+ts8		#Tra sua tran chau duong den		#20000#22000#27000
+ts10		#Tra sua khoai mon		#15000#20000#22000
+ts11		#Tra sua bi dao		#15000#17000#20000
+ts12		#Sua tuoi duong den		#22000#27000#30000
+ts13		#Tra sua dao		#10000#15000#17000
+ts14		#Tra sua oi		#10000#15000#17000
+ts15		#Tra sua tao		#10000#15000#17000
+ts16		#Tra sua dau		#10000#15000#17000
+tx17		#Tra xanh sua		#18000#23000#25000
+ts18		#Tra sua olong		#10000#15000#17000
+ts19		#Tra sua thit heo		#10000#11000#12000
+ts20		#Tra sua chuoi		#12222#44444#33333
+ts21		#Tra sua trung		#1#12#13
+ts22		#Tra sua chua		#12000#13000#14000

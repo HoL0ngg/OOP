@@ -171,10 +171,10 @@ public class ThucDon {
 			for (SanPham sp : ThucDon.thucdon) {
 				StringBuilder sb = new StringBuilder();
 				sb.append(sp.getId()).append("\t\t").append("#");
-				sb.append(sp.getTen()).append("\t\t").append("#");
+				sb.append(sp.getTen()).append("\t\t");
 				int tmp[] = sp.getGiaTien();
 				for (int i = 0; i < SanPham.validSize; ++i) {
-					sb.append(tmp[i]).append("#");
+					sb.append("#").append(tmp[i]);
 				}
 				sb.append(System.lineSeparator());
 				if (sp instanceof TraSua) {
@@ -196,10 +196,10 @@ public class ThucDon {
 		try (FileWriter fw = new FileWriter(path, true)) {
 			StringBuilder sb = new StringBuilder();
 			sb.append(sp.getId()).append("\t\t").append("#");
-			sb.append(sp.getTen()).append("\t\t").append("#");
+			sb.append(sp.getTen()).append("\t\t");
 			int tmp[] = sp.getGiaTien();
 			for (int i = 0; i < SanPham.validSize; ++i) {
-				sb.append(tmp[i]).append("#");
+				sb.append("#").append(tmp[i]);
 			}
 			sb.append(System.lineSeparator());
 			fw.write(sb.toString());
