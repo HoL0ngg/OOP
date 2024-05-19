@@ -38,16 +38,8 @@ public class nvPhaChe extends NhanVien {
         System.out.println();
         System.out.println("+-------------------------------------------------------------------------------+");
         int i = 0;
-        // while(DSHoaDon.getCTHDList().get(i).isHoanthanh()){
-        // DSHoaDon.getCTHDList().get(i).xuatThongTin();
-        // if (!DSHoaDon.getCTHDList().get(i + 1).getMaChitetHoadon()
-        // .equalsIgnoreCase(DSHoaDon.getCTHDList().get(i).getMaChitetHoadon())) {
-        // System.out.println("+-------------------------------------------------------------------------------+");
-        // }
-        // ++i;
-        // }
         DSHoaDon.getCTHDList().get(i).xuatThongTin();
-        for (; i < DSHoaDon.getCTHDList().size() - 1; i++) {
+        for (; i < DSHoaDon.getCTHDList().size() - 1; ++i) {
             if (DSHoaDon.getCTHDList().get(i).isHoanthanh()) {
                 DSHoaDon.getCTHDList().get(i).xuatThongTin();
                 if (!DSHoaDon.getCTHDList().get(i + 1).getMaChitetHoadon()
@@ -59,7 +51,11 @@ public class nvPhaChe extends NhanVien {
                 break;
             }
         }
-        DSHoaDon.getCTHDList().get(i).xuatThongTin();
+        String maketiep = DSHoaDon.getCTHDList().get(i).getMaChitetHoadon();
+        while (DSHoaDon.getCTHDList().get(i).getMaChitetHoadon().equalsIgnoreCase(maketiep)) {
+            DSHoaDon.getCTHDList().get(i).xuatThongTin();
+            ++i;
+        }
         System.out.println("+-------------------------------------------------------------------------------+");
     }
 
