@@ -143,7 +143,7 @@ public class nvQuanLi extends NhanVien {
 		}
 		nv.setId(this.sinhMaTuDong(luachon));
 		System.out.print("Nhap ten: ");
-		nv.setTen(ChucNang.chuanHoaChuoi());
+		nv.setTen(ChucNang.chuanHoaTen());
 		System.out.println("Nhap dia chi: ");
 		DiaChi dc = new DiaChi();
 		dc.nhapThongTin();
@@ -159,7 +159,7 @@ public class nvQuanLi extends NhanVien {
 
 		do {
 			System.out.print("Nhap dia chi email: ");
-			nv.setEmail(ChucNang.chuanHoaChuoi());
+			nv.setEmail(ChucNang.chuanHoaEmail());
 			if (this.daTonTaiThongTin(nv.getEmail())) {
 				System.out.println("Email da ton tai. Vui long nhap lai");
 			}
@@ -254,7 +254,7 @@ public class nvQuanLi extends NhanVien {
 				case 0:
 					return;
 				case 1:
-					nvThayDoiTT.setTen(ChucNang.chuanHoaChuoi());
+					nvThayDoiTT.setTen(ChucNang.chuanHoaTen());
 					break;
 				case 2:
 					DiaChi diachimoi = new DiaChi();
@@ -262,10 +262,10 @@ public class nvQuanLi extends NhanVien {
 					nvThayDoiTT.setDc(diachimoi);
 					break;
 				case 3:
-					nvThayDoiTT.setSdt(ChucNang.chuanHoaChuoi());
+					nvThayDoiTT.setSdt(ChucNang.chuaHoaSDT());
 					break;
 				case 4:
-					nvThayDoiTT.setEmail(ChucNang.chuanHoaChuoi());
+					nvThayDoiTT.setEmail(ChucNang.chuanHoaEmail());
 					break;
 				case 5:
 					NgayThang ngaysinhmoi = new NgayThang();
@@ -340,7 +340,7 @@ public class nvQuanLi extends NhanVien {
 
 	private ArrayList<NhanVien> timkiemNV() {
 		System.out.print("Tim kiem: ");
-		String timkiem = ChucNang.chuanHoaChuoi();
+		String timkiem = ChucNang.chuanHoaTen();
 		ArrayList<NhanVien> result = new ArrayList<>();
 		for (NhanVien nv : this.dsNhanVien.getDSNV()) {
 			if (nv.getTen().toLowerCase().contains(timkiem.toLowerCase())) {
@@ -358,7 +358,7 @@ public class nvQuanLi extends NhanVien {
 		String ten = "";
 		do {
 			System.out.print("Nhap vao ten san pham muon chinh sua: ");
-			ten = ChucNang.chuanHoaChuoi();
+			ten = ChucNang.chuanHoaTen();
 			if (!ThucDon.kiemTraTen(ten)) {
 				System.out.println("Ten san pham da ton tai. Vui long nhap lai.");
 			}
@@ -394,12 +394,12 @@ public class nvQuanLi extends NhanVien {
 	private void chinhsuaSanPham() {
 		ThucDon.xuatMenu(3);
 		System.out.print("Nhap ten san pham can chinh sua: ");
-		String tenSP = ChucNang.chuanHoaChuoi();
+		String tenSP = ChucNang.chuanHoaTen();
 		int indexSpThayDoi = timkiemTenSP(tenSP);
 		while (indexSpThayDoi == -1) {
 			System.out.println("Ten nhap khong hop le, vui long nhap lai");
 			System.out.print("Nhap ten san pham can chinh sua: ");
-			tenSP = ChucNang.chuanHoaChuoi();
+			tenSP = ChucNang.chuanHoaTen();
 			indexSpThayDoi = timkiemTenSP(tenSP);
 		}
 		while (true) {

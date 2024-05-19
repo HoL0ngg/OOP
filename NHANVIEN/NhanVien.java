@@ -79,7 +79,7 @@ public abstract class NhanVien {
 
 	public void nhapThongTin() {
 		System.out.print("Nhap ten: ");
-		this.setTen(ChucNang.chuanHoaChuoi());
+		this.setTen(ChucNang.chuanHoaTen());
 		System.out.println("Nhap dia chi: ");
 		DiaChi dc = new DiaChi();
 		dc.nhapThongTin();
@@ -87,7 +87,7 @@ public abstract class NhanVien {
 		System.out.print("Nhap so dien thoai: ");
 		this.setSdt(ChucNang.chuaHoaSDT());
 		System.out.print("Nhap dia chi email: ");
-		this.setEmail(ChucNang.chuanHoaChuoi());
+		this.setEmail(ChucNang.chuanHoaEmail());
 		System.out.println("Nhap ngay sinh: ");
 		NgayThang ngaysinh = new NgayThang();
 		ngaysinh.nhapThongTin();

@@ -68,14 +68,14 @@ public abstract class SanPham {
 	public void nhapThongTin() {
 		do {
 			System.out.print("Nhap id san pham: ");
-			this.setId(ChucNang.chuanHoaChuoi());
+			this.setId(ChucNang.chuanHoaTen());
 			if (!ThucDon.kiemTraID(this.getId())) {
 				System.out.println("Ma san pham da ton tai. Vui long nhap lai.");
 			}
 		} while (!ThucDon.kiemTraID(this.getId())); // Kiem tra ID da ton tai trong ds chua
 		do {
 			System.out.print("Nhap ten san pham: ");
-			this.setTen(ChucNang.chuanHoaChuoi());
+			this.setTen(ChucNang.chuanHoaTen());
 			if (!ThucDon.kiemTraTen(this.getTen())) {
 				System.out.println("Ten san pham da ton tai. Vui long nhap lai.");
 			}
@@ -83,7 +83,7 @@ public abstract class SanPham {
 		int gia[] = new int[SanPham.validSize];
 		for (int i = 0; i < SanPham.validSize; ++i) {
 			System.out.print("Nhap vao gia size " + SanPham.size[i] + ": ");
-			gia[i] = Integer.parseInt(ChucNang.chuanHoaChuoi());
+			gia[i] = ChucNang.chuanHoa(1000, 60000);
 			// System.out.println();
 		}
 		this.setGiaTien(gia);

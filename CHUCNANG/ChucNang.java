@@ -89,18 +89,41 @@ public class ChucNang {
 
     public static String chuaHoaSDT() {
         Scanner scan = new Scanner(System.in);
-        String sdt = "";
         boolean isSDT = true;
-        do {
+        String sdt = scan.nextLine().trim();
+        for (int i = 0; i < sdt.length(); ++i) {
+            if (sdt.charAt(i) < '0' || sdt.charAt(i) > '9')
+                isSDT = false;
+        }
+
+        if (sdt.length() < 10 || sdt.length() > 11)
+            isSDT = false;
+        else if (sdt.charAt(0) != '0' || sdt.charAt(1) == '0')
+            isSDT = false;
+        while (!isSDT) {
             isSDT = true;
+            System.out.print("Gia tri khong hop le, moi nhap lai SDT: ");
             sdt = scan.nextLine().trim();
             for (int i = 0; i < sdt.length(); ++i) {
-                if (sdt.charAt(i) <= '0' || sdt.charAt(i) >= '9')
+                if (sdt.charAt(i) < '0' || sdt.charAt(i) > '9')
                     isSDT = false;
             }
-            if (sdt.charAt(0) != '0' && sdt.charAt(1) == '0' && sdt.length() < 10 && sdt.length() > 11)
+            if (sdt.length() < 10 || sdt.length() > 11)
                 isSDT = false;
-        } while (!isSDT);
+            else if (sdt.charAt(0) != '0' || sdt.charAt(1) == '0')
+                isSDT = false;
+        }
+        // do {
+        // isSDT = true;
+        // sdt = scan.nextLine().trim();
+        // for (int i = 0; i < sdt.length(); ++i) {
+        // if (sdt.charAt(i) <= '0' || sdt.charAt(i) >= '9')
+        // isSDT = false;
+        // }
+        // if (sdt.charAt(0) != '0' && sdt.charAt(1) == '0' && sdt.length() < 10 &&
+        // sdt.length() > 11)
+        // isSDT = false;
+        // } while (!isSDT);
         return sdt;
     }
 
@@ -110,44 +133,100 @@ public class ChucNang {
         boolean check = false;
         soNha = soNha.trim();
         for (int i = 0; i < soNha.length(); ++i) {
-            if (soNha.charAt(i) >= '0' && soNha.charAt(i) <= '9') {
+            if ((soNha.charAt(i) >= '0' && soNha.charAt(i) <= '9') || soNha.charAt(i) == '/') {
                 check = true;
                 break;
             }
         }
-        while (soNha.length() < 1 && !check) {
+        if (soNha.charAt(soNha.length() - 1) == '/')
+            check = false;
+        while (soNha.length() < 1 || !check) {
+            check = false;
             System.out.print("Gia tri khong hop le, moi nhap lai so nha: ");
             soNha = scan.nextLine();
             soNha = soNha.trim();
             for (int i = 0; i < soNha.length(); ++i) {
-                if (soNha.charAt(i) >= '0' && soNha.charAt(i) <= '9') {
+                if ((soNha.charAt(i) >= '0' && soNha.charAt(i) <= '9') || soNha.charAt(i) == '/') {
                     check = true;
                     break;
                 }
             }
+            if (soNha.charAt(soNha.length() - 1) == '/')
+                check = false;
         }
         return soNha;
+    }
+
+    public static String chuanHoaTen() {
+        Scanner scan = new Scanner(System.in);
+        boolean isTen = true;
+        String ten = scan.nextLine().trim();
+        for (int i = 0; i < ten.length(); ++i) {
+            if (ten.charAt(i) >= '0' && ten.charAt(i) <= '9') {
+                isTen = false;
+                break;
+            }
+        }
+        while (ten.length() < 2 || !isTen) {
+            System.out.print("Gia tri khong hop le, vui long nhap lai ten: ");
+            isTen = true;
+            ten = scan.nextLine().trim();
+            for (int i = 0; i < ten.length(); ++i) {
+                if (ten.charAt(i) >= '0' && ten.charAt(i) <= '9') {
+                    isTen = false;
+                    break;
+                }
+            }
+        }
+        return ten;
     }
 
     public static String chuanHoaEmail() {
         Scanner scan = new Scanner(System.in);
         char[] check = { '@', '.' };
         boolean isEmail = false;
-        String mail = "";
-        do {
+        String mail = scan.nextLine().trim();
+        int i = 1;
+        int j = 0;
+        while (i < mail.length() && j < check.length) {
+            if (mail.charAt(i) == check[j]) {
+                i = i + 2;
+                j++;
+            }
+            ++i;
+        }
+        if (j == check.length - 1 && mail.length() - i > 2)
+            isEmail = true;
+
+        while (!isEmail) {
+            System.out.print("Gia tri khong hop le, moi nhap lai email: ");
             mail = scan.nextLine().trim();
-            int i = 1;
-            int j = 0;
+            i = 1;
+            j = 0;
             while (i < mail.length() && j < check.length) {
                 if (mail.charAt(i) == check[j]) {
                     i = i + 2;
                     j++;
-                }
+                } else
+                    ++i;
             }
-            if (j == check.length - 1 && mail.length() - i > 2)
+            if (j == check.length && mail.length() - i > 0)
                 isEmail = true;
+        }
+        // do {
+        // mail = scan.nextLine().trim();
+        // int i = 1;
+        // int j = 0;
+        // while (i < mail.length() && j < check.length) {
+        // if (mail.charAt(i) == check[j]) {
+        // i = i + 2;
+        // j++;
+        // }
+        // }
+        // if (j == check.length - 1 && mail.length() - i > 2)
+        // isEmail = true;
 
-        } while (!isEmail);
+        // } while (!isEmail);
 
         return mail;
     }
