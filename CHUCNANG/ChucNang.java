@@ -8,7 +8,6 @@ public class ChucNang {
         Scanner scan = new Scanner(System.in);
         while (true) {
             try {
-                System.out.print("Moi nhap lua chon: ");
                 int luachon = Integer.parseInt(scan.nextLine());
                 while (luachon < low || luachon > high) {
                     System.out.println("Gia tri khong hop le!");
@@ -59,23 +58,23 @@ public class ChucNang {
         return hehe;
     }
 
-    public static int chuanHoa(int high) {
-        Scanner scan = new Scanner(System.in);
-        while (true) {
-            try {
-                int hehe = Integer.parseInt(scan.nextLine());
-                while (hehe < 0 || hehe > high) {
-                    System.out.println("Gia tri khong hop le!");
-                    System.out.print("Vui long nhap lai: ");
-                    hehe = Integer.parseInt(scan.nextLine());
-                }
-                return hehe;
+    // public static int chuanHoa(int high) {
+    // Scanner scan = new Scanner(System.in);
+    // while (true) {
+    // try {
+    // int hehe = Integer.parseInt(scan.nextLine());
+    // while (hehe < 0 || hehe > high) {
+    // System.out.println("Gia tri khong hop le!");
+    // System.out.print("Vui long nhap lai: ");
+    // hehe = Integer.parseInt(scan.nextLine());
+    // }
+    // return hehe;
 
-            } catch (Exception e) {
-                System.out.println("Gia tri khong hop le!");
-            }
-        }
-    }
+    // } catch (Exception e) {
+    // System.out.println("Gia tri khong hop le!");
+    // }
+    // }
+    // }
 
     public static boolean SoSanhNgay(NgayThang ngay, Calendar today) {
         if (ngay.getNam() < today.get(Calendar.YEAR))

@@ -103,9 +103,10 @@ public class nvDatHang extends NhanVien {
 		System.out.println("+-----------------------------+");
 		System.out.println("|       VUI LONG LUA CHON     |");
 		System.out.println("+=============================+");
+		System.out.print("Moi nhap lua chon: ");
 		int loai = ChucNang.chuanHoa(1, 2);
 		ThucDon.xuatMenu(loai);
-
+		System.out.print("Moi nhap lua chon: ");
 		int vitriMon = ChucNang.chuanHoa(1,
 				((loai == 1) ? ThucDon.indexOfCaPhe : ThucDon.thucdon.size() - ThucDon.indexOfCaPhe)) - 1;
 
@@ -115,7 +116,7 @@ public class nvDatHang extends NhanVien {
 		for (int i = 0; i < SanPham.validSize; ++i) {
 			System.out.println((i + 1) + ". " + SanPham.size[i]);
 		}
-
+		System.out.print("Moi nhap lua chon: ");
 		int kichThuoc = ChucNang.chuanHoa(1, SanPham.validSize) - 1;
 
 		int chonDuong = SanPham.duong.length - 1;
@@ -126,6 +127,7 @@ public class nvDatHang extends NhanVien {
 			for (int i = 0; i < SanPham.duong.length; ++i) {
 				System.out.println((i + 1) + ". " + SanPham.duong[i]);
 			}
+			System.out.print("Moi nhap lua chon: ");
 			int luachon = ChucNang.chuanHoa(1, SanPham.duong.length);
 			chonDuong = luachon - 1;
 
@@ -133,6 +135,7 @@ public class nvDatHang extends NhanVien {
 			for (int i = 0; i < SanPham.da.length; ++i) {
 				System.out.println((i + 1) + ". " + SanPham.da[i]);
 			}
+			System.out.print("Moi nhap lua chon: ");
 			luachon = ChucNang.chuanHoa(1, SanPham.da.length);
 			chonDa = luachon - 1;
 		}
@@ -140,6 +143,7 @@ public class nvDatHang extends NhanVien {
 			System.out.println("Moi chon luong da");
 			System.out.println("1. Khong da");
 			System.out.println("2. Co da");
+			System.out.print("Moi nhap lua chon: ");
 			int luachon = ChucNang.chuanHoa(1, 2);
 			if (luachon == 2)
 				luachon = 5;
@@ -186,6 +190,7 @@ public class nvDatHang extends NhanVien {
 		System.out.println("| 3. Thay doi luong da             |");
 		System.out.println("| 4. Thay doi so luong             |");
 		System.out.println("+==================================+");
+		System.out.print("Moi nhap lua chon: ");
 		int luachon = ChucNang.chuanHoa(1, 4);
 		int hehe = 0;
 		switch (luachon) {
@@ -194,7 +199,7 @@ public class nvDatHang extends NhanVien {
 				for (int i = 0; i < SanPham.validSize; ++i) {
 					System.out.println((i + 1) + ". " + SanPham.size[i]);
 				}
-
+				System.out.print("Moi nhap lua chon: ");
 				hehe = ChucNang.chuanHoa(1, SanPham.validSize) - 1;
 				break;
 
@@ -203,6 +208,7 @@ public class nvDatHang extends NhanVien {
 				for (int i = 0; i < SanPham.duong.length; ++i) {
 					System.out.println((i + 1) + ". " + SanPham.duong[i]);
 				}
+				System.out.print("Moi nhap lua chon: ");
 				hehe = ChucNang.chuanHoa(1, SanPham.duong.length) - 1;
 
 				break;
@@ -212,12 +218,13 @@ public class nvDatHang extends NhanVien {
 				for (int i = 0; i < SanPham.da.length; ++i) {
 					System.out.println((i + 1) + ". " + SanPham.da[i]);
 				}
+				System.out.print("Moi nhap lua chon: ");
 				hehe = ChucNang.chuanHoa(1, SanPham.da.length) - 1;
 				break;
 
 			case 4:
 				System.out.print("Moi nhap so luong: ");
-				hehe = ChucNang.chuanHoa(1000);
+				hehe = ChucNang.chuanHoa(0, 1000);
 				if (hehe == 0) {
 					this.xoaSanPham(index);
 					return;
@@ -261,7 +268,7 @@ public class nvDatHang extends NhanVien {
 			System.out.println("Ban co muon chon nua khong ?");
 			System.out.println("1. Co");
 			System.out.println("2. Khong");
-
+			System.out.print("Moi nhap lua chon: ");
 			int chonTiep = ChucNang.chuanHoa(1, 2);
 
 			if (chonTiep == 2)
@@ -273,6 +280,7 @@ public class nvDatHang extends NhanVien {
 		System.out.println("Ban co muon thay doi gi khong ?");
 		System.out.println("1. Co");
 		System.out.println("2. Khong");
+		System.out.print("Moi nhap lua chon: ");
 		int chonlai = ChucNang.chuanHoa(1, 2);
 		while (chonlai == 1) {
 			System.out.println("+==================================+");
@@ -283,6 +291,7 @@ public class nvDatHang extends NhanVien {
 			System.out.println("| 3. Thay doi chi tiet             |");
 			System.out.println("| 4. Xoa san pham                  |");
 			System.out.println("+==================================+");
+			System.out.print("Moi nhap lua chon: ");
 			int hehe = ChucNang.chuanHoa(1, 4);
 
 			this.xuatDonHang();
@@ -294,12 +303,14 @@ public class nvDatHang extends NhanVien {
 
 				case 2:
 					System.out.println("Nhap stt san pham can thay doi");
+					System.out.print("Moi nhap lua chon: ");
 					int spBiThayDoi = ChucNang.chuanHoa(1, this.demSanPham);
 					this.thaydoiSanPham(spBiThayDoi);
 					break;
 
 				case 3:
 					System.out.println("Nhap stt san pham can thay doi chi tiet");
+					System.out.print("Moi nhap lua chon: ");
 					int spthaydoi = ChucNang.chuanHoa(1, this.demSanPham);
 
 					this.thaydoiChiTiet(spthaydoi);
@@ -307,6 +318,7 @@ public class nvDatHang extends NhanVien {
 
 				case 4:
 					System.out.println("Nhap stt san pham can xoa");
+					System.out.print("Moi nhap lua chon: ");
 					int spBiXoa = ChucNang.chuanHoa(1, this.demSanPham);
 					this.xoaSanPham(spBiXoa);
 					break;
@@ -317,6 +329,7 @@ public class nvDatHang extends NhanVien {
 			System.out.println("Ban co muon thay doi gi nua khong ?");
 			System.out.println("1. Co");
 			System.out.println("2. Khong");
+			System.out.print("Moi nhap lua chon: ");
 			chonlai = ChucNang.chuanHoa(1, 2);
 		}
 	}
@@ -338,6 +351,7 @@ public class nvDatHang extends NhanVien {
 				System.out.println("Ban co muon su dung ?");
 				System.out.println("1. Co");
 				System.out.println("2. Khong");
+				System.out.print("Moi nhap lua chon: ");
 				sudungDTL = ChucNang.chuanHoa(1, 2);
 			}
 		}
@@ -400,6 +414,7 @@ public class nvDatHang extends NhanVien {
 		System.out.println("Ban co tai khoan tich diem hay khong?");
 		System.out.println("1. Co");
 		System.out.println("2. Khong");
+		System.out.print("Moi nhap lua chon: ");
 		int luachon = ChucNang.chuanHoa(1, 2);
 
 		ThanhVien tv = null;
@@ -413,6 +428,7 @@ public class nvDatHang extends NhanVien {
 			System.out.println("Ban co muon tao tai khoan ?");
 			System.out.println("1. Co");
 			System.out.println("2. Khong");
+			System.out.print("Moi nhap lua chon: ");
 			luachon = ChucNang.chuanHoa(1, 2);
 			if (luachon == 1) {
 				tv = DSThanhVien.themThanhVien();
@@ -434,6 +450,7 @@ public class nvDatHang extends NhanVien {
 			System.out.println("| 1. Nhan don hang                  |");
 			System.out.println("| 2. Thong tin ca nhan              |");
 			System.out.println("+===================================+");
+			System.out.print("Moi nhap lua chon: ");
 			int luachon = ChucNang.chuanHoa(0, 2);
 
 			switch (luachon) {
