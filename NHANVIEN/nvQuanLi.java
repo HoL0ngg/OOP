@@ -273,7 +273,7 @@ public class nvQuanLi extends NhanVien {
 					nvThayDoiTT.setNgaysinh(ngaysinhmoi);
 					break;
 			}
-			dsNhanVien.ghiVaoFile("NHAN_VIEN.txt");
+			this.dsNhanVien.ghiVaoFile("NHAN_VIEN.txt");
 		}
 	}
 
@@ -518,7 +518,6 @@ public class nvQuanLi extends NhanVien {
 					break;// sua lai
 				case 7:
 					this.xuatDSNV();
-					this.dsNhanVien.ghiVaoFile("NHAN_VIEN.txt");
 					break;
 				case 8:
 					this.xuatDSHD();
