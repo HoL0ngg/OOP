@@ -147,7 +147,7 @@ public class nvQuanLi extends NhanVien {
 
 		do {
 			System.out.print("Nhap so dien thoai: ");
-			nv.setSdt(ChucNang.chuanHoaChuoi());
+			nv.setSdt(ChucNang.chuaHoaSDT());
 			if (this.daTonTaiThongTin(nv.getSdt()) && this.daTonTaiThongTin(nv.getTen())) {
 				System.out.println("Nhan vien da ton tai. Vui long nhap lai");
 			}

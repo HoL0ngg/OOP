@@ -1,15 +1,16 @@
 package CHUCNANG;
+
 public class DiaChi {
 	private String TinhThanh;
 	private String QuanHuyen;
 	private String PhuongXa;
-	private String SoNha;
+	private int SoNha;
 	private String TenDuong;
 
 	public DiaChi() {
 	}
 
-	public DiaChi(String tinhThanh, String quanHuyen, String phuongXa, String soNha, String tenDuong) {
+	public DiaChi(String tinhThanh, String quanHuyen, String phuongXa, int soNha, String tenDuong) {
 		TinhThanh = tinhThanh;
 		QuanHuyen = quanHuyen;
 		PhuongXa = phuongXa;
@@ -41,11 +42,11 @@ public class DiaChi {
 		PhuongXa = phuongXa;
 	}
 
-	public String getSoNha() {
+	public int getSoNha() {
 		return SoNha;
 	}
 
-	public void setSoNha(String soNha) {
+	public void setSoNha(int soNha) {
 		SoNha = soNha;
 	}
 
@@ -65,7 +66,7 @@ public class DiaChi {
 		System.out.print("Nhap phuong xa: ");
 		this.setPhuongXa(ChucNang.chuanHoaChuoi());
 		System.out.print("Nhap so nha: ");
-		this.setSoNha(ChucNang.chuanHoaChuoi());
+		this.setSoNha(ChucNang.chuanHoa(1, 2000));
 		System.out.print("Nhap ten duong: ");
 		this.setTenDuong(ChucNang.chuanHoaChuoi());
 	}
