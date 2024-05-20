@@ -195,7 +195,7 @@ public class ChucNang {
             }
             ++i;
         }
-        if (j == check.length - 1 && mail.length() - i > 2)
+        if (j == check.length - 1 && mail.length() - i > 0)
             isEmail = true;
 
         while (!isEmail) {
