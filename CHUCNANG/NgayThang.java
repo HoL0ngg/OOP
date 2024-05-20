@@ -45,7 +45,7 @@ public class NgayThang {
 		System.out.print("Nhap thang: ");
 		int month = ChucNang.chuanHoa(1, 12);
 		System.out.print("Nhap nam: ");
-		int year = ChucNang.chuanHoa(1, 2024);
+		int year = ChucNang.chuanHoa(1900, 2024);
 		if (year % 4 == 0 && year % 100 != 0)
 			thang[1]++;
 		while (thang[month - 1] < day) {
@@ -55,7 +55,7 @@ public class NgayThang {
 			System.out.print("Nhap thang: ");
 			month = ChucNang.chuanHoa(1, 12);
 			System.out.print("Nhap nam: ");
-			year = ChucNang.chuanHoa(1, 2024);
+			year = ChucNang.chuanHoa(1900, 2024);
 		}
 		this.setNgay(day);
 		this.setThang(month);
