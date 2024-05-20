@@ -166,7 +166,7 @@ public class nvQuanLi extends NhanVien {
 			}
 		} while (this.daTonTaiThongTin(nv.getEmail()));
 
-		System.out.println("Nhap ngay sinh: ");
+		System.out.println("Nhap ngay thang nam sinh");
 		NgayThang ngaysinh = new NgayThang();
 		ngaysinh.nhapThongTin();
 		nv.setNgaysinh(ngaysinh);
@@ -263,10 +263,26 @@ public class nvQuanLi extends NhanVien {
 					nvThayDoiTT.setDc(diachimoi);
 					break;
 				case 3:
-					nvThayDoiTT.setSdt(ChucNang.chuaHoaSDT());
+					// nvThayDoiTT.setSdt(ChucNang.chuaHoaSDT());
+					do {
+						System.out.print("Nhap so dien thoai: ");
+						nvThayDoiTT.setSdt(ChucNang.chuaHoaSDT());
+						if (this.daTonTaiThongTin(nvThayDoiTT.getSdt())
+								&& this.daTonTaiThongTin(nvThayDoiTT.getTen())) {
+							System.out.println("Nhan vien da ton tai. Vui long nhap lai");
+						}
+					} while (this.daTonTaiThongTin(nvThayDoiTT.getSdt())
+							&& this.daTonTaiThongTin(nvThayDoiTT.getTen()));
 					break;
 				case 4:
-					nvThayDoiTT.setEmail(ChucNang.chuanHoaEmail());
+					// nvThayDoiTT.setEmail(ChucNang.chuanHoaEmail());
+					do {
+						System.out.print("Nhap dia chi email: ");
+						nvThayDoiTT.setEmail(ChucNang.chuanHoaEmail());
+						if (this.daTonTaiThongTin(nvThayDoiTT.getEmail())) {
+							System.out.println("Email da ton tai. Vui long nhap lai");
+						}
+					} while (this.daTonTaiThongTin(nvThayDoiTT.getEmail()));
 					break;
 				case 5:
 					NgayThang ngaysinhmoi = new NgayThang();
@@ -435,12 +451,12 @@ public class nvQuanLi extends NhanVien {
 			indexSpThayDoi = timkiemTenSP(tenSP);
 		}
 		while (true) {
-			int luachon;
+			// int luachon;
 			System.out.println("Chon thong tin can chinh sua");
 			System.out.println("1. Ten");
 			System.out.println("2. Don gia");
 			System.out.print("Moi nhap lua chon: ");
-			luachon = ChucNang.chuanHoa(1, 2);
+			int luachon = ChucNang.chuanHoa(1, 2);
 
 			switch (luachon) {
 				case 1:
@@ -520,10 +536,10 @@ public class nvQuanLi extends NhanVien {
 					break;
 				case 5:
 					this.chinhsuaThongTinNV();
-					// this.dsNhanVien.ghiVaoFile("NHAN_VIEN.txt");
 					break;// sua lai
 				case 6:
 					this.xuatDSNV();
+					// this.dsNhanVien.ghiVaoFile("NHAN_VIEN.txt");
 					break;
 				case 7:
 					this.xuatDSHD();

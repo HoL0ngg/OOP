@@ -1,7 +1,5 @@
 package SANPHAM;
 
-import java.security.DrbgParameters.Capability;
-
 import CHUCNANG.ChucNang;
 
 public abstract class SanPham {
