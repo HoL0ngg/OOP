@@ -1,5 +1,6 @@
 import CHUCNANG.ChucNang;
 import HOADON.DSHoaDon;
+import HOADON.DSThongKe;
 import NHANVIEN.DSNhanVien;
 import NHANVIEN.NhanVien;
 import SANPHAM.ThucDon;
@@ -15,16 +16,16 @@ public class ChuongTrinh {
 		ThucDon.setDonGiatuFile("trasua.txt");
 		ThucDon.setDonGiatuFile("caphe.txt");
 		DSThanhVien.docDSTVTuFile("THANH_VIEN.txt");
-
+		DSThongKe.docDSTKTuFile("thongke.txt");
 		// ThongKe.thongKeQuy();
 
 		while (true) {
 			NhanVien nhanvien = null;
 			while (nhanvien == null) {
 				System.out.println("+========================================+");
-				System.out.println("| EINHORN COFFE - TEA SHOP 		 |");
+				System.out.println("|          EINHORN COFFE - TEA SHOP      |");
 				System.out.println("+----------------------------------------+");
-				System.out.println("| DANG NHAP 				 |");
+				System.out.println("|                DANG  NHAP              |");
 				System.out.println("+----------------------------------------+");
 				System.out.print(" Username: ");
 				String name = ChucNang.chuanHoaChuoi().trim();
