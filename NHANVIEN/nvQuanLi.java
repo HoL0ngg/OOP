@@ -250,7 +250,7 @@ public class nvQuanLi extends NhanVien {
 			System.out.println("5. Chinh sua ngay sinh");
 			System.out.print("Moi nhap lua chon: ");
 			int luachon = ChucNang.chuanHoa(0, 5);
-			System.out.println("Nhap thong tin chinh sua:");
+			System.out.println("Nhap thong tin chinh sua");
 			switch (luachon) {
 				case 0:
 					return;
@@ -264,25 +264,27 @@ public class nvQuanLi extends NhanVien {
 					break;
 				case 3:
 					// nvThayDoiTT.setSdt(ChucNang.chuaHoaSDT());
+					String sdt = "";
 					do {
 						System.out.print("Nhap so dien thoai: ");
-						nvThayDoiTT.setSdt(ChucNang.chuaHoaSDT());
-						if (this.daTonTaiThongTin(nvThayDoiTT.getSdt())
-								&& this.daTonTaiThongTin(nvThayDoiTT.getTen())) {
-							System.out.println("Nhan vien da ton tai. Vui long nhap lai");
+						sdt = ChucNang.chuaHoaSDT();
+						if (this.daTonTaiThongTin(sdt)) {
+							System.out.println("SDT da ton tai. Vui long nhap lai");
 						}
-					} while (this.daTonTaiThongTin(nvThayDoiTT.getSdt())
-							&& this.daTonTaiThongTin(nvThayDoiTT.getTen()));
+					} while (this.daTonTaiThongTin(sdt));
+					nvThayDoiTT.setSdt(sdt);
 					break;
 				case 4:
 					// nvThayDoiTT.setEmail(ChucNang.chuanHoaEmail());
+					String email = "";
 					do {
 						System.out.print("Nhap dia chi email: ");
-						nvThayDoiTT.setEmail(ChucNang.chuanHoaEmail());
-						if (this.daTonTaiThongTin(nvThayDoiTT.getEmail())) {
+						email = ChucNang.chuanHoaEmail();
+						if (this.daTonTaiThongTin(email)) {
 							System.out.println("Email da ton tai. Vui long nhap lai");
 						}
-					} while (this.daTonTaiThongTin(nvThayDoiTT.getEmail()));
+					} while (this.daTonTaiThongTin(email));
+					nvThayDoiTT.setEmail(email);
 					break;
 				case 5:
 					NgayThang ngaysinhmoi = new NgayThang();
