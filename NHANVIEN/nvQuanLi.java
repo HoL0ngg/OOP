@@ -7,6 +7,7 @@ import CHUCNANG.DiaChi;
 import CHUCNANG.NgayThang;
 import CHUCNANG.SoSanhTheoChucVu;
 import HOADON.DSHoaDon;
+import HOADON.DSThongKe;
 import HOADON.ThongKe;
 import SANPHAM.CaPhe;
 import SANPHAM.SanPham;
@@ -16,11 +17,13 @@ import THANHVIEN.DSThanhVien;
 
 public class nvQuanLi extends NhanVien {
 	private DSNhanVien dsNhanVien;
+	private ThongKe tk;
 	// private DSHoaDon dsHoaDon;
 
 	public nvQuanLi() {
 		super();
 		this.dsNhanVien = new DSNhanVien();
+		this.tk = new ThongKe();
 	}
 
 	private void xuatDSNV() {
@@ -189,6 +192,15 @@ public class nvQuanLi extends NhanVien {
 			}
 		}
 		return -1;
+	}
+
+	private void xuatDSTK() {
+		if (DSThongKe.dstk.size() == 0)
+			return;
+		System.out.println("Xuat lich su thong ke: ");
+		for (ThongKe tk : DSThongKe.dstk) {
+			tk.xuatThongKe();
+		}
 	}
 
 	private void chinhsuaThongTinNV() {
@@ -526,8 +538,9 @@ public class nvQuanLi extends NhanVien {
 			System.out.println("| 7. Xuat danh sach hoa don				|");
 			System.out.println("| 8. Xuat danh sach thanh vien				|");
 			System.out.println("| 9. Xuat danh sach san pham				|");
-			System.out.println("| 10. Xuat thong tin ca nhan				|");
+			System.out.println("| 10. Xuat danh sach thong ke				|");
 			System.out.println("| 11. Thong ke						|");
+			System.out.println("| 12. Xuat thong tin ca nhan				|");
 			System.out.println("+=======================================================+");
 			System.out.print("Moi nhap lua chon: ");
 			int luachon = ChucNang.chuanHoa(0, 11);
@@ -561,7 +574,7 @@ public class nvQuanLi extends NhanVien {
 				case 9:
 					ThucDon.xuatMenu(3);
 					break;
-				case 10:
+				case 12:
 					this.xuatThongTinCaNhan();
 					break;
 				case 11:
@@ -571,9 +584,12 @@ public class nvQuanLi extends NhanVien {
 					System.out.print("Moi nhap lua chon: ");
 					int chon = ChucNang.chuanHoa(1, 2);
 					if (chon == 1)
-						ThongKe.thongKeQuy();
+						tk.thongKeQuy();
 					if (chon == 2)
-						ThongKe.thongKeThang();
+						tk.thongKeThang();
+					break;
+				case 10:
+					this.xuatDSTK();
 					break;
 				case 0:
 					System.out.println("");
