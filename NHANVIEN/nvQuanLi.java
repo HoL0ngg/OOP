@@ -333,31 +333,31 @@ public class nvQuanLi extends NhanVien {
 		}
 	}
 
-	private void xoaSanPham() {
-		SanPham spxoa = null;
-		do {
-			System.out.print("\nNhap ma san pham muon xoa: ");
-			String idxoa = ChucNang.chuanHoaChuoi();
-			spxoa = ThucDon.timKiemSPTheoID(idxoa);
-			if (spxoa == null) {
-				System.out.println("Khong ton tai san pham. Vui long nhap lai");
-			}
-		} while (spxoa == null);
-		ThucDon.xuatThongTinSP(spxoa);
-		int xacnhan = ChucNang.xacNhanThaoTac();
-		switch (xacnhan) {
-			case 0:
-				spxoa = null;
-				return;
-			case 1:
-				if (spxoa instanceof TraSua)
-					ThucDon.indexOfCaPhe--;
-				ThucDon.thucdon.remove(spxoa);
-				ThucDon.ghiDSVaoFile();
-				System.out.println("Da xoa san pham");
-				break;
-		}
-	}
+	// private void xoaSanPham() {
+	// SanPham spxoa = null;
+	// do {
+	// System.out.print("\nNhap ma san pham muon xoa: ");
+	// String idxoa = ChucNang.chuanHoaChuoi();
+	// spxoa = ThucDon.timKiemSPTheoID(idxoa);
+	// if (spxoa == null) {
+	// System.out.println("Khong ton tai san pham. Vui long nhap lai");
+	// }
+	// } while (spxoa == null);
+	// ThucDon.xuatThongTinSP(spxoa);
+	// int xacnhan = ChucNang.xacNhanThaoTac();
+	// switch (xacnhan) {
+	// case 0:
+	// spxoa = null;
+	// return;
+	// case 1:
+	// if (spxoa instanceof TraSua)
+	// ThucDon.indexOfCaPhe--;
+	// ThucDon.thucdon.remove(spxoa);
+	// ThucDon.ghiDSVaoFile();
+	// System.out.println("Da xoa san pham");
+	// break;
+	// }
+	// }
 
 	private ArrayList<NhanVien> timkiemNV() {
 		System.out.print("Tim kiem: ");
@@ -485,22 +485,30 @@ public class nvQuanLi extends NhanVien {
 		DSHoaDon.xuatToanboHoadon();
 	}
 
-	// private void xoaSP() {
-	// System.out.println("Nhap loai muon ngung kinh doanh");
-	// System.out.println("1. Tra sua");
-	// System.out.println("2. Ca phe");
-	// System.out.print("Moi nhap lua chon: ");
-	// int luachon = ChucNang.chuanHoa(1, 2);
-	// ThucDon.xuatMenu(luachon);
-	// System.out.println("Nhap stt cua san pham muon ngung kinh doanh");
-	// System.out.print("Moi nhap lua chon: ");
-	// int vitriMon = ChucNang.chuanHoa(1,
-	// ((luachon == 1) ? ThucDon.indexOfCaPhe : ThucDon.thucdon.size() -
-	// ThucDon.indexOfCaPhe));
-	// ThucDon.thucdon.get((vitriMon - 1) + ((luachon == 1) ? 0 :
-	// ThucDon.indexOfCaPhe)).setTrangthai(false);
-	// ThucDon.ghiDSVaoFile();
-	// }
+	private void xoaSP() {
+		System.out.println("Nhap loai muon ngung kinh doanh");
+		System.out.println("1. Tra sua");
+		System.out.println("2. Ca phe");
+		System.out.print("Moi nhap lua chon: ");
+		int luachon = ChucNang.chuanHoa(1, 2);
+		ThucDon.xuatMenu(luachon);
+		System.out.println("Nhap stt cua san pham muon ngung kinh doanh");
+		System.out.print("Moi nhap lua chon: ");
+		int vitriMon = ChucNang.chuanHoa(1,
+				((luachon == 1) ? ThucDon.indexOfCaPhe
+						: ThucDon.thucdon.size() -
+								ThucDon.indexOfCaPhe))
+				- 1;
+		int hoilai = ChucNang.xacNhanThaoTac();
+		if (hoilai == 0)
+			return;
+		SanPham spxoa = ThucDon.thucdon.get(vitriMon + ((luachon == 1) ? 0 : ThucDon.indexOfCaPhe));
+		if (spxoa instanceof TraSua)
+			ThucDon.indexOfCaPhe--;
+		ThucDon.thucdon.remove(spxoa);
+		ThucDon.ghiDSVaoFile();
+		System.out.println("Da xoa san pham");
+	}
 
 	@Override
 	public void menu() {
@@ -531,7 +539,8 @@ public class nvQuanLi extends NhanVien {
 					this.chinhsuaSanPham();
 					break;
 				case 3:
-					this.xoaSanPham();
+					// this.xoaSanPham();
+					this.xoaSP();
 					break;
 				case 4:
 					this.themNhanVien();
