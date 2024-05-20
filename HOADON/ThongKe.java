@@ -99,21 +99,25 @@ public class ThongKe {
         for (int i = 0; i < 4; ++i) {
             tongDoanhthu += doanhthu[i];
             if (doanhthu[i] == 0) {
-                System.out.printf("|       %-8d", 0);
+                System.out.printf("|       %-8s", "0d");
             } else {
-                System.out.printf("|    %-11s", ChucNang.chuanHoaGia(doanhthu[i]));
+                System.out.printf("|    %-11s", ChucNang.chuanHoaGia(doanhthu[i]) + 'd');
             }
 
         }
-        int length = ChucNang.chuanHoaGia(tongDoanhthu).length() - 4;
-        System.out.print("|");
-        for (int j = 1; j < 8 - length; ++j) {
-            System.out.print(" ");
-        }
-        int tab = 7 - 3;
-        System.out.print(ChucNang.chuanHoaGia(tongDoanhthu));
-        for (int j = 0; j < tab; ++j) {
-            System.out.print(" ");
+        if (tongDoanhthu == 0) {
+            System.out.printf("|       %-8s", "0d");
+        } else {
+            int length = ChucNang.chuanHoaGia(tongDoanhthu).length() - 4;
+            System.out.print("|");
+            for (int j = 1; j < 8 - length; ++j) {
+                System.out.print(" ");
+            }
+            int tab = 7 - 4;
+            System.out.print(ChucNang.chuanHoaGia(tongDoanhthu) + 'd');
+            for (int j = 0; j < tab; ++j) {
+                System.out.print(" ");
+            }
         }
         System.out.println("|");
         System.out.println(
@@ -204,17 +208,18 @@ public class ThongKe {
             System.out.println("|");
         }
         System.out.println("+----------------------------------------------+");
-        System.out.printf("|   TONG    |        %-8d  |    %-8s   |\n", tongdon, ChucNang.chuanHoaGia(tongDoanhthu));
+        System.out.printf("|   TONG    |        %-8d  |    %-8s   |\n", tongdon,
+                ChucNang.chuanHoaGia(tongDoanhthu) + 'd');
         System.out.println("+==============================================+");
         DSThongKe.ghiDSTVVaoFile("thongke.txt", this);
     }
 
     public void xuatThongKe() {
         System.out.println("+==============================================+");
-        System.out.println("|             THONG KE NGAY " + this.getNgayTk() + "          |");
+        System.out.printf("|           THONG KE NGAY %-20s |\n", this.getNgayTk());
         System.out.println("+----------------------------------------------+");
         System.out.printf("| Loai thong ke: %-30s|\n", (this.getLoai() == 1 ? "Thong ke quy" : "Thong ke thang"));
-        System.out.printf("| Tong doanh thu: %-28s |\n", ChucNang.chuanHoaGia(this.getTongDoanhthu()));
+        System.out.printf("| Tong doanh thu: %-28s |\n", ChucNang.chuanHoaGia(this.getTongDoanhthu()) + 'd');
         System.out.printf("| Tong so luong don: %-25d |\n", this.getTongSoLuongDon());
         System.out.println("+----------------------------------------------+");
     }
