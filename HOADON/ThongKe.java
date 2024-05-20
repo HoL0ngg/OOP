@@ -1,23 +1,72 @@
 package HOADON;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
 
 import CHUCNANG.ChucNang;
-import SANPHAM.ThucDon;
+import CHUCNANG.NgayThang;
 
 public class ThongKe {
     private static int[] soluongdon;
     private static int[] doanhthu;
-    private static int[] soluonghang;
+    // private static int[] soluonghang;
+    private int loai;
+    private String id;
+    private NgayThang ngayTk;
+    private int tongDoanhthu;
+    private int tongSoLuongDon;
+
+    public int getLoai() {
+        return loai;
+    }
+
+    public void setLoai(int loai) {
+        this.loai = loai;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public NgayThang getNgayTk() {
+        return ngayTk;
+    }
+
+    public void setNgayTk(NgayThang ngayTk) {
+        this.ngayTk = ngayTk;
+    }
+
+    public int getTongDoanhthu() {
+        return tongDoanhthu;
+    }
+
+    public void setTongDoanhthu(int tongDoanhthu) {
+        this.tongDoanhthu = tongDoanhthu;
+    }
+
+    public int getTongSoLuongDon() {
+        return tongSoLuongDon;
+    }
+
+    public void setTongSoLuongDon(int tongSoLuongDon) {
+        this.tongSoLuongDon = tongSoLuongDon;
+    }
 
     public ThongKe() {
     }
 
-    public static void thongKeQuy() {
+    public void thongKeQuy() {
+        this.setId("tk" + (DSThongKe.dstk.size() + 1));
+        this.setLoai(1);
+        Calendar calendar = Calendar.getInstance();
+        this.setNgayTk(
+                new NgayThang(calendar.get(Calendar.DATE), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR)));
         ThongKe.soluongdon = new int[4];
         ThongKe.doanhthu = new int[4];
-        ThongKe.soluonghang = new int[ThucDon.thucdon.size()];
+        // ThongKe.soluonghang = new int[ThucDon.thucdon.size()];
         int tongdon = 0;
         int tongDoanhthu = 0;
         System.out.print("Nhap nam muon thong ke: ");
@@ -50,37 +99,49 @@ public class ThongKe {
         for (int i = 0; i < 4; ++i) {
             tongDoanhthu += doanhthu[i];
             if (doanhthu[i] == 0) {
-                System.out.printf("|       %-8d", 0);
+                System.out.printf("|       %-8s", "0d");
             } else {
-                System.out.printf("|    %-11s", ChucNang.chuanHoaGia(doanhthu[i]));
+                System.out.printf("|    %-11s", ChucNang.chuanHoaGia(doanhthu[i]) + 'd');
             }
 
         }
-        int length = ChucNang.chuanHoaGia(tongDoanhthu).length() - 4;
-        System.out.print("|");
-        for (int j = 1; j < 8 - length; ++j) {
-            System.out.print(" ");
-        }
-        int tab = 7 - 3;
-        System.out.print(ChucNang.chuanHoaGia(tongDoanhthu));
-        for (int j = 0; j < tab; ++j) {
-            System.out.print(" ");
+        if (tongDoanhthu == 0) {
+            System.out.printf("|       %-8s", "0d");
+        } else {
+            int length = ChucNang.chuanHoaGia(tongDoanhthu).length() - 4;
+            System.out.print("|");
+            for (int j = 1; j < 8 - length; ++j) {
+                System.out.print(" ");
+            }
+            int tab = 7 - 4;
+            System.out.print(ChucNang.chuanHoaGia(tongDoanhthu) + 'd');
+            for (int j = 0; j < tab; ++j) {
+                System.out.print(" ");
+            }
         }
         System.out.println("|");
         System.out.println(
                 "+===============================================================================================+");
+        this.setTongSoLuongDon(tongdon);
+        this.setTongDoanhthu(tongDoanhthu);
+        DSThongKe.ghiDSTVVaoFile("thongke.txt", this);
     }
 
-    public static void thongKeNgay() {
-        ThongKe.soluongdon = new int[31];
-        ThongKe.doanhthu = new int[31];
-        ThongKe.soluonghang = new int[ThucDon.thucdon.size()];
-    }
+    // public static void thongKeNgay() {
+    // ThongKe.soluongdon = new int[31];
+    // ThongKe.doanhthu = new int[31];
+    // ThongKe.soluonghang = new int[ThucDon.thucdon.size()];
+    // }
 
-    public static void thongKeThang() {
+    public void thongKeThang() {
+        this.setId("tk" + (DSThongKe.dstk.size() + 1));
+        this.setLoai(2);
+        Calendar calendar = Calendar.getInstance();
+        this.setNgayTk(
+                new NgayThang(calendar.get(Calendar.DATE), calendar.get(Calendar.MONTH), calendar.get(Calendar.YEAR)));
         ThongKe.soluongdon = new int[12];
         ThongKe.doanhthu = new int[12];
-        ThongKe.soluonghang = new int[ThucDon.thucdon.size()];
+        // ThongKe.soluonghang = new int[ThucDon.thucdon.size()];
         System.out.print("Nhap nam muon thong ke: ");
         int nam = ChucNang.chuanHoa(1, 2024);
         for (Hoadon hd : DSHoaDon.getDSHD()) {
@@ -147,7 +208,19 @@ public class ThongKe {
             System.out.println("|");
         }
         System.out.println("+----------------------------------------------+");
-        System.out.printf("|   TONG    |        %-8d  |    %-8s   |\n", tongdon, ChucNang.chuanHoaGia(tongDoanhthu));
+        System.out.printf("|   TONG    |        %-8d  |    %-8s   |\n", tongdon,
+                ChucNang.chuanHoaGia(tongDoanhthu) + 'd');
         System.out.println("+==============================================+");
+        DSThongKe.ghiDSTVVaoFile("thongke.txt", this);
+    }
+
+    public void xuatThongKe() {
+        System.out.println("+==============================================+");
+        System.out.printf("|           THONG KE NGAY %-20s |\n", this.getNgayTk());
+        System.out.println("+----------------------------------------------+");
+        System.out.printf("| Loai thong ke: %-30s|\n", (this.getLoai() == 1 ? "Thong ke quy" : "Thong ke thang"));
+        System.out.printf("| Tong doanh thu: %-28s |\n", ChucNang.chuanHoaGia(this.getTongDoanhthu()) + 'd');
+        System.out.printf("| Tong so luong don: %-25d |\n", this.getTongSoLuongDon());
+        System.out.println("+----------------------------------------------+");
     }
 }
