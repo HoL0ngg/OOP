@@ -1,6 +1,5 @@
 package HOADON;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 import CHUCNANG.ChucNang;
@@ -212,7 +211,7 @@ public class ThongKe {
 
     public void xuatThongKe() {
         System.out.println("+==============================================+");
-        System.out.println("|         THONG KE THANG NGAY " + this.getNgayTk() + "        |");
+        System.out.println("|             THONG KE NGAY " + this.getNgayTk() + "          |");
         System.out.println("+----------------------------------------------+");
         System.out.printf("| Loai thong ke: %-30s|\n", (this.getLoai() == 1 ? "Thong ke quy" : "Thong ke thang"));
         System.out.printf("| Tong doanh thu: %-28s |\n", ChucNang.chuanHoaGia(this.getTongDoanhthu()));

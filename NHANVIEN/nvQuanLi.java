@@ -5,6 +5,7 @@ import java.util.Collections;
 import CHUCNANG.ChucNang;
 import CHUCNANG.DiaChi;
 import CHUCNANG.NgayThang;
+import CHUCNANG.SoSanhNgayTK;
 import CHUCNANG.SoSanhTheoChucVu;
 import HOADON.DSHoaDon;
 import HOADON.DSThongKe;
@@ -195,6 +196,7 @@ public class nvQuanLi extends NhanVien {
 	}
 
 	private void xuatDSTK() {
+		Collections.sort(DSThongKe.dstk, new SoSanhNgayTK());
 		if (DSThongKe.dstk.size() == 0)
 			return;
 		System.out.println("Xuat lich su thong ke: ");
